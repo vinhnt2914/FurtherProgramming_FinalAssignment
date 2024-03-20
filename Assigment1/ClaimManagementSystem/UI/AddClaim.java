@@ -41,6 +41,9 @@ public class AddClaim {
             // Add the claim into system data.
             DataManager.getClaims().put(claimID, claim);
             ClaimSystem.displayClaims();
+
+            // Add the claim into the database
+            DataManager.writeClaim(claim);
             System.out.println("CLAIM ADDED!");
             HomePage.run();
         } else {

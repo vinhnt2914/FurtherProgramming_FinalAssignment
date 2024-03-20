@@ -131,14 +131,27 @@ public class Claim {
     }
 
     public String toData() {
-        return String.format("%s,%s,%s,%s,%s,%.2f,%s",
+        StringBuilder documentsString = new StringBuilder();
+        for (String document : documents) {
+            documentsString.append(document).append(",");
+        }
+        // Remove the trailing comma if there are documents present
+        if (documentsString.length() > 0) {
+            documentsString.deleteCharAt(documentsString.length() - 1);
+        }
+
+        return String.format("%s,%s,%s,%s,%s,%.2f,%s,%s,%s,%s",
                 id,
                 claimDate,
                 insuredPerson.getId(),
                 cardNumber,
                 examDate,
                 claimAmount,
-                status);
+                status,
+                bankName,
+                receiverName,
+                bankNumber,
+                documentsString);
     }
 
     @Override
