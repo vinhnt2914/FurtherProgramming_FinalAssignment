@@ -3,12 +3,13 @@ package org.example.model.customer;
 import jakarta.persistence.*;
 import org.example.model.InsuranceCard;
 
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "customers")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Customer {
+public abstract class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
