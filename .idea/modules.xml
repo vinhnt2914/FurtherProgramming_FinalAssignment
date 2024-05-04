@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FurtherProgramming_FinalAssignment.iml" filepath="$PROJECT_DIR$/.idea/FurtherProgramming_FinalAssignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestJPA.iml" filepath="$PROJECT_DIR$/TestJPA.iml" />
     </modules>
   </component>
 </project>
