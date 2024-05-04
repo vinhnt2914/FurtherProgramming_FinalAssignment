@@ -12,23 +12,21 @@ import java.util.*;
 public abstract class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    protected int id;
     @Column(name = "username", nullable = false, unique = true)
-    private String username;
+    protected String username;
     @Column(name = "password", nullable = false)
-    private String password;
+    protected String password;
     @Column(name = "email")
-    private String email;
+    protected String email;
     @Column(name = "phone")
-    private String phone;
+    protected String phone;
     @Column(name = "address")
-    private String address;
+    protected String address;
     @Column(name = "fullName")
-    private String fullName;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) // When persist customer, we persist the card as well
-    private InsuranceCard insuranceCard;
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Set<org.example.model.Claim> claimList;
+    protected String fullName;
+    @OneToMany(mappedBy = "insuredPerson", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    protected Set<org.example.model.Claim> claimList;
 
     public Customer(GenericCustomerBuilder builder) {
         this.username = builder.username;
@@ -37,9 +35,7 @@ public abstract class Customer implements Serializable {
         this.phone = builder.phone;
         this.address = builder.address;
         this.fullName = builder.fullName;
-        this.insuranceCard = builder.insuranceCard;
         this.claimList = new HashSet<>();
-//        insuranceCard.setCustomer(this);
     }
 
     public Customer() {
@@ -101,14 +97,6 @@ public abstract class Customer implements Serializable {
         this.fullName = fullName;
     }
 
-    public InsuranceCard getInsuranceCard() {
-        return insuranceCard;
-    }
-
-    public void setInsuranceCard(InsuranceCard insuranceCard) {
-        this.insuranceCard = insuranceCard;
-    }
-
     public Set<org.example.model.Claim> getClaimList() {
         return claimList;
     }
@@ -131,7 +119,6 @@ public abstract class Customer implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", insuranceCard=" + insuranceCard +
                 '}';
     }
 
@@ -142,7 +129,6 @@ public abstract class Customer implements Serializable {
         protected String phone;
         protected String address;
         protected String fullName;
-        protected InsuranceCard insuranceCard;
         public T self() {
             return (T) this;
         }
@@ -168,10 +154,6 @@ public abstract class Customer implements Serializable {
         }
         public T fullName(String fullName) {
             this.fullName = fullName;
-            return self();
-        }
-        public T insuranceCard(InsuranceCard insuranceCard) {
-            this.insuranceCard = insuranceCard;
             return self();
         }
 

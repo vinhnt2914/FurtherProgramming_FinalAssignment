@@ -1,4 +1,4 @@
-package org.example.repository.impl;
+package org.example.repository;
 
 import org.example.model.InsuranceCard;
 import org.example.model.customer.Customer;
@@ -12,4 +12,5 @@ public interface IInsuranceCardRepository {
     List<InsuranceCard> getAll();
     void update(InsuranceCard insuranceCard);
     InsuranceCard removeByID(String id);
+    void close();
 }

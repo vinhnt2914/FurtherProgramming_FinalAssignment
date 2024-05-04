@@ -1,9 +1,7 @@
 package org.example.model.customer;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import org.example.model.Beneficiary;
 
 @Entity
 public class Dependant extends Beneficiary {

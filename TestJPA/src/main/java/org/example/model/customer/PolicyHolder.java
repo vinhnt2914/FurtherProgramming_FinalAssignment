@@ -1,7 +1,6 @@
 package org.example.model.customer;
 
 import jakarta.persistence.*;
-import org.example.model.Beneficiary;
 
 import java.util.HashSet;
 import java.util.Set;

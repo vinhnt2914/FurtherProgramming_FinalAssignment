@@ -75,6 +75,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
     }
 
     // Close the repository
+    @Override
     public void close() {
         em.close();
     }

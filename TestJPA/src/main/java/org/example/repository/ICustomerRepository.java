@@ -11,4 +11,5 @@ public interface ICustomerRepository {
     List<Customer> getAll();
     void update(Customer customer);
     Customer removeByID(int id);
+    void close();
 }

@@ -2,8 +2,6 @@ package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
 import org.example.model.Claim;
-import org.example.model.customer.Customer;
-import org.example.model.customer.PolicyOwner;
 import org.example.repository.EntityRepository;
 import org.example.repository.IClaimRepository;
 
@@ -44,8 +42,7 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
         em.getTransaction().begin();
 
         claimToUpdate.setId(claim.getId());
-        claimToUpdate.setContent(claim.getContent());
-        claimToUpdate.setCustomer(claim.getCustomer());
+        claimToUpdate.setInsuredPerson(claim.getInsuredPerson());
 
         em.getTransaction().commit();
     }
@@ -57,5 +54,10 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
         em.remove(claimToRemove);
         em.getTransaction().commit();
         return claimToRemove;
+    }
+
+    @Override
+    public void close() {
+        em.close();
     }
 }

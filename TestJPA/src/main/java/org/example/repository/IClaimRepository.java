@@ -12,4 +12,5 @@ public interface IClaimRepository {
     List<Claim> getAll();
     void update(Claim claim);
     Claim removeByID(String id);
+    void close();
 }

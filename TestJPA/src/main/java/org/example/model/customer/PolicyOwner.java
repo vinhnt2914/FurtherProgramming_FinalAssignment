@@ -3,7 +3,6 @@ package org.example.model.customer;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import org.example.model.Beneficiary;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +15,6 @@ public class PolicyOwner extends Customer {
     public PolicyOwner(PolicyOwnerBuilder builder) {
         super(builder);
         this.beneficiarySet = new HashSet<>();
-//        this.beneficiaries = builder.beneficiaries;
     }
     public PolicyOwner() {
     }

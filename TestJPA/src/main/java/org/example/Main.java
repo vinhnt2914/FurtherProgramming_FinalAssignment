@@ -4,24 +4,41 @@ import org.example.model.*;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
+import org.example.model.enums.ClaimStatus;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.InsuranceCardRepository;
+import org.example.service.ClaimService;
 import org.example.service.CustomerService;
+import org.example.service.InsuranceCardService;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-
-        InsuranceCard card1 = new InsuranceCard("c-000001");
-        InsuranceCard card2 = new InsuranceCard("c-000002");
-        InsuranceCard card3 = new InsuranceCard("c-000003");
-        InsuranceCard card4 = new InsuranceCard("c-000004");
-
-//        PolicyHolder.PolicyHolderBuilder policyHolderBuilder = new PolicyHolder.PolicyHolderBuilder();
-//        Dependant.DependantBuilder dependantBuilder = new Dependant.DependantBuilder();
-//        PolicyOwner.PolicyOwnerBuilder policyOwnerBuilder = new PolicyOwner.PolicyOwnerBuilder();
-
+        InsuranceCardService cardService = new InsuranceCardService();
         CustomerService customerService = new CustomerService();
+        ClaimService claimService = new ClaimService();
+
+        InsuranceCard card1 = cardService.makeCard()
+                .cardNumber("0000000001")
+                .expireDate(LocalDate.of(2024,5,5))
+                .build();
+
+        InsuranceCard card2 = cardService.makeCard()
+                .cardNumber("0000000002")
+                .expireDate(LocalDate.of(2024,5,6))
+                .build();
+
+        InsuranceCard card3 = cardService.makeCard()
+                .cardNumber("0000000003")
+                .expireDate(LocalDate.of(2024,6,5))
+                .build();
+
+        InsuranceCard card4 = cardService.makeCard()
+                .cardNumber("0000000004")
+                .expireDate(LocalDate.of(2024,7,5))
+                .build();
 
         PolicyHolder c1 = customerService
                 .makePolicyHolder()
@@ -31,7 +48,6 @@ public class Main {
                 .phone("0818194444")
                 .address("Hanoi")
                 .fullName("Nguyen The Vinh")
-                .insuranceCard(card4)
                 .build();
 
         Dependant c2 = customerService
@@ -42,7 +58,6 @@ public class Main {
                 .email("quang@gmail.com")
                 .phone("123456789")
                 .address("Haiphone")
-                .insuranceCard(card1)
                 .build();
 
         Dependant c3 = customerService
@@ -53,7 +68,6 @@ public class Main {
                 .phone("123456812")
                 .address("Sapa")
                 .fullName("Tran Quang Khai")
-                .insuranceCard(card2)
                 .build();
 
         Dependant c4 = customerService
@@ -64,7 +78,6 @@ public class Main {
                 .phone("412389123")
                 .address("Bac Ninh")
                 .fullName("Cao Ba Quat")
-                .insuranceCard(card3)
                 .build();
 
         PolicyOwner c5 = customerService
@@ -83,44 +96,59 @@ public class Main {
         // Persist everything under one transaction
         c1.addDepdendants(c2, c3, c4);
         c5.addBeneficaries(c1, c2, c3);
+        c1.setInsuranceCard(card1);
+        c2.setInsuranceCard(card2);
+        c3.setInsuranceCard(card3);
+        c4.setInsuranceCard(card4);
 
-        System.out.println("This can run");
+        Claim claim1 = claimService.makeClaim()
+                .id("f-000001")
+                .insuredPerson(c1)
+                .claimDate(LocalDate.of(2024,5,7))
+                .examDate(LocalDate.of(2024,8,8))
+                .claimAmount(2000)
+                .status(ClaimStatus.NEW)
+                .bankingInfo("TPBank-NguyenTheVinh-1234567")
+                .build();
 
-        Claim claim1 = new Claim("f-0001", "No content", c1);
-        Claim claim2 = new Claim("f-0002", "No content", c1);
-        Claim claim3 = new Claim("f-0003", "No content", c2);
-        Claim claim4 = new Claim("f-0004", "No content", c3);
+        Claim claim2 = claimService.makeClaim()
+                .id("f-000002")
+                .insuredPerson(c1)
+                .claimDate(LocalDate.of(2024,2,2))
+                .examDate(LocalDate.of(2024,6,8))
+                .claimAmount(3000)
+                .status(ClaimStatus.NEW)
+                .bankingInfo("TPBank-NguyenTheVinh-1234567")
+                .build();
+
+        Claim claim3 = claimService.makeClaim()
+                .id("f-000003")
+                .insuredPerson(c3)
+                .claimDate(LocalDate.of(2024,11,14))
+                .examDate(LocalDate.of(2024,9,25))
+                .claimAmount(500)
+                .status(ClaimStatus.NEW)
+                .bankingInfo("TPBank-NguyenBaThai-7654321")
+                .build();
+
+        Claim claim4 = claimService.makeClaim()
+                .id("f-000004")
+                .insuredPerson(c1)
+                .claimDate(LocalDate.of(2024,1,1))
+                .examDate(LocalDate.of(2024,10,5))
+                .claimAmount(5000)
+                .status(ClaimStatus.NEW)
+                .bankingInfo("TPBank-CaoBaQuat-321654")
+                .build();
 
         CustomerRepository customerRepository = new CustomerRepository();
+        InsuranceCardRepository cardRepository = new InsuranceCardRepository();
+//        customerRepository.add(c1,c2,c3,c4,c5);
 
-        customerRepository.add(c1,c2,c3,c4,c5);
+        System.out.println(cardRepository.findByID("0000000002"));
 
-//        Customer customer = customerRepository.findCustomer(1);
-//        customerRepository.removeByID(5);
-
-//        Customer foundC1 = customerRepository.find(1);
-////        Customer foundC2 = customerRepository.find(10);
-////        Customer foundC3 = customerRepository.find(11);
-////        Customer foundC4 = customerRepository.find(12);
-//        foundC1.getClaimList().forEach(System.out::println);
-
-//        List<Dependant> dependantList = customerRepository.getAllDependant();
-//        for (Dependant d : dependantList) {
-//            System.out.println(d);
-//        }
-
-//        foundC1.setFullName("Kien Loz");
-//        customerRepository.update(foundC1);
-////        System.out.println(foundC3);
-////        System.out.println(foundC4);
-////        System.out.println(foundC1 instanceof PolicyHolder);
-////        System.out.println(foundC2 instanceof Dependant);
-////        System.out.println(foundC3 instanceof Dependant);
-////        System.out.println(foundC4 instanceof Dependant);
         customerRepository.close();
+        cardRepository.close();
 
-//        InsuranceCardRepository insuranceCardRepository = new InsuranceCardRepository();
-//        InsuranceCard card = insuranceCardRepository.find("c-000001");
-//        System.out.println(card);
     }
 }
