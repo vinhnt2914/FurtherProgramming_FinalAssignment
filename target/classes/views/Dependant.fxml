@@ -10,11 +10,15 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DependantController">
    <center>
-      <TableView fx:id="dependantTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
+      <TableView fx:id="dependantTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"
+                 items="{yourControllerInstance.claimsData}">
+         <columns>
+            <TableColumn text="Claim ID" fx:id="claimIdColumn" prefWidth="75.0" />
+            <TableColumn text="Claim Date" fx:id="claimDateColumn" prefWidth="150.0" />
+            <TableColumn text="Exam Date" fx:id="examDateColumn" prefWidth="150.0" />
+            <TableColumn text="Claim Amount" fx:id="claimAmountColumn" prefWidth="100.0" />
+            <TableColumn text="Status" fx:id="claimStatusColumn" prefWidth="100.0" />
+         </columns>
       </TableView>
    </center>
    <top>

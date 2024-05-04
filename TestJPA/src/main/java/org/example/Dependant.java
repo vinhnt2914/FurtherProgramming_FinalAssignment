@@ -14,7 +14,7 @@ public class Dependant extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/views/Dependant.fxml"));
 
         // Set up the stage and scene
-        primaryStage.setTitle("FXML Example");
+        primaryStage.setTitle("Dependant");
         primaryStage.setScene(new Scene(root, 819, 551));
         primaryStage.show();
     }
