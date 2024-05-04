@@ -8,7 +8,7 @@ import org.example.model.provider.InsuranceSurveyor;
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @ManyToOne
     private InsuranceSurveyor insuranceSurveyor;
     @ManyToOne

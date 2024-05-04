@@ -8,8 +8,8 @@ import java.util.List;
 public interface IRequestRepository {
     void add(Request request);
     void add(Request... requests);
-    Request findByID(Long id);
+    Request findByID(int id);
     List<Request> getAll();
-    InsuranceCard removeByID(String id);
+    Request removeByID(int id);
     void close();
 }
