@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/ExampleClaimCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Dependant.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Dependant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/DependantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/DependantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Dependant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Dependant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DependantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DependantController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/Dependant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/Dependant.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,7 +142,7 @@
       <workItem from="1714783243194" duration="10057000" />
       <workItem from="1714837500424" duration="1534000" />
       <workItem from="1714839053602" duration="1828000" />
-      <workItem from="1714859329770" duration="1555000" />
+      <workItem from="1714859329770" duration="1872000" />
     </task>
     <servers />
   </component>
