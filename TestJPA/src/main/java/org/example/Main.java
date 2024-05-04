@@ -1,10 +1,13 @@
 package org.example;
 
-import org.example.model.*;
+import org.example.model.User;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
 import org.example.model.enums.ClaimStatus;
+import org.example.model.items.Claim;
+import org.example.model.items.InsuranceCard;
+import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.InsuranceCardRepository;
 import org.example.service.ClaimService;
@@ -94,8 +97,8 @@ public class Main {
         // c2, c3, c4 by the time of persisting
         // Solve using bulk adding, avoid persisting each object per transaction
         // Persist everything under one transaction
-        c1.addDepdendants(c2, c3, c4);
-        c5.addBeneficaries(c1, c2, c3);
+        c1.addDepdendants(c2, c3, c4); // Add dependants
+        c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
         c1.setInsuranceCard(card1);
         c2.setInsuranceCard(card2);
         c3.setInsuranceCard(card3);
@@ -145,7 +148,11 @@ public class Main {
         InsuranceCardRepository cardRepository = new InsuranceCardRepository();
 //        customerRepository.add(c1,c2,c3,c4,c5);
 
-        System.out.println(cardRepository.findByID("0000000002"));
+        User user = customerRepository.findByID(1);
+        System.out.println(user);
+        System.out.println(user instanceof PolicyHolder);
+//        System.out.println(customerRepository.getAll());
+//        System.out.println(cardRepository.findByID("0000000002"));
 
         customerRepository.close();
         cardRepository.close();

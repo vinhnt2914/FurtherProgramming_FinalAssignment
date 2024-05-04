@@ -1,8 +1,7 @@
-package org.example.model;
+package org.example.model.items;
 
 import jakarta.persistence.*;
 import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
 import org.example.model.enums.ClaimStatus;
 
 import java.time.LocalDate;

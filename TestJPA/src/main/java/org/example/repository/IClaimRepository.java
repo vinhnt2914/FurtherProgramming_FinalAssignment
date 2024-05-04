@@ -1,7 +1,6 @@
 package org.example.repository;
 
-import org.example.model.Claim;
-import org.example.model.customer.Customer;
+import org.example.model.items.Claim;
 
 import java.util.List;
 

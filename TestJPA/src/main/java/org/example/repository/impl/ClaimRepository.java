@@ -1,7 +1,7 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
-import org.example.model.Claim;
+import org.example.model.items.Claim;
 import org.example.repository.EntityRepository;
 import org.example.repository.IClaimRepository;
 

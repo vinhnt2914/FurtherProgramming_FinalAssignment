@@ -1,7 +1,8 @@
 package org.example.model.customer;
 
 import jakarta.persistence.*;
-import org.example.model.InsuranceCard;
+import org.example.model.User;
+import org.example.model.items.Claim;
 
 import java.io.Serializable;
 import java.util.*;
@@ -9,24 +10,20 @@ import java.util.*;
 @Entity
 @Table(name = "customers")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Customer implements Serializable {
+public abstract class Customer extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     protected String username;
-    @Column(name = "password", nullable = false)
+    @Column( nullable = false)
     protected String password;
-    @Column(name = "email")
     protected String email;
-    @Column(name = "phone")
     protected String phone;
-    @Column(name = "address")
     protected String address;
-    @Column(name = "fullName")
     protected String fullName;
     @OneToMany(mappedBy = "insuredPerson", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    protected Set<org.example.model.Claim> claimList;
+    protected Set<Claim> claimList;
 
     public Customer(GenericCustomerBuilder builder) {
         this.username = builder.username;
@@ -39,7 +36,21 @@ public abstract class Customer implements Serializable {
     }
 
     public Customer() {
+        super();
     }
+
+//    public Customer(GenericCustomerBuilder builder) {
+//        this.username = builder.username;
+//        this.password = builder.password;
+//        this.email = builder.email;
+//        this.phone = builder.phone;
+//        this.address = builder.address;
+//        this.fullName = builder.fullName;
+//        this.claimList = new HashSet<>();
+//    }
+//
+//    public Customer() {
+//    }
 
     public int getId() {
         return id;
@@ -97,15 +108,15 @@ public abstract class Customer implements Serializable {
         this.fullName = fullName;
     }
 
-    public Set<org.example.model.Claim> getClaimList() {
+    public Set<Claim> getClaimList() {
         return claimList;
     }
 
-    public void setClaimList(HashSet<org.example.model.Claim> claimList) {
+    public void setClaimList(HashSet<Claim> claimList) {
         this.claimList = claimList;
     }
 
-    public void addClaim(org.example.model.Claim claim) {
+    public void addClaim(Claim claim) {
         this.claimList.add(claim);
     }
 

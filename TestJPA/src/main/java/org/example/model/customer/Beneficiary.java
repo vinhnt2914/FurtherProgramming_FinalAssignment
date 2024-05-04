@@ -1,10 +1,7 @@
 package org.example.model.customer;
 
 import jakarta.persistence.*;
-import jdk.dynalink.linker.LinkerServices;
-import org.example.model.InsuranceCard;
-import org.example.model.customer.Customer;
-import org.example.model.customer.PolicyOwner;
+import org.example.model.items.InsuranceCard;
 
 @Entity
 @Table(name = "policyOwner_beneficiary")
@@ -21,6 +18,7 @@ public abstract class Beneficiary extends Customer {
     }
 
     public Beneficiary() {
+        super();
     }
 
     public PolicyOwner getPolicyOwner() {

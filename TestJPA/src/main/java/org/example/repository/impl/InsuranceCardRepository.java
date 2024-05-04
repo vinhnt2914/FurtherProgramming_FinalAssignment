@@ -1,12 +1,7 @@
 package org.example.repository.impl;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-import org.example.model.InsuranceCard;
-import org.example.model.customer.Customer;
-import org.example.model.customer.PolicyOwner;
+import org.example.model.items.InsuranceCard;
 import org.example.repository.EntityRepository;
 import org.example.repository.IInsuranceCardRepository;
 

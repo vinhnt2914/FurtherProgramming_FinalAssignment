@@ -13,9 +13,7 @@ public class Dependant extends Beneficiary {
     }
 
     public Dependant() {
-
     }
-
     public PolicyHolder getPolicyHolder() {
         return policyHolder;
     }

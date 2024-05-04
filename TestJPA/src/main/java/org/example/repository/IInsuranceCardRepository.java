@@ -1,7 +1,6 @@
 package org.example.repository;
 
-import org.example.model.InsuranceCard;
-import org.example.model.customer.Customer;
+import org.example.model.items.InsuranceCard;
 
 import java.util.List;
 

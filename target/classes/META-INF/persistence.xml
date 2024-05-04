@@ -10,8 +10,8 @@
         <class>org.example.model.customer.Dependant</class>
         <class>org.example.model.customer.PolicyHolder</class>
         <class>org.example.model.customer.PolicyOwner</class>
-        <class>org.example.model.InsuranceCard</class>
-        <class>org.example.model.Claim</class>
+        <class>org.example.model.items.InsuranceCard</class>
+        <class>org.example.model.items.Claim</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"/>
@@ -21,7 +21,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--            <property name="hibernate.hbm2ddl.auto" value=""/>-->
 
         </properties>
     </persistence-unit>
