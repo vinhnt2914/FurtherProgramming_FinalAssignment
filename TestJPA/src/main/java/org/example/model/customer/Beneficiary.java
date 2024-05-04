@@ -5,7 +5,7 @@ import org.example.model.items.InsuranceCard;
 
 @Entity
 @Table(name = "policyOwner_beneficiary")
-public abstract class Beneficiary extends Customer {
+public class Beneficiary extends Customer {
     @ManyToOne
     @JoinColumn(name = "policy_owner_id")
     private PolicyOwner policyOwner;

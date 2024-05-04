@@ -10,14 +10,15 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.DependantController">
    <center>
-      <TableView fx:id="dependantTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"
-                 items="{yourControllerInstance.claimsData}">
+      <TableView fx:id="dependantTable">
          <columns>
-            <TableColumn text="Claim ID" fx:id="claimIdColumn" prefWidth="75.0" />
-            <TableColumn text="Claim Date" fx:id="claimDateColumn" prefWidth="150.0" />
-            <TableColumn text="Exam Date" fx:id="examDateColumn" prefWidth="150.0" />
-            <TableColumn text="Claim Amount" fx:id="claimAmountColumn" prefWidth="100.0" />
-            <TableColumn text="Status" fx:id="claimStatusColumn" prefWidth="100.0" />
+            <TableColumn text="ID" fx:id="claimIdColumn" />
+            <TableColumn text="Claim Date" fx:id="claimDateColumn" />
+            <TableColumn text="Exam Date" fx:id="examDateColumn" />
+            <TableColumn text="Claim Amount" fx:id="claimAmountColumn" />
+            <TableColumn text="Claim Status" fx:id="claimStatusColumn" />
+            <TableColumn text="Banking Info" fx:id="bankingInfoColumn" />
+
          </columns>
       </TableView>
    </center>
