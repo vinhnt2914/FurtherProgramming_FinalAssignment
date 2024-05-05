@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_5_5_2024_8_35_PM_[Changes]1" date="1714916159878" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_5_2024_8_35_PM_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 5/5/2024 8:35 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/org/example/model/items/Claim$ClaimBuilder.class" />
+    <option name="AFTER_PATH" value="target/classes/org/example/model/items/Claim$ClaimBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_5_2024_8_35_PM_[Changes]1/Claim$ClaimBuilder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/org/example/model/items/Claim.class" />
+    <option name="AFTER_PATH" value="target/classes/org/example/model/items/Claim.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_5_2024_8_35_PM_[Changes]1/Claim.class" />
+  </binary>
+</changelist>

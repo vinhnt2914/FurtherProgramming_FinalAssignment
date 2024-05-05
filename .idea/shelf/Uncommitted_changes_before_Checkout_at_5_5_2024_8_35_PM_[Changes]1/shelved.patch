@@ -1,0 +1,171 @@
+Index: TestJPA/src/main/java/org/example/model/items/Claim.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.model.items;\r\n\r\nimport jakarta.persistence.*;\r\nimport javafx.beans.property.*;\r\nimport javafx.beans.value.ObservableValue;\r\nimport org.example.model.customer.Beneficiary;\r\nimport org.example.model.enums.ClaimStatus;\r\n\r\nimport java.time.LocalDate;\r\n\r\n@Entity\r\npublic class Claim {\r\n    @Id\r\n    private String id;\r\n    @ManyToOne\r\n    private Beneficiary insuredPerson;\r\n    private String cardNumber;\r\n    @Temporal(TemporalType.DATE)\r\n    private LocalDate claimDate;\r\n    @Temporal(TemporalType.DATE)\r\n    private LocalDate examDate;\r\n    private double claimAmount;\r\n    @Enumerated(EnumType.STRING)\r\n    private ClaimStatus status;\r\n    private String bankingInfo;\r\n\r\n    public Claim(ClaimBuilder claimBuilder) {\r\n        this.id = claimBuilder.id;\r\n        this.insuredPerson = claimBuilder.insuredPerson;\r\n        if (insuredPerson != null && insuredPerson.getInsuranceCard() != null) {\r\n            this.cardNumber = insuredPerson.getInsuranceCard().getCardNumber();\r\n        }\r\n        this.claimDate = claimBuilder.claimDate;\r\n        this.examDate = claimBuilder.examDate;\r\n        this.claimAmount = claimBuilder.claimAmount;\r\n        this.status = claimBuilder.status;\r\n        this.bankingInfo = claimBuilder.bankingInfo;\r\n    }\r\n\r\n    public Claim() {\r\n    }\r\n\r\n    public String getId() {\r\n        return id;\r\n    }\r\n    public void setId(String id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public Beneficiary getInsuredPerson() {\r\n        return insuredPerson;\r\n    }\r\n\r\n    public void setInsuredPerson(Beneficiary insuredPerson) {\r\n        this.insuredPerson = insuredPerson;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Claim{\" +\r\n                \"id='\" + id + '\\'' +\r\n                \", insuredPerson=\" + insuredPerson.getId() +\r\n                \", cardNumber='\" + cardNumber + '\\'' +\r\n                \", claimDate=\" + claimDate +\r\n                \", examDate=\" + examDate +\r\n                \", claimAmount=\" + claimAmount +\r\n                \", status=\" + status +\r\n                \", bankingInfo='\" + bankingInfo + '\\'' +\r\n                '}';\r\n    }\r\n\r\n\r\n    public static class ClaimBuilder {\r\n        protected String id;\r\n        protected Beneficiary insuredPerson;\r\n        protected String cardNumber;\r\n        protected LocalDate claimDate;\r\n        protected LocalDate examDate;\r\n        protected double claimAmount;\r\n        protected ClaimStatus status;\r\n        protected String bankingInfo;\r\n\r\n        public ClaimBuilder id(String id) {\r\n            this.id = id;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder insuredPerson(Beneficiary insuredPerson) {\r\n            this.insuredPerson = insuredPerson;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder cardNumber(String cardNumber) {\r\n            this.cardNumber = cardNumber;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder claimDate(LocalDate claimDate) {\r\n            this.claimDate = claimDate;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder examDate(LocalDate examDate) {\r\n            this.examDate = examDate;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder claimAmount(double claimAmount) {\r\n            this.claimAmount = claimAmount;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder status(ClaimStatus status) {\r\n            this.status = status;\r\n            return this;\r\n        }\r\n\r\n        public ClaimBuilder bankingInfo(String bankingInfo) {\r\n            this.bankingInfo = bankingInfo;\r\n            return this;\r\n        }\r\n\r\n        public Claim build() {\r\n            return new Claim(this);\r\n        }\r\n    }\r\n    public StringProperty idProperty() {\r\n        return new SimpleStringProperty(id);\r\n    }\r\n\r\n    public ObjectProperty<Beneficiary> insuredPersonProperty() {\r\n        return new SimpleObjectProperty<>(insuredPerson);\r\n    }\r\n\r\n    public StringProperty cardNumberProperty() {\r\n        return new SimpleStringProperty(cardNumber);\r\n    }\r\n\r\n    public ObjectProperty<LocalDate> claimDateProperty() {\r\n        return new SimpleObjectProperty<>(claimDate);\r\n    }\r\n\r\n    public ObjectProperty<LocalDate> examDateProperty() {\r\n        return new SimpleObjectProperty<>(examDate);\r\n    }\r\n\r\n    public DoubleProperty claimAmountProperty() {\r\n        return new SimpleDoubleProperty(claimAmount);\r\n    }\r\n\r\n    public ObjectProperty<ClaimStatus> statusProperty() {\r\n        return new SimpleObjectProperty<>(status);\r\n    }\r\n\r\n    public StringProperty bankingInfoProperty() {\r\n        return new SimpleStringProperty(bankingInfo);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TestJPA/src/main/java/org/example/model/items/Claim.java b/TestJPA/src/main/java/org/example/model/items/Claim.java
+--- a/TestJPA/src/main/java/org/example/model/items/Claim.java	
++++ b/TestJPA/src/main/java/org/example/model/items/Claim.java	
+@@ -1,8 +1,6 @@
+ package org.example.model.items;
+ 
+ import jakarta.persistence.*;
+-import javafx.beans.property.*;
+-import javafx.beans.value.ObservableValue;
+ import org.example.model.customer.Beneficiary;
+ import org.example.model.enums.ClaimStatus;
+ 
+@@ -12,7 +10,7 @@
+ public class Claim {
+     @Id
+     private String id;
+-    @ManyToOne
++    @ManyToOne(fetch = FetchType.LAZY)
+     private Beneficiary insuredPerson;
+     private String cardNumber;
+     @Temporal(TemporalType.DATE)
+@@ -27,14 +25,13 @@
+     public Claim(ClaimBuilder claimBuilder) {
+         this.id = claimBuilder.id;
+         this.insuredPerson = claimBuilder.insuredPerson;
+-        if (insuredPerson != null && insuredPerson.getInsuranceCard() != null) {
+-            this.cardNumber = insuredPerson.getInsuranceCard().getCardNumber();
+-        }
++        this.cardNumber = insuredPerson.getInsuranceCard().getCardNumber();
+         this.claimDate = claimBuilder.claimDate;
+         this.examDate = claimBuilder.examDate;
+         this.claimAmount = claimBuilder.claimAmount;
+         this.status = claimBuilder.status;
+         this.bankingInfo = claimBuilder.bankingInfo;
++        insuredPerson.addClaim(this);
+     }
+ 
+     public Claim() {
+@@ -43,6 +40,7 @@
+     public String getId() {
+         return id;
+     }
++
+     public void setId(String id) {
+         this.id = id;
+     }
+@@ -55,20 +53,67 @@
+         this.insuredPerson = insuredPerson;
+     }
+ 
++    public String getCardNumber() {
++        return cardNumber;
++    }
++
++    public void setCardNumber(String cardNumber) {
++        this.cardNumber = cardNumber;
++    }
++
++    public LocalDate getClaimDate() {
++        return claimDate;
++    }
++
++    public void setClaimDate(LocalDate claimDate) {
++        this.claimDate = claimDate;
++    }
++
++    public LocalDate getExamDate() {
++        return examDate;
++    }
++
++    public void setExamDate(LocalDate examDate) {
++        this.examDate = examDate;
++    }
++
++    public double getClaimAmount() {
++        return claimAmount;
++    }
++
++    public void setClaimAmount(double claimAmount) {
++        this.claimAmount = claimAmount;
++    }
++
++    public ClaimStatus getStatus() {
++        return status;
++    }
++
++    public void setStatus(ClaimStatus status) {
++        this.status = status;
++    }
++
++    public String getBankingInfo() {
++        return bankingInfo;
++    }
++
++    public void setBankingInfo(String bankingInfo) {
++        this.bankingInfo = bankingInfo;
++    }
++
+     @Override
+     public String toString() {
+-        return "Claim{" +
+-                "id='" + id + '\'' +
+-                ", insuredPerson=" + insuredPerson.getId() +
+-                ", cardNumber='" + cardNumber + '\'' +
+-                ", claimDate=" + claimDate +
+-                ", examDate=" + examDate +
+-                ", claimAmount=" + claimAmount +
+-                ", status=" + status +
+-                ", bankingInfo='" + bankingInfo + '\'' +
+-                '}';
++        StringBuilder sb = new StringBuilder();
++        sb.append("Claim ID: ").append(id).append("\n")
++                .append("Insured Person: ").append(insuredPerson.getId()).append("\n")
++                .append("Card Number: ").append(cardNumber).append("\n")
++                .append("Claim Date: ").append(claimDate).append("\n")
++                .append("Exam Date: ").append(examDate).append("\n")
++                .append("Claim Amount: ").append(claimAmount).append("\n")
++                .append("Status: ").append(status).append("\n")
++                .append("Banking Info: ").append(bankingInfo).append("\n");
++        return sb.toString();
+     }
+-
+ 
+     public static class ClaimBuilder {
+         protected String id;
+@@ -124,36 +169,5 @@
+             return new Claim(this);
+         }
+     }
+-    public StringProperty idProperty() {
+-        return new SimpleStringProperty(id);
+-    }
+-
+-    public ObjectProperty<Beneficiary> insuredPersonProperty() {
+-        return new SimpleObjectProperty<>(insuredPerson);
+-    }
+-
+-    public StringProperty cardNumberProperty() {
+-        return new SimpleStringProperty(cardNumber);
+-    }
+-
+-    public ObjectProperty<LocalDate> claimDateProperty() {
+-        return new SimpleObjectProperty<>(claimDate);
+-    }
+ 
+-    public ObjectProperty<LocalDate> examDateProperty() {
+-        return new SimpleObjectProperty<>(examDate);
+-    }
+-
+-    public DoubleProperty claimAmountProperty() {
+-        return new SimpleDoubleProperty(claimAmount);
+-    }
+-
+-    public ObjectProperty<ClaimStatus> statusProperty() {
+-        return new SimpleObjectProperty<>(status);
+-    }
+-
+-    public StringProperty bankingInfoProperty() {
+-        return new SimpleStringProperty(bankingInfo);
+-    }
+-
+-}
++}
+\ No newline at end of file

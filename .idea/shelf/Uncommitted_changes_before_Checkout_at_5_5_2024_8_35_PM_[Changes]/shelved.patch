@@ -1,0 +1,479 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"Enum\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2fyolpykN29eTguRCTPrTTTNGVU\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Dependant.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;duy__test1&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/javafx-sdk-22.0.1/lib&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.5443038&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\LENOVO\\OneDrive - RMIT University\\Documents\\GitHub\\FurtherProgramming_FinalAssignment\\TestJPA\\src\\main\\resources\\views\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"org.example\" />\r\n      <recent name=\"org.example.service\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Dependant\">\r\n    <configuration name=\"Dependant\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Dependant\" />\r\n      <module name=\"TestJPA\" />\r\n      <option name=\"VM_PARAMETERS\" value=\" --module-path &quot;D:\\javafx-sdk-22.0.1\\lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.HelloApplication\" />\r\n      <module name=\"TestJPA\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;D:\\javafx-sdk-22.0.1\\lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Main\" />\r\n      <module name=\"TestJPA\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;D:\\javafx-sdk-22.0.1\\lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Dependant\" />\r\n      <item itemvalue=\"Application.HelloApplication\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Dependant\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a\" name=\"Changes\" comment=\"\" />\r\n      <created>1714782833343</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1714782833343</updated>\r\n      <workItem from=\"1714782836244\" duration=\"19000\" />\r\n      <workItem from=\"1714782927327\" duration=\"17000\" />\r\n      <workItem from=\"1714782958474\" duration=\"200000\" />\r\n      <workItem from=\"1714783243194\" duration=\"10057000\" />\r\n      <workItem from=\"1714837500424\" duration=\"1534000\" />\r\n      <workItem from=\"1714839053602\" duration=\"1828000\" />\r\n      <workItem from=\"1714859329770\" duration=\"1872000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,7 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="" />
++    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -21,6 +23,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="kien_test" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectColorInfo">{
+@@ -64,7 +71,7 @@
+       <recent name="org.example.service" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.Dependant">
++  <component name="RunManager" selected="Application.Main">
+     <configuration name="Dependant" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.Dependant" />
+       <module name="TestJPA" />
+@@ -114,8 +121,8 @@
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.Dependant" />
+         <item itemvalue="Application.Main" />
++        <item itemvalue="Application.Dependant" />
+         <item itemvalue="Application.HelloApplication" />
+       </list>
+     </recent_temporary>
+Index: TestJPA/src/main/java/org/example/ExampleClaimCreator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport org.example.model.customer.Beneficiary;\r\nimport org.example.model.enums.ClaimStatus;\r\nimport org.example.model.items.Claim;\r\nimport org.example.service.ClaimService;\r\n\r\nimport java.time.LocalDate;\r\n\r\npublic class ExampleClaimCreator {\r\n\r\n    @FXML\r\n    private DependantController dependantController;\r\n\r\n    public ExampleClaimCreator(DependantController dependantController) {\r\n        this.dependantController = dependantController;\r\n    }\r\n\r\n    public void createExampleClaims() {\r\n        // Create a claim service instance\r\n        ClaimService claimService = new ClaimService();\r\n\r\n        // Create example claims\r\n        Claim claim1 = claimService.makeClaim()\r\n                .id(\"1\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 1, 15))\r\n                .examDate(LocalDate.of(2023, 1, 20))\r\n                .claimAmount(1000.0)\r\n                .status(ClaimStatus.PROCESSING)\r\n                .bankingInfo(\"Bank of Example\")\r\n                .build();\r\n\r\n        Claim claim2 = claimService.makeClaim()\r\n                .id(\"2\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 2, 10))\r\n                .examDate(LocalDate.of(2023, 2, 15))\r\n                .claimAmount(1500.0)\r\n                .status(ClaimStatus.DONE)\r\n                .bankingInfo(\"Example Credit Union\")\r\n                .build();\r\n\r\n        Claim claim3 = claimService.makeClaim()\r\n                .id(\"3\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 3, 5))\r\n                .examDate(LocalDate.of(2023, 3, 10))\r\n                .claimAmount(2000.0)\r\n                .status(ClaimStatus.NEW)\r\n                .bankingInfo(\"Example Bank\")\r\n                .build();\r\n\r\n        Claim claim4 = claimService.makeClaim()\r\n                .id(\"4\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 4, 12))\r\n                .examDate(LocalDate.of(2023, 4, 18))\r\n                .claimAmount(1800.0)\r\n                .status(ClaimStatus.PROCESSING)\r\n                .bankingInfo(\"Example Savings\")\r\n                .build();\r\n\r\n        Claim claim5 = claimService.makeClaim()\r\n                .id(\"5\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 5, 8))\r\n                .examDate(LocalDate.of(2023, 5, 15))\r\n                .claimAmount(2200.0)\r\n                .status(ClaimStatus.DONE)\r\n                .bankingInfo(\"Example Investment\")\r\n                .build();\r\n\r\n        Claim claim6 = claimService.makeClaim()\r\n                .id(\"6\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 6, 20))\r\n                .examDate(LocalDate.of(2023, 6, 25))\r\n                .claimAmount(1300.0)\r\n                .status(ClaimStatus.DONE)\r\n                .bankingInfo(\"Example Credit Card\")\r\n                .build();\r\n\r\n        Claim claim7 = claimService.makeClaim()\r\n                .id(\"7\")\r\n                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object\r\n                .claimDate(LocalDate.of(2023, 7, 3))\r\n                .examDate(LocalDate.of(2023, 7, 8))\r\n                .claimAmount(1900.0)\r\n                .status(ClaimStatus.PROCESSING)\r\n                .bankingInfo(\"Example Mortgage\")\r\n                .build();\r\n\r\n        // Add example claims to a list\r\n        ObservableList<Claim> exampleClaims = FXCollections.observableArrayList(claim1, claim2, claim3, claim4, claim5, claim6, claim7);\r\n\r\n        // Set the example claims data to the controller\r\n        // Set the example claims data to the controller\r\n        dependantController.setClaimsData(exampleClaims);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/TestJPA/src/main/java/org/example/ExampleClaimCreator.java b/TestJPA/src/main/java/org/example/ExampleClaimCreator.java
+--- a/TestJPA/src/main/java/org/example/ExampleClaimCreator.java	
++++ b/TestJPA/src/main/java/org/example/ExampleClaimCreator.java	
+@@ -1,104 +1,104 @@
+-package org.example;
+-
+-import javafx.collections.FXCollections;
+-import javafx.collections.ObservableList;
+-import javafx.fxml.FXML;
+-import org.example.model.customer.Beneficiary;
+-import org.example.model.enums.ClaimStatus;
+-import org.example.model.items.Claim;
+-import org.example.service.ClaimService;
+-
+-import java.time.LocalDate;
+-
+-public class ExampleClaimCreator {
+-
+-    @FXML
+-    private DependantController dependantController;
+-
+-    public ExampleClaimCreator(DependantController dependantController) {
+-        this.dependantController = dependantController;
+-    }
+-
+-    public void createExampleClaims() {
+-        // Create a claim service instance
+-        ClaimService claimService = new ClaimService();
+-
+-        // Create example claims
+-        Claim claim1 = claimService.makeClaim()
+-                .id("1")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 1, 15))
+-                .examDate(LocalDate.of(2023, 1, 20))
+-                .claimAmount(1000.0)
+-                .status(ClaimStatus.PROCESSING)
+-                .bankingInfo("Bank of Example")
+-                .build();
+-
+-        Claim claim2 = claimService.makeClaim()
+-                .id("2")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 2, 10))
+-                .examDate(LocalDate.of(2023, 2, 15))
+-                .claimAmount(1500.0)
+-                .status(ClaimStatus.DONE)
+-                .bankingInfo("Example Credit Union")
+-                .build();
+-
+-        Claim claim3 = claimService.makeClaim()
+-                .id("3")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 3, 5))
+-                .examDate(LocalDate.of(2023, 3, 10))
+-                .claimAmount(2000.0)
+-                .status(ClaimStatus.NEW)
+-                .bankingInfo("Example Bank")
+-                .build();
+-
+-        Claim claim4 = claimService.makeClaim()
+-                .id("4")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 4, 12))
+-                .examDate(LocalDate.of(2023, 4, 18))
+-                .claimAmount(1800.0)
+-                .status(ClaimStatus.PROCESSING)
+-                .bankingInfo("Example Savings")
+-                .build();
+-
+-        Claim claim5 = claimService.makeClaim()
+-                .id("5")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 5, 8))
+-                .examDate(LocalDate.of(2023, 5, 15))
+-                .claimAmount(2200.0)
+-                .status(ClaimStatus.DONE)
+-                .bankingInfo("Example Investment")
+-                .build();
+-
+-        Claim claim6 = claimService.makeClaim()
+-                .id("6")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 6, 20))
+-                .examDate(LocalDate.of(2023, 6, 25))
+-                .claimAmount(1300.0)
+-                .status(ClaimStatus.DONE)
+-                .bankingInfo("Example Credit Card")
+-                .build();
+-
+-        Claim claim7 = claimService.makeClaim()
+-                .id("7")
+-                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
+-                .claimDate(LocalDate.of(2023, 7, 3))
+-                .examDate(LocalDate.of(2023, 7, 8))
+-                .claimAmount(1900.0)
+-                .status(ClaimStatus.PROCESSING)
+-                .bankingInfo("Example Mortgage")
+-                .build();
+-
+-        // Add example claims to a list
+-        ObservableList<Claim> exampleClaims = FXCollections.observableArrayList(claim1, claim2, claim3, claim4, claim5, claim6, claim7);
+-
+-        // Set the example claims data to the controller
+-        // Set the example claims data to the controller
+-        dependantController.setClaimsData(exampleClaims);
+-    }
+-}
++//package org.example;
++//
++//import javafx.collections.FXCollections;
++//import javafx.collections.ObservableList;
++//import javafx.fxml.FXML;
++//import org.example.model.customer.Beneficiary;
++//import org.example.model.enums.ClaimStatus;
++//import org.example.model.items.Claim;
++//import org.example.service.ClaimService;
++//
++//import java.time.LocalDate;
++//
++//public class ExampleClaimCreator {
++//
++//    @FXML
++//    private DependantController dependantController;
++//
++//    public ExampleClaimCreator(DependantController dependantController) {
++//        this.dependantController = dependantController;
++//    }
++//
++//    public void createExampleClaims() {
++//        // Create a claim service instance
++//        ClaimService claimService = new ClaimService();
++//
++//        // Create example claims
++//        Claim claim1 = claimService.makeClaim()
++//                .id("1")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 1, 15))
++//                .examDate(LocalDate.of(2023, 1, 20))
++//                .claimAmount(1000.0)
++//                .status(ClaimStatus.PROCESSING)
++//                .bankingInfo("Bank of Example")
++//                .build();
++//
++//        Claim claim2 = claimService.makeClaim()
++//                .id("2")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 2, 10))
++//                .examDate(LocalDate.of(2023, 2, 15))
++//                .claimAmount(1500.0)
++//                .status(ClaimStatus.DONE)
++//                .bankingInfo("Example Credit Union")
++//                .build();
++//
++//        Claim claim3 = claimService.makeClaim()
++//                .id("3")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 3, 5))
++//                .examDate(LocalDate.of(2023, 3, 10))
++//                .claimAmount(2000.0)
++//                .status(ClaimStatus.NEW)
++//                .bankingInfo("Example Bank")
++//                .build();
++//
++//        Claim claim4 = claimService.makeClaim()
++//                .id("4")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 4, 12))
++//                .examDate(LocalDate.of(2023, 4, 18))
++//                .claimAmount(1800.0)
++//                .status(ClaimStatus.PROCESSING)
++//                .bankingInfo("Example Savings")
++//                .build();
++//
++//        Claim claim5 = claimService.makeClaim()
++//                .id("5")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 5, 8))
++//                .examDate(LocalDate.of(2023, 5, 15))
++//                .claimAmount(2200.0)
++//                .status(ClaimStatus.DONE)
++//                .bankingInfo("Example Investment")
++//                .build();
++//
++//        Claim claim6 = claimService.makeClaim()
++//                .id("6")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 6, 20))
++//                .examDate(LocalDate.of(2023, 6, 25))
++//                .claimAmount(1300.0)
++//                .status(ClaimStatus.DONE)
++//                .bankingInfo("Example Credit Card")
++//                .build();
++//
++//        Claim claim7 = claimService.makeClaim()
++//                .id("7")
++//                .insuredPerson(new Beneficiary()) // Initialize insuredPerson with a valid Beneficiary object
++//                .claimDate(LocalDate.of(2023, 7, 3))
++//                .examDate(LocalDate.of(2023, 7, 8))
++//                .claimAmount(1900.0)
++//                .status(ClaimStatus.PROCESSING)
++//                .bankingInfo("Example Mortgage")
++//                .build();
++//
++//        // Add example claims to a list
++//        ObservableList<Claim> exampleClaims = FXCollections.observableArrayList(claim1, claim2, claim3, claim4, claim5, claim6, claim7);
++//
++//        // Set the example claims data to the controller
++//        // Set the example claims data to the controller
++//        dependantController.setClaimsData(exampleClaims);
++//    }
++//}
+Index: TestJPA/src/main/java/org/example/DependantController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport javafx.collections.ObservableList;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport org.example.model.items.Claim;\r\n\r\nimport java.time.LocalDate;\r\n\r\npublic class DependantController {\r\n\r\n    @FXML\r\n    private Label dependantEmail;\r\n\r\n    @FXML\r\n    private Label dependantAddress;\r\n\r\n    @FXML\r\n    private Label dependantPhone;\r\n\r\n    @FXML\r\n    private TableView<Claim> dependantTable;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, String> claimIdColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, LocalDate> claimDateColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, LocalDate> examDateColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, Double> claimAmountColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, String> claimStatusColumn;\r\n\r\n    @FXML\r\n    private TableColumn<Claim, String> bankingInfoColumn;\r\n\r\n    private ObservableList<Claim> claimsData;\r\n\r\n    public void initialize() {\r\n        // Initialize TableColumn cell value factories\r\n        claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());\r\n        claimDateColumn.setCellValueFactory(cellData -> cellData.getValue().claimDateProperty());\r\n        examDateColumn.setCellValueFactory(cellData -> cellData.getValue().examDateProperty());\r\n        claimAmountColumn.setCellValueFactory(cellData -> cellData.getValue().claimAmountProperty().asObject());\r\n        claimStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty().asString());\r\n        bankingInfoColumn.setCellValueFactory(cellData -> cellData.getValue().bankingInfoProperty());\r\n    }\r\n\r\n    public void setClaimsData(ObservableList<Claim> claimsData) {\r\n        this.claimsData = claimsData;\r\n        dependantTable.setItems(claimsData);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/TestJPA/src/main/java/org/example/DependantController.java b/TestJPA/src/main/java/org/example/DependantController.java
+--- a/TestJPA/src/main/java/org/example/DependantController.java	
++++ b/TestJPA/src/main/java/org/example/DependantController.java	
+@@ -1,60 +1,60 @@
+-package org.example;
+-
+-import javafx.collections.ObservableList;
+-import javafx.fxml.FXML;
+-import javafx.scene.control.Label;
+-import javafx.scene.control.TableColumn;
+-import javafx.scene.control.TableView;
+-import org.example.model.items.Claim;
+-
+-import java.time.LocalDate;
+-
+-public class DependantController {
+-
+-    @FXML
+-    private Label dependantEmail;
+-
+-    @FXML
+-    private Label dependantAddress;
+-
+-    @FXML
+-    private Label dependantPhone;
+-
+-    @FXML
+-    private TableView<Claim> dependantTable;
+-
+-    @FXML
+-    private TableColumn<Claim, String> claimIdColumn;
+-
+-    @FXML
+-    private TableColumn<Claim, LocalDate> claimDateColumn;
+-
+-    @FXML
+-    private TableColumn<Claim, LocalDate> examDateColumn;
+-
+-    @FXML
+-    private TableColumn<Claim, Double> claimAmountColumn;
+-
+-    @FXML
+-    private TableColumn<Claim, String> claimStatusColumn;
+-
+-    @FXML
+-    private TableColumn<Claim, String> bankingInfoColumn;
+-
+-    private ObservableList<Claim> claimsData;
+-
+-    public void initialize() {
+-        // Initialize TableColumn cell value factories
+-        claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+-        claimDateColumn.setCellValueFactory(cellData -> cellData.getValue().claimDateProperty());
+-        examDateColumn.setCellValueFactory(cellData -> cellData.getValue().examDateProperty());
+-        claimAmountColumn.setCellValueFactory(cellData -> cellData.getValue().claimAmountProperty().asObject());
+-        claimStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty().asString());
+-        bankingInfoColumn.setCellValueFactory(cellData -> cellData.getValue().bankingInfoProperty());
+-    }
+-
+-    public void setClaimsData(ObservableList<Claim> claimsData) {
+-        this.claimsData = claimsData;
+-        dependantTable.setItems(claimsData);
+-    }
+-}
++//package org.example;
++//
++//import javafx.collections.ObservableList;
++//import javafx.fxml.FXML;
++//import javafx.scene.control.Label;
++//import javafx.scene.control.TableColumn;
++//import javafx.scene.control.TableView;
++//import org.example.model.items.Claim;
++//
++//import java.time.LocalDate;
++//
++//public class DependantController {
++//
++//    @FXML
++//    private Label dependantEmail;
++//
++//    @FXML
++//    private Label dependantAddress;
++//
++//    @FXML
++//    private Label dependantPhone;
++//
++//    @FXML
++//    private TableView<Claim> dependantTable;
++//
++//    @FXML
++//    private TableColumn<Claim, String> claimIdColumn;
++//
++//    @FXML
++//    private TableColumn<Claim, LocalDate> claimDateColumn;
++//
++//    @FXML
++//    private TableColumn<Claim, LocalDate> examDateColumn;
++//
++//    @FXML
++//    private TableColumn<Claim, Double> claimAmountColumn;
++//
++//    @FXML
++//    private TableColumn<Claim, String> claimStatusColumn;
++//
++//    @FXML
++//    private TableColumn<Claim, String> bankingInfoColumn;
++//
++//    private ObservableList<Claim> claimsData;
++//
++//    public void initialize() {
++//        // Initialize TableColumn cell value factories
++//        claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
++//        claimDateColumn.setCellValueFactory(cellData -> cellData.getValue().claimDateProperty());
++//        examDateColumn.setCellValueFactory(cellData -> cellData.getValue().examDateProperty());
++//        claimAmountColumn.setCellValueFactory(cellData -> cellData.getValue().claimAmountProperty().asObject());
++//        claimStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty().asString());
++//        bankingInfoColumn.setCellValueFactory(cellData -> cellData.getValue().bankingInfoProperty());
++//    }
++//
++//    public void setClaimsData(ObservableList<Claim> claimsData) {
++//        this.claimsData = claimsData;
++//        dependantTable.setItems(claimsData);
++//    }
++//}
+Index: TestJPA/src/main/java/org/example/Dependant.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.layout.BorderPane;\r\nimport javafx.stage.Stage;\r\n\r\npublic class Dependant extends Application {\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n        // Load the FXML file\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/views/Dependant.fxml\"));\r\n        BorderPane root = loader.load();\r\n\r\n        // Create a scene and set the root node\r\n        Scene scene = new Scene(root, 819, 551);\r\n\r\n        // Set the scene onto the stage\r\n        primaryStage.setScene(scene);\r\n        primaryStage.setTitle(\"Dependant test\");\r\n        primaryStage.show();\r\n\r\n        // Get the controller\r\n        DependantController controller = loader.getController();\r\n\r\n        // Create example claims and populate the table\r\n        ExampleClaimCreator claimCreator = new ExampleClaimCreator(controller);\r\n        claimCreator.createExampleClaims();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/TestJPA/src/main/java/org/example/Dependant.java b/TestJPA/src/main/java/org/example/Dependant.java
+--- a/TestJPA/src/main/java/org/example/Dependant.java	
++++ b/TestJPA/src/main/java/org/example/Dependant.java	
+@@ -1,36 +1,36 @@
+-package org.example;
+-
+-import javafx.application.Application;
+-import javafx.fxml.FXMLLoader;
+-import javafx.scene.Scene;
+-import javafx.scene.layout.BorderPane;
+-import javafx.stage.Stage;
+-
+-public class Dependant extends Application {
+-
+-    @Override
+-    public void start(Stage primaryStage) throws Exception {
+-        // Load the FXML file
+-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Dependant.fxml"));
+-        BorderPane root = loader.load();
+-
+-        // Create a scene and set the root node
+-        Scene scene = new Scene(root, 819, 551);
+-
+-        // Set the scene onto the stage
+-        primaryStage.setScene(scene);
+-        primaryStage.setTitle("Dependant test");
+-        primaryStage.show();
+-
+-        // Get the controller
+-        DependantController controller = loader.getController();
+-
+-        // Create example claims and populate the table
+-        ExampleClaimCreator claimCreator = new ExampleClaimCreator(controller);
+-        claimCreator.createExampleClaims();
+-    }
+-
+-    public static void main(String[] args) {
+-        launch(args);
+-    }
+-}
++//package org.example;
++//
++//import javafx.application.Application;
++//import javafx.fxml.FXMLLoader;
++//import javafx.scene.Scene;
++//import javafx.scene.layout.BorderPane;
++//import javafx.stage.Stage;
++//
++//public class Dependant extends Application {
++//
++//    @Override
++//    public void start(Stage primaryStage) throws Exception {
++//        // Load the FXML file
++//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Dependant.fxml"));
++//        BorderPane root = loader.load();
++//
++//        // Create a scene and set the root node
++//        Scene scene = new Scene(root, 819, 551);
++//
++//        // Set the scene onto the stage
++//        primaryStage.setScene(scene);
++//        primaryStage.setTitle("Dependant test");
++//        primaryStage.show();
++//
++//        // Get the controller
++//        DependantController controller = loader.getController();
++//
++//        // Create example claims and populate the table
++//        ExampleClaimCreator claimCreator = new ExampleClaimCreator(controller);
++//        claimCreator.createExampleClaims();
++//    }
++//
++//    public static void main(String[] args) {
++//        launch(args);
++//    }
++//}
