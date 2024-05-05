@@ -1,11 +1,12 @@
 package org.example.model.customer;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Dependant extends Beneficiary {
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private PolicyHolder policyHolder;
 
     public Dependant(DependantBuilder builder) {

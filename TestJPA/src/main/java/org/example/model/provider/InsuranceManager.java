@@ -1,12 +1,23 @@
 package org.example.model.provider;
 
-import org.example.model.customer.Customer;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
+import org.example.model.items.Proposal;
 
-public class InsuranceManager extends GenericInsuranceUser {
+import java.util.List;
+
+@Entity
+public class InsuranceManager extends Provider {
+    @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "insuranceManager")
+    private List<Proposal> proposalList;
     public InsuranceManager(String username, String password) {
         super(username, password);
+    }
+
+    public InsuranceManager() {
     }
 
     public void approveClaim(Claim claim) {

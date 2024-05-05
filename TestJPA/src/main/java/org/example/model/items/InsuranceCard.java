@@ -12,7 +12,7 @@ public class InsuranceCard {
     private String cardNumber;
     @OneToOne
     private Beneficiary cardHolder;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "policyOwner_id")
     private PolicyOwner policyOwner;
     @Temporal(TemporalType.DATE)

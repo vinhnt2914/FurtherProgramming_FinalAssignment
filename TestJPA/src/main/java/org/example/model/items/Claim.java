@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Claim {
     @Id
     private String id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Beneficiary insuredPerson;
     private String cardNumber;
     @Temporal(TemporalType.DATE)

@@ -6,11 +6,13 @@ import org.example.model.items.InsuranceCard;
 @Entity
 @Table(name = "beneficiary")
 public abstract class Beneficiary extends Customer {
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "policy_owner_id")
     private PolicyOwner policyOwner;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "cardHolder") // When persist customer, we persist the card as well
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            mappedBy = "cardHolder",
+            fetch=FetchType.LAZY) // When persist customer, we persist the card as well
     protected InsuranceCard insuranceCard;
 
     public Beneficiary(GenericBeneficaryBuilder builder) {

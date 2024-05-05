@@ -8,8 +8,7 @@ public abstract class EntityRepository {
     protected final EntityManager em;
 
     public EntityRepository() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("customer_pu");
-        em = emf.createEntityManager();
+        em = EMFactory.getInstance().createEntityManager();
     }
 
     public void close() {

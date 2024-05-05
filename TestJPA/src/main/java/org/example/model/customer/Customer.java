@@ -13,17 +13,19 @@ import java.util.*;
 public abstract class Customer extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    private int id;
     @Column(nullable = false, unique = true)
-    protected String username;
+    private String username;
     @Column( nullable = false)
-    protected String password;
-    protected String email;
-    protected String phone;
-    protected String address;
-    protected String fullName;
-    @OneToMany(mappedBy = "insuredPerson", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    protected Set<Claim> claimList;
+    private String password;
+    private String email;
+    private String phone;
+    private String address;
+    private String fullName;
+    @OneToMany(mappedBy = "insuredPerson",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch=FetchType.LAZY)
+    private Set<Claim> claimList;
 
     public Customer(GenericCustomerBuilder builder) {
         this.username = builder.username;

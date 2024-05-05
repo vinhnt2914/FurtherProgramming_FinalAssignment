@@ -7,9 +7,12 @@ import org.example.model.customer.PolicyOwner;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
+import org.example.model.items.Proposal;
+import org.example.model.items.Request;
+import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
-import org.example.repository.impl.CustomerRepository;
-import org.example.repository.impl.InsuranceCardRepository;
+import org.example.model.provider.Provider;
+import org.example.repository.impl.*;
 import org.example.service.ClaimService;
 import org.example.service.CustomerService;
 import org.example.service.InsuranceCardService;
@@ -144,16 +147,30 @@ public class Main {
                 .bankingInfo("TPBank-CaoBaQuat-321654")
                 .build();
 
+        InsuranceSurveyor s1 = new InsuranceSurveyor("survey1", "Rmit@1234");
+        InsuranceManager m1 = new InsuranceManager("manager1", "Rmit@1234");
+
+        Request r1 = s1.makeRequest(c1, "bro ur dick smol");
+        Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
+        Proposal p2 = s1.propose(m1, claim2, "Check this claim out daddy");
+
 //        System.out.println(claim1);
 //        System.out.println(claim1.getInsuredPerson());
 //        System.out.println(c1);
 
         CustomerRepository customerRepository = new CustomerRepository();
         InsuranceCardRepository cardRepository = new InsuranceCardRepository();
-
+        ClaimRepository claimRepository = new ClaimRepository();
+        ProviderRepository providerRepository = new ProviderRepository();
+        ProposalRepository proposalRepository = new ProposalRepository();
         // This could throw a no relation error
         // If add a policyOwner, who does not have an insurance card
-        customerRepository.add(c1,c2,c3,c4,c5);
+//        customerRepository.add(c1,c2,c3,c4,c5);
+//        providerRepository.add(s1);
+//        providerRepository.add(m1);
+//        proposalRepository.add(p1);
+        proposalRepository.add(p2);
+
 
 //        User user = customerRepository.findByID(1);
 //        System.out.println(user);
@@ -163,6 +180,8 @@ public class Main {
 
         customerRepository.close();
         cardRepository.close();
-
+        claimRepository.close();
+        providerRepository.close();
+        proposalRepository.close();
     }
 }

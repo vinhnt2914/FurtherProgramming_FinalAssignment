@@ -6,19 +6,19 @@ import org.example.model.User;
 @Entity
 @Table(name = "providers")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class GenericInsuranceUser extends User {
+public abstract class Provider extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
     private String password;
 
-    public GenericInsuranceUser(String username, String password) {
+    public Provider(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public GenericInsuranceUser() {
+    public Provider() {
     }
 
     public void setId(int id) {
