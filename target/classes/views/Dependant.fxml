@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DependantController">
+   <center>
+      <TableView fx:id="dependantTable">
+         <columns>
+            <TableColumn fx:id="claimIdColumn" text="ID" />
+            <TableColumn fx:id="claimDateColumn" text="Claim Date" />
+            <TableColumn fx:id="examDateColumn" text="Exam Date" />
+            <TableColumn fx:id="claimAmountColumn" text="Claim Amount" />
+            <TableColumn fx:id="claimStatusColumn" text="Claim Status" />
+            <TableColumn fx:id="bankingInfoColumn" text="Banking Info" />
+
+         </columns>
+      </TableView>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="dependantEmail" text="Email" />
+                  <Label fx:id="dependantAddress" text="Address" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="dependantPhone" text="Phone" />
+                  <Label fx:id="dependantInsuranceCard" layoutX="10.0" layoutY="10.0" text="Insurance Card" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

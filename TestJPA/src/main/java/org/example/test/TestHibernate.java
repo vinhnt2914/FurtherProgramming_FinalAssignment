@@ -1,8 +1,5 @@
 package org.example.test;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 import org.example.model.provider.InsuranceManager;
@@ -13,7 +10,7 @@ import org.example.repository.impl.ProviderRepository;
 
 import java.util.Scanner;
 
-public class Test {
+public class TestHibernate {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ProviderRepository providerRepository = new ProviderRepository();

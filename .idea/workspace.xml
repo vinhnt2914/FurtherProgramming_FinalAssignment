@@ -5,46 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Proposal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/EMFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/IProposalRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/IProviderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/ProposalRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/ProviderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/DependantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestDependantPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestPolicyHolderPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Dependant.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Dependant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/PolicyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/PolicyHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/PolicyOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/PolicyOwner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/InsuranceCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/InsuranceCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/GenericInsuranceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/Provider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceSurveyor.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceSurveyor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary$GenericBeneficaryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary$GenericBeneficaryBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestHibernate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Customer$GenericCustomerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Customer$GenericCustomerBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Dependant$DependantBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Dependant$DependantBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Dependant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Dependant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyHolder$PolicyHolderBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyHolder$PolicyHolderBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyOwner$PolicyOwnerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyOwner$PolicyOwnerBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/PolicyOwner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim$ClaimBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim$ClaimBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/InsuranceCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/InsuranceCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/provider/GenericInsuranceUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/provider/InsuranceManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/provider/InsuranceManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/provider/InsuranceSurveyor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/provider/InsuranceSurveyor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/test/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,14 +68,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.TestDependantPage">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.HelloApplication" />
       <module name="TestJPA" />
       <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,7 +88,7 @@
       <module name="TestJPA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,8 +96,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.Test" />
+    <configuration name="TestDependantPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestDependantPage" />
+      <module name="TestJPA" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestHibernate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestHibernate" />
       <module name="TestJPA" />
       <extension name="coverage">
         <pattern>
@@ -130,14 +123,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPolicyHolderPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestPolicyHolderPage" />
+      <module name="TestJPA" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.TestDependantPage" />
+      <item itemvalue="Application.TestHibernate" />
+      <item itemvalue="Application.TestPolicyHolderPage" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.HelloApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.TestDependantPage" />
+        <item itemvalue="Application.TestPolicyHolderPage" />
+        <item itemvalue="Application.TestHibernate" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloApplication" />
       </list>
@@ -156,6 +167,7 @@
       <workItem from="1714782958474" duration="200000" />
       <workItem from="1714783243194" duration="10057000" />
       <workItem from="1714871122702" duration="9647000" />
+      <workItem from="1714919329359" duration="4808000" />
     </task>
     <servers />
   </component>
