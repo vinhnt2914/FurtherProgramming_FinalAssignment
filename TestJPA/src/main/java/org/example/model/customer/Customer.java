@@ -122,16 +122,23 @@ public abstract class Customer extends User {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", fullName='" + fullName + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Customer ID: ").append(id).append("\n")
+                .append("Username: ").append(username).append("\n")
+                .append("Password: ").append(password).append("\n")
+                .append("Email: ").append(email).append("\n")
+                .append("Phone: ").append(phone).append("\n")
+                .append("Address: ").append(address).append("\n")
+                .append("Full Name: ").append(fullName).append("\n")
+                .append("Claim List:\n");
+
+        for (Claim claim : claimList) {
+            sb.append("\t+ ").append(claim.getId()).append("\n");
+        }
+
+        return sb.toString();
     }
+
 
     public static abstract class GenericCustomerBuilder<T extends GenericCustomerBuilder<T>> {
         protected String username;

@@ -33,13 +33,10 @@ public class PolicyHolder extends Beneficiary {
     public void setDependantSet(Set<Dependant> dependantSet) {
         this.dependantSet = dependantSet;
     }
-
-    @Override
-    public String toString() {
-        return "PolicyHolder{" +
-                ", dependantSet=" + dependantSet +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return super();
+//    }
 
     public static class PolicyHolderBuilder extends GenericBeneficaryBuilder<PolicyHolderBuilder> {
 

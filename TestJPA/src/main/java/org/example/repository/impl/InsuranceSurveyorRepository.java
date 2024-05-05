@@ -46,9 +46,4 @@ public class InsuranceSurveyorRepository extends EntityRepository implements IIn
         em.getTransaction().commit();
         return insuranceSurveyorToRemove;
     }
-
-    @Override
-    public void close() {
-        em.close();
-    }
 }

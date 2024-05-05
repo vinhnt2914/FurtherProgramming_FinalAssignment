@@ -31,6 +31,7 @@ public class Claim {
         this.claimAmount = claimBuilder.claimAmount;
         this.status = claimBuilder.status;
         this.bankingInfo = claimBuilder.bankingInfo;
+        insuredPerson.addClaim(this);
     }
 
     public Claim() {
@@ -39,6 +40,7 @@ public class Claim {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -51,18 +53,66 @@ public class Claim {
         this.insuredPerson = insuredPerson;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public LocalDate getClaimDate() {
+        return claimDate;
+    }
+
+    public void setClaimDate(LocalDate claimDate) {
+        this.claimDate = claimDate;
+    }
+
+    public LocalDate getExamDate() {
+        return examDate;
+    }
+
+    public void setExamDate(LocalDate examDate) {
+        this.examDate = examDate;
+    }
+
+    public double getClaimAmount() {
+        return claimAmount;
+    }
+
+    public void setClaimAmount(double claimAmount) {
+        this.claimAmount = claimAmount;
+    }
+
+    public ClaimStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ClaimStatus status) {
+        this.status = status;
+    }
+
+    public String getBankingInfo() {
+        return bankingInfo;
+    }
+
+    public void setBankingInfo(String bankingInfo) {
+        this.bankingInfo = bankingInfo;
+    }
+
     @Override
     public String toString() {
-        return "Claim{" +
-                "id='" + id + '\'' +
-                ", insuredPerson=" + insuredPerson.getId() +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", claimDate=" + claimDate +
-                ", examDate=" + examDate +
-                ", claimAmount=" + claimAmount +
-                ", status=" + status +
-                ", bankingInfo='" + bankingInfo + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Claim ID: ").append(id).append("\n")
+                .append("Insured Person: ").append(insuredPerson.getId()).append("\n")
+                .append("Card Number: ").append(cardNumber).append("\n")
+                .append("Claim Date: ").append(claimDate).append("\n")
+                .append("Exam Date: ").append(examDate).append("\n")
+                .append("Claim Amount: ").append(claimAmount).append("\n")
+                .append("Status: ").append(status).append("\n")
+                .append("Banking Info: ").append(bankingInfo).append("\n");
+        return sb.toString();
     }
 
     public static class ClaimBuilder {

@@ -12,5 +12,4 @@ public interface IInsuranceSurveyorRepository {
     InsuranceSurveyor findByID(int id);
     List<InsuranceSurveyor> getAll();
     InsuranceSurveyor removeByID(int id);
-    void close();
 }

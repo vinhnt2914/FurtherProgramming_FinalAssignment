@@ -1,6 +1,7 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
+import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyOwner;
@@ -21,6 +22,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
     // Bulk add
     // This solve the problem where the "Child" object hasn't been saved to the database
     // By the time the "Parent" object is being persisted
+
     @Override
     public void add(Customer... customer) {
         em.getTransaction().begin();
@@ -41,14 +43,18 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return query.getResultList();
     }
 
+    // Update general attribute for customer object
+    // Username, fullName, id are not allowed
     @Override
     public void update(Customer customer) {
         Customer customerToUpdate = findByID(customer.getId());
 
         em.getTransaction().begin();
 
-        customerToUpdate.setId(customer.getId());
-        customerToUpdate.setFullName(customer.getFullName());
+        customerToUpdate.setAddress(customer.getAddress());
+        customerToUpdate.setEmail(customer.getEmail());
+        customerToUpdate.setPhone(customer.getPhone());
+        customerToUpdate.setPassword(customer.getPassword());
 
         em.getTransaction().commit();
     }
@@ -74,9 +80,4 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return customerToRemove;
     }
 
-    // Close the repository
-    @Override
-    public void close() {
-        em.close();
-    }
 }

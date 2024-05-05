@@ -144,13 +144,20 @@ public class Main {
                 .bankingInfo("TPBank-CaoBaQuat-321654")
                 .build();
 
+//        System.out.println(claim1);
+//        System.out.println(claim1.getInsuredPerson());
+//        System.out.println(c1);
+
         CustomerRepository customerRepository = new CustomerRepository();
         InsuranceCardRepository cardRepository = new InsuranceCardRepository();
-//        customerRepository.add(c1,c2,c3,c4,c5);
 
-        User user = customerRepository.findByID(1);
-        System.out.println(user);
-        System.out.println(user instanceof PolicyHolder);
+        // This could throw a no relation error
+        // If add a policyOwner, who does not have an insurance card
+        customerRepository.add(c1,c2,c3,c4,c5);
+
+//        User user = customerRepository.findByID(1);
+//        System.out.println(user);
+//        System.out.println(user instanceof PolicyHolder);
 //        System.out.println(customerRepository.getAll());
 //        System.out.println(cardRepository.findByID("0000000002"));
 

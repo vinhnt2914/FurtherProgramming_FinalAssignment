@@ -60,11 +60,4 @@ public class InsuranceCardRepository extends EntityRepository implements IInsura
         em.getTransaction().commit();
         return insuranceCardToRemove;
     }
-
-    @Override
-    public void close() {
-        em.close();
-    }
-
-
 }

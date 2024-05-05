@@ -55,9 +55,4 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
         em.getTransaction().commit();
         return claimToRemove;
     }
-
-    @Override
-    public void close() {
-        em.close();
-    }
 }

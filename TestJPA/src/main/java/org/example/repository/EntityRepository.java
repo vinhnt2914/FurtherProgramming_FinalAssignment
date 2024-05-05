@@ -11,4 +11,8 @@ public abstract class EntityRepository {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("customer_pu");
         em = emf.createEntityManager();
     }
+
+    public void close() {
+        em.close();
+    }
 }

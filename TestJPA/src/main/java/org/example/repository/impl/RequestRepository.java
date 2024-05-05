@@ -2,7 +2,6 @@ package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
 import org.example.model.items.Request;
-import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.EntityRepository;
 import org.example.repository.IRequestRepository;
 
@@ -45,10 +44,5 @@ public class RequestRepository extends EntityRepository implements IRequestRepos
 
         em.getTransaction().commit();
         return requestToRemove;
-    }
-
-    @Override
-    public void close() {
-        em.close();
     }
 }

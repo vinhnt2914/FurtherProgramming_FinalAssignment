@@ -11,5 +11,4 @@ public interface IInsuranceCardRepository {
     List<InsuranceCard> getAll();
     void update(InsuranceCard insuranceCard);
     InsuranceCard removeByID(String id);
-    void close();
 }
