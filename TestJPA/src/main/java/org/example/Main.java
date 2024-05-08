@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.model.User;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
@@ -11,7 +10,6 @@ import org.example.model.items.Proposal;
 import org.example.model.items.Request;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
-import org.example.model.provider.Provider;
 import org.example.repository.impl.*;
 import org.example.service.ClaimService;
 import org.example.service.CustomerService;
@@ -100,7 +98,7 @@ public class Main {
         // c2, c3, c4 by the time of persisting
         // Solve using bulk adding, avoid persisting each object per transaction
         // Persist everything under one transaction
-        c1.addDepdendants(c2, c3, c4); // Add dependants
+        c1.addDependants(c2, c3, c4); // Add dependants
         c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
         c1.setInsuranceCard(card1);
         c2.setInsuranceCard(card2);

@@ -21,7 +21,7 @@ public class PolicyHolder extends Beneficiary {
         super();
     }
 
-    public void addDepdendants(Dependant... dependants) {
+    public void addDependants(Dependant... dependants) {
         for (Dependant d : dependants) {
             this.dependantSet.add(d);
             d.setPolicyHolder(this);
