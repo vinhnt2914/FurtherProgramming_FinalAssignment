@@ -76,7 +76,7 @@ public class PolicyHolderController implements Initializable {
     }
 
     @FXML
-    private void handleFileClaimButtonClick() {
+    private void handleFileClaim() {
         try {
             // Load the FXML file for the pop-up window
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FileClaim.fxml"));
@@ -126,7 +126,7 @@ public class PolicyHolderController implements Initializable {
                 controller.setStage(popupStage);
 
                 // Show the pop-up window
-                popupStage.showAndWait(); // This will block the main window until the pop-up is closed
+                popupStage.showAndWait();
 
                 // Refresh table data after the pop-up window is closed
                 populateTable();
