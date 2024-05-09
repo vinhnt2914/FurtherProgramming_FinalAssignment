@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,7 +33,7 @@ public class FileClaimController {
     private TextField claimAmountTextField;
 
     @FXML
-    private TextField claimStatusTextField;
+    private ComboBox<String> claimStatusComboBox;
 
     @FXML
     private TextField bankingInfoTextField;
@@ -46,7 +47,10 @@ public class FileClaimController {
         LocalDate claimDate = claimDatePicker.getValue();
         LocalDate examDate = examDatePicker.getValue();
         double claimAmount = Double.parseDouble(claimAmountTextField.getText());
-        ClaimStatus claimStatus = ClaimStatus.valueOf(claimStatusTextField.getText());
+        ClaimStatus claimStatus = null;
+        if (claimStatusComboBox.getValue() != null) {
+            claimStatus = ClaimStatus.valueOf(claimStatusComboBox.getValue());
+        }
         String bankingInfo = bankingInfoTextField.getText();
 
         // Find insured person by ID (you may have a repository method for this)
