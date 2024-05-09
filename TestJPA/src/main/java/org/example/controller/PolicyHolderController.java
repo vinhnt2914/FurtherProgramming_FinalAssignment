@@ -3,12 +3,19 @@ package org.example.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,30 +42,11 @@ public class PolicyHolderController implements Initializable {
 
     @FXML
     private TableColumn<Claim, String> bankingInfoColumn;
-    private ObservableList<Claim> claimsData;
 
-//    public void initialize() {
-//        // Bind table columns with corresponding properties in Claim class
-//
-//
-//        // Populate claim table with example data
-//        ClaimRepository claimRepository = new ClaimRepository();
-//        CustomerRepository customerRepository = new CustomerRepository();
-//        List<Claim> claimList = claimRepository.getAll();
-////        List<>
-//
-//        claimRepository.close();
-//        customerRepository.close();
-//
-//        ObservableList<Claim> exampleClaims = FXCollections.observableArrayList(claimList);
-////        ObservableList<Dependant> dependantData = FXCollections.observableArrayList(); // Create empty list for dependant data
-////        ExampleDataCreator.createExampleData(exampleClaims, dependantData); // Pass empty list as second parameter
-//        claimTable.setItems(exampleClaims);
-//    }
+    private ObservableList<Claim> claimsData;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         populateTable();
 
         claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
@@ -79,5 +67,25 @@ public class PolicyHolderController implements Initializable {
         List<Claim> claimList = claimRepository.getAll();
         claimsData = FXCollections.observableArrayList(claimList);
         claimRepository.close();
+    }
+
+    @FXML
+    private void handleFileClaimButtonClick() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FileClaim.fxml"));
+            Parent root = loader.load();
+
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("File Claim");
+            popupStage.setScene(new Scene(root));
+
+
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,8 +1,8 @@
-package org.example.model.enums;
+    package org.example.model.enums;
 
-public enum ClaimStatus {
-    NEW,
-    PROCESSING,
-    DONE,
-    REJECTED
-}
+    public enum ClaimStatus {
+        NEW,
+        PROCESSING,
+        DONE,
+        REJECTED
+    }

@@ -5,25 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/DependantController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestDependantPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestPolicyHolderPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/FileClaimController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/FileClaim.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/customer/Beneficiary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/items/Claim.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestHibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/customer/Beneficiary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim$ClaimBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim$ClaimBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/model/items/Claim.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/test/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/enums/ClaimStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/enums/ClaimStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/controller/DependantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/controller/DependantController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/test/TestDependantPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/test/TestDependantPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/test/TestPolicyHolderPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/test/TestPolicyHolderPage.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +26,7 @@
         <option value="JavaFXApplication" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -51,24 +42,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;vinh__testing&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5443038&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TestDependantPage.executor": "Run",
+    "Application.TestPolicyHolderPage.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "duy__test2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.5443038",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.TestDependantPage">
+}]]></component>
+  <component name="RunManager" selected="Application.TestPolicyHolderPage">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.HelloApplication" />
       <module name="TestJPA" />
@@ -99,7 +92,7 @@
     <configuration name="TestDependantPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.test.TestDependantPage" />
       <module name="TestJPA" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.controller.*" />
@@ -126,7 +119,7 @@
     <configuration name="TestPolicyHolderPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.test.TestPolicyHolderPage" />
       <module name="TestJPA" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.controller.*" />
@@ -146,8 +139,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestDependantPage" />
         <item itemvalue="Application.TestPolicyHolderPage" />
+        <item itemvalue="Application.TestDependantPage" />
         <item itemvalue="Application.TestHibernate" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloApplication" />
