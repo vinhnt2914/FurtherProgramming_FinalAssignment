@@ -9,15 +9,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "customers")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Customer extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false, unique = true)
-    private String username;
-    @Column( nullable = false)
-    private String password;
     private String email;
     private String phone;
     private String address;
@@ -53,14 +46,6 @@ public abstract class Customer extends User {
 //
 //    public Customer() {
 //    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

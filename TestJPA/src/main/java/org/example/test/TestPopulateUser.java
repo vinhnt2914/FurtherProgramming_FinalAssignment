@@ -1,4 +1,4 @@
-package org.example;
+package org.example.test;
 
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
@@ -6,8 +6,6 @@ import org.example.model.customer.PolicyOwner;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
-import org.example.model.items.Proposal;
-import org.example.model.items.Request;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.*;
@@ -15,11 +13,10 @@ import org.example.service.ClaimService;
 import org.example.service.CustomerService;
 import org.example.service.InsuranceCardService;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class Main {
-    public static void main(String[] args) throws SQLException {
+public class TestPopulateUser {
+    public static void main(String[] args) {
         InsuranceCardService cardService = new InsuranceCardService();
         CustomerService customerService = new CustomerService();
         ClaimService claimService = new ClaimService();
@@ -148,9 +145,9 @@ public class Main {
         InsuranceSurveyor s1 = new InsuranceSurveyor("survey1", "Rmit@1234");
         InsuranceManager m1 = new InsuranceManager("manager1", "Rmit@1234");
 
-        Request r1 = s1.makeRequest(c1, "bro ur dick smol");
-        Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
-        Proposal p2 = s1.propose(m1, claim2, "Check this claim out daddy");
+//        Request r1 = s1.makeRequest(c1, "bro ur dick smol");
+//        Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
+//        Proposal p2 = s1.propose(m1, claim2, "Check this claim out daddy");
 
 //        System.out.println(claim1);
 //        System.out.println(claim1.getInsuredPerson());
@@ -164,8 +161,8 @@ public class Main {
         // This could throw a no relation error
         // If add a policyOwner, who does not have an insurance card
         customerRepository.add(c1,c2,c3,c4,c5);
-//        providerRepository.add(s1);
-//        providerRepository.add(m1);
+        providerRepository.add(s1);
+        providerRepository.add(m1);
 //        proposalRepository.add(p1);
 //        proposalRepository.add(p2);
 

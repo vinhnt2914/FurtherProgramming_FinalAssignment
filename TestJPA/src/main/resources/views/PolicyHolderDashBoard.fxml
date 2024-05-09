@@ -23,8 +23,9 @@
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="updateInformationButton" mnemonicParsing="false" text="Update Information" />
-                <Button fx:id="fileClaimButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="File Claim" />
+                <Button fx:id="updateInformationButton" mnemonicParsing="false" text="Update Information" onAction="#handleUpdateInformation" />
+                <Button fx:id="fileClaimButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="File Claim" onAction="#handleFileClaim"/>
+
             </children>
         </HBox>
     </top>
