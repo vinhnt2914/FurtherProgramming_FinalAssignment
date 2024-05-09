@@ -68,7 +68,6 @@ public class PolicyHolderController implements Initializable {
         claimsData = FXCollections.observableArrayList(claimList);
         claimRepository.close();
     }
-
     @FXML
     private void handleFileClaimButtonClick() {
         try {
