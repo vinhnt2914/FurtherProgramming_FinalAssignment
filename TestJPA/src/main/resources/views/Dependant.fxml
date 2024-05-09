@@ -1,42 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.DependantController">
-   <center>
-      <TableView fx:id="dependantTable">
-         <columns>
-            <TableColumn fx:id="claimIdColumn" text="ID" />
-            <TableColumn fx:id="claimDateColumn" text="Claim Date" />
-            <TableColumn fx:id="examDateColumn" text="Exam Date" />
-            <TableColumn fx:id="claimAmountColumn" text="Claim Amount" />
-            <TableColumn fx:id="claimStatusColumn" text="Claim Status" />
-            <TableColumn fx:id="bankingInfoColumn" text="Banking Info" />
-
-         </columns>
-      </TableView>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <TableView fx:id="dependantTable" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="140.0" text="C1" />
+                <TableColumn prefWidth="130.0" text="C2" />
+            <TableColumn prefWidth="174.0" text="C3" />
+            </columns>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />
+         </BorderPane.margin>
+        </TableView>
+    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER_LEFT" spacing="20.0">
-               <children>
-                  <Label fx:id="dependantEmail" text="Email" />
-                  <Label fx:id="dependantAddress" text="Address" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER_LEFT" spacing="20.0">
-               <children>
-                  <Label fx:id="dependantPhone" text="Phone" />
-                  <Label fx:id="dependantInsuranceCard" layoutX="10.0" layoutY="10.0" text="Insurance Card" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+      <BorderPane prefHeight="160.0" prefWidth="789.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
+         <top>
+              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                  <children>
+                  <TextField prefHeight="37.0" prefWidth="513.0" promptText="Search for anything">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </TextField>
+                      <VBox alignment="CENTER" prefHeight="95.0" prefWidth="170.0">
+                          <children>
+                              <Label fx:id="dependantEmail" text="Email:" textFill="#757292">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                              <Label fx:id="dependantAddress" text="Address:" textFill="#757292">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                          </children>
+                      </VBox>
+                      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="170.0">
+                          <children>
+                              <Label fx:id="dependantPhone" text="Phone:" textFill="#757292">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                              <Label fx:id="dependantInsuranceCard" layoutX="10.0" layoutY="10.0" text="Insurance Card:" textFill="#757292">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                          </children>
+                      </VBox>
+                  </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+              </HBox>
+         </top>
+         <right>
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt; Policy Holder &gt; Dependants" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="15.0" />
+               </BorderPane.margin>
+            </Text>
+         </right>
+         <left>
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Dependant" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="15.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+         </left>
+      </BorderPane>
    </top>
 </BorderPane>

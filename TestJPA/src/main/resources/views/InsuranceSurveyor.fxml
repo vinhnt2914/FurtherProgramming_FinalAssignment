@@ -14,15 +14,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="842.0">
+            <HBox prefHeight="66.0" prefWidth="1000.0">
                <children>
                   <HBox prefHeight="63.0" prefWidth="813.0">
                      <children>
-                            <Button fx:id="myClaimButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="MY CLAIMS">
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="REQUEST">
                            <HBox.margin>
                               <Insets left="15.0" right="20.0" top="10.0" />
                            </HBox.margin>
@@ -36,7 +37,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                            <Button fx:id="dependantClaimButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="MY DEPENDANTS">
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="PROPOSE">
                            <padding>
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
@@ -55,26 +56,26 @@
                         </Button>
                      </children>
                   </HBox>
-                    <ComboBox fx:id="fileClaimComboBox" opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
+                  <ComboBox opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                      </padding>
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="15.0" top="10.0" />
-                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets bottom="10.0" right="15.0" top="10.0" />
+                     </HBox.margin>
                   </ComboBox>
                </children>
             </HBox>
-              <TableView fx:id="claimTable" prefHeight="384.0" prefWidth="960.0" style="-fx-border-color: black;">
-                  <columns>
-                      <TableColumn prefWidth="154.0" text="C1" />
-                      <TableColumn prefWidth="145.0" text="C2" />
-                  <TableColumn prefWidth="147.0" text="C3" />
-                  </columns>
-              </TableView>
+            <TableView prefHeight="705.0" prefWidth="970.0" style="-fx-border-color: black;">
+              <columns>
+                <TableColumn prefWidth="150.0" text="C1" />
+                <TableColumn minWidth="0.0" prefWidth="154.0" text="C2" />
+                  <TableColumn minWidth="0.0" prefWidth="154.0" text="C3" />
+              </columns>
+            </TableView>
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -82,38 +83,28 @@
       </VBox>
    </center>
    <top>
-      <BorderPane prefHeight="121.0" prefWidth="842.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="121.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
          <top>
-            <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
                   <TextField prefHeight="37.0" prefWidth="803.0" promptText="Search for anything">
                      <HBox.margin>
-                        <Insets right="50.0" />
+                        <Insets left="30.0" right="50.0" />
                      </HBox.margin>
                   </TextField>
-                  <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Policy Holder" wrappingWidth="106.13671875">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
+                  <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Surveyor" wrappingWidth="144.13671875">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Text>
                </children>
             </HBox>
          </top>
-         <right>
-            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt;  Policy Holder" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets right="15.0" />
-               </BorderPane.margin>
-            </Text>
-         </right>
          <left>
-            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" textAlignment="CENTER" wrappingWidth="137.515625" BorderPane.alignment="CENTER">
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Surveyor" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -122,6 +113,16 @@
                </BorderPane.margin>
             </Text>
          </left>
+         <right>
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt; Insurance Surveyor" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="15.0" />
+               </BorderPane.margin>
+            </Text>
+         </right>
       </BorderPane>
    </top>
 </BorderPane>

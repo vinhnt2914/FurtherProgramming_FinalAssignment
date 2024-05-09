@@ -1,0 +1,77 @@
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: #FC6767;
+    -fx-font-weight: bold;
+    -fx-border-color: linear-gradient(to right, #ed0783, #FC6767);
+    -fx-border-width: 2;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #ed0783, #FC6767);
+    -fx-text-fill: white;
+}
+
+/*-fx-background-color: #7971BB;*/
+
+#approveButton {
+    -fx-background-color: white;
+    -fx-text-fill: #22b82e;
+    -fx-font-weight: bold;
+    -fx-border-color: linear-gradient(to right, #28fa6a, #a0f6a7);
+    -fx-border-width: 2;
+}
+
+#approveButton:hover {
+    -fx-background-color: linear-gradient(to right, #28fa6a, #a0f6a7);
+    -fx-text-fill: white;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #7971BB;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #7971BB;
+}
+
+.table-view {
+    -fx-background-color: #E1E0E9;
+    -fx-border-color: #b3b3b3;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #e0e0e0;
+    -fx-border-radius: 5 5 0 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #757292;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header:hover .label {
+    -fx-background-color: #d0d0d0;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5px;
+    -fx-text-fill: #333333;
+    -fx-font-size: 13px;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #d9eaff; /* Selected row background */
+    -fx-text-fill: #000000;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f0f8ff; /* Hover effect */
+}
