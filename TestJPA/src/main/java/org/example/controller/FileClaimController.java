@@ -38,6 +38,12 @@ public class FileClaimController {
     @FXML
     private TextField bankingInfoTextField;
 
+    private ClaimService claimService;
+
+    public void setClaimService(ClaimService claimService) {
+        this.claimService = claimService;
+    }
+
     @FXML
     private void handleSubmission() {
         // Get data from fields
@@ -68,9 +74,8 @@ public class FileClaimController {
                 .bankingInfo(bankingInfo)
                 .build();
 
-        // Save or process the claim, for example:
-        // ClaimService claimService = new ClaimService();
-        // claimService.addClaim(claim);
+        // Save the claim using ClaimService
+        claimService.makeClaim();
 
         // Close the pop-up window
         Stage stage = (Stage) claimAmountTextField.getScene().getWindow();

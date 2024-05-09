@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
+import org.example.service.ClaimService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,8 +46,11 @@ public class PolicyHolderController implements Initializable {
 
     private ObservableList<Claim> claimsData;
 
+    private ClaimService claimService;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        claimService = new ClaimService();
         populateTable();
 
         claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
@@ -68,6 +72,7 @@ public class PolicyHolderController implements Initializable {
         claimsData = FXCollections.observableArrayList(claimList);
         claimRepository.close();
     }
+
     @FXML
     private void handleFileClaimButtonClick() {
         try {
@@ -81,12 +86,20 @@ public class PolicyHolderController implements Initializable {
             popupStage.setTitle("File Claim");
             popupStage.setScene(new Scene(root));
 
+            // Get the controller for the pop-up window
+            FileClaimController fileClaimController = loader.getController();
+
+            // Set the claim service in the file claim controller
+            fileClaimController.setClaimService(claimService);
+
             // Show the pop-up window
             popupStage.showAndWait(); // This will block the main window until the pop-up is closed
+
+            // Refresh table data after the pop-up window is closed
+            populateTable();
         } catch (IOException e) {
             e.printStackTrace();
             // Handle the exception (e.g., display an error message)
         }
     }
-
 }
