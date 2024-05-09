@@ -5,9 +5,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.GridPane?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import org.example.model.enums.ClaimStatus?>
 <GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FileClaimController">
     <Label text="File Claim" style="-fx-font-size: 18px;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
@@ -31,16 +28,7 @@
     <TextField fx:id="claimAmountTextField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
     <Label text="Claim Status:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-    <ComboBox fx:id="claimStatusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="7">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <ClaimStatus>NEW</ClaimStatus>
-                <ClaimStatus>PROCESSING</ClaimStatus>
-                <ClaimStatus>DONE</ClaimStatus>
-                <ClaimStatus>REJECTED</ClaimStatus>
-            </FXCollections>
-        </items>
-    </ComboBox>
+    <TextField fx:id="claimStatusTextField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 
     <Label text="Banking Info:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <TextField fx:id="bankingInfoTextField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>

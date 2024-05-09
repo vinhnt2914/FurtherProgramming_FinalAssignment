@@ -85,6 +85,8 @@ public class PolicyHolderController implements Initializable {
             popupStage.showAndWait(); // This will block the main window until the pop-up is closed
         } catch (IOException e) {
             e.printStackTrace();
+            // Handle the exception (e.g., display an error message)
         }
     }
+
 }
