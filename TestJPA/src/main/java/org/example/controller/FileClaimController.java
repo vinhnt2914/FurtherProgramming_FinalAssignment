@@ -74,8 +74,8 @@ public class FileClaimController {
                 .bankingInfo(bankingInfo)
                 .build();
 
-        // Save the claim using ClaimService
-        claimService.makeClaim();
+//        // Save the claim using ClaimService
+//        claimService.makeClaim();
 
         // Close the pop-up window
         Stage stage = (Stage) claimAmountTextField.getScene().getWindow();

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/UpdateClaim.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/FileClaimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/FileClaimController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/FileClaim.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/FileClaim.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/controller/PolicyHolderController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +168,7 @@
       <workItem from="1715256356363" duration="305000" />
       <workItem from="1715258289064" duration="299000" />
       <workItem from="1715258766324" duration="299000" />
+      <workItem from="1715259919425" duration="311000" />
     </task>
     <servers />
   </component>

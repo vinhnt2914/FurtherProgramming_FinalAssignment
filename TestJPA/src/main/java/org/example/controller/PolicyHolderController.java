@@ -86,11 +86,11 @@ public class PolicyHolderController implements Initializable {
             popupStage.setTitle("File Claim");
             popupStage.setScene(new Scene(root));
 
-            // Get the controller for the pop-up window
-            FileClaimController fileClaimController = loader.getController();
 
-            // Set the claim service in the file claim controller
-            fileClaimController.setClaimService(claimService);
+//            FileClaimController fileClaimController = loader.getController();
+//
+
+//            fileClaimController.setClaimService(claimService);
 
             // Show the pop-up window
             popupStage.showAndWait(); // This will block the main window until the pop-up is closed
