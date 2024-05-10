@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/static/Button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/CustomerTable.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/InsuranceManager.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/InsuranceSurveyor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/Dependant.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/PolicyHolderDashBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/Dependant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/Dependant.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/PolicyHolderDashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/PolicyHolderDashBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +159,7 @@
       <workItem from="1714981249217" duration="2000" />
       <workItem from="1715139383874" duration="1710000" />
       <workItem from="1715259087943" duration="8129000" />
-      <workItem from="1715271502979" duration="625000" />
+      <workItem from="1715271502979" duration="987000" />
     </task>
     <servers />
   </component>
