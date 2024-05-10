@@ -9,7 +9,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <GridPane alignment="CENTER" hgap="10" vgap="10" xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.UpdateClaimController">
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controller.UpdateClaimController">
     <Label text="Update Information" style="-fx-font-size: 18px;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
 
     <Label text="Claim ID:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>

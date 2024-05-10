@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import org.example.model.customer.Beneficiary;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
-import org.example.repository.impl.BeneficiaryRepository;
 import org.example.repository.impl.ClaimRepository;
 import org.example.repository.impl.CustomerRepository;
 import org.example.service.ClaimService;
