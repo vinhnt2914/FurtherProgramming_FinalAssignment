@@ -10,7 +10,7 @@ public class TestDependantPage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Dependant.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/dependant.fxml"));
         BorderPane root = loader.load();
 
         // Create a scene and set the root node

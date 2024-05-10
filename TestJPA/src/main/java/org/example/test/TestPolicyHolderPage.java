@@ -9,7 +9,7 @@ public class TestPolicyHolderPage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PolicyHolderDashBoard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/policyHolder.fxml"));
         BorderPane root = loader.load();
 
         // Create a scene and set the root node

@@ -1,4 +1,4 @@
-package org.example.app.controller;
+package org.example.app.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +14,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
-import org.example.service.ClaimService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,43 +21,31 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PolicyHolderController implements Initializable {
-
     @FXML
     private TableView<Claim> claimTable;
-
     @FXML
     private TableColumn<Claim, String> claimIdColumn;
-
     @FXML
     private TableColumn<Claim, String> claimDateColumn;
-
     @FXML
     private TableColumn<Claim, String> examDateColumn;
-
     @FXML
     private TableColumn<Claim, Double> claimAmountColumn;
-
     @FXML
     private TableColumn<Claim, String> claimStatusColumn;
-
     @FXML
     private TableColumn<Claim, String> bankingInfoColumn;
-
     private ObservableList<Claim> claimsData;
-
-    private ClaimService claimService;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        claimService = new ClaimService();
-        populateTable();
-
         claimIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty());
         claimDateColumn.setCellValueFactory(cellData -> cellData.getValue().claimDateProperty().asString());
         examDateColumn.setCellValueFactory(cellData -> cellData.getValue().examDateProperty().asString());
         claimAmountColumn.setCellValueFactory(cellData -> cellData.getValue().claimAmountProperty().asObject());
         claimStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty().asString());
         bankingInfoColumn.setCellValueFactory(cellData -> cellData.getValue().bankingInfoProperty());
+        populateTable();
+
     }
 
     public void populateTable() {
@@ -77,7 +64,7 @@ public class PolicyHolderController implements Initializable {
     private void handleFileClaim() {
         try {
             // Load the FXML file for the pop-up window
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FileClaim.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/fileClaim.fxml"));
             Parent root = loader.load();
 
             // Create a new stage for the pop-up window
@@ -109,7 +96,7 @@ public class PolicyHolderController implements Initializable {
         if (selectedClaim != null) {
             try {
                 // Load the FXML file for the pop-up window
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/UpdateClaim.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/updateClaim.fxml"));
                 Parent root = loader.load();
 
                 // Create a new stage for the pop-up window

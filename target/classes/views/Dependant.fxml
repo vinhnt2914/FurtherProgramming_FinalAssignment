@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,19 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <center>
-        <TableView fx:id="dependantTable" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
-            <columns>
-                <TableColumn prefWidth="140.0" text="C1" />
-                <TableColumn prefWidth="130.0" text="C2" />
-            <TableColumn prefWidth="174.0" text="C3" />
-            </columns>
-         <BorderPane.margin>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="30.0" />
-         </BorderPane.margin>
-        </TableView>
-    </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.DependantController">
    <top>
       <BorderPane prefHeight="160.0" prefWidth="789.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
          <top>
@@ -96,4 +82,7 @@
          </left>
       </BorderPane>
    </top>
+   <center>
+      <HBox fx:id="tableViewContainer" alignment="CENTER" minHeight="400.0" minWidth="600.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

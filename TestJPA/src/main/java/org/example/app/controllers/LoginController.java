@@ -1,4 +1,4 @@
-package org.example.app.controller;
+package org.example.app.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.example.app.App;
 import org.example.global.GlobalVariable;
 import org.example.model.User;
 import org.example.repository.impl.UserRepository;
@@ -36,5 +37,8 @@ public class LoginController implements Initializable{
         GlobalVariable.setUserID(user.getId());
         System.out.println("User logged in: " + GlobalVariable.getUserID());
         System.out.println("User role: " + GlobalVariable.getRole());
+
+        // Run the app
+        App.getInstance();
     }
 }
