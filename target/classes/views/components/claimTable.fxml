@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<fx:root fx:id="claimTable" maxHeight="-Infinity" maxWidth="-Infinity" type="TableView" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+  <columns>
+    <TableColumn fx:id="idCol" minWidth="100.0" prefWidth="-1.0" text="ID" />
+    <TableColumn fx:id="insuredPersonCol" minWidth="150.0" prefWidth="-1.0" text="Insured Person" />
+      <TableColumn fx:id="cardNumberCol" minWidth="150.0" prefWidth="-1.0" text="Card Number" />
+      <TableColumn fx:id="claimDateCol" minWidth="150.0" prefWidth="-1.0" text="Claim Date" />
+      <TableColumn fx:id="examDateCol" minWidth="150.0" prefWidth="-1.0" text="Exam Date" />
+      <TableColumn fx:id="claimAmountCol" minWidth="100.0" prefWidth="-1.0" text="Claim Amount" />
+      <TableColumn fx:id="statusCol" minWidth="100.0" prefWidth="-1.0" text="Status" />
+      <TableColumn fx:id="bankingInfoCol" minWidth="150.0" prefWidth="-1.0" text="Banking Info" />
+  </columns>
+</fx:root>

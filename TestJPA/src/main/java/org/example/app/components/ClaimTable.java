@@ -20,7 +20,7 @@ public class ClaimTable extends TableView<Claim> {
     @FXML
     private TableColumn<Claim, String> idCol;
     @FXML
-    private TableColumn<Claim, String> insuredPersonCol;
+    private TableColumn<Claim, Integer> insuredPersonCol;
     @FXML
     private TableColumn<Claim, String> cardNumberCol;
     @FXML
@@ -38,7 +38,7 @@ public class ClaimTable extends TableView<Claim> {
     public ClaimTable(ClaimRepository repository) {
         // Set up claim repository
         this.repository = repository;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/claimTable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -68,7 +68,9 @@ public class ClaimTable extends TableView<Claim> {
     }
 
     private void populateTableView() {
+        // Data is not formatted
         List<Claim> claimList = repository.getAll();
+        // Format the data
         ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
         claimTable.setItems(data);
         repository.close();

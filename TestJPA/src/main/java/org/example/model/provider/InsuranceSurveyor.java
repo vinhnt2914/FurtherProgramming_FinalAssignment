@@ -34,4 +34,14 @@ public class InsuranceSurveyor extends Provider {
     public Proposal propose(InsuranceManager insuranceManager, Claim claim, String message) {
         return new Proposal(this, claim, insuranceManager, message);
     }
+
+    @Override
+    public String toString() {
+        return "InsuranceSurveyor{" +
+                "requestList=" + requestList.toString() +
+                ", id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

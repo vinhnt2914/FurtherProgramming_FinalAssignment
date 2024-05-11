@@ -1,8 +1,6 @@
 package org.example.model.items;
 
 import jakarta.persistence.*;
-import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
 import org.example.model.customer.Beneficiary;
 import org.example.model.enums.ClaimStatus;
 
@@ -47,7 +45,10 @@ public class Claim {
         this.id = id;
     }
 
-    public Beneficiary getInsuredPerson() {
+    public int getInsuredPerson() {
+        return insuredPerson.getId();
+    }
+    public Beneficiary getEntireInsuredPerson() {
         return insuredPerson;
     }
 
@@ -170,37 +171,6 @@ public class Claim {
         public Claim build() {
             return new Claim(this);
         }
-    }
-    public StringProperty idProperty() {
-        return new SimpleStringProperty(id);
-    }
-
-    public ObjectProperty<Beneficiary> insuredPersonProperty() {
-        return new SimpleObjectProperty<>(insuredPerson);
-    }
-
-    public StringProperty cardNumberProperty() {
-        return new SimpleStringProperty(cardNumber);
-    }
-
-    public ObjectProperty<LocalDate> claimDateProperty() {
-        return new SimpleObjectProperty<>(claimDate);
-    }
-
-    public ObjectProperty<LocalDate> examDateProperty() {
-        return new SimpleObjectProperty<>(examDate);
-    }
-
-    public DoubleProperty claimAmountProperty() {
-        return new SimpleDoubleProperty(claimAmount);
-    }
-
-    public ObjectProperty<ClaimStatus> statusProperty() {
-        return new SimpleObjectProperty<>(status);
-    }
-
-    public StringProperty bankingInfoProperty() {
-        return new SimpleStringProperty(bankingInfo);
     }
 
 }

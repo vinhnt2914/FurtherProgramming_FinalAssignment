@@ -42,7 +42,7 @@ public class UpdateClaimController {
     public void initialize() {
         // Initialize fields with claim data
         claimIdTextField.setText(claim.getId());
-        insuredPersonIdTextField.setText(String.valueOf(claim.getInsuredPerson().getId()));
+        insuredPersonIdTextField.setText(String.valueOf(claim.getInsuredPerson()));
         cardNumberTextField.setText(claim.getCardNumber());
         claimDatePicker.setValue(claim.getClaimDate());
         examDatePicker.setValue(claim.getExamDate());

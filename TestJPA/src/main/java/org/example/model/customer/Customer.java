@@ -8,17 +8,12 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Table(name = "customers")
 //@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Customer extends User {
     private String email;
     private String phone;
     private String address;
     private String fullName;
-    @OneToMany(mappedBy = "insuredPerson",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch=FetchType.LAZY)
-    private Set<Claim> claimList;
 
     public Customer(GenericCustomerBuilder builder) {
         this.username = builder.username;
@@ -27,7 +22,6 @@ public abstract class Customer extends User {
         this.phone = builder.phone;
         this.address = builder.address;
         this.fullName = builder.fullName;
-        this.claimList = new HashSet<>();
     }
 
     public Customer() {
@@ -95,18 +89,6 @@ public abstract class Customer extends User {
         this.fullName = fullName;
     }
 
-    public Set<Claim> getClaimList() {
-        return claimList;
-    }
-
-    public void setClaimList(HashSet<Claim> claimList) {
-        this.claimList = claimList;
-    }
-
-    public void addClaim(Claim claim) {
-        this.claimList.add(claim);
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -118,10 +100,6 @@ public abstract class Customer extends User {
                 .append("Address: ").append(address).append("\n")
                 .append("Full Name: ").append(fullName).append("\n")
                 .append("Claim List:\n");
-
-        for (Claim claim : claimList) {
-            sb.append("\t+ ").append(claim.getId()).append("\n");
-        }
 
         return sb.toString();
     }

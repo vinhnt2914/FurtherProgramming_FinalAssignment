@@ -42,7 +42,7 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
         em.getTransaction().begin();
 
         claimToUpdate.setId(claim.getId());
-        claimToUpdate.setInsuredPerson(claim.getInsuredPerson());
+        claimToUpdate.setInsuredPerson(claim.getEntireInsuredPerson());
 
         em.getTransaction().commit();
     }

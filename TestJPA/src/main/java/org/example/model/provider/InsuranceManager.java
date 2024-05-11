@@ -27,4 +27,14 @@ public class InsuranceManager extends Provider {
     public void rejectClaim(Claim claim) {
         claim.setStatus(ClaimStatus.REJECTED);
     }
+
+    @Override
+    public String toString() {
+        return "InsuranceManager{" +
+                "proposalList=" + proposalList.toString() +
+                ", id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.example.model.User;
 
 @Entity
-@Table(name = "providers")
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Provider extends User {
 
