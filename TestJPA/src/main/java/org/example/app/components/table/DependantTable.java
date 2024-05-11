@@ -1,4 +1,4 @@
-package org.example.app.components;
+package org.example.app.components.table;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -7,7 +7,6 @@ import javafx.scene.control.TableColumn;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 
-import java.net.URL;
 import java.util.List;
 
 public class DependantTable extends CustomerTable<Dependant>{

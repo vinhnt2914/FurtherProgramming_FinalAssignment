@@ -1,4 +1,4 @@
-package org.example.app.components;
+package org.example.app.components.table;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

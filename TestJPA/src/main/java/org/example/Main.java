@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.app.components.alert.SuccessAlert;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
@@ -30,16 +31,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Load the FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
-        Parent root = loader.load();
-
-        // Create a scene and set the root node
-        Scene scene = new Scene(root, 819, 551);
-
-        // Set the scene onto the stage
-        stage.setScene(scene);
-        stage.setTitle("Login");
-        stage.show();
+//        // Load the FXML file
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
+//        Parent root = loader.load();
+//
+//        // Create a scene and set the root node
+//        Scene scene = new Scene(root, 819, 551);
+//
+//        // Set the scene onto the stage
+//        stage.setScene(scene);
+//        stage.setTitle("Login");
+//        stage.show();
+        new SuccessAlert("This is working");
     }
 }

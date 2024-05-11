@@ -3,7 +3,7 @@ package org.example.app.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
-import org.example.app.components.ClaimTable;
+import org.example.app.components.table.ClaimTable;
 
 import java.net.URL;
 import java.util.ResourceBundle;

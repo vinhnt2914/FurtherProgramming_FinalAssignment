@@ -5,14 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/CustomAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/SuccessAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/RequestTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/alert.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/requestTable.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/FileClaimForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/FileClaimForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/ClaimTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/ClaimTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/CustomerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/CustomerTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/DependantTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/DependantTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/FileClaimForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/form/FileClaimForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/SelectInsuredPersonTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/SelectInsuredPersonTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/DependantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/DependantController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyHolderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyHolderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/fileClaimForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/fileClaimForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/policyHolder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/policyHolder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/ClaimTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/CustomerTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/DependantTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/FileClaimForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/SelectInsuredPersonTable$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/SelectInsuredPersonTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/DependantController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/DependantController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/PolicyHolderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/PolicyHolderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/policyHolder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/policyHolder.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +40,8 @@
         <option value="JavaFXApplication" />
         <option value="Interface" />
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -66,13 +81,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+    <configuration name="CustomAlert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.app.components.alert.CustomAlert" />
       <module name="TestJPA" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.app.components.alert.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -80,12 +94,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDataRetrieve" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.TestDataRetrieve" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="TestJPA" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.test.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,7 +156,7 @@
       <option name="VM_PARAMETERS" value="--module-path &quot;D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.app.components.*" />
+          <option name="PATTERN" value="org.example.app.components.table.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,19 +166,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.TestDependantPage" />
+      <item itemvalue="Application.CustomAlert" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.TestFileClaim" />
-      <item itemvalue="Application.TestDataRetrieve" />
       <item itemvalue="Application.TestLoginPage" />
       <item itemvalue="Application.TestPolicyHolderPage" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CustomAlert" />
         <item itemvalue="Application.TestFileClaim" />
         <item itemvalue="Application.TestLoginPage" />
         <item itemvalue="Application.TestPolicyHolderPage" />
-        <item itemvalue="Application.TestDataRetrieve" />
       </list>
     </recent_temporary>
   </component>
@@ -188,6 +203,7 @@
       <workItem from="1715324422443" duration="7959000" />
       <workItem from="1715392293501" duration="8931000" />
       <workItem from="1715411735452" duration="13034000" />
+      <workItem from="1715438842648" duration="3871000" />
     </task>
     <servers />
   </component>
