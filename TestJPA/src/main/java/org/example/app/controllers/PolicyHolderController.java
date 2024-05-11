@@ -2,6 +2,7 @@ package org.example.app.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,14 +27,32 @@ public class PolicyHolderController implements Initializable {
     public Button myClaimButton;
     public Button dependantClaimButton;
     public HBox tableViewContainer;
-    public ComboBox swapTableComboBox;
-    private ClaimRepository claimRepository;
-    private CustomerRepository customerRepository;
+    public ChoiceBox<String> swapTableChoiceBox;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        claimRepository = new ClaimRepository();
-//        tableViewContainer.getChildren().add(new ClaimTable(claimRepository));
-        tableViewContainer.getChildren().add(new DependantTable(customerRepository));
+        setUpPage();
+    }
+
+    private void setUpPage() {
+        ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
+        comboBoxOptions.addAll("Claims", "Dependants");
+        swapTableChoiceBox.getItems().addAll(comboBoxOptions);
+        // Set to Claim Table by default
+        swapTableChoiceBox.getSelectionModel().select("Claims");
+        tableViewContainer.getChildren().add(new ClaimTable());
+
+        swapTableChoiceBox.setOnAction(this::swapTable);
+    }
+
+    private void swapTable(Event event) {
+        String tableType = swapTableChoiceBox.getValue();
+        tableViewContainer.getChildren().clear();
+
+        if (tableType.equalsIgnoreCase("Claims")) {
+            tableViewContainer.getChildren().add(new ClaimTable());
+        } else {
+            tableViewContainer.getChildren().add(new DependantTable());
+        }
     }
 
 //    @FXML

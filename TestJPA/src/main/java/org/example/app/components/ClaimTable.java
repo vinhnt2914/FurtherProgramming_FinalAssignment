@@ -35,9 +35,9 @@ public class ClaimTable extends TableView<Claim> {
     private TableColumn<Claim, String> bankingInfoCol;
     private ClaimRepository repository;
 
-    public ClaimTable(ClaimRepository repository) {
+    public ClaimTable() {
         // Set up claim repository
-        this.repository = repository;
+        this.repository = new ClaimRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

@@ -12,23 +12,21 @@ import org.example.repository.impl.CustomerRepository;
 import java.io.IOException;
 import java.net.URL;
 
-public abstract class CustomerTable extends TableView<Customer> {
+public abstract class CustomerTable<T extends Customer> extends TableView<T> {
     @FXML
-    protected TableView<Customer> customerTableView;
+    protected TableView<T> customerTableView;
     @FXML
-    private TableColumn<Customer, Integer> idCol;
+    protected TableColumn<T, Integer> idCol;
     @FXML
-    private TableColumn<Customer, String> nameCol;
+    protected TableColumn<T, String> nameCol;
     @FXML
-    private TableColumn<Customer, String> emailCol;
+    protected TableColumn<T, String> emailCol;
     @FXML
-    private TableColumn<Customer, String> phoneCol;
+    protected TableColumn<T, String> phoneCol;
     @FXML
-    private TableColumn<Customer, String> addressCol;
-    private CustomerRepository repository;
+    protected TableColumn<T, String> addressCol;
 
-    public CustomerTable(CustomerRepository repository) {
-        this.repository = repository;
+    public CustomerTable() {
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -47,11 +45,11 @@ public abstract class CustomerTable extends TableView<Customer> {
     }
 
     private void setUpTableView() {
-//        // Set up table columns
-//        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-//        nameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
-//        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-//        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
-//        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        // Set up table columns
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
 }

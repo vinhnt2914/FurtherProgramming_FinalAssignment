@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import org.example.app.App;
 import org.example.global.GlobalVariable;
 import org.example.model.User;
@@ -15,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
+    public BorderPane loginPane;
     @FXML
     private TextField usernameField;
     @FXML
@@ -37,6 +40,10 @@ public class LoginController implements Initializable{
         GlobalVariable.setUserID(user.getId());
         System.out.println("User logged in: " + GlobalVariable.getUserID());
         System.out.println("User role: " + GlobalVariable.getRole());
+
+        // Close the login stage
+        Stage stage = (Stage) loginPane.getScene().getWindow();
+        stage.close();
 
         // Run the app
         App.getInstance();
