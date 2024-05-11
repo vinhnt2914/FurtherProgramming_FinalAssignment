@@ -4,24 +4,35 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.example.global.GlobalVariable;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
+import org.example.model.customer.PolicyHolder;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
 import org.example.repository.impl.CustomerRepository;
 import org.example.service.ClaimService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class FileClaimForm implements Initializable {
-    public Label insuredPersonLabel;
-    public Label cardNumberLabel;
+public class FileClaimForm extends VBox {
+    @FXML
+    private Label insuredPersonLabel;
+    @FXML
+    private Label cardNumberLabel;
+    @FXML
+    private Button selectMyClaimButton;
     @FXML
     private Button submitButton;
     @FXML
@@ -41,22 +52,44 @@ public class FileClaimForm implements Initializable {
     @FXML
     private TextField bankingInfoField;
     private ClaimService claimService;
-    private Dependant insuredPerson;
+    private Beneficiary insuredPerson;
     private CustomerRepository customerRepository;
     private ClaimRepository claimRepository;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public FileClaimForm() {
         customerRepository = new CustomerRepository();
         claimRepository = new ClaimRepository();
         claimService = new ClaimService();
+        loadFormFromFXML();
         setUpForm();
     }
+
+    private void loadFormFromFXML() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/fileClaimForm.fxml"));
+            fxmlLoader.setRoot(this);
+            fxmlLoader.setController(this);
+            VBox rootPane = fxmlLoader.load();
+            Scene scene = new Scene(rootPane);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
 
     private void setUpForm() {
         ObservableList<String> statusOptions = FXCollections.observableArrayList("NEW", "PROCESSING", "DONE");
         this.statusComboBox.setItems(statusOptions);
         this.selectInsuredPersonButton.setOnAction(this::openSelectInsuredPerson);
+        this.selectMyClaimButton.setOnAction(this::setToMyClaim);
         this.submitButton.setOnAction(this::fileClaim);
+    }
+
+    private void setToMyClaim(ActionEvent actionEvent) {
+        PolicyHolder policyHolder = (PolicyHolder) customerRepository.findByID(GlobalVariable.getUserID());
+        setInsuredPerson(policyHolder);
     }
 
     private void fileClaim(ActionEvent actionEvent) {
@@ -85,7 +118,7 @@ public class FileClaimForm implements Initializable {
         System.out.println("HELLO");
     }
 
-    public void setInsuredPerson(Dependant insuredPerson) {
+    public void setInsuredPerson(Beneficiary insuredPerson) {
         this.insuredPerson = insuredPerson;
         insuredPersonLabel.setText(
                 String.format("%s - %s",

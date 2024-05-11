@@ -58,7 +58,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" HBox.hgrow="ALWAYS">
                      <children>
-                            <Button fx:id="myClaimButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="MY CLAIMS">
+                            <Button fx:id="myClaimButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="My Claim">
                            <HBox.margin>
                               <Insets left="15.0" right="20.0" top="10.0" />
                            </HBox.margin>
@@ -72,7 +72,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                            <Button fx:id="dependantClaimButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="MY DEPENDANTS">
+                            <Button fx:id="fileClaimButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="File Claim">
                            <padding>
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
