@@ -156,7 +156,7 @@ public class InsuranceSurveyorController implements Initializable {
         tableViewContainer.getChildren().clear();
         tableViewContainer.getChildren().add(claimTable);
     }
-    
+
     private void swapTable(ActionEvent event) {
         String selectedOption = swapTableComboBox.getValue();
         if (selectedOption != null) {
