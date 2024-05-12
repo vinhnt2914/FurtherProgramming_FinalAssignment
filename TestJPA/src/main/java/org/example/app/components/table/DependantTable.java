@@ -12,12 +12,8 @@ import java.util.List;
 public class DependantTable extends GenericCustomerTable<Dependant> {
     private TableColumn<Dependant, Integer> policyHolderCol;
     private TableColumn<Dependant, Integer> policyOwnerCol;
-    private CustomerRepository repository;
     public DependantTable() {
         super();
-        repository = new CustomerRepository();
-        setUpTableView();
-        populateTableView();
     }
 
     private void setUpTableView() {
@@ -42,7 +38,8 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
         customerTableView.resize(newWidth + 50, this.getHeight()); // Extra 50 for resize
     }
 
-    private void populateTableView() {
+    @Override
+    void populateTableView() {
         // Data is not formatted
         List<Dependant> dependantList = repository.getAllDependant();
         // Format the data

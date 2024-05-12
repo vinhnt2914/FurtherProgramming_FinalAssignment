@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.customer.Customer;
+import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +24,10 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     protected TableColumn<T, String> phoneCol;
     @FXML
     protected TableColumn<T, String> addressCol;
+    protected CustomerRepository repository;
 
     public GenericCustomerTable() {
+        repository = new CustomerRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,6 +39,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
         }
 
         setUpTableView();
+        populateTableView();
     }
 
     private URL getFXMLPath() {
@@ -50,4 +54,6 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
+
+    abstract void populateTableView();
 }

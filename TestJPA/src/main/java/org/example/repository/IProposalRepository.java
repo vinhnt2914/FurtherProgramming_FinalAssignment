@@ -10,5 +10,6 @@ public interface IProposalRepository {
     void add(Proposal... proposals);
     Proposal findByID(int id);
     List<Proposal> getAll();
+    void update(Proposal proposal);
     Proposal removeByID(int id);
 }

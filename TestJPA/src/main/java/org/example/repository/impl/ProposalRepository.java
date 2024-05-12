@@ -1,6 +1,7 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
+import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 import org.example.model.provider.Provider;
 import org.example.repository.EntityRepository;
@@ -34,6 +35,20 @@ public class ProposalRepository extends EntityRepository implements IProposalRep
     public List<Proposal> getAll() {
         TypedQuery<Proposal> query = em.createQuery("from Proposal ", Proposal.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void update(Proposal proposal) {
+        Proposal proposalToUpdate = findByID(proposal.getId());
+
+        em.getTransaction().begin();
+
+        proposalToUpdate.setId(proposal.getId());
+        proposalToUpdate.setClaim(proposal.getClaim());
+        proposalToUpdate.setInsuranceManager(proposal.getInsuranceManager());
+        proposalToUpdate.setMessage(proposal.getMessage());
+
+        em.getTransaction().commit();
     }
 
     @Override

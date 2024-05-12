@@ -26,4 +26,44 @@ public class Proposal {
     public Proposal() {
 
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public InsuranceSurveyor getInsuranceSurveyor() {
+        return insuranceSurveyor;
+    }
+
+    public void setInsuranceSurveyor(InsuranceSurveyor insuranceSurveyor) {
+        this.insuranceSurveyor = insuranceSurveyor;
+    }
+
+    public Claim getClaim() {
+        return claim;
+    }
+
+    public void setClaim(Claim claim) {
+        this.claim = claim;
+    }
+
+    public InsuranceManager getInsuranceManager() {
+        return insuranceManager;
+    }
+
+    public void setInsuranceManager(InsuranceManager insuranceManager) {
+        this.insuranceManager = insuranceManager;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

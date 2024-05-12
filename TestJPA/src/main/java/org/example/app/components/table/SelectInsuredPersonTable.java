@@ -20,19 +20,10 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
     private TableColumn<Dependant, String> actionCol;
     private FileClaimForm fileClaimForm;
     public SelectInsuredPersonTable(FileClaimForm fileClaimForm) {
-        this.repository = new CustomerRepository();
         this.fileClaimForm = fileClaimForm;
-        setUpTableView();
+        setUpActionCol();
         setUpStage();
-        loadInsuredPerson();
         System.out.println("HELLO");
-    }
-
-    private void loadInsuredPerson() {
-        List<Dependant> dependantList = repository.getAllDependant();
-        ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
-        customerTableView.setItems(data);
-        repository.close();
     }
 
     private void setUpStage() {
@@ -47,7 +38,7 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
         primaryStage.show();
     }
 
-    private void setUpTableView() {
+    private void setUpActionCol() {
         // Create the action col with a select button
         actionCol = new TableColumn<>("Action");
         actionCol.setCellFactory(param -> new TableCell<>() {
@@ -68,8 +59,13 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
         customerTableView.getColumns().add(actionCol);
     }
 
-
-
+    @Override
+    void populateTableView() {
+        List<Dependant> dependantList = repository.getAllDependant();
+        ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
+        customerTableView.setItems(data);
+        repository.close();
+    }
 
     private Button createSelectButton() {
         Button button = new Button("Select");

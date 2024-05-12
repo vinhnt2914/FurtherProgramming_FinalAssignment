@@ -3,6 +3,7 @@ package org.example.repository.impl;
 import jakarta.persistence.TypedQuery;
 import org.example.model.customer.Customer;
 import org.example.model.customer.PolicyOwner;
+import org.example.model.provider.InsuranceSurveyor;
 import org.example.model.provider.Provider;
 import org.example.repository.EntityRepository;
 import org.example.repository.IProviderRepository;
