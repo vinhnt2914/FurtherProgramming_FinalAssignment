@@ -16,7 +16,9 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
         super();
     }
 
-    private void setUpTableView() {
+
+    @Override
+    void modifyTableView() {
         policyHolderCol = new TableColumn<>("Policy Holder");
         policyOwnerCol = new TableColumn<>("Policy Owner");
         policyHolderCol.setCellValueFactory(cellData -> {
@@ -40,9 +42,8 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
 
     @Override
     void populateTableView() {
-        // Data is not formatted
+        CustomerRepository repository = new CustomerRepository();
         List<Dependant> dependantList = repository.getAllDependant();
-        // Format the data
         ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
         customerTableView.setItems(data);
         repository.close();

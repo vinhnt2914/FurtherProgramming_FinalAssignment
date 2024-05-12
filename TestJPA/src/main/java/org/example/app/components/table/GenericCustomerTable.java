@@ -24,10 +24,8 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     protected TableColumn<T, String> phoneCol;
     @FXML
     protected TableColumn<T, String> addressCol;
-    protected CustomerRepository repository;
 
     public GenericCustomerTable() {
-        repository = new CustomerRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -39,6 +37,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
         }
 
         setUpTableView();
+        modifyTableView();
         populateTableView();
     }
 
@@ -55,5 +54,6 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
 
+    abstract void modifyTableView();
     abstract void populateTableView();
 }

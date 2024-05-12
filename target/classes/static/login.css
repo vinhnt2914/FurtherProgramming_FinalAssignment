@@ -1,0 +1,18 @@
+#leftSide {
+    -fx-background-color: linear-gradient(to right top, #F3BF6E, #F479AF);
+    -fx-background-radius: 25;
+}
+
+#usernameField, #passwordField {
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to right, #F3BF6E, #F479AF);
+    -fx-border-width: 0 0 2px 0;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to right top, #F3BF6E, #F479AF);
+}
+
+.button:hover {
+    -fx-opacity: 0.8;
+}

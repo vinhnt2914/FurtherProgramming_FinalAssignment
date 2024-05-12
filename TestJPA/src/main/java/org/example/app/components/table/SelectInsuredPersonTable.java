@@ -15,22 +15,20 @@ import org.example.repository.impl.CustomerRepository;
 import java.util.List;
 
 public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
-    private CustomerRepository repository;
     private PolicyHolder policyHolder;
     private TableColumn<Dependant, String> actionCol;
     private FileClaimForm fileClaimForm;
     public SelectInsuredPersonTable(FileClaimForm fileClaimForm) {
+        super();
         this.fileClaimForm = fileClaimForm;
-        setUpActionCol();
         setUpStage();
-        System.out.println("HELLO");
     }
 
     private void setUpStage() {
         Stage primaryStage = new Stage();
 
         // Create a scene and set the root node
-        Scene scene = new Scene(this, 819, 551);
+        Scene scene = new Scene(this);
 
         // Set the scene onto the stage
         primaryStage.setScene(scene);
@@ -38,7 +36,8 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
         primaryStage.show();
     }
 
-    private void setUpActionCol() {
+    @Override
+    void modifyTableView() {
         // Create the action col with a select button
         actionCol = new TableColumn<>("Action");
         actionCol.setCellFactory(param -> new TableCell<>() {
@@ -61,6 +60,7 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
 
     @Override
     void populateTableView() {
+        CustomerRepository repository = new CustomerRepository();
         List<Dependant> dependantList = repository.getAllDependant();
         ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
         customerTableView.setItems(data);
