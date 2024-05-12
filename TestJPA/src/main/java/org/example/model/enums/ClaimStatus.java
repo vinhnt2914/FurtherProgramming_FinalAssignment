@@ -6,5 +6,6 @@ public enum ClaimStatus {
     DONE,
     REJECTED,
     INFORMATION_REQUESTED,
-    PROPOSED_TO_MANAGER
+    PROPOSED_TO_MANAGER,
+    APPROVED
 }

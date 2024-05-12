@@ -4,8 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="org.example.app.controllers.InsuranceManagerController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <BorderPane prefHeight="120.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
          <top>
@@ -80,7 +77,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="REJECT">
+                        <Button fx:id="rejectButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="REJECT">
                            <padding>
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
@@ -99,7 +96,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <ComboBox opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
+                  <ComboBox fx:id="swapTableComboBox" opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                      </padding>
@@ -111,15 +108,10 @@
                      </HBox.margin>
                   </ComboBox>
                </children>
+
             </HBox>
-            <TableView prefHeight="705.0" prefWidth="970.0" style="-fx-border-color: black;">
-               <columns>
-                  <TableColumn prefWidth="150.0" text="C1" />
-                  <TableColumn minWidth="0.0" prefWidth="154.0" text="C2" />
-                  <TableColumn minWidth="0.0" prefWidth="154.0" text="C3" />
-               </columns>
-            </TableView>
          </children>
+         <HBox fx:id="tableViewContainer" />
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>

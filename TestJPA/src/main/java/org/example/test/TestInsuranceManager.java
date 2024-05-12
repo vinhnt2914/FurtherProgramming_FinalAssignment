@@ -10,8 +10,8 @@ public class TestInsuranceManager extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("path/to/your/fxml/file.fxml"));
-        primaryStage.setTitle("FXML Example");
+        Parent root = FXMLLoader.load(getClass().getResource("/views/insuranceManager.fxml"));
+        primaryStage.setTitle("Insurance Manager");
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
