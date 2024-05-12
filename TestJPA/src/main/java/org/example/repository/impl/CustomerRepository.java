@@ -1,10 +1,7 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
-import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
-import org.example.model.customer.Dependant;
-import org.example.model.customer.PolicyOwner;
+import org.example.model.customer.*;
 import org.example.repository.EntityRepository;
 import org.example.repository.ICustomerRepository;
 
@@ -80,4 +77,12 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return customerToRemove;
     }
 
+    public PolicyHolder getPolicyHolder() {
+        List<Customer> customers = getAll();
+        return customers.stream()
+                .filter(customer -> customer instanceof PolicyHolder)
+                .map(customer -> (PolicyHolder) customer)
+                .findFirst()
+                .orElse(null);
+    }
 }

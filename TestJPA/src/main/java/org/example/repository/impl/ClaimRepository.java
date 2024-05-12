@@ -1,6 +1,7 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
+import org.example.model.customer.PolicyHolder;
 import org.example.model.items.Claim;
 import org.example.repository.EntityRepository;
 import org.example.repository.IClaimRepository;
@@ -54,5 +55,12 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
         em.remove(claimToRemove);
         em.getTransaction().commit();
         return claimToRemove;
+    }
+
+    @Override
+    public List<Claim> getClaimsByPolicyHolder(PolicyHolder policyHolder) {
+        TypedQuery<Claim> query = em.createQuery("FROM Claim WHERE insuredPerson = :policyHolder", Claim.class);
+        query.setParameter("policyHolder", policyHolder);
+        return query.getResultList();
     }
 }

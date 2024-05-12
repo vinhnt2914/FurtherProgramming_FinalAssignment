@@ -11,8 +11,13 @@ import javafx.scene.layout.HBox;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.form.FileClaimForm;
+import org.example.model.customer.PolicyHolder;
+import org.example.model.items.Claim;
+import org.example.repository.IClaimRepository;
+import org.example.repository.impl.ClaimRepository;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PolicyHolderController implements Initializable {
@@ -24,6 +29,7 @@ public class PolicyHolderController implements Initializable {
     private ChoiceBox<String> swapTableChoiceBox;
     @FXML
     private Button fileClaimButton;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,7 +44,40 @@ public class PolicyHolderController implements Initializable {
         this.swapTableChoiceBox.getSelectionModel().select("Claims");
         this.tableViewContainer.getChildren().add(new ClaimTable());
         this.fileClaimButton.setOnAction(this::openFileClaimForm);
+        this.myClaimButton.setOnAction(this::HandleMyClaim);
         this.swapTableChoiceBox.setOnAction(this::swapTable);
+    }
+
+
+
+    @FXML
+    private void HandleMyClaim(ActionEvent actionEvent) {
+
+        IClaimRepository claimRepository = new ClaimRepository();
+
+
+        PolicyHolder policyHolder = obtainPolicyHolder();
+
+
+        if (policyHolder != null) {
+
+            List<Claim> policyHolderClaims = claimRepository.getClaimsByPolicyHolder(policyHolder);
+
+
+            displayClaimsInUI(policyHolderClaims);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Failed to retrieve policy holder information.");
+            alert.showAndWait();
+        }
+    }
+    private void displayClaimsInUI(List<Claim> claims) {
+
+        ObservableList<Claim> data = FXCollections.observableArrayList(claims);
+        ((ClaimTable) tableViewContainer.getChildren().get(0)).setItems(data);
     }
 
     private void openFileClaimForm(ActionEvent actionEvent) {
@@ -124,5 +163,9 @@ public class PolicyHolderController implements Initializable {
 //            alert.showAndWait();
 //        }
 //    }
-
+// Implement this method to obtain the policy holder based on your application logic
+private PolicyHolder obtainPolicyHolder() {
+    // You need to implement how to obtain the policy holder object here
+    return null; // Dummy return for now
+}
 }
