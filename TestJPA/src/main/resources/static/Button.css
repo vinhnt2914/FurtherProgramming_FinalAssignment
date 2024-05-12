@@ -38,40 +38,92 @@
 }
 
 .table-view {
-    -fx-background-color: #E1E0E9;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12px;
+    -fx-border-color: #F1F2F3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-padding: 16px;
+}
+
+.table-view .column-header {
+    -fx-alignment: center;
+    -fx-background-color: #FFFFFF;
+}
+
+.table-column {
+    -fx-alignment: center;
+    -fx-border-width: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #7971BB transparent;
+    -fx-border-width: 0 0 2px 0;
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: white;
+    -fx-text-fill: #7971BB;
+    -fx-font-size: 14px;
+    -fx-padding: 12px;
+    -fx-alignment: center;
+}
+
+.table-row-cell {
+    -fx-border-width: 1px 0 1px 0;
+    -fx-background-color: white;
+    -fx-border-color: #f1f2f3;
+    -fx-padding: 12px 0;
+    -fx-alignment: center;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.date-picker {
+    -fx-background-color: #f4f4f4;
     -fx-border-color: #b3b3b3;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color:  #F1F1F7;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color:  #F1F1F7;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #7971bb;
+}
+
+/* Calendar Popup */
+.date-picker-popup {
+    -fx-background-color: #7971bb;
+    -fx-border-color: #7971bb;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
 
-.table-view .column-header-background {
-    -fx-background-color: #e0e0e0;
-    -fx-border-radius: 5 5 0 0;
-}
-
-.table-view .column-header .label {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #757292;
-    -fx-padding: 5px;
-}
-
-.table-view .column-header:hover .label {
-    -fx-background-color: #d0d0d0;
-}
-
-.table-row-cell {
+/* Calendar Days */
+.date-picker-popup .day-cell {
     -fx-background-color: #ffffff;
-    -fx-padding: 5px;
     -fx-text-fill: #333333;
-    -fx-font-size: 13px;
 }
 
-.table-row-cell:selected {
-    -fx-background-color: #d9eaff; /* Selected row background */
-    -fx-text-fill: #000000;
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #f0f8ff;
 }
 
-.table-row-cell:hover {
-    -fx-background-color: #f0f8ff; /* Hover effect */
+.text-field {
+    -fx-border-color: #7971bb;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
 }
