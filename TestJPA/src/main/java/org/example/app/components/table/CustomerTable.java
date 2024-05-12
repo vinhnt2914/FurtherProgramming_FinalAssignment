@@ -52,4 +52,11 @@ public abstract class CustomerTable<T extends Customer> extends TableView<T> {
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     }
+
+    public static class ConcreteCustomerTable extends CustomerTable<Customer> {
+
+        public ConcreteCustomerTable() {
+            super();
+        }
+    }
 }

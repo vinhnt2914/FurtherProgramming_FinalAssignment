@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ClaimTable extends TableView<Claim> {
-    @FXML TableView<Claim> claimTable;
+
     @FXML
     private TableColumn<Claim, String> idCol;
     @FXML
@@ -33,11 +33,10 @@ public class ClaimTable extends TableView<Claim> {
     private TableColumn<Claim, ClaimStatus> statusCol;
     @FXML
     private TableColumn<Claim, String> bankingInfoCol;
+
     private ClaimRepository repository;
 
     public ClaimTable() {
-        // Set up claim repository
-        this.repository = new ClaimRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -51,9 +50,9 @@ public class ClaimTable extends TableView<Claim> {
         setUpTableView();
     }
 
-
     private void setUpTableView() {
-        // Set up table columns
+        repository = new ClaimRepository();
+
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         insuredPersonCol.setCellValueFactory(new PropertyValueFactory<>("insuredPerson"));
         cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
@@ -63,17 +62,13 @@ public class ClaimTable extends TableView<Claim> {
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         bankingInfoCol.setCellValueFactory(new PropertyValueFactory<>("bankingInfo"));
 
-        // Populate table view data
         populateTableView();
     }
 
     private void populateTableView() {
-        // Data is not formatted
         List<Claim> claimList = repository.getAll();
-        // Format the data
         ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
-        claimTable.setItems(data);
+        setItems(data);
         repository.close();
     }
-
 }
