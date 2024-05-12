@@ -5,7 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.menubar.PolicyHolderMenuBar;
 import org.example.global.GlobalVariable;
+import org.example.global.Role;
 import org.example.utility.PageManager;
 
 import java.io.IOException;
@@ -16,22 +18,30 @@ public class App {
     private BorderPane layout;
     private PageManager pageManager;
     private App() {
-        // Set up page manager
+        setUpStage();
+    }
+
+    private void setUpStage() {
         pageManager = PageManager.getInstance();
-        // Load up the scenes for page manager
         pageManager.setScenes(GlobalVariable.getRole());
         // Set up the app
         mainStage = new Stage();
-        mainStage.setMaximized(false);
         layout = new BorderPane();
 
-        switchScene("dashboard");
-        mainStage.setMaximized(false);
+        switchScene("info");
+        setUpMenuBar();
 
         Scene scene = new Scene(layout);
         mainStage.setScene(scene);
-
         mainStage.show();
+    }
+
+    private void setUpMenuBar() {
+        Role role = GlobalVariable.getRole();
+        switch (role) {
+            case PolicyHolder -> layout.setTop(new PolicyHolderMenuBar());
+            // More to come
+        }
     }
 
     public static App getInstance() {
@@ -41,7 +51,7 @@ public class App {
         return instance;
     }
 
-    private void switchScene(String sceneName) {
+    public void switchScene(String sceneName) {
         try {
             Parent scene = pageManager.getScene(sceneName);
             layout.setCenter(scene);

@@ -6,8 +6,12 @@ import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
 import org.example.model.provider.InsuranceSurveyor;
 
+import java.net.URL;
+
+
 public class GlobalVariable {
     private static Role role;
+    private static User user;
     private static int userID;
 
     public static Role getRole() {
@@ -30,5 +34,13 @@ public class GlobalVariable {
 
     public static void setUserID(int userID) {
         GlobalVariable.userID = userID;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        GlobalVariable.user = user;
     }
 }

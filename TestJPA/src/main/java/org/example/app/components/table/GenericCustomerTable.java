@@ -2,17 +2,15 @@ package org.example.app.components.table;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.customer.Customer;
-import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 import java.net.URL;
 
-public abstract class CustomerTable<T extends Customer> extends TableView<T> {
+public abstract class GenericCustomerTable<T extends Customer> extends TableView<T> {
     @FXML
     protected TableView<T> customerTableView;
     @FXML
@@ -26,7 +24,7 @@ public abstract class CustomerTable<T extends Customer> extends TableView<T> {
     @FXML
     protected TableColumn<T, String> addressCol;
 
-    public CustomerTable() {
+    public GenericCustomerTable() {
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

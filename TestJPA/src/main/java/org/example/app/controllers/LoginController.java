@@ -38,6 +38,7 @@ public class LoginController implements Initializable{
         User user = repository.findUser(username, password);
         GlobalVariable.setRole(user);
         GlobalVariable.setUserID(user.getId());
+        GlobalVariable.setUser(user);
         System.out.println("User logged in: " + GlobalVariable.getUserID());
         System.out.println("User role: " + GlobalVariable.getRole());
 

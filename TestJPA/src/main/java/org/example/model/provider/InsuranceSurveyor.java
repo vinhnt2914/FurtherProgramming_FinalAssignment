@@ -3,6 +3,7 @@ package org.example.model.provider;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
@@ -25,8 +26,8 @@ public class InsuranceSurveyor extends Provider {
     public InsuranceSurveyor() {
     }
 
-    public Request makeRequest(Customer customer, String content) {
-        Request request = new Request(this, customer, content);
+    public Request makeRequest(Beneficiary customer, String message) {
+        Request request = new Request(this, customer, message);
         requestList.add(request); // Add to the request list
         return request;
     }
@@ -44,4 +45,6 @@ public class InsuranceSurveyor extends Provider {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
 }

@@ -14,7 +14,7 @@ import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
 
-public class SelectInsuredPersonTable extends CustomerTable<Dependant>{
+public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
     private CustomerRepository repository;
     private PolicyHolder policyHolder;
     private TableColumn<Dependant, String> actionCol;

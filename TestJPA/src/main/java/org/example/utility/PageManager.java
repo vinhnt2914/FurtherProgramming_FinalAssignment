@@ -39,10 +39,11 @@ public class PageManager {
     }
 
     private void setScenesForDependant() {
-        scenes.put("dashboard", "dependant.fxml");
+        scenes.put("info", "dependant.fxml");
     }
 
     private void setScenesForPolicyHolder() {
+        scenes.put("info", "customerInfo.fxml");
         scenes.put("dashboard", "policyHolder.fxml");
     }
 }

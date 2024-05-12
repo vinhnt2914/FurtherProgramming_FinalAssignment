@@ -9,7 +9,7 @@ import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
 
-public class DependantTable extends CustomerTable<Dependant>{
+public class DependantTable extends GenericCustomerTable<Dependant> {
     private TableColumn<Dependant, Integer> policyHolderCol;
     private TableColumn<Dependant, Integer> policyOwnerCol;
     private CustomerRepository repository;
