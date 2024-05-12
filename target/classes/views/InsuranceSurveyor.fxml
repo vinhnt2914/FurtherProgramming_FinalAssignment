@@ -14,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceSurveyorController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +22,7 @@
                <children>
                   <HBox prefHeight="63.0" prefWidth="813.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="REQUEST">
+                        <Button id="requestButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="REQUEST">
                            <HBox.margin>
                               <Insets left="15.0" right="20.0" top="10.0" />
                            </HBox.margin>
@@ -37,7 +36,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="PROPOSE">
+                        <Button id="proposeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="PROPOSE">
                            <padding>
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
@@ -56,7 +55,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <ComboBox opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
+                  <ComboBox fx:id="swapTableComboBox" opacity="0.69" prefWidth="150.0" promptText="SWAP TABLE" style="-fx-border-width: 2; -fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@../static/Button.css">
                      <padding>
                         <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
                      </padding>
@@ -69,7 +68,7 @@
                   </ComboBox>
                </children>
             </HBox>
-            <TableView prefHeight="705.0" prefWidth="970.0" style="-fx-border-color: black;">
+            <TableView id="tableViewContainer" prefHeight="705.0" prefWidth="970.0" style="-fx-border-color: black;">
               <columns>
                 <TableColumn prefWidth="150.0" text="C1" />
                 <TableColumn minWidth="0.0" prefWidth="154.0" text="C2" />
