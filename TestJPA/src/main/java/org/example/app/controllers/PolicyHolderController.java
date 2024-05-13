@@ -52,6 +52,7 @@ public class PolicyHolderController implements Initializable {
 
         if (tableType.equalsIgnoreCase("Claims")) {
             tableViewContainer.getChildren().add(new ClaimTable());
+            // Swap to claim button (new ClaimButtonSet)
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             tableViewContainer.getChildren().add(new DependantTable());
         } else {
