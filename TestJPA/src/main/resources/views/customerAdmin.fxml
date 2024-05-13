@@ -55,7 +55,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" HBox.hgrow="ALWAYS">
                             <children>
-                        <HBox fx:id="buttonSetContainer" />
+                        <HBox fx:id="buttonSetContainer" alignment="CENTER" minWidth="300.0" spacing="30.0" />
                                 <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                 <ChoiceBox fx:id="swapTableChoiceBox" prefWidth="150.0" />
                             </children>
