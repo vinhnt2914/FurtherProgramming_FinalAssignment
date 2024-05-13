@@ -36,20 +36,23 @@ public class PageManager {
             case Dependant -> setScenesForDependant();
             case PolicyHolder -> setScenesForPolicyHolder();
             case Surveyor -> setScenesForSurveyor();
+            case Manager -> setScenesForManager();
         }
     }
 
     private void setScenesForDependant() {
         scenes.put("info", "dependant.fxml");
     }
-
     private void setScenesForPolicyHolder() {
         scenes.put("info", "customerInfo.fxml");
         scenes.put("dashboard", "policyHolder.fxml");
     }
-
     private void setScenesForSurveyor() {
         scenes.put("info", "insuranceSurveyor.fxml");
         scenes.put("dashboard", "insuranceSurveyor.fxml");
+    }
+    private void setScenesForManager() {
+        scenes.put("info", "insuranceManager.fxml");
+        scenes.put("dashboard", "insuranceManager.fxml");
     }
 }

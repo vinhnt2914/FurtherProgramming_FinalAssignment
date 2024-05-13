@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.table.SelectInsuredPersonTable;
@@ -22,7 +23,7 @@ import org.example.service.ClaimService;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class FileClaimForm extends VBox {
+public class FileClaimForm extends BorderPane {
     @FXML
     private Label insuredPersonLabel;
     @FXML
@@ -64,7 +65,7 @@ public class FileClaimForm extends VBox {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/fileClaimForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
-            VBox rootPane = fxmlLoader.load();
+            BorderPane rootPane = fxmlLoader.load();
             Scene scene = new Scene(rootPane);
             Stage stage = new Stage();
             stage.setScene(scene);

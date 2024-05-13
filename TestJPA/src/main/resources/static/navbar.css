@@ -1,0 +1,17 @@
+.root {
+    -fx-background-color: white;
+}
+
+.hyperlink {
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: linear-gradient(to right, #ed0783, #FC6767);
+    -fx-text-fill: #7971bb;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+}
+
+.hyperlink:hover {
+    -fx-opacity: 0.7;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+}

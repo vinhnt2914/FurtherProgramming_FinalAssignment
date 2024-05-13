@@ -2,12 +2,18 @@
     -fx-background-color: white;
     -fx-text-fill: #FC6767;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
     -fx-border-color: linear-gradient(to right, #ed0783, #FC6767);
     -fx-border-width: 2;
+    -fx-padding: 10;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }
 
 .button:hover {
     -fx-background-color: linear-gradient(to right, #ed0783, #FC6767);
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
@@ -19,22 +25,14 @@
     -fx-font-weight: bold;
     -fx-border-color: linear-gradient(to right, #28fa6a, #a0f6a7);
     -fx-border-width: 2;
+    -fx-font-size: 14px;
 }
 
 #approveButton:hover {
     -fx-background-color: linear-gradient(to right, #28fa6a, #a0f6a7);
     -fx-text-fill: white;
-}
-
-.combo-box {
-    -fx-background-color: white;
-    -fx-border-color: #7971BB;
-    -fx-font-size: 12;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
-}
-
-.combo-box .arrow-button .arrow {
-    -fx-background-color: #7971BB;
 }
 
 .table-view {
@@ -73,8 +71,9 @@
 .table-row-cell {
     -fx-border-width: 1px 0 1px 0;
     -fx-background-color: white;
-    -fx-border-color: #f1f2f3;
-    -fx-padding: 12px 0;
+    -fx-border-color: #7971BB;
+    /*-fx-padding: 12px 0;*/
+    -fx-min-height: 50;
     -fx-alignment: center;
 }
 
@@ -83,47 +82,24 @@
     -fx-border-color: transparent;
 }
 
-.date-picker {
-    -fx-background-color: #f4f4f4;
-    -fx-border-color: #b3b3b3;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
-    -fx-font-size: 14px;
-    -fx-text-fill: #333333;
+.table-row-cell:selected {
+    -fx-background-color: #7971BB; /* Blue background for selected row */
 }
 
-.date-picker .arrow-button {
-    -fx-background-color:  #F1F1F7;
-}
-
-.date-picker .arrow-button:hover {
-    -fx-background-color:  #F1F1F7;
-}
-
-.date-picker .arrow-button .arrow {
-    -fx-background-color: #7971bb;
-}
-
-/* Calendar Popup */
-.date-picker-popup {
-    -fx-background-color: #7971bb;
-    -fx-border-color: #7971bb;
+.check-box {
+    -fx-background-color: white;
+    -fx-border-color: #7971BB;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
 
-/* Calendar Days */
-.date-picker-popup .day-cell {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #333333;
-}
-
-.date-picker-popup .day-cell:hover {
-    -fx-background-color: #f0f8ff;
-}
-
-.text-field {
-    -fx-border-color: #7971bb;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #7971BB;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }
