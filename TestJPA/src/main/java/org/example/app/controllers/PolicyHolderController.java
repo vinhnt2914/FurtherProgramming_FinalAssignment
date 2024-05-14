@@ -13,6 +13,7 @@ import org.example.app.components.table.DependantTable;
 import org.example.app.components.form.FileClaimForm;
 import org.example.app.components.table.RequestTable;
 import org.example.global.CustomerQueryType;
+import org.example.model.customer.PolicyHolder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,8 +28,13 @@ public class PolicyHolderController implements Initializable {
     @FXML
     private Button fileClaimButton;
 
+    private PolicyHolder loggedInPolicyHolder;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize loggedInPolicyHolder with the actual logged-in user's PolicyHolder object
+        // For example:
+        // this.loggedInPolicyHolder = SessionService.getLoggedInPolicyHolder();
         setUpPage();
     }
 
@@ -36,11 +42,11 @@ public class PolicyHolderController implements Initializable {
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
         comboBoxOptions.addAll("Claim", "Dependant", "Request");
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
-        // Set to Claim Table by default
-        this.swapTableChoiceBox.getSelectionModel().select("Claims");
+        this.swapTableChoiceBox.getSelectionModel().select("Claim");
         this.tableViewContainer.getChildren().add(new ClaimTable());
         this.fileClaimButton.setOnAction(this::openFileClaimForm);
         this.swapTableChoiceBox.setOnAction(this::swapTable);
+        this.myClaimButton.setOnAction(this::showMyClaims);
     }
 
     private void openFileClaimForm(ActionEvent actionEvent) {
@@ -53,14 +59,18 @@ public class PolicyHolderController implements Initializable {
 
         if (tableType.equalsIgnoreCase("Claim")) {
             tableViewContainer.getChildren().add(new ClaimTable());
-            // Swap to claim button (new ClaimButtonSet)
         } else if (tableType.equalsIgnoreCase("Dependant")) {
             tableViewContainer.getChildren().add(new DependantTable(
-                    CustomerQueryType.
-                    QueryType.
-                    GET_ALL_DEPENDANT_OF_POLICY_HOLDER));
+                    CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER));
         } else if (tableType.equalsIgnoreCase("Request")) {
             tableViewContainer.getChildren().add(new RequestTable());
         }
+    }
+
+    private void showMyClaims(ActionEvent actionEvent) {
+        tableViewContainer.getChildren().clear();
+        ClaimTable claimTable = new ClaimTable();
+        tableViewContainer.getChildren().add(claimTable);
+        claimTable.populateTableViewForPolicyHolder(loggedInPolicyHolder);
     }
 }

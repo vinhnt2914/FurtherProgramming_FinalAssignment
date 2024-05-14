@@ -60,10 +60,11 @@ public class AddDependantForm extends BorderPane {
 
     private void setUpForm() {
         setUpPolicyHolderComboBox();
-        this.saveButton.setOnAction(this::addDependant);
+        this.saveButton.setOnAction(this::handleSave);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
-    private void addDependant(ActionEvent actionEvent) {
+    private void handleSave(ActionEvent actionEvent) {
         if (validateInput()) {
             PolicyHolder selectedPolicyHolder = policyHolderComboBox.getValue();
             if (selectedPolicyHolder != null) {
@@ -87,6 +88,11 @@ public class AddDependantForm extends BorderPane {
             }
         }
     }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
+    }
+
     private boolean validateInput() {
         if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
                 isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
@@ -119,6 +125,7 @@ public class AddDependantForm extends BorderPane {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void close() {
         stage.close();
     }
@@ -140,7 +147,6 @@ public class AddDependantForm extends BorderPane {
                 };
             }
         });
-
 
         policyHolderComboBox.setButtonCell(new ListCell<>() {
             @Override

@@ -71,7 +71,7 @@ public class AddDependantFormController implements Initializable {
             }
         });
 
-        // Set a custom button cell to display the selected policy holder's name
+
         policyHolderComboBox.setButtonCell(new ListCell<PolicyHolder>() {
             @Override
             protected void updateItem(PolicyHolder item, boolean empty) {

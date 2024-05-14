@@ -59,6 +59,7 @@ public class EditPolicyHolderFormController {
         dialogStage.close();
     }
 
+
     @FXML
     private void handleCancel() {
         dialogStage.close();

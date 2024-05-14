@@ -94,27 +94,7 @@ public class CustomerAdminController implements Initializable {
 
     private void handleAddPolicyHolder() {
         new AddPolicyHolderForm();
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Add Policy Holder");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-//            dialogStage.setScene(new Scene(loader.load()));
-//
-//            AddPolicyHolderFormController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//
-//            dialogStage.showAndWait();
-//            refreshPolicyHolderTable();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("Could not load add form");
-//            alert.setContentText("Please try again.");
-//            alert.showAndWait();
-//        }
+        refreshPolicyHolderTable();
     }
 
     private void handleEditPolicyHolder() {
@@ -122,29 +102,7 @@ public class CustomerAdminController implements Initializable {
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
             new UpdatePolicyHolderForm(selectedPolicyHolder);
-//            try {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Edit Policy Holder");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(tableView.getScene().getWindow());
-//                dialogStage.setScene(new Scene(loader.load()));
-//
-//                EditPolicyHolderFormController controller = loader.getController();
-//                controller.setPolicyHolder(selectedPolicyHolder);
-//                controller.setDialogStage(dialogStage);
-//
-//                dialogStage.showAndWait();
-//                tableView.refresh();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Could not load edit form");
-//                alert.setContentText("Please try again.");
-//                alert.showAndWait();
-//            }
+            refreshPolicyHolderTable();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -170,6 +128,7 @@ public class CustomerAdminController implements Initializable {
                     tableView.getItems().remove(selectedPolicyHolder);
                     System.out.println("Deleted Policy Holder: " + selectedPolicyHolder.getFullName());
                     repository.close();
+                    refreshPolicyHolderTable();
                 }
             });
         } else {
@@ -183,27 +142,7 @@ public class CustomerAdminController implements Initializable {
 
     private void handleAddDependant() {
         new AddDependantForm();
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Add Dependant");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-//            dialogStage.setScene(new Scene(loader.load()));
-//
-//            AddDependantFormController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//
-//            dialogStage.showAndWait();
-//            refreshDependantTable();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("Could not load add form");
-//            alert.setContentText("Please try again.");
-//            alert.showAndWait();
-//        }
+        refreshDependantTable();
     }
 
     private void handleRemoveDependant() {
@@ -211,11 +150,11 @@ public class CustomerAdminController implements Initializable {
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
             CustomerRepository repository = new CustomerRepository();
-
             repository.removeByID(selectedDependant.getId());
             tableView.getItems().remove(selectedDependant);
             System.out.println("Removed Dependant: " + selectedDependant.getFullName());
             repository.close();
+            refreshDependantTable();
         } else {
             System.out.println("No Dependant selected");
         }
@@ -226,28 +165,7 @@ public class CustomerAdminController implements Initializable {
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
             new UpdateDependantForm(selectedDependant);
-//            try {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Update Dependant");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(tableView.getScene().getWindow());
-//                dialogStage.setScene(new Scene(loader.load()));
-//
-//                UpdateDependantFormController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-//                controller.setDependant(selectedDependant);
-//
-//                dialogStage.showAndWait();
-//                refreshDependantTable();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Could not load update form");
-//                alert.setContentText("Please try again.");
-//                alert.showAndWait();
-//            }
+            refreshDependantTable();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -256,8 +174,6 @@ public class CustomerAdminController implements Initializable {
             alert.showAndWait();
         }
     }
-
-
 
     private void refreshPolicyHolderTable() {
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);

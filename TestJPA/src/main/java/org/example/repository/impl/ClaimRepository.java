@@ -32,7 +32,7 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
     @Override
     public List<Claim> getAll() {
-        TypedQuery<Claim> query = em.createQuery("from Claim ", Claim.class);
+        TypedQuery<Claim> query = em.createQuery("from Claim", Claim.class);
         return query.getResultList();
     }
 
@@ -64,8 +64,11 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
     @Override
     public List<Claim> getClaimsByPolicyHolder(PolicyHolder policyHolder) {
+        em.getTransaction().begin();
         TypedQuery<Claim> query = em.createQuery("FROM Claim WHERE insuredPerson = :policyHolder", Claim.class);
         query.setParameter("policyHolder", policyHolder);
-        return query.getResultList();
+        List<Claim> claims = query.getResultList();
+        em.getTransaction().commit();
+        return claims;
     }
 }

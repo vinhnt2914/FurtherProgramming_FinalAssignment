@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -29,6 +30,8 @@ public class UpdateDependantFormController {
     private TextField passwordField;
     @FXML
     private ComboBox<PolicyHolder> policyHolderComboBox;
+    @FXML
+    private Button cancelButton;
 
     private Stage dialogStage;
     private Dependant dependant;
@@ -37,6 +40,7 @@ public class UpdateDependantFormController {
     public void initialize() {
         customerRepository = new CustomerRepository();
         loadPolicyHolders();
+        cancelButton.setOnAction(event -> handleCancel());
     }
 
     public void setDialogStage(Stage dialogStage) {

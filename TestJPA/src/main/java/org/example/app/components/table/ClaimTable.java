@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
+import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.ClaimRepository;
 
 import java.io.IOException;
@@ -36,7 +37,6 @@ public class ClaimTable extends TableView<Claim> {
     private ClaimRepository repository;
 
     public ClaimTable() {
-        // Set up claim repository
         this.repository = new ClaimRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimTable.fxml"));
         fxmlLoader.setRoot(this);
@@ -51,9 +51,7 @@ public class ClaimTable extends TableView<Claim> {
         setUpTableView();
     }
 
-
     private void setUpTableView() {
-        // Set up table columns
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         insuredPersonCol.setCellValueFactory(new PropertyValueFactory<>("insuredPerson"));
         cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
@@ -63,17 +61,19 @@ public class ClaimTable extends TableView<Claim> {
         statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
         bankingInfoCol.setCellValueFactory(new PropertyValueFactory<>("bankingInfo"));
 
-        // Populate table view data
         populateTableView();
     }
 
     private void populateTableView() {
-        // Data is not formatted
         List<Claim> claimList = repository.getAll();
-        // Format the data
         ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
         claimTable.setItems(data);
-        repository.close();
     }
 
+    // New method to populate table with claims of a specific policy holder
+    public void populateTableViewForPolicyHolder(PolicyHolder policyHolder) {
+        List<Claim> claimList = repository.getClaimsByPolicyHolder(policyHolder);
+        ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
+        claimTable.setItems(data);
+    }
 }

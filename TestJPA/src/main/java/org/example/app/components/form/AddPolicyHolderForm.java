@@ -31,7 +31,10 @@ public class AddPolicyHolderForm extends BorderPane {
     private TextField passwordField;
     @FXML
     private Button saveButton;
+    @FXML
+    private Button cancelButton;
     private Stage stage;
+
     public AddPolicyHolderForm() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
@@ -50,10 +53,11 @@ public class AddPolicyHolderForm extends BorderPane {
     }
 
     private void setUpForm() {
-        this.saveButton.setOnAction(this::addPolicyHolder);
+        this.saveButton.setOnAction(this::handleSave);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
-    private void addPolicyHolder(ActionEvent actionEvent) {
+    private void handleSave(ActionEvent actionEvent) {
         if (validateInput()) {
             CustomerRepository repository = new CustomerRepository();
             CustomerService customerService = new CustomerService();
@@ -71,6 +75,11 @@ public class AddPolicyHolderForm extends BorderPane {
             close();
         }
     }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
+    }
+
     private boolean validateInput() {
         if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
                 isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
@@ -103,8 +112,8 @@ public class AddPolicyHolderForm extends BorderPane {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     private void close() {
         stage.close();
     }
-
 }
