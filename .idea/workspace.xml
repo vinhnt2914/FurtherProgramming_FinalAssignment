@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/customerAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyHolderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyHolderController.java" afterDir="false" />
-    </list>
+    <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +15,7 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Enum" />
+        <option value="Record" />
         <option value="Interface" />
         <option value="Class" />
         <option value="FxmlFile" />
@@ -155,9 +152,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TestPopulateUser" />
         <item itemvalue="Application.TestInsuranceSurveyorPage" />
         <item itemvalue="Application.TestInsuranceManager" />
-        <item itemvalue="Application.TestPopulateUser" />
         <item itemvalue="Application.TestTable" />
       </list>
     </recent_temporary>
@@ -188,6 +185,7 @@
       <workItem from="1715502052860" duration="15454000" />
       <workItem from="1715566411619" duration="2322000" />
       <workItem from="1715609088543" duration="3545000" />
+      <workItem from="1715650808015" duration="5601000" />
     </task>
     <servers />
   </component>

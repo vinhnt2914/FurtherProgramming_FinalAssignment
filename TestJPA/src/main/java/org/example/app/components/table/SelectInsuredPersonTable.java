@@ -8,6 +8,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import org.example.app.components.form.FileClaimForm;
+import org.example.global.CustomerQueryType;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
@@ -18,8 +19,9 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
     private PolicyHolder policyHolder;
     private TableColumn<Dependant, String> actionCol;
     private FileClaimForm fileClaimForm;
-    public SelectInsuredPersonTable(FileClaimForm fileClaimForm) {
-        super();
+
+    public SelectInsuredPersonTable(CustomerQueryType.QueryType queryType, FileClaimForm fileClaimForm) {
+        super(queryType);
         this.fileClaimForm = fileClaimForm;
         setUpStage();
     }
@@ -59,7 +61,7 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
     }
 
     @Override
-    void populateTableView() {
+    void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<Dependant> dependantList = repository.getAllDependant();
         ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);

@@ -40,6 +40,39 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return query.getResultList();
     }
 
+    @Override
+    public List<Dependant> getAllDependants() {
+        TypedQuery<Dependant> query = em.createQuery("from Dependant ", Dependant.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Dependant> getAllDependantsOfPolicyHolder(PolicyHolder policyHolder) {
+        TypedQuery<Dependant> query = em.createQuery("from Dependant d where d.policyHolder = :policyHolder", Dependant.class);
+        query.setParameter("policyHolder", policyHolder);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Dependant> getAllDependantsOfPolicyOwner(PolicyOwner policyOwner) {
+        TypedQuery<Dependant> query = em.createQuery("from Dependant d where d.policyOwner = :policyOwner", Dependant.class);
+        query.setParameter("policyOwner", policyOwner);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PolicyHolder> getAllPolicyHolders() {
+        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ", PolicyHolder.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PolicyHolder> getAllPolicyHoldersOfPolicyOwner(PolicyOwner policyOwner) {
+        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder h where h.policyOwner = :policyOwner", PolicyHolder.class);
+        query.setParameter("policyOwner", policyOwner);
+        return query.getResultList();
+    }
+
     // Update general attribute for customer object
     // Username, fullName, id are not allowed
     @Override

@@ -35,6 +35,7 @@ public class PageManager {
         switch (role) {
             case Dependant -> setScenesForDependant();
             case PolicyHolder -> setScenesForPolicyHolder();
+            case PolicyOwner -> setScenesForPolicyOwner();
             case Surveyor -> setScenesForSurveyor();
             case Manager -> setScenesForManager();
         }
@@ -46,6 +47,10 @@ public class PageManager {
     private void setScenesForPolicyHolder() {
         scenes.put("info", "customerInfo.fxml");
         scenes.put("dashboard", "policyHolder.fxml");
+    }
+    private void setScenesForPolicyOwner() {
+        scenes.put("info", "customerInfo.fxml");
+        scenes.put("dashboard", "policyOwner.fxml");
     }
     private void setScenesForSurveyor() {
         scenes.put("info", "insuranceSurveyor.fxml");

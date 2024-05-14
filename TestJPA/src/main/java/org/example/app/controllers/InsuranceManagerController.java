@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.example.app.components.table.*;
+import org.example.global.CustomerQueryType;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Proposal;
 
@@ -68,7 +69,7 @@ public class InsuranceManagerController implements Initializable {
         if (tableType.equalsIgnoreCase("Claim")) {
             tableViewContainer.getChildren().add(new ClaimTable());
         } else if (tableType.equalsIgnoreCase("Customer")) {
-            tableViewContainer.getChildren().add(new CustomerTable());
+            tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
         } else if (tableType.equalsIgnoreCase("Surveyor")) {
             tableViewContainer.getChildren().add(new SurveyorTable());
         } else tableViewContainer.getChildren().add(new ProposalTable());

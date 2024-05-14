@@ -2,8 +2,11 @@ package org.example.model.customer;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class PolicyHolder extends Beneficiary {
@@ -35,10 +38,15 @@ public class PolicyHolder extends Beneficiary {
     public void setDependantSet(Set<Dependant> dependantSet) {
         this.dependantSet = dependantSet;
     }
-//    @Override
-//    public String toString() {
-//        return super();
-//    }
+    public List<Integer> getDependantsIds() {
+        List<Integer> idList = new ArrayList<>();
+        for (Dependant d: dependantSet) idList.add(d.getId());
+//        return dependantSet.stream()
+//                .map(Dependant::getId)
+//                .map(String::valueOf)
+//                .collect(Collectors.joining(","));
+        return idList;
+    }
 
     public static class PolicyHolderBuilder extends GenericBeneficaryBuilder<PolicyHolderBuilder> {
 

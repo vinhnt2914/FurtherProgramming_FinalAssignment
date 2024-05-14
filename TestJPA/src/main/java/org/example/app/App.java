@@ -1,11 +1,11 @@
 package org.example.app;
 
-import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.menubar.PolicyHolderMenuBar;
+import org.example.app.components.menubar.PolicyOwnerMenuBar;
 import org.example.app.components.menubar.SurveyorMenuBar;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
@@ -42,6 +42,7 @@ public class App {
         switch (role) {
             case PolicyHolder -> layout.setTop(new PolicyHolderMenuBar());
             case Surveyor -> layout.setTop(new SurveyorMenuBar());
+            case PolicyOwner -> layout.setTop(new PolicyOwnerMenuBar());
             // More to come
         }
     }

@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.table.SelectInsuredPersonTable;
+import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.PolicyHolder;
@@ -111,7 +112,7 @@ public class FileClaimForm extends BorderPane {
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {
         System.out.println("HI");
-        new SelectInsuredPersonTable(this);
+        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL,this);
         System.out.println("HELLO");
     }
 

@@ -4,7 +4,11 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import org.example.global.CustomerQueryType;
+import org.example.global.GlobalVariable;
 import org.example.model.customer.Dependant;
+import org.example.model.customer.PolicyHolder;
+import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
@@ -12,8 +16,8 @@ import java.util.List;
 public class DependantTable extends GenericCustomerTable<Dependant> {
     private TableColumn<Dependant, Integer> policyHolderCol;
     private TableColumn<Dependant, Integer> policyOwnerCol;
-    public DependantTable() {
-        super();
+    public DependantTable(CustomerQueryType.QueryType queryType) {
+        super(queryType);
     }
 
 
@@ -41,9 +45,16 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
     }
 
     @Override
-    void populateTableView() {
+    void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
-        List<Dependant> dependantList = repository.getAllDependant();
+        List<Dependant> dependantList = null;
+        switch (queryType) {
+            case GET_ALL_DEPENDANT -> dependantList = repository.getAllDependant();
+            case GET_ALL_DEPENDANT_OF_POLICY_HOLDER ->
+                dependantList = repository.getAllDependantsOfPolicyHolder((PolicyHolder) GlobalVariable.getUser());
+            case GET_ALL_DEPENDANT_OF_POLICY_OWNER ->
+                dependantList = repository.getAllDependantsOfPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+        }
         ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
         customerTableView.setItems(data);
         repository.close();

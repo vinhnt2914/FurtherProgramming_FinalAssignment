@@ -13,6 +13,7 @@ import org.example.app.components.form.RequestForm;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.CustomerTable;
 import org.example.app.components.table.ProposalTable;
+import org.example.global.CustomerQueryType;
 import org.example.model.customer.Customer;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
@@ -152,7 +153,7 @@ public class InsuranceSurveyorController implements Initializable {
             if (selectedOption.equals("Claim")) {
                 tableViewContainer.getChildren().add(new ClaimTable());
             } else if (selectedOption.equals("Customer")) {
-                tableViewContainer.getChildren().add(new CustomerTable());
+                tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
             }
         }
     }

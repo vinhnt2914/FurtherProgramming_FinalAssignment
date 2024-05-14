@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.global.CustomerQueryType;
 import org.example.model.customer.Customer;
-import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +25,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     @FXML
     protected TableColumn<T, String> addressCol;
 
-    public GenericCustomerTable() {
+    public GenericCustomerTable(CustomerQueryType.QueryType queryType) {
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -38,7 +38,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
 
         setUpTableView();
         modifyTableView();
-        populateTableView();
+        populateTableView(queryType);
     }
 
     private URL getFXMLPath() {
@@ -55,5 +55,5 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     }
 
     abstract void modifyTableView();
-    abstract void populateTableView();
+    abstract void populateTableView(CustomerQueryType.QueryType queryType);
 }
