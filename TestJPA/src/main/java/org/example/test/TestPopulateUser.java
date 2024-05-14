@@ -91,6 +91,7 @@ public class TestPopulateUser {
                 .phone("01421234112")
                 .address("Thanh Hoa")
                 .fullName("Dang Trung Kien")
+                .fee(500)
                 .build();
 
         // This line can cause the unsaved transient object error

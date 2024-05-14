@@ -83,4 +83,8 @@ public abstract class GenericMenuBar extends HBox {
     private void openDashboard(ActionEvent actionEvent) {
         App.getInstance().switchScene("dashboard");
     }
+
+    public HBox getMenuBar() {
+        return menuBar;
+    }
 }

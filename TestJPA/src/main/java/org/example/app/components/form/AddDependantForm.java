@@ -81,9 +81,10 @@ public class AddDependantForm extends BorderPane {
                     .password(passwordField.getText()).build();
             dependant.setPolicyHolder(selectedPolicyHolder);
 
+            // Handle policy owner for PolicyOwner role and Admin role
             if (GlobalVariable.getRole() == Role.PolicyOwner) {
                 dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
-            }
+            } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
 
             repository.add(dependant);
             repository.close();

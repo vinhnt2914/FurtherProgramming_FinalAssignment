@@ -25,7 +25,7 @@ public class PageManager {
     }
 
     public Parent getScene(String sceneName) throws IOException {
-        URL pageURL = getClass().getResource("/views/" + scenes.get(sceneName));
+        URL pageURL = getClass().getResource("/views/" + scenes.get(sceneName.toLowerCase()));
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(pageURL);
         return loader.load();

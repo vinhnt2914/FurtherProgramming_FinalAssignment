@@ -16,10 +16,11 @@ public class PolicyOwner extends Customer {
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private Set<Beneficiary> beneficiarySet;
-
+    private double fee;
     public PolicyOwner(PolicyOwnerBuilder builder) {
         super(builder);
         this.beneficiarySet = new HashSet<>();
+        this.fee = builder.fee;
     }
     public PolicyOwner() {
     }
@@ -51,6 +52,11 @@ public class PolicyOwner extends Customer {
 
     public static class PolicyOwnerBuilder extends GenericCustomerBuilder<PolicyOwnerBuilder> {
         protected Set<Beneficiary> beneficiaries;
+        protected double fee;
+        public PolicyOwnerBuilder fee(double fee) {
+            this.fee = fee;
+            return self();
+        }
         @Override
         public PolicyOwner build() {
             return new PolicyOwner(this);
@@ -61,10 +67,7 @@ public class PolicyOwner extends Customer {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("PolicyOwner[id: %s, name: %s]", getId(), getFullName()));
-//        sb.append("\nBeneficiaries:\n");
-//        for (Customer beneficiary : beneficiarySet) {
-//            sb.append(String.format("    %s\n", beneficiary.toString()));
-//        }
+
         return sb.toString();
     }
 
