@@ -13,6 +13,7 @@ import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class UpdateDependantForm extends BorderPane {
     @FXML
@@ -27,6 +28,7 @@ public class UpdateDependantForm extends BorderPane {
     private Button saveButton;
     private Dependant selectedDependant;
     private Stage stage;
+
     public UpdateDependantForm(Dependant dependant) {
         this.selectedDependant = dependant;
         System.out.println("SELECTED DEPENDANT: " + dependant.getId());
@@ -56,7 +58,6 @@ public class UpdateDependantForm extends BorderPane {
     }
 
     private void updateDependant(ActionEvent actionEvent) {
-
         if (isInputValid()) {
             CustomerRepository repository = new CustomerRepository();
 
@@ -69,42 +70,53 @@ public class UpdateDependantForm extends BorderPane {
 
             repository.update(selectedDependant);
             repository.close();
+            close();
         }
-
-        close();
     }
 
     private void close() {
         stage.close();
     }
 
-    // Update this in the future
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (addressField.getText() == null || addressField.getText().isEmpty()) {
+        if (isFieldEmpty(addressField)) {
             errorMessage += "No valid address!\n";
         }
-        if (emailField.getText() == null || emailField.getText().isEmpty()) {
+        if (isFieldEmpty(emailField) || !isValidEmail(emailField.getText())) {
             errorMessage += "No valid email!\n";
         }
-        if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
+        if (isFieldEmpty(phoneField)) {
             errorMessage += "No valid phone!\n";
         }
-        if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
+        if (isFieldEmpty(passwordField)) {
             errorMessage += "No valid password!\n";
         }
 
         if (errorMessage.isEmpty()) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
-            alert.setContentText(errorMessage);
-            alert.showAndWait();
-
+            showAlert("Invalid Fields", "Please correct invalid fields", errorMessage);
             return false;
         }
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
+
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

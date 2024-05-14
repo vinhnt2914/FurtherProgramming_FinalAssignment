@@ -4,9 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.table.SelectManagerTable;
@@ -19,6 +17,7 @@ import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.ProposalRepository;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class ProposalForm extends VBox {
     @FXML
@@ -33,6 +32,7 @@ public class ProposalForm extends VBox {
     private Button selectManagerButton;
     private Claim claim;
     private InsuranceManager manager;
+
     public ProposalForm(Claim claim) {
         this.claim = claim;
         loadFormFromFXML();
@@ -65,17 +65,40 @@ public class ProposalForm extends VBox {
     }
 
     private void submitProposal(ActionEvent actionEvent) {
-        ProposalRepository repository = new ProposalRepository();
-        InsuranceSurveyor surveyor = (InsuranceSurveyor) GlobalVariable.getUser();
-        String message = messageArea.getText();
-        if (message.isEmpty()) message = "Nothing";
-        Proposal proposal = new Proposal(surveyor, claim, manager, message);
-        repository.add(proposal);
-        repository.close();
+        if (validateInput()) {
+            ProposalRepository repository = new ProposalRepository();
+            InsuranceSurveyor surveyor = (InsuranceSurveyor) GlobalVariable.getUser();
+            String message = messageArea.getText();
+            if (message.isEmpty()) message = "Nothing";
+            Proposal proposal = new Proposal(surveyor, claim, manager, message);
+            repository.add(proposal);
+            repository.close();
+        }
     }
 
     public void setManager(InsuranceManager manager) {
         this.manager = manager;
         managerLabel.setText(String.valueOf(manager.getId()));
+    }
+
+    private boolean validateInput() {
+        if (manager == null || isFieldEmpty(messageArea)) {
+            showAlert("All fields must be filled out.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextInputControl field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -17,6 +17,7 @@ import org.example.service.CustomerService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class AddDependantForm extends BorderPane {
     @FXML
@@ -63,28 +64,61 @@ public class AddDependantForm extends BorderPane {
     }
 
     private void addDependant(ActionEvent actionEvent) {
-        PolicyHolder selectedPolicyHolder = policyHolderComboBox.getValue();
-        if (selectedPolicyHolder != null) {
-            CustomerRepository repository = new CustomerRepository();
-            CustomerService customerService = new CustomerService();
+        if (validateInput()) {
+            PolicyHolder selectedPolicyHolder = policyHolderComboBox.getValue();
+            if (selectedPolicyHolder != null) {
+                CustomerRepository repository = new CustomerRepository();
+                CustomerService customerService = new CustomerService();
 
-            Dependant dependant = customerService.makeDependant()
-                    .fullName(nameField.getText())
-                    .username(usernameField.getText())
-                    .address(addressField.getText())
-                    .email(emailField.getText())
-                    .phone(phoneField.getText())
-                    .password(passwordField.getText()).build();
-            dependant.setPolicyHolder(selectedPolicyHolder);
+                Dependant dependant = customerService.makeDependant()
+                        .fullName(nameField.getText())
+                        .username(usernameField.getText())
+                        .address(addressField.getText())
+                        .email(emailField.getText())
+                        .phone(phoneField.getText())
+                        .password(passwordField.getText()).build();
+                dependant.setPolicyHolder(selectedPolicyHolder);
 
-            repository.add(dependant);
-            repository.close();
-            close();
-        } else {
-            System.out.println("Please select a policy holder.");
+                repository.add(dependant);
+                repository.close();
+                close();
+            } else {
+                showAlert("Please select a policy holder.");
+            }
         }
     }
+    private boolean validateInput() {
+        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
+                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+            showAlert("All fields must be filled out.");
+            return false;
+        }
 
+        if (!isValidEmail(emailField.getText())) {
+            showAlert("Please enter a valid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void close() {
         stage.close();
     }
@@ -107,7 +141,7 @@ public class AddDependantForm extends BorderPane {
             }
         });
 
-        // Set a custom button cell to display the selected policy holder's name
+
         policyHolderComboBox.setButtonCell(new ListCell<>() {
             @Override
             protected void updateItem(PolicyHolder item, boolean empty) {

@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.table.SelectInsuredPersonTable;
 import org.example.global.CustomerQueryType;
@@ -23,6 +22,7 @@ import org.example.service.ClaimService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 public class FileClaimForm extends BorderPane {
     @FXML
@@ -53,6 +53,7 @@ public class FileClaimForm extends BorderPane {
     private Beneficiary insuredPerson;
     private CustomerRepository customerRepository;
     private ClaimRepository claimRepository;
+
     public FileClaimForm() {
         customerRepository = new CustomerRepository();
         claimRepository = new ClaimRepository();
@@ -76,7 +77,6 @@ public class FileClaimForm extends BorderPane {
         }
     }
 
-
     private void setUpForm() {
         ObservableList<String> statusOptions = FXCollections.observableArrayList("NEW", "PROCESSING", "DONE");
         this.statusComboBox.setItems(statusOptions);
@@ -91,27 +91,29 @@ public class FileClaimForm extends BorderPane {
     }
 
     private void fileClaim(ActionEvent actionEvent) {
-        String id = idField.getText();
-        LocalDate claimDate = claimDatePicker.getValue();
-        LocalDate examDate = examDatePicker.getValue();
-        double claimAmount = Double.parseDouble(claimAmountField.getText());
-        ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
-        String bankingInfo = bankingInfoField.getText();
-        Claim claim = claimService.makeClaim()
-                .id(id)
-                .insuredPerson(insuredPerson)
-                .claimDate(claimDate)
-                .examDate(examDate)
-                .claimAmount(claimAmount)
-                .status(status)
-                .bankingInfo(bankingInfo)
-                .build();
-        claimRepository.add(claim);
-        claimRepository.close();
+        if (validateInput()) {
+            String id = idField.getText();
+            LocalDate claimDate = claimDatePicker.getValue();
+            LocalDate examDate = examDatePicker.getValue();
+            double claimAmount = Double.parseDouble(claimAmountField.getText());
+            ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
+            String bankingInfo = bankingInfoField.getText();
+            Claim claim = claimService.makeClaim()
+                    .id(id)
+                    .insuredPerson(insuredPerson)
+                    .claimDate(claimDate)
+                    .examDate(examDate)
+                    .claimAmount(claimAmount)
+                    .status(status)
+                    .bankingInfo(bankingInfo)
+                    .build();
+            claimRepository.add(claim);
+            claimRepository.close();
+        }
     }
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {
-        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT,this);
+        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT, this);
     }
 
     public void setInsuredPerson(Beneficiary insuredPerson) {
@@ -121,5 +123,41 @@ public class FileClaimForm extends BorderPane {
                         insuredPerson.getId(),
                         insuredPerson.getFullName()));
         cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+    }
+
+    private boolean validateInput() {
+        if (isFieldEmpty(idField) || claimDatePicker.getValue() == null || examDatePicker.getValue() == null ||
+                isFieldEmpty(claimAmountField) || statusComboBox.getValue() == null || isFieldEmpty(bankingInfoField)) {
+            showAlert("All fields must be filled out.");
+            return false;
+        }
+
+        if (!isValidAmount(claimAmountField.getText())) {
+            showAlert("Please enter a valid claim amount.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidAmount(String amount) {
+        try {
+            Double.parseDouble(amount);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

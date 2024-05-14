@@ -6,9 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.global.GlobalVariable;
@@ -19,7 +17,6 @@ import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.RequestRepository;
 
 import java.io.IOException;
-
 
 public class RequestForm extends VBox {
     @FXML
@@ -58,15 +55,34 @@ public class RequestForm extends VBox {
     }
 
     private void submitRequest(ActionEvent actionEvent) {
-        RequestRepository repository = new RequestRepository();
-        String message = messageArea.getText();
-        if (message.isEmpty()) message = "Nothing";
-        InsuranceSurveyor insuranceSurveyor = (InsuranceSurveyor) GlobalVariable.getUser();
-        Request request = new Request(insuranceSurveyor, claim.getEntireInsuredPerson(), message);
-        repository.add(request);
-        repository.close();
+        if (validateInput()) {
+            RequestRepository repository = new RequestRepository();
+            String message = messageArea.getText();
+            if (message.isEmpty()) message = "Nothing";
+            InsuranceSurveyor insuranceSurveyor = (InsuranceSurveyor) GlobalVariable.getUser();
+            Request request = new Request(insuranceSurveyor, claim.getEntireInsuredPerson(), message);
+            repository.add(request);
+            repository.close();
+        }
     }
 
+    private boolean validateInput() {
+        if (isFieldEmpty(messageArea)) {
+            showAlert("Message field must be filled out.");
+            return false;
+        }
+        return true;
+    }
 
+    private boolean isFieldEmpty(TextInputControl field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

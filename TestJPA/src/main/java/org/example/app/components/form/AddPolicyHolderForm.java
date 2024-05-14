@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -13,6 +14,7 @@ import org.example.repository.impl.CustomerRepository;
 import org.example.service.CustomerService;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class AddPolicyHolderForm extends BorderPane {
     @FXML
@@ -52,22 +54,55 @@ public class AddPolicyHolderForm extends BorderPane {
     }
 
     private void addPolicyHolder(ActionEvent actionEvent) {
-        CustomerRepository repository = new CustomerRepository();
-        CustomerService customerService = new CustomerService();
+        if (validateInput()) {
+            CustomerRepository repository = new CustomerRepository();
+            CustomerService customerService = new CustomerService();
 
-        PolicyHolder policyHolder = customerService.makePolicyHolder()
-                .fullName(nameField.getText())
-                .username(usernameField.getText())
-                .address(addressField.getText())
-                .email(emailField.getText())
-                .phone(phoneField.getText())
-                .password(passwordField.getText()).build();
+            PolicyHolder policyHolder = customerService.makePolicyHolder()
+                    .fullName(nameField.getText())
+                    .username(usernameField.getText())
+                    .address(addressField.getText())
+                    .email(emailField.getText())
+                    .phone(phoneField.getText())
+                    .password(passwordField.getText()).build();
 
-        repository.add(policyHolder);
-        repository.close();
-        close();
+            repository.add(policyHolder);
+            repository.close();
+            close();
+        }
+    }
+    private boolean validateInput() {
+        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
+                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+            showAlert("All fields must be filled out.");
+            return false;
+        }
+
+        if (!isValidEmail(emailField.getText())) {
+            showAlert("Please enter a valid email address.");
+            return false;
+        }
+
+        return true;
     }
 
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void close() {
         stage.close();
     }
