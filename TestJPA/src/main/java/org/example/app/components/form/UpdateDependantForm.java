@@ -11,27 +11,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
+import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class UpdateDependantForm extends BorderPane {
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private Button saveButton;
+    @FXML private TextField addressField, emailField, phoneField, passwordField;
+    @FXML private Button saveButton, cancelButton;
     private Dependant selectedDependant;
     private Stage stage;
+    private CustomerAdminController controller;
 
-    public UpdateDependantForm(Dependant dependant) {
+    public UpdateDependantForm(Dependant dependant, CustomerAdminController controller) {
         this.selectedDependant = dependant;
-        System.out.println("SELECTED DEPENDANT: " + dependant.getId());
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
             fxmlLoader.setRoot(this);
@@ -53,30 +47,33 @@ public class UpdateDependantForm extends BorderPane {
         emailField.setText(selectedDependant.getEmail());
         phoneField.setText(selectedDependant.getPhone());
         passwordField.setText(selectedDependant.getPassword());
-
         saveButton.setOnAction(this::updateDependant);
+        cancelButton.setOnAction(this::handleCancel);
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
     }
 
     private void updateDependant(ActionEvent actionEvent) {
         if (isInputValid()) {
             CustomerRepository repository = new CustomerRepository();
-
             selectedDependant.setAddress(addressField.getText());
             selectedDependant.setEmail(emailField.getText());
             selectedDependant.setPhone(phoneField.getText());
             selectedDependant.setPassword(passwordField.getText());
 
-            System.out.println("UPDATED DEPENDANT: " + selectedDependant);
-
             repository.update(selectedDependant);
             repository.close();
             close();
+            controller.refreshDependantTable();  // Refresh the table
         }
     }
 
     private void close() {
         stage.close();
     }
+
 
     private boolean isInputValid() {
         String errorMessage = "";

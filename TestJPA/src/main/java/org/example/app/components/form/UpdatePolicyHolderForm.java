@@ -11,26 +11,25 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
+import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class UpdatePolicyHolderForm extends BorderPane {
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private Button saveButton;
+    @FXML private TextField addressField;
+    @FXML private TextField emailField;
+    @FXML private TextField phoneField;
+    @FXML private TextField passwordField;
+    @FXML private Button saveButton;
+    @FXML private Button cancelButton;
     private PolicyHolder selectedPolicyHolder;
     private Stage stage;
+    private CustomerAdminController controller;  // Reference to the controller
 
-    public UpdatePolicyHolderForm(PolicyHolder policyHolder) {
+    public UpdatePolicyHolderForm(PolicyHolder policyHolder, CustomerAdminController controller) {
         this.selectedPolicyHolder = policyHolder;
+        this.controller = controller;  // Store the controller reference
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
@@ -53,8 +52,8 @@ public class UpdatePolicyHolderForm extends BorderPane {
         emailField.setText(selectedPolicyHolder.getEmail());
         phoneField.setText(selectedPolicyHolder.getPhone());
         passwordField.setText(selectedPolicyHolder.getPassword());
-
         saveButton.setOnAction(this::updatePolicyHolder);
+        cancelButton.setOnAction(this::handleCancel);
     }
 
     private void updatePolicyHolder(ActionEvent actionEvent) {
@@ -66,18 +65,20 @@ public class UpdatePolicyHolderForm extends BorderPane {
             selectedPolicyHolder.setPhone(phoneField.getText());
             selectedPolicyHolder.setPassword(passwordField.getText());
 
-            System.out.println("UPDATED POLICY HOLDER: " + selectedPolicyHolder);
-
             repository.update(selectedPolicyHolder);
             repository.close();
             close();
+            controller.refreshPolicyHolderTable();  // Refresh the table here
         }
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
     }
 
     private void close() {
         stage.close();
     }
-
     private boolean isInputValid() {
         String errorMessage = "";
 

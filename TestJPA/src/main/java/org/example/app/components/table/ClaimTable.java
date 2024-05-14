@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class ClaimTable extends TableView<Claim> {
-    @FXML TableView<Claim> claimTable;
     @FXML
     private TableColumn<Claim, String> idCol;
     @FXML
@@ -34,7 +33,9 @@ public class ClaimTable extends TableView<Claim> {
     private TableColumn<Claim, ClaimStatus> statusCol;
     @FXML
     private TableColumn<Claim, String> bankingInfoCol;
+
     private ClaimRepository repository;
+    private ObservableList<Claim> data;
 
     public ClaimTable() {
         this.repository = new ClaimRepository();
@@ -66,14 +67,19 @@ public class ClaimTable extends TableView<Claim> {
 
     private void populateTableView() {
         List<Claim> claimList = repository.getAll();
-        ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
-        claimTable.setItems(data);
+        data = FXCollections.observableArrayList(claimList);
+        setItems(data);
     }
 
-    // New method to populate table with claims of a specific policy holder
+    public void refreshClaimTable() {
+        data.clear();
+        data.addAll(repository.getAll());
+    }
+
+    // Method to populate table with claims of a specific policy holder
     public void populateTableViewForPolicyHolder(PolicyHolder policyHolder) {
         List<Claim> claimList = repository.getClaimsByPolicyHolder(policyHolder);
-        ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
-        claimTable.setItems(data);
+        data.clear();
+        data.addAll(claimList);
     }
 }

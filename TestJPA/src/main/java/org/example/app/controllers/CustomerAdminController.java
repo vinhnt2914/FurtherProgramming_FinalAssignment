@@ -93,16 +93,14 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleAddPolicyHolder() {
-        new AddPolicyHolderForm();
-        refreshPolicyHolderTable();
+        AddPolicyHolderForm addPolicyHolderForm = new AddPolicyHolderForm(this);
     }
 
     private void handleEditPolicyHolder() {
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder);
-            refreshPolicyHolderTable();
+            UpdatePolicyHolderForm updateForm = new UpdatePolicyHolderForm(selectedPolicyHolder, this);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -111,6 +109,7 @@ public class CustomerAdminController implements Initializable {
             alert.showAndWait();
         }
     }
+
 
     private void handleDeletePolicyHolder() {
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
@@ -141,9 +140,10 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleAddDependant() {
-        new AddDependantForm();
-        refreshDependantTable();
+        AddDependantForm addDependantForm = new AddDependantForm(this);  // Pass reference of this controller
+
     }
+
 
     private void handleRemoveDependant() {
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
@@ -164,8 +164,9 @@ public class CustomerAdminController implements Initializable {
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant);
-            refreshDependantTable();
+
+            UpdateDependantForm updateForm = new UpdateDependantForm(selectedDependant, this);
+
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -175,12 +176,13 @@ public class CustomerAdminController implements Initializable {
         }
     }
 
-    private void refreshPolicyHolderTable() {
+
+    public void refreshPolicyHolderTable() {
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
         tableViewContainer.getChildren().setAll(policyHolderTable);
     }
 
-    private void refreshDependantTable() {
+    public void refreshDependantTable() {
         DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
         tableViewContainer.getChildren().setAll(dependantTable);
     }

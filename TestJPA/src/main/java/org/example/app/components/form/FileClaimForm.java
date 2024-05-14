@@ -83,32 +83,49 @@ public class FileClaimForm extends BorderPane {
         this.selectInsuredPersonButton.setOnAction(this::openSelectInsuredPerson);
         this.selectMyClaimButton.setOnAction(this::setToMyClaim);
         this.submitButton.setOnAction(this::fileClaim);
+        this.cancelButton.setOnAction(this::handleCancel);
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     private void setToMyClaim(ActionEvent actionEvent) {
         PolicyHolder policyHolder = (PolicyHolder) customerRepository.findByID(GlobalVariable.getUserID());
-        setInsuredPerson(policyHolder);
+        if (policyHolder != null) {
+            setInsuredPerson(policyHolder);
+        } else {
+            showAlert("Data Retrieval Error");
+        }
     }
 
     private void fileClaim(ActionEvent actionEvent) {
         if (validateInput()) {
-            String id = idField.getText();
-            LocalDate claimDate = claimDatePicker.getValue();
-            LocalDate examDate = examDatePicker.getValue();
-            double claimAmount = Double.parseDouble(claimAmountField.getText());
-            ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
-            String bankingInfo = bankingInfoField.getText();
-            Claim claim = claimService.makeClaim()
-                    .id(id)
-                    .insuredPerson(insuredPerson)
-                    .claimDate(claimDate)
-                    .examDate(examDate)
-                    .claimAmount(claimAmount)
-                    .status(status)
-                    .bankingInfo(bankingInfo)
-                    .build();
-            claimRepository.add(claim);
-            claimRepository.close();
+            if (insuredPerson != null && insuredPerson.getInsuranceCard() != null) {
+                String id = idField.getText();
+                LocalDate claimDate = claimDatePicker.getValue();
+                LocalDate examDate = examDatePicker.getValue();
+                double claimAmount = Double.parseDouble(claimAmountField.getText());
+                ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
+                String bankingInfo = bankingInfoField.getText();
+
+                Claim claim = claimService.makeClaim()
+                        .id(id)
+                        .insuredPerson(insuredPerson)
+                        .claimDate(claimDate)
+                        .examDate(examDate)
+                        .claimAmount(claimAmount)
+                        .status(status)
+                        .bankingInfo(bankingInfo)
+                        .build();
+                claimRepository.add(claim);
+                claimRepository.close();
+                Stage stage = (Stage) submitButton.getScene().getWindow();
+                stage.close();
+            } else {
+                showAlert("Please select a valid insured person with an insurance card.");
+            }
         }
     }
 
@@ -118,11 +135,19 @@ public class FileClaimForm extends BorderPane {
 
     public void setInsuredPerson(Beneficiary insuredPerson) {
         this.insuredPerson = insuredPerson;
+
         insuredPersonLabel.setText(
                 String.format("%s - %s",
                         insuredPerson.getId(),
                         insuredPerson.getFullName()));
-        cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+
+
+        if (insuredPerson.getInsuranceCard() != null) {
+            cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+        } else {
+
+            cardNumberLabel.setText("No insurance card available");
+        }
     }
 
     private boolean validateInput() {
@@ -159,5 +184,8 @@ public class FileClaimForm extends BorderPane {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+
     }
+
+
 }

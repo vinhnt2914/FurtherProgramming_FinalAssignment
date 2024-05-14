@@ -14,6 +14,7 @@ import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> {
@@ -49,13 +50,14 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> 
             @Override
             public void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
+                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
                     setGraphic(null);
                 } else {
                     btn.setOnAction(event -> setSelectedInsuredPerson(getTableRow().getItem()));
                     setGraphic(btn);
                 }
             }
+
         });
 
         customerTableView.getColumns().add(actionCol);
@@ -64,17 +66,16 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> 
     @Override
     void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
-        List<Beneficiary> beneficiaryList = null;
-        switch (queryType) {
-            case GET_ALL_DEPENDANT -> {
-                List<Dependant> data = repository.getAllDependants();
-                beneficiaryList.addAll(data);
-            }
-            case GET_ALL_POLICY_HOLDER -> {
-                List<PolicyHolder> data = repository.getAllPolicyHolders();
-                beneficiaryList.addAll(data);
-            }
+        List<Beneficiary> beneficiaryList = new ArrayList<>();
+
+        if (queryType == CustomerQueryType.QueryType.GET_ALL_DEPENDANT) {
+            List<Dependant> data = repository.getAllDependants();
+            beneficiaryList.addAll(data); // Make sure data is not null before adding
+        } else if (queryType == CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER) {
+            List<PolicyHolder> data = repository.getAllPolicyHolders();
+            beneficiaryList.addAll(data); // Make sure data is not null before adding
         }
+
         ObservableList<Beneficiary> data = FXCollections.observableArrayList(beneficiaryList);
         customerTableView.setItems(data);
         repository.close();

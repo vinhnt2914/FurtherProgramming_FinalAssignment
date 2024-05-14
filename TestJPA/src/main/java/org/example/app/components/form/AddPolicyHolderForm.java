@@ -4,38 +4,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 import org.example.service.CustomerService;
+import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class AddPolicyHolderForm extends BorderPane {
-    @FXML
-    private TextField nameField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button cancelButton;
+    @FXML private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
+    @FXML private Button saveButton, cancelButton;
     private Stage stage;
+    private CustomerAdminController controller;
 
-    public AddPolicyHolderForm() {
+    public AddPolicyHolderForm(CustomerAdminController controller) {
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
             fxmlLoader.setRoot(this);
@@ -73,6 +60,7 @@ public class AddPolicyHolderForm extends BorderPane {
             repository.add(policyHolder);
             repository.close();
             close();
+            controller.refreshPolicyHolderTable(); // Refresh the table after adding
         }
     }
 

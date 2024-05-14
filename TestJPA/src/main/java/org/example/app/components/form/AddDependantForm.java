@@ -9,11 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 import org.example.service.CustomerService;
+import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,8 +39,10 @@ public class AddDependantForm extends BorderPane {
     @FXML
     private Button cancelButton;
     private Stage stage;
+    private CustomerAdminController controller;
 
-    public AddDependantForm() {
+    public AddDependantForm(CustomerAdminController controller) {
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
             fxmlLoader.setRoot(this);
@@ -83,6 +85,7 @@ public class AddDependantForm extends BorderPane {
                 repository.add(dependant);
                 repository.close();
                 close();
+                controller.refreshDependantTable();  // Call to refresh the table
             } else {
                 showAlert("Please select a policy holder.");
             }
@@ -131,20 +134,15 @@ public class AddDependantForm extends BorderPane {
     }
 
     private void setUpPolicyHolderComboBox() {
-        policyHolderComboBox.setCellFactory(new Callback<>() {
+        policyHolderComboBox.setCellFactory(param -> new ListCell<>() {
             @Override
-            public ListCell<PolicyHolder> call(ListView<PolicyHolder> param) {
-                return new ListCell<>() {
-                    @Override
-                    protected void updateItem(PolicyHolder item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item.getFullName());
-                        } else {
-                            setText(null);
-                        }
-                    }
-                };
+            protected void updateItem(PolicyHolder item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item != null) {
+                    setText(item.getFullName());
+                } else {
+                    setText(null);
+                }
             }
         });
 
