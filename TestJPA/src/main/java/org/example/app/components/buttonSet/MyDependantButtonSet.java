@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.form.AddDependantForm;
+import org.example.app.components.form.UpdateDependantForm;
 import org.example.app.components.table.DependantTable;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
@@ -21,8 +23,6 @@ public class MyDependantButtonSet extends HBox {
     private Button deleteButton;
     @FXML
     private Button updateButton;
-    @FXML
-    private Button setPolicyHolderButton;
     private DependantTable dependantTable;
     public MyDependantButtonSet(DependantTable dependantTable) {
         this.dependantTable = dependantTable;
@@ -35,20 +35,20 @@ public class MyDependantButtonSet extends HBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        setUpButtonSet();
     }
 
     private void setUpButtonSet() {
         this.addButton.setOnAction(this::add);
         this.deleteButton.setOnAction(this::delete);
         this.updateButton.setOnAction(this::update);
-        this.setPolicyHolderButton.setOnAction(this::setPolicyHolder);
-    }
-
-    private void setPolicyHolder(ActionEvent actionEvent) {
     }
 
     private void update(ActionEvent actionEvent) {
-
+        Dependant selectedDependant = dependantTable.getSelectionModel().getSelectedItem();
+        if (selectedDependant != null) new UpdateDependantForm(selectedDependant);
+        else new ErrorAlert("Please select a dependant");
     }
 
     private void delete(ActionEvent actionEvent) {

@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.app.components.buttonSet.DependantButtonSet;
+import org.example.app.components.buttonSet.MyDependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
 import org.example.app.components.form.AddDependantForm;
 import org.example.app.components.form.AddPolicyHolderForm;
@@ -67,12 +68,12 @@ public class CustomerAdminController implements Initializable {
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
-            DependantButtonSet dependantButtonSet = new DependantButtonSet();
+//            DependantButtonSet dependantButtonSet = new DependantButtonSet();
 
             tableViewContainer.getChildren().add(dependantTable);
-            buttonSetContainer.getChildren().add(dependantButtonSet);
+            buttonSetContainer.getChildren().add(new MyDependantButtonSet(dependantTable));
 
-            setDependantButtonActions();
+//            setDependantButtonActions();
         }
     }
 
