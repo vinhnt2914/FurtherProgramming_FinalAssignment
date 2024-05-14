@@ -13,6 +13,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.app.components.buttonSet.DependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
+import org.example.app.components.form.AddDependantForm;
+import org.example.app.components.form.AddPolicyHolderForm;
+import org.example.app.components.form.UpdateDependantForm;
+import org.example.app.components.form.UpdatePolicyHolderForm;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
 import org.example.global.CustomerQueryType;
@@ -20,7 +24,6 @@ import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,11 +35,8 @@ public class CustomerAdminController implements Initializable {
     @FXML
     private ChoiceBox<String> swapTableChoiceBox;
 
-    private CustomerRepository customerRepository;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        customerRepository = new CustomerRepository();
         setUpPage();
     }
 
@@ -93,56 +93,58 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleAddPolicyHolder() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Add Policy Holder");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-            dialogStage.setScene(new Scene(loader.load()));
-
-            AddPolicyHolderFormController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-
-            dialogStage.showAndWait();
-            refreshPolicyHolderTable();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Could not load add form");
-            alert.setContentText("Please try again.");
-            alert.showAndWait();
-        }
+        new AddPolicyHolderForm();
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
+//            Stage dialogStage = new Stage();
+//            dialogStage.setTitle("Add Policy Holder");
+//            dialogStage.initModality(Modality.WINDOW_MODAL);
+//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
+//            dialogStage.setScene(new Scene(loader.load()));
+//
+//            AddPolicyHolderFormController controller = loader.getController();
+//            controller.setDialogStage(dialogStage);
+//
+//            dialogStage.showAndWait();
+//            refreshPolicyHolderTable();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error");
+//            alert.setHeaderText("Could not load add form");
+//            alert.setContentText("Please try again.");
+//            alert.showAndWait();
+//        }
     }
 
     private void handleEditPolicyHolder() {
-        TableView<PolicyHolder> tableView = (TableView<PolicyHolder>) tableViewContainer.getChildren().get(0);
+        PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/editPolicyHolderForm.fxml"));
-                Stage dialogStage = new Stage();
-                dialogStage.setTitle("Edit Policy Holder");
-                dialogStage.initModality(Modality.WINDOW_MODAL);
-                dialogStage.initOwner(tableView.getScene().getWindow());
-                dialogStage.setScene(new Scene(loader.load()));
-
-                EditPolicyHolderFormController controller = loader.getController();
-                controller.setPolicyHolder(selectedPolicyHolder);
-                controller.setDialogStage(dialogStage);
-
-                dialogStage.showAndWait();
-                tableView.refresh();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Could not load edit form");
-                alert.setContentText("Please try again.");
-                alert.showAndWait();
-            }
+            new UpdatePolicyHolderForm(selectedPolicyHolder);
+//            try {
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
+//                Stage dialogStage = new Stage();
+//                dialogStage.setTitle("Edit Policy Holder");
+//                dialogStage.initModality(Modality.WINDOW_MODAL);
+//                dialogStage.initOwner(tableView.getScene().getWindow());
+//                dialogStage.setScene(new Scene(loader.load()));
+//
+//                EditPolicyHolderFormController controller = loader.getController();
+//                controller.setPolicyHolder(selectedPolicyHolder);
+//                controller.setDialogStage(dialogStage);
+//
+//                dialogStage.showAndWait();
+//                tableView.refresh();
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error");
+//                alert.setHeaderText("Could not load edit form");
+//                alert.setContentText("Please try again.");
+//                alert.showAndWait();
+//            }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -153,7 +155,7 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleDeletePolicyHolder() {
-        TableView<PolicyHolder> tableView = (TableView<PolicyHolder>) tableViewContainer.getChildren().get(0);
+        PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -163,9 +165,11 @@ public class CustomerAdminController implements Initializable {
 
             confirmationAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    customerRepository.removeByID(selectedPolicyHolder.getId());
+                    CustomerRepository repository = new CustomerRepository();
+                    repository.removeByID(selectedPolicyHolder.getId());
                     tableView.getItems().remove(selectedPolicyHolder);
                     System.out.println("Deleted Policy Holder: " + selectedPolicyHolder.getFullName());
+                    repository.close();
                 }
             });
         } else {
@@ -178,67 +182,72 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleAddDependant() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Add Dependant");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-            dialogStage.setScene(new Scene(loader.load()));
-
-            AddDependantFormController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-
-            dialogStage.showAndWait();
-            refreshDependantTable();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Could not load add form");
-            alert.setContentText("Please try again.");
-            alert.showAndWait();
-        }
+        new AddDependantForm();
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
+//            Stage dialogStage = new Stage();
+//            dialogStage.setTitle("Add Dependant");
+//            dialogStage.initModality(Modality.WINDOW_MODAL);
+//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
+//            dialogStage.setScene(new Scene(loader.load()));
+//
+//            AddDependantFormController controller = loader.getController();
+//            controller.setDialogStage(dialogStage);
+//
+//            dialogStage.showAndWait();
+//            refreshDependantTable();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error");
+//            alert.setHeaderText("Could not load add form");
+//            alert.setContentText("Please try again.");
+//            alert.showAndWait();
+//        }
     }
 
     private void handleRemoveDependant() {
-        TableView<Dependant> tableView = (TableView<Dependant>) tableViewContainer.getChildren().get(0);
+        DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            customerRepository.removeByID(selectedDependant.getId());
+            CustomerRepository repository = new CustomerRepository();
+
+            repository.removeByID(selectedDependant.getId());
             tableView.getItems().remove(selectedDependant);
             System.out.println("Removed Dependant: " + selectedDependant.getFullName());
+            repository.close();
         } else {
             System.out.println("No Dependant selected");
         }
     }
 
     private void handleUpdateDependant() {
-        TableView<Dependant> tableView = (TableView<Dependant>) tableViewContainer.getChildren().get(0);
+        DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
-                Stage dialogStage = new Stage();
-                dialogStage.setTitle("Update Dependant");
-                dialogStage.initModality(Modality.WINDOW_MODAL);
-                dialogStage.initOwner(tableView.getScene().getWindow());
-                dialogStage.setScene(new Scene(loader.load()));
-
-                UpdateDependantFormController controller = loader.getController();
-                controller.setDialogStage(dialogStage);
-                controller.setDependant(selectedDependant);
-
-                dialogStage.showAndWait();
-                refreshDependantTable();
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Could not load update form");
-                alert.setContentText("Please try again.");
-                alert.showAndWait();
-            }
+            new UpdateDependantForm(selectedDependant);
+//            try {
+//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
+//                Stage dialogStage = new Stage();
+//                dialogStage.setTitle("Update Dependant");
+//                dialogStage.initModality(Modality.WINDOW_MODAL);
+//                dialogStage.initOwner(tableView.getScene().getWindow());
+//                dialogStage.setScene(new Scene(loader.load()));
+//
+//                UpdateDependantFormController controller = loader.getController();
+//                controller.setDialogStage(dialogStage);
+//                controller.setDependant(selectedDependant);
+//
+//                dialogStage.showAndWait();
+//                refreshDependantTable();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error");
+//                alert.setHeaderText("Could not load update form");
+//                alert.setContentText("Please try again.");
+//                alert.showAndWait();
+//            }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");

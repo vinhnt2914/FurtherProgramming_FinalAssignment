@@ -14,8 +14,8 @@ import org.example.repository.impl.CustomerRepository;
 import java.util.List;
 
 public class DependantTable extends GenericCustomerTable<Dependant> {
-    private TableColumn<Dependant, Integer> policyHolderCol;
-    private TableColumn<Dependant, Integer> policyOwnerCol;
+    private TableColumn<Dependant, String> policyHolderCol;
+    private TableColumn<Dependant, String> policyOwnerCol;
     public DependantTable(CustomerQueryType.QueryType queryType) {
         super(queryType);
     }
@@ -27,11 +27,19 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
         policyOwnerCol = new TableColumn<>("Policy Owner");
         policyHolderCol.setCellValueFactory(cellData -> {
             Dependant dependant = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(dependant.getPolicyHolder().getId());
+            PolicyHolder policyHolder = dependant.getPolicyHolder();
+            String id;
+            if (policyHolder == null) id = "No policy holder";
+            else id = String.valueOf(policyHolder.getId());
+            return new ReadOnlyObjectWrapper<>(id);
         });
         policyOwnerCol.setCellValueFactory(cellData -> {
             Dependant dependant = cellData.getValue();
-            return new ReadOnlyObjectWrapper<>(dependant.getPolicyOwner().getId());
+            PolicyOwner policyHolder = dependant.getPolicyOwner();
+            String id;
+            if (policyHolder == null) id = "No policy owner";
+            else id = String.valueOf(policyHolder.getId());
+            return new ReadOnlyObjectWrapper<>(id);
         });
 
         policyHolderCol.setMinWidth(200);

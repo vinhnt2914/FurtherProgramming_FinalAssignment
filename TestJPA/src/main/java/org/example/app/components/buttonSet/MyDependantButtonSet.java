@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import org.example.app.components.form.AddDependantForm;
 import org.example.app.components.table.DependantTable;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
@@ -58,5 +59,6 @@ public class MyDependantButtonSet extends HBox {
     }
 
     private void add(ActionEvent actionEvent) {
+        new AddDependantForm();
     }
 }

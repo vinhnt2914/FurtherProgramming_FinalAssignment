@@ -54,7 +54,7 @@ public class AddDependantFormController implements Initializable {
         policyHolderComboBox.setItems(policyHolderList);
 
 
-        policyHolderComboBox.setCellFactory(new Callback<ListView<PolicyHolder>, ListCell<PolicyHolder>>() {
+        policyHolderComboBox.setCellFactory(new Callback<>() {
             @Override
             public ListCell<PolicyHolder> call(ListView<PolicyHolder> param) {
                 return new ListCell<PolicyHolder>() {

@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.EditPolicyHolderFormController">
+<fx:root type="BorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
     <center>
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="801.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER_LEFT" minWidth="300.0">
                     <children>
-                        <Label text="Name:">
+                        <Label text="Password">
                             <HBox.margin>
                                 <Insets right="50.0" />
                             </HBox.margin>
                         </Label>
                         <HBox HBox.hgrow="ALWAYS" />
-                        <TextField fx:id="nameField" minWidth="200.0" />
+                        <TextField fx:id="passwordField" minWidth="200.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" minWidth="300.0">
@@ -93,4 +93,4 @@
             </BorderPane.margin>
         </HBox>
     </bottom>
-</BorderPane>
+</fx:root>
