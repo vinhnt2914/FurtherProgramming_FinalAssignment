@@ -1,9 +1,6 @@
 package org.example.repository;
 
-import org.example.model.customer.Customer;
-import org.example.model.customer.Dependant;
-import org.example.model.customer.PolicyHolder;
-import org.example.model.customer.PolicyOwner;
+import org.example.model.customer.*;
 
 import java.util.List;
 
@@ -17,6 +14,7 @@ public interface ICustomerRepository {
     List<Dependant> getAllDependantsOfPolicyOwner(PolicyOwner policyOwner);
     List<PolicyHolder> getAllPolicyHolders();
     List<PolicyHolder> getAllPolicyHoldersOfPolicyOwner(PolicyOwner policyOwner);
+    List<Beneficiary> getAllBeneficiaryOfPolicyOwner(PolicyOwner policyOwner);
     void update(Customer customer);
     Customer removeByID(int id);
 }

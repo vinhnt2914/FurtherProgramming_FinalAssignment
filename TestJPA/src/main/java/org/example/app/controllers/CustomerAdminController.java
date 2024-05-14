@@ -4,15 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.example.app.components.buttonSet.DependantButtonSet;
-import org.example.app.components.buttonSet.MyDependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
 import org.example.app.components.form.AddDependantForm;
 import org.example.app.components.form.AddPolicyHolderForm;
@@ -47,9 +42,12 @@ public class CustomerAdminController implements Initializable {
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         this.swapTableChoiceBox.getSelectionModel().select("Policy Holders");
         this.swapTableChoiceBox.setOnAction(this::swapTable);
-        this.tableViewContainer.getChildren().add(new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER));
-        this.buttonSetContainer.getChildren().add(new PolicyHolderButtonSet());
-        setPolicyHolderButtonActions();
+
+        PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
+        PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
+        this.tableViewContainer.getChildren().add(policyHolderTable);
+        this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
+//        setPolicyHolderButtonActions();
     }
 
     private void swapTable(Event event) {
@@ -59,39 +57,39 @@ public class CustomerAdminController implements Initializable {
 
         if (tableType.equalsIgnoreCase("Policy Holders")) {
             PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
-            PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet();
+            PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
 
             tableViewContainer.getChildren().add(policyHolderTable);
             buttonSetContainer.getChildren().add(policyHolderButtonSet);
 
-            setPolicyHolderButtonActions();
+//            setPolicyHolderButtonActions();
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
-//            DependantButtonSet dependantButtonSet = new DependantButtonSet();
+            DependantButtonSet dependantButtonSet = new DependantButtonSet(dependantTable);
 
             tableViewContainer.getChildren().add(dependantTable);
-            buttonSetContainer.getChildren().add(new MyDependantButtonSet(dependantTable));
+            buttonSetContainer.getChildren().add(dependantButtonSet);
 
 //            setDependantButtonActions();
         }
     }
 
-    private void setPolicyHolderButtonActions() {
-        PolicyHolderButtonSet policyHolderButtonSet = (PolicyHolderButtonSet) buttonSetContainer.getChildren().get(0);
+//    private void setPolicyHolderButtonActions() {
+//        PolicyHolderButtonSet policyHolderButtonSet = (PolicyHolderButtonSet) buttonSetContainer.getChildren().get(0);
+//
+//        policyHolderButtonSet.addButton.setOnAction(event -> handleAddPolicyHolder());
+//        policyHolderButtonSet.editButton.setOnAction(event -> handleEditPolicyHolder());
+//        policyHolderButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyHolder());
+//    }
 
-        policyHolderButtonSet.addButton.setOnAction(event -> handleAddPolicyHolder());
-        policyHolderButtonSet.editButton.setOnAction(event -> handleEditPolicyHolder());
-        policyHolderButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyHolder());
-    }
-
-    private void setDependantButtonActions() {
-        DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
-
-        dependantButtonSet.addButton.setOnAction(event -> handleAddDependant());
-        dependantButtonSet.removeButton.setOnAction(event -> handleRemoveDependant());
-        dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
-    }
+//    private void setDependantButtonActions() {
+//        DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
+//
+//        dependantButtonSet.addButton.setOnAction(event -> handleAddDependant());
+//        dependantButtonSet.removeButton.setOnAction(event -> handleRemoveDependant());
+//        dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
+//    }
 
     private void handleAddPolicyHolder() {
         new AddPolicyHolderForm();

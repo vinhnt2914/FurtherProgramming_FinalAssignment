@@ -7,25 +7,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+import org.example.app.components.form.ClaimForm;
 import org.example.app.components.form.FileClaimForm;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
+import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> {
+public class InsuredPersonTable extends GenericCustomerTable<Beneficiary> {
     private PolicyHolder policyHolder;
     private TableColumn<Beneficiary, String> actionCol;
-    private FileClaimForm fileClaimForm;
+    private ClaimForm claimForm;
 
-    public SelectInsuredPersonTable(CustomerQueryType.QueryType queryType, FileClaimForm fileClaimForm) {
+    public InsuredPersonTable(CustomerQueryType.QueryType queryType, ClaimForm claimForm) {
         super(queryType);
-        this.fileClaimForm = fileClaimForm;
+        this.claimForm = claimForm;
         setUpStage();
     }
 
@@ -72,6 +74,10 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> 
                 List<Dependant> data = repository.getAllDependantsOfPolicyHolder((PolicyHolder) GlobalVariable.getUser());
                 beneficiaryList.addAll(data);
             }
+            case GET_ALL_BENEFICIARY_OF_POLICY_OWNER -> {
+                List<Beneficiary> data = repository.getAllBeneficiaryOfPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+                beneficiaryList.addAll(data);
+            }
         }
         ObservableList<Beneficiary> data = FXCollections.observableArrayList(beneficiaryList);
         customerTableView.setItems(data);
@@ -86,7 +92,7 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> 
 
     private void setSelectedInsuredPerson(Beneficiary dependant) {
         System.out.println("Selected: " + dependant);
-        fileClaimForm.setInsuredPerson(dependant);
+        claimForm.setInsuredPerson(dependant);
         // Close the table view
         Stage stage = (Stage) customerTableView.getScene().getWindow();
         stage.close();

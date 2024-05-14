@@ -73,6 +73,13 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return query.getResultList();
     }
 
+    @Override
+    public List<Beneficiary> getAllBeneficiaryOfPolicyOwner(PolicyOwner policyOwner) {
+        TypedQuery<Beneficiary> query = em.createQuery("from Beneficiary b where b.policyOwner = :policyOwner", Beneficiary.class);
+        query.setParameter("policyOwner", policyOwner);
+        return query.getResultList();
+    }
+
     // Update general attribute for customer object
     // Username, fullName, id are not allowed
     @Override

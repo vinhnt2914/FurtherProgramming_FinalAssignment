@@ -8,7 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.global.GlobalVariable;
+import org.example.global.Role;
 import org.example.model.customer.PolicyHolder;
+import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 import org.example.service.CustomerService;
 
@@ -62,6 +65,10 @@ public class AddPolicyHolderForm extends BorderPane {
                 .email(emailField.getText())
                 .phone(phoneField.getText())
                 .password(passwordField.getText()).build();
+
+        if (GlobalVariable.getRole() == Role.PolicyOwner) {
+            policyHolder.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+        }
 
         repository.add(policyHolder);
         repository.close();

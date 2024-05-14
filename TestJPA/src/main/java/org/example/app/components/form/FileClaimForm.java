@@ -8,11 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.example.app.components.table.SelectInsuredPersonTable;
+import org.example.app.components.table.InsuredPersonTable;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
+import org.example.global.Role;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.enums.ClaimStatus;
@@ -24,7 +24,7 @@ import org.example.service.ClaimService;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class FileClaimForm extends BorderPane {
+public class FileClaimForm extends BorderPane implements ClaimForm{
     @FXML
     private Label insuredPersonLabel;
     @FXML
@@ -78,11 +78,17 @@ public class FileClaimForm extends BorderPane {
 
 
     private void setUpForm() {
+        Role role = GlobalVariable.getRole();
         ObservableList<String> statusOptions = FXCollections.observableArrayList("NEW", "PROCESSING", "DONE");
         this.statusComboBox.setItems(statusOptions);
         this.selectInsuredPersonButton.setOnAction(this::openSelectInsuredPerson);
         this.selectMyClaimButton.setOnAction(this::setToMyClaim);
         this.submitButton.setOnAction(this::fileClaim);
+
+        // Hide the MyClaim button for policy owners
+        if (role == Role.PolicyOwner) {
+            selectMyClaimButton.setVisible(false);
+        }
     }
 
     private void setToMyClaim(ActionEvent actionEvent) {
@@ -111,9 +117,20 @@ public class FileClaimForm extends BorderPane {
     }
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {
-        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER,this);
+        Role role = GlobalVariable.getRole();
+        switch (role) {
+            case PolicyHolder ->
+                    new InsuredPersonTable(
+                            CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER,
+                            this);
+            case PolicyOwner ->
+                    new InsuredPersonTable(
+                            CustomerQueryType.QueryType.GET_ALL_BENEFICIARY_OF_POLICY_OWNER,
+                            this);
+        }
     }
 
+    @Override
     public void setInsuredPerson(Beneficiary insuredPerson) {
         this.insuredPerson = insuredPerson;
         insuredPersonLabel.setText(

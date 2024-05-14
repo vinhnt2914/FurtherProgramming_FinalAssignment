@@ -1,40 +1,64 @@
 package org.example.app.components.buttonSet;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.event.ActionEvent;
+import org.example.app.components.alert.ErrorAlert;
+import org.example.app.components.form.AddDependantForm;
+import org.example.app.components.form.UpdateDependantForm;
+import org.example.app.components.table.DependantTable;
+import org.example.model.customer.Dependant;
+import org.example.repository.impl.CustomerRepository;
+
+import java.io.IOException;
 
 public class DependantButtonSet extends HBox {
-    public Button addButton;
-    public Button removeButton;
-    public Button updateButton;
+    @FXML
+    private HBox dependantButtonSet;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button updateButton;
+    private DependantTable dependantTable;
+    public DependantButtonSet(DependantTable dependantTable) {
+        this.dependantTable = dependantTable;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/dependantButtonSet.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
 
-    public DependantButtonSet() {
-        initializeButtons();
-        setButtonStyles();
-        getChildren().addAll(addButton, removeButton, updateButton);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        setUpButtonSet();
     }
 
-    private void initializeButtons() {
-        addButton = new Button("Add Dependant");
-        removeButton = new Button("Remove Dependant");
-        updateButton = new Button("Update Dependant");
-
-        // Event handlers will be set in the controller
+    private void setUpButtonSet() {
+        this.addButton.setOnAction(this::add);
+        this.deleteButton.setOnAction(this::delete);
+        this.updateButton.setOnAction(this::update);
     }
 
-    private void setButtonStyles() {
-        addButton.setStyle("-fx-border-radius: 5; -fx-background-radius: 5px; -fx-background-color: #98FB98; -fx-text-fill: #333;");
-        removeButton.setStyle("-fx-border-radius: 5; -fx-background-radius: 5px; -fx-background-color: #FF6F61; -fx-text-fill: #333;");
-        updateButton.setStyle("-fx-border-radius: 5; -fx-background-radius: 5px; -fx-background-color: #FFD700; -fx-text-fill: #333;");
+    private void update(ActionEvent actionEvent) {
+        Dependant selectedDependant = dependantTable.getSelectionModel().getSelectedItem();
+        if (selectedDependant != null) new UpdateDependantForm(selectedDependant);
+        else new ErrorAlert("Please select a dependant");
+    }
 
-        addButton.setMinSize(120, 40);
-        removeButton.setMinSize(120, 40);
-        updateButton.setMinSize(120, 40);
+    private void delete(ActionEvent actionEvent) {
+        CustomerRepository repository = new CustomerRepository();
+        Dependant dependant = dependantTable.getSelectionModel().getSelectedItem();
+        repository.removeByID(dependant.getId());
+        repository.close();
+    }
 
-        addButton.setFont(new Font("Segoe UI", 12));
-        removeButton.setFont(new Font("Segoe UI", 12));
-        updateButton.setFont(new Font("Segoe UI", 12));
+    private void add(ActionEvent actionEvent) {
+        new AddDependantForm();
     }
 }

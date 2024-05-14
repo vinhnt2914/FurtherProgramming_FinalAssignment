@@ -8,16 +8,21 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
+import org.example.app.components.table.InsuredPersonTable;
+import org.example.global.CustomerQueryType;
+import org.example.global.GlobalVariable;
+import org.example.global.Role;
 import org.example.model.customer.Beneficiary;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
-import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 
-public class UpdateClaimForm extends BorderPane {
+public class UpdateClaimForm extends BorderPane implements ClaimForm{
     @FXML
     private Label insuredPersonLabel;
+    @FXML
+    private Label cardNumberLabel;
     @FXML
     private DatePicker claimDatePicker;
     @FXML
@@ -27,9 +32,11 @@ public class UpdateClaimForm extends BorderPane {
     @FXML
     private TextField bankingInfoField;
     @FXML
+    private Button selectInsuredPersonButton;
+    @FXML
     private Button updateButton;
     private Claim selectedClaim;
-    private Beneficiary selectedInsuredPerson;
+    private Beneficiary insuredPerson;
     private Stage stage;
 
     public UpdateClaimForm(Claim claim) {
@@ -55,17 +62,38 @@ public class UpdateClaimForm extends BorderPane {
         insuredPersonLabel.setText(insuredPerson.getId() + " - " + insuredPerson.getFullName());
         claimDatePicker.setValue(selectedClaim.getClaimDate());
         examDatePicker.setValue(selectedClaim.getExamDate());
+        claimAmountField.setText(String.valueOf(selectedClaim.getClaimAmount()));
         bankingInfoField.setText(selectedClaim.getBankingInfo());
+        this.selectInsuredPersonButton.setOnAction(this::openSelectInsuredPerson);
         this.updateButton.setOnAction(this::updateClaim);
+    }
+
+    private void openSelectInsuredPerson(ActionEvent actionEvent) {
+        Role role = GlobalVariable.getRole();
+        switch (role) {
+            case PolicyHolder ->
+                    new InsuredPersonTable(
+                            CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER,
+                            this);
+            case PolicyOwner ->
+                    new InsuredPersonTable(
+                            CustomerQueryType.QueryType.GET_ALL_BENEFICIARY_OF_POLICY_OWNER,
+                            this);
+        }
     }
 
     private void updateClaim(ActionEvent actionEvent) {
         if (isInputValid()) {
             ClaimRepository repository = new ClaimRepository();
 
-            selectedClaim.setInsuredPerson(selectedInsuredPerson);
+            if (insuredPerson == null) {
+                insuredPerson = selectedClaim.getEntireInsuredPerson();
+            }
+
+            selectedClaim.setInsuredPerson(insuredPerson);
             selectedClaim.setClaimDate(claimDatePicker.getValue());
             selectedClaim.setExamDate(examDatePicker.getValue());
+            selectedClaim.setClaimAmount(Double.parseDouble(claimAmountField.getText()));
             selectedClaim.setBankingInfo(bankingInfoField.getText());
 
             repository.update(selectedClaim);
@@ -73,10 +101,6 @@ public class UpdateClaimForm extends BorderPane {
         }
 
         close();
-    }
-
-    public void setSelectedInsuredPerson(Beneficiary insuredPerson) {
-        this.selectedInsuredPerson = insuredPerson;
     }
 
     private void close() {
@@ -94,6 +118,9 @@ public class UpdateClaimForm extends BorderPane {
         if (examDatePicker.getValue() == null) {
             errorMessage += "Invalid exam date!\n";
         }
+        if (claimAmountField.getText().isEmpty()) {
+            errorMessage += "Invalid claim amount!\n";
+        }
         if (bankingInfoField.getText().isEmpty()) {
             errorMessage += "Invalid banking info!\n";
         }
@@ -104,5 +131,15 @@ public class UpdateClaimForm extends BorderPane {
             new ErrorAlert(errorMessage);
             return false;
         }
+    }
+
+    @Override
+    public void setInsuredPerson(Beneficiary insuredPerson) {
+        this.insuredPerson = insuredPerson;
+        insuredPersonLabel.setText(
+                String.format("%s - %s",
+                        insuredPerson.getId(),
+                        insuredPerson.getFullName()));
+        cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
     }
 }

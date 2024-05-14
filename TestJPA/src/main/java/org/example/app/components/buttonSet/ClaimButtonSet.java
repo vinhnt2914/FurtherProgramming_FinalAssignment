@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.form.AddDependantForm;
 import org.example.app.components.form.FileClaimForm;
+import org.example.app.components.form.UpdateClaimForm;
 import org.example.app.components.form.UpdateDependantForm;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
@@ -55,6 +56,7 @@ public class ClaimButtonSet extends HBox {
         Claim selectedClaim = claimTable.getSelectionModel().getSelectedItem();
         if (selectedClaim != null) {
             // Call update claim form
+            new UpdateClaimForm(selectedClaim);
         }
         else new ErrorAlert("Please select a dependant");
     }

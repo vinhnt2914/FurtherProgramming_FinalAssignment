@@ -11,7 +11,7 @@ public class Proposal {
     private int id;
     @ManyToOne
     private InsuranceSurveyor insuranceSurveyor;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     private Claim claim;
     @ManyToOne
     private InsuranceManager insuranceManager;

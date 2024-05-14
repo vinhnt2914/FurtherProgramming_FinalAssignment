@@ -9,5 +9,6 @@ public class CustomerQueryType {
         GET_ALL_DEPENDANT_OF_POLICY_OWNER,
         GET_ALL_POLICY_HOLDER,
         GET_ALL_POLICY_HOLDER_OF_POLICY_OWNER,
+        GET_ALL_BENEFICIARY_OF_POLICY_OWNER
     }
 }
