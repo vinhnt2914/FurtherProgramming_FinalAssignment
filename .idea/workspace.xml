@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestCustomerAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "duybui1311"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;duybui1311&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/vinhnt2914/FurtherProgramming_FinalAssignment.git",
-    "accountId": "354486db-a80c-4351-b3c8-353612dfe9c2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/vinhnt2914/FurtherProgramming_FinalAssignment.git&quot;,
+    &quot;accountId&quot;: &quot;354486db-a80c-4351-b3c8-353612dfe9c2&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -49,6 +48,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.TestCustomerAdmin.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -72,7 +72,7 @@
       <recent name="D:\FurtherProgramming_FinalAssignment\TestJPA\src\main\resources\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestCustomerAdmin">
+  <component name="RunManager" selected="Application.TestDependantPage">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="TestJPA" />
@@ -137,6 +137,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPolicyHolderPage" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestPolicyHolderPage" />
+      <module name="TestJPA" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestPopulateUser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.test.TestPopulateUser" />
       <module name="TestJPA" />
@@ -167,6 +175,7 @@
     <list>
       <item itemvalue="Application.TestDependantPage" />
       <item itemvalue="Application.TestCustomerAdmin" />
+      <item itemvalue="Application.TestPolicyHolderPage" />
       <item itemvalue="Application.TestInsuranceSurveyorPage" />
       <item itemvalue="Application.TestPopulateUser" />
       <item itemvalue="Application.TestInsuranceManager" />
@@ -222,5 +231,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestDependantPage.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
