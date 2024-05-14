@@ -15,6 +15,7 @@ public class Dependant extends Beneficiary {
 
     public Dependant() {
     }
+
     public PolicyHolder getPolicyHolder() {
         return policyHolder;
     }
@@ -23,12 +24,20 @@ public class Dependant extends Beneficiary {
         this.policyHolder = policyHolder;
     }
 
+    public int getId() {
+        return super.getId();
+    }
+
+    public String getFullName() {
+        return super.getFullName();
+    }
+
     @Override
     public String toString() {
-        return String.format("Dependant[id: %s, name: %s, policyHolder: %s]",
+        return String.format("Dependant[id: %d, name: %s, policyHolder: %d]",
                 getId(),
                 getFullName(),
-                policyHolder.getId());
+                policyHolder != null ? policyHolder.getId() : null);
     }
 
     public static class DependantBuilder extends GenericBeneficaryBuilder<DependantBuilder> {

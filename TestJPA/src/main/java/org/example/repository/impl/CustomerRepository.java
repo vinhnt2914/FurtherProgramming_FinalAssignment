@@ -16,10 +16,6 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         em.getTransaction().commit();
     }
 
-    // Bulk add
-    // This solve the problem where the "Child" object hasn't been saved to the database
-    // By the time the "Parent" object is being persisted
-
     @Override
     public void add(Customer... customer) {
         em.getTransaction().begin();
@@ -39,7 +35,6 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         TypedQuery<Customer> query = em.createQuery("from Customer", Customer.class);
         return query.getResultList();
     }
-
     // Update general attribute for customer object
     // Username, fullName, id are not allowed
     @Override
@@ -58,7 +53,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     public List<Dependant> getAllDependant() {
         em.getTransaction().begin();
-        TypedQuery<Dependant> query = em.createQuery("from Dependant ", Dependant.class);
+        TypedQuery<Dependant> query = em.createQuery("from Dependant", Dependant.class);
         return query.getResultList();
     }
 
@@ -84,5 +79,10 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
                 .map(customer -> (PolicyHolder) customer)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<PolicyHolder> getAllPolicyHolders() {
+        TypedQuery<PolicyHolder> query = em.createQuery("select c from Customer c where c.class = PolicyHolder", PolicyHolder.class);
+        return query.getResultList();
     }
 }

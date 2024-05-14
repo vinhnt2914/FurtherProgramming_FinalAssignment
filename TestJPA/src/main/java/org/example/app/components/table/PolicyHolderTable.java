@@ -1,48 +1,24 @@
 package org.example.app.components.table;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Dependant;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.example.model.customer.PolicyHolder;
+import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
 
-@Entity
-public class PolicyHolderTable extends Beneficiary {
-    @OneToMany(mappedBy = "policyHolder", fetch = FetchType.LAZY)
-    private List<Dependant> dependants;
-
-    public PolicyHolder(PolicyHolderBuilder builder) {
-        super(builder);
-    }
-
-    public PolicyHolder() {
-    }
-
-    public List<Dependant> getDependants() {
-        return dependants;
-    }
-
-    public void setDependants(List<Dependant> dependants) {
-        this.dependants = dependants;
+public class PolicyHolderTable extends GenericCustomerTable<PolicyHolder> {
+    @Override
+    void modifyTableView() {
+        // Do nothing for now, you can add custom modifications here if needed
     }
 
     @Override
-    public String toString() {
-        return String.format("PolicyHolder[id: %s, name: %s, dependants: %d]",
-                getId(),
-                getFullName(),
-                dependants != null ? dependants.size() : 0);
-    }
-
-    public static class PolicyHolderBuilder extends GenericBeneficaryBuilder<PolicyHolderBuilder> {
-
-        @Override
-        public PolicyHolder build() {
-            return new PolicyHolder(this);
-        }
+    void populateTableView() {
+        CustomerRepository repository = new CustomerRepository();
+        List<PolicyHolder> policyHolderList = repository.getAllPolicyHolders();
+        ObservableList<PolicyHolder> data = FXCollections.observableArrayList(policyHolderList);
+        customerTableView.setItems(data);
+        repository.close();
     }
 }

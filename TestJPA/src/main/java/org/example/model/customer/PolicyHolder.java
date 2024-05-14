@@ -35,10 +35,14 @@ public class PolicyHolder extends Beneficiary {
     public void setDependantSet(Set<Dependant> dependantSet) {
         this.dependantSet = dependantSet;
     }
-//    @Override
-//    public String toString() {
-//        return super();
-//    }
+
+    public int getId() {
+        return super.getId();
+    }
+
+    public String getFullName() {
+        return super.getFullName();
+    }
 
     public static class PolicyHolderBuilder extends GenericBeneficaryBuilder<PolicyHolderBuilder> {
 
