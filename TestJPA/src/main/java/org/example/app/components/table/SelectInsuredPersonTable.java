@@ -9,11 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import org.example.app.components.form.FileClaimForm;
 import org.example.global.CustomerQueryType;
+import org.example.global.GlobalVariable;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> {
@@ -64,14 +66,10 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> 
     @Override
     void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
-        List<Beneficiary> beneficiaryList = null;
+        List<Beneficiary> beneficiaryList = new ArrayList<>();
         switch (queryType) {
-            case GET_ALL_DEPENDANT -> {
-                List<Dependant> data = repository.getAllDependants();
-                beneficiaryList.addAll(data);
-            }
-            case GET_ALL_POLICY_HOLDER -> {
-                List<PolicyHolder> data = repository.getAllPolicyHolders();
+            case GET_ALL_DEPENDANT_OF_POLICY_HOLDER -> {
+                List<Dependant> data = repository.getAllDependantsOfPolicyHolder((PolicyHolder) GlobalVariable.getUser());
                 beneficiaryList.addAll(data);
             }
         }

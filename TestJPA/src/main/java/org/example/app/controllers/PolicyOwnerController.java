@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
+import org.example.app.components.buttonSet.DependantButtonSet;
+import org.example.app.components.buttonSet.PolicyHolderButtonSet;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
@@ -34,7 +36,7 @@ public class PolicyOwnerController implements Initializable {
         comboBoxOptions.addAll("Claim", "Dependant", "PolicyHolder");
         this.tableViewContainer.getChildren().add(new ClaimTable()); // Set by default
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
-        this.swapTableChoiceBox.getSelectionModel().select("Claims");
+        this.swapTableChoiceBox.getSelectionModel().select("Claim");
         this.swapTableChoiceBox.setOnAction(this::swapTable);
     }
 
@@ -44,14 +46,17 @@ public class PolicyOwnerController implements Initializable {
 
         if (tableType.equalsIgnoreCase("Claim")) {
             tableViewContainer.getChildren().add(new ClaimTable());
-            // Swap to claim button (new ClaimButtonSet)
+            buttonSetContainer.getChildren().add(new DependantButtonSet());
         } else if (tableType.equalsIgnoreCase("Dependant")) {
             tableViewContainer.getChildren().add(new DependantTable(
                     CustomerQueryType.
                             QueryType.
                             GET_ALL_DEPENDANT_OF_POLICY_OWNER));
+            buttonSetContainer.getChildren().add(new PolicyHolderButtonSet());
         } else if (tableType.equalsIgnoreCase("PolicyHolder")) {
-            tableViewContainer.getChildren().add(new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER_OF_POLICY_OWNER));
+            tableViewContainer.getChildren().add(new PolicyHolderTable(
+                    CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER_OF_POLICY_OWNER));
+//            buttonSetContainer.getChildren().add()
         }
     }
 }

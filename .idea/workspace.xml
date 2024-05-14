@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/buttonSet/ClaimButtonSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/form/UpdateClaimForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/claimButtonSet.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/updateClaimForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/buttonSet/MyDependantButtonSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/buttonSet/MyDependantButtonSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/addPolicyHolderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/addPolicyHolderForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/customerButtonSet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/dependantButtonSet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/buttonSet/MyDependantButtonSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/buttonSet/MyDependantButtonSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/addPolicyHolderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/addPolicyHolderForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/customerButtonSet.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyOwnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/PolicyOwnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/UpdateClaim.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/updateClaim.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/updateClaim.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +61,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\FurtherProgramming_FinalAssignment\TestJPA\src\main\resources\views" />
       <recent name="D:\FurtherProgramming_FinalAssignment\TestJPA\src\main\resources\views\components" />
+      <recent name="D:\FurtherProgramming_FinalAssignment\TestJPA\src\main\resources\views" />
       <recent name="D:\FurtherProgramming_FinalAssignment\TestJPA\src\main\resources\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestCustomerAdmin">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="TestJPA" />
@@ -161,8 +160,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestCustomerAdmin" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TestCustomerAdmin" />
         <item itemvalue="Application.TestPopulateUser" />
         <item itemvalue="Application.TestInsuranceSurveyorPage" />
         <item itemvalue="Application.TestInsuranceManager" />
@@ -198,6 +197,7 @@
       <workItem from="1715650808015" duration="5779000" />
       <workItem from="1715656620950" duration="3397000" />
       <workItem from="1715670178489" duration="6569000" />
+      <workItem from="1715684682784" duration="2180000" />
     </task>
     <servers />
   </component>
