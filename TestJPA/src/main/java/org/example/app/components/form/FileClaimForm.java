@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.table.InsuredPersonTable;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
@@ -84,16 +85,24 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
         this.selectInsuredPersonButton.setOnAction(this::openSelectInsuredPerson);
         this.selectMyClaimButton.setOnAction(this::setToMyClaim);
         this.submitButton.setOnAction(this::fileClaim);
-
-        // Hide the MyClaim button for policy owners
+        this.cancelButton.setOnAction(this::handleCancel);
         if (role == Role.PolicyOwner) {
             selectMyClaimButton.setVisible(false);
         }
     }
 
+    private void handleCancel(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
     private void setToMyClaim(ActionEvent actionEvent) {
         PolicyHolder policyHolder = (PolicyHolder) customerRepository.findByID(GlobalVariable.getUserID());
-        setInsuredPerson(policyHolder);
+        if (policyHolder != null) {
+            setInsuredPerson(policyHolder);
+        } else {
+            new ErrorAlert("Data Retrieval Error");
+        }
     }
 
     private void fileClaim(ActionEvent actionEvent) {
@@ -133,10 +142,46 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
     @Override
     public void setInsuredPerson(Beneficiary insuredPerson) {
         this.insuredPerson = insuredPerson;
+
         insuredPersonLabel.setText(
                 String.format("%s - %s",
                         insuredPerson.getId(),
                         insuredPerson.getFullName()));
-        cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+
+
+        if (insuredPerson.getInsuranceCard() != null) {
+            cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+        } else {
+
+            cardNumberLabel.setText("No insurance card available");
+        }
+    }
+
+    private boolean validateInput() {
+        if (isFieldEmpty(idField) || claimDatePicker.getValue() == null || examDatePicker.getValue() == null ||
+                isFieldEmpty(claimAmountField) || statusComboBox.getValue() == null || isFieldEmpty(bankingInfoField)) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
+        }
+
+        if (!isValidAmount(claimAmountField.getText())) {
+            new ErrorAlert("Please enter a valid claim amount.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidAmount(String amount) {
+        try {
+            Double.parseDouble(amount);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

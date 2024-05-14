@@ -9,27 +9,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
+import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class UpdatePolicyHolderForm extends BorderPane {
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private Button saveButton;
+    @FXML private TextField addressField;
+    @FXML private TextField emailField;
+    @FXML private TextField phoneField;
+    @FXML private TextField passwordField;
+    @FXML private Button saveButton;
+    @FXML private Button cancelButton;
     private PolicyHolder selectedPolicyHolder;
     private Stage stage;
+    private CustomerAdminController controller;  // Reference to the controller
 
-    public UpdatePolicyHolderForm(PolicyHolder policyHolder) {
+    public UpdatePolicyHolderForm(PolicyHolder policyHolder, CustomerAdminController controller) {
         this.selectedPolicyHolder = policyHolder;
+        this.controller = controller;  // Store the controller reference
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
@@ -52,12 +53,11 @@ public class UpdatePolicyHolderForm extends BorderPane {
         emailField.setText(selectedPolicyHolder.getEmail());
         phoneField.setText(selectedPolicyHolder.getPhone());
         passwordField.setText(selectedPolicyHolder.getPassword());
-
         saveButton.setOnAction(this::updatePolicyHolder);
+        cancelButton.setOnAction(this::handleCancel);
     }
 
     private void updatePolicyHolder(ActionEvent actionEvent) {
-
         if (isInputValid()) {
             CustomerRepository repository = new CustomerRepository();
 
@@ -66,45 +66,51 @@ public class UpdatePolicyHolderForm extends BorderPane {
             selectedPolicyHolder.setPhone(phoneField.getText());
             selectedPolicyHolder.setPassword(passwordField.getText());
 
-            System.out.println("UPDATED DEPENDANT: " + selectedPolicyHolder);
-
             repository.update(selectedPolicyHolder);
             repository.close();
+            close();
+            controller.refreshPolicyHolderTable();  // Refresh the table here
         }
+    }
 
+    private void handleCancel(ActionEvent actionEvent) {
         close();
     }
 
     private void close() {
         stage.close();
     }
-
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (addressField.getText() == null || addressField.getText().isEmpty()) {
+        if (isFieldEmpty(addressField)) {
             errorMessage += "No valid address!\n";
         }
-        if (emailField.getText() == null || emailField.getText().isEmpty()) {
+        if (isFieldEmpty(emailField) || !isValidEmail(emailField.getText())) {
             errorMessage += "No valid email!\n";
         }
-        if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
+        if (isFieldEmpty(phoneField)) {
             errorMessage += "No valid phone!\n";
         }
-        if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
+        if (isFieldEmpty(passwordField)) {
             errorMessage += "No valid password!\n";
         }
 
         if (errorMessage.isEmpty()) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
-            alert.setContentText(errorMessage);
-            alert.showAndWait();
-
+            new ErrorAlert(errorMessage);
             return false;
         }
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
     }
 }

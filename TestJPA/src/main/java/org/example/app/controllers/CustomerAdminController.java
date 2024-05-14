@@ -92,7 +92,7 @@ public class CustomerAdminController implements Initializable {
 //    }
 
     private void handleAddPolicyHolder() {
-        new AddPolicyHolderForm();
+        new AddPolicyHolderForm(this);
 //        try {
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
 //            Stage dialogStage = new Stage();
@@ -181,7 +181,7 @@ public class CustomerAdminController implements Initializable {
     }
 
     private void handleAddDependant() {
-        new AddDependantForm();
+        new AddDependantForm(this);
 //        try {
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
 //            Stage dialogStage = new Stage();
@@ -257,13 +257,12 @@ public class CustomerAdminController implements Initializable {
     }
 
 
-
-    private void refreshPolicyHolderTable() {
+    public void refreshPolicyHolderTable() {
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
         tableViewContainer.getChildren().setAll(policyHolderTable);
     }
 
-    private void refreshDependantTable() {
+    public void refreshDependantTable() {
         DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
         tableViewContainer.getChildren().setAll(dependantTable);
     }

@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
+import org.example.app.controllers.CustomerAdminController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.customer.PolicyHolder;
@@ -16,24 +18,16 @@ import org.example.repository.impl.CustomerRepository;
 import org.example.service.CustomerService;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class AddPolicyHolderForm extends BorderPane {
-    @FXML
-    private TextField nameField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private TextField passwordField;
-    @FXML
-    private Button saveButton;
+    @FXML private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
+    @FXML private Button saveButton, cancelButton;
     private Stage stage;
-    public AddPolicyHolderForm() {
+    private CustomerAdminController controller;
+
+    public AddPolicyHolderForm(CustomerAdminController controller) {
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
             fxmlLoader.setRoot(this);
@@ -52,27 +46,60 @@ public class AddPolicyHolderForm extends BorderPane {
 
     private void setUpForm() {
         this.saveButton.setOnAction(this::addPolicyHolder);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
     private void addPolicyHolder(ActionEvent actionEvent) {
-        CustomerRepository repository = new CustomerRepository();
-        CustomerService customerService = new CustomerService();
+        if (validateInput()) {
+            CustomerRepository repository = new CustomerRepository();
+            CustomerService customerService = new CustomerService();
 
-        PolicyHolder policyHolder = customerService.makePolicyHolder()
-                .fullName(nameField.getText())
-                .username(usernameField.getText())
-                .address(addressField.getText())
-                .email(emailField.getText())
-                .phone(phoneField.getText())
-                .password(passwordField.getText()).build();
+            PolicyHolder policyHolder = customerService.makePolicyHolder()
+                    .fullName(nameField.getText())
+                    .username(usernameField.getText())
+                    .address(addressField.getText())
+                    .email(emailField.getText())
+                    .phone(phoneField.getText())
+                    .password(passwordField.getText()).build();
 
-        if (GlobalVariable.getRole() == Role.PolicyOwner) {
-            policyHolder.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+            if (GlobalVariable.getRole() == Role.PolicyOwner) {
+                policyHolder.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+            }
+
+            repository.add(policyHolder);
+            repository.close();
+            close();
+            controller.refreshPolicyHolderTable(); // Refresh the table after adding
+        }
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
+    }
+
+    private boolean validateInput() {
+        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
+                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
         }
 
-        repository.add(policyHolder);
-        repository.close();
-        close();
+        if (!isValidEmail(emailField.getText())) {
+            new ErrorAlert("Please enter a valid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
     }
 
     private void close() {
