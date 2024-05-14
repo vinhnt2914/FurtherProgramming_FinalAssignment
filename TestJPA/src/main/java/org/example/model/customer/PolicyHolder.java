@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class PolicyHolder extends Beneficiary {
+public class    PolicyHolder extends Beneficiary {
     @OneToMany(mappedBy = "policyHolder",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY)
