@@ -111,9 +111,7 @@ public class FileClaimForm extends BorderPane {
     }
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {
-        System.out.println("HI");
-        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL,this);
-        System.out.println("HELLO");
+        new SelectInsuredPersonTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT,this);
     }
 
     public void setInsuredPerson(Beneficiary insuredPerson) {

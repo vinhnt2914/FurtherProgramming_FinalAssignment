@@ -3,18 +3,15 @@ package org.example.app.components.buttonSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.example.app.components.table.DependantTable;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 
-public class DependantButtonSet extends HBox {
+public class MyDependantButtonSet extends HBox {
     @FXML
     private HBox dependantButtonSet;
     @FXML
@@ -26,7 +23,7 @@ public class DependantButtonSet extends HBox {
     @FXML
     private Button setPolicyHolderButton;
     private DependantTable dependantTable;
-    public DependantButtonSet(DependantTable dependantTable) {
+    public MyDependantButtonSet(DependantTable dependantTable) {
         this.dependantTable = dependantTable;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/dependantButtonSet.fxml"));
         fxmlLoader.setRoot(this);

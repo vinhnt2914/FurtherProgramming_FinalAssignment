@@ -9,15 +9,16 @@ import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import org.example.app.components.form.FileClaimForm;
 import org.example.global.CustomerQueryType;
+import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
 
-public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
+public class SelectInsuredPersonTable extends GenericCustomerTable<Beneficiary> {
     private PolicyHolder policyHolder;
-    private TableColumn<Dependant, String> actionCol;
+    private TableColumn<Beneficiary, String> actionCol;
     private FileClaimForm fileClaimForm;
 
     public SelectInsuredPersonTable(CustomerQueryType.QueryType queryType, FileClaimForm fileClaimForm) {
@@ -63,8 +64,18 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
     @Override
     void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
-        List<Dependant> dependantList = repository.getAllDependant();
-        ObservableList<Dependant> data = FXCollections.observableArrayList(dependantList);
+        List<Beneficiary> beneficiaryList = null;
+        switch (queryType) {
+            case GET_ALL_DEPENDANT -> {
+                List<Dependant> data = repository.getAllDependants();
+                beneficiaryList.addAll(data);
+            }
+            case GET_ALL_POLICY_HOLDER -> {
+                List<PolicyHolder> data = repository.getAllPolicyHolders();
+                beneficiaryList.addAll(data);
+            }
+        }
+        ObservableList<Beneficiary> data = FXCollections.observableArrayList(beneficiaryList);
         customerTableView.setItems(data);
         repository.close();
     }
@@ -75,7 +86,7 @@ public class SelectInsuredPersonTable extends GenericCustomerTable<Dependant> {
         return button;
     }
 
-    private void setSelectedInsuredPerson(Dependant dependant) {
+    private void setSelectedInsuredPerson(Beneficiary dependant) {
         System.out.println("Selected: " + dependant);
         fileClaimForm.setInsuredPerson(dependant);
         // Close the table view
