@@ -1,10 +1,12 @@
 package org.example.app.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import org.example.app.components.form.UpdateInfoForm;
 import org.example.app.components.stats.PolicyOwnerStats;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
@@ -14,7 +16,7 @@ import org.example.repository.impl.CustomerRepository;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerDashboard implements Initializable {
+public class CustomerDashboard implements Initializable, RefreshableController {
     @FXML
     private Button updateInfoButton;
     @FXML
@@ -30,13 +32,18 @@ public class CustomerDashboard implements Initializable {
     private Customer customer;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        getDataFromDB();
         setUpPage();
     }
 
     private void setUpPage() {
+        getDataFromDB();
         setUpLabels();
         setUpStats();
+        this.updateInfoButton.setOnAction(this::openUpdateInfo);
+    }
+
+    private void openUpdateInfo(ActionEvent actionEvent) {
+        new UpdateInfoForm(this);
     }
 
     private void setUpLabels() {
@@ -54,12 +61,17 @@ public class CustomerDashboard implements Initializable {
     }
 
     private void setUpPolicyOwnerStats() {
-        statsContainer.getChildren().add(new PolicyOwnerStats());
+        statsContainer.getChildren().setAll(new PolicyOwnerStats());
     }
 
     private void getDataFromDB() {
         CustomerRepository repository = new CustomerRepository();
         customer = repository.findByID(GlobalVariable.getUserID());
         repository.close();
+    }
+
+    @Override
+    public void refresh() {
+        setUpPage();
     }
 }
