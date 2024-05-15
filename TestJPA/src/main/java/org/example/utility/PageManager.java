@@ -64,5 +64,6 @@ public class PageManager {
 
     private void setScenesForAdmin() {
         scenes.put("customer", "customerAdmin.fxml");
+        scenes.put("provider", "providerAdmin.fxml");
     }
 }

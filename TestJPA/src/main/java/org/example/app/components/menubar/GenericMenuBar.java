@@ -23,9 +23,7 @@ public abstract class GenericMenuBar extends HBox {
     @FXML
     protected Hyperlink customerMenu;
     @FXML
-    protected Hyperlink requestMenu;
-    @FXML
-    protected Hyperlink proposalMenu;
+    protected Hyperlink providerMenu;
 
     public GenericMenuBar() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/menuBar.fxml"));
@@ -50,22 +48,18 @@ public abstract class GenericMenuBar extends HBox {
         claimMenu.setOnAction(this::openClaim);
         insuranceCardMenu.setOnAction(this::openInsuranceCard);
         customerMenu.setOnAction(this::openCustomer);
-        requestMenu.setOnAction(this::openRequest);
-        proposalMenu.setOnAction(this::openProposal);
+        providerMenu.setOnAction(this::openProvider);
         System.out.println("Menubar set up complete");
+    }
+
+    private void openProvider(ActionEvent actionEvent) {
+        App.getInstance().switchScene("provider");
     }
 
     private void openInfo(ActionEvent actionEvent) {
         App.getInstance().switchScene("info");
     }
 
-    private void openProposal(ActionEvent actionEvent) {
-        App.getInstance().switchScene("proposal");
-    }
-
-    private void openRequest(ActionEvent actionEvent) {
-        App.getInstance().switchScene("request");
-    }
 
     private void openCustomer(ActionEvent actionEvent) {
         App.getInstance().switchScene("customer");

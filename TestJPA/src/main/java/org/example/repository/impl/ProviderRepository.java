@@ -3,6 +3,7 @@ package org.example.repository.impl;
 import jakarta.persistence.TypedQuery;
 import org.example.model.customer.Customer;
 import org.example.model.customer.PolicyOwner;
+import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.model.provider.Provider;
 import org.example.repository.EntityRepository;
@@ -35,6 +36,18 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
     @Override
     public List<Provider> getAll() {
         TypedQuery<Provider> query = em.createQuery("from Provider ", Provider.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<InsuranceSurveyor> getAllSurveyor() {
+        TypedQuery<InsuranceSurveyor> query = em.createQuery("from InsuranceSurveyor ", InsuranceSurveyor.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<InsuranceManager> getAllManager() {
+        TypedQuery<InsuranceManager> query = em.createQuery("from InsuranceManager ", InsuranceManager.class);
         return query.getResultList();
     }
 

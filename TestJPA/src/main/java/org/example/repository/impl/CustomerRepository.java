@@ -12,6 +12,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
     @Override
     public void add(Customer customer) {
         em.getTransaction().begin();
+        System.out.println("HASHED PASSWORD: " + customer.getPassword());
         em.persist(customer);
         em.getTransaction().commit();
     }

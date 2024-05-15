@@ -14,6 +14,7 @@ import org.example.repository.impl.*;
 import org.example.service.ClaimService;
 import org.example.service.CustomerService;
 import org.example.service.InsuranceCardService;
+import org.example.service.ProviderService;
 
 import java.time.LocalDate;
 
@@ -22,6 +23,7 @@ public class TestPopulateUser {
         InsuranceCardService cardService = new InsuranceCardService();
         CustomerService customerService = new CustomerService();
         ClaimService claimService = new ClaimService();
+        ProviderService providerService = new ProviderService();
 
         InsuranceCard card1 = cardService.makeCard()
                 .cardNumber("0000000001")
@@ -98,12 +100,13 @@ public class TestPopulateUser {
         // c2, c3, c4 by the time of persisting
         // Solve using bulk adding, avoid persisting each object per transaction
         // Persist everything under one transaction
-        c1.addDependants(c2, c3, c4); // Add dependants
-        c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
         c1.setInsuranceCard(card1);
         c2.setInsuranceCard(card2);
         c3.setInsuranceCard(card3);
         c4.setInsuranceCard(card4);
+        c1.addDependants(c2, c3, c4); // Add dependants
+        c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
+
 
         Claim claim1 = claimService.makeClaim()
                 .id("f-000001")
@@ -150,8 +153,23 @@ public class TestPopulateUser {
         c3.addClaim(claim3);
         c4.addClaim(claim4);
 
-        InsuranceSurveyor s1 = new InsuranceSurveyor("survey1", "Rmit@1234");
-        InsuranceManager m1 = new InsuranceManager("manager1", "Rmit@1234");
+        InsuranceSurveyor s1 = providerService.makeSurveyor()
+                .username("survey1")
+                .password("Rmit@1234")
+                .email("surveyor@gmail.com")
+                .phone("091231231")
+                .address("HaiPhong")
+                .fullName("Nguyen The The")
+                .build();
+
+        InsuranceManager m1 = providerService.makeManager()
+                .username("manager1")
+                .password("Rmit@1234")
+                .email("manager@gmail.com")
+                .phone("092139129")
+                .address("HaNoi")
+                .fullName("Nguyen Vinh Vinh")
+                .build();
 
         Request r1 = s1.makeRequest(c1, "bro ur dick smol");
         Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
@@ -168,7 +186,14 @@ public class TestPopulateUser {
         ProposalRepository proposalRepository = new ProposalRepository();
         // This could throw a no relation error
         // If add a policyOwner, who does not have an insurance card
-        customerRepository.add(c1,c2,c3,c4,c5);
+
+        customerRepository.add(c1);
+        customerRepository.add(c2);
+        customerRepository.add(c3);
+        customerRepository.add(c4);
+        customerRepository.add(c5);
+
+
         providerRepository.add(s1);
         providerRepository.add(m1);
         proposalRepository.add(p1);

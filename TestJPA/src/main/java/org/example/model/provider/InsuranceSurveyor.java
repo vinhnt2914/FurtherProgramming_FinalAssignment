@@ -5,11 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
+import org.example.model.customer.Dependant;
+import org.example.model.customer.PolicyHolder;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 import org.example.model.items.Request;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,9 +21,13 @@ public class InsuranceSurveyor extends Provider {
     @OneToMany(
             mappedBy = "insuranceSurveyor",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+
     private Set<Request> requestList;
-    public InsuranceSurveyor(String username, String password) {
-        super(username, password);
+    @OneToMany(mappedBy = "insuranceSurveyor")
+    private Set<Proposal> proposalSet;
+
+    public InsuranceSurveyor(SurveyorBuilder builder) {
+        super(builder);
         requestList = new HashSet<>();
     }
 
@@ -36,15 +44,32 @@ public class InsuranceSurveyor extends Provider {
         return new Proposal(this, claim, insuranceManager, message);
     }
 
-    @Override
-    public String toString() {
-        return "InsuranceSurveyor{" +
-                "requestList=" + requestList.toString() +
-                ", id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public static class SurveyorBuilder extends GenericProviderBuilder<SurveyorBuilder> {
+        @Override
+        public InsuranceSurveyor build() {
+            return new InsuranceSurveyor(this);
+        }
     }
 
+    public Set<Request> getRequestList() {
+        return requestList;
+    }
 
+    public Set<Proposal> getProposalSet() {
+        return proposalSet;
+    }
+
+    public List<Integer> getProposalIDs() {
+        List<Integer> idList = new ArrayList<>();
+        for (Proposal p : proposalSet) idList.add(p.getId());
+
+        return idList;
+    }
+
+    public List<Integer> getRequestIDs() {
+        List<Integer> idList = new ArrayList<>();
+        for (Request p : requestList) idList.add(p.getId());
+
+        return idList;
+    }
 }

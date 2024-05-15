@@ -15,6 +15,7 @@ import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
 import org.example.repository.impl.UserRepository;
+import org.example.utility.PasswordUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,12 +46,20 @@ public class LoginController implements Initializable{
             GlobalVariable.setUser(Admin.getInstance());
             System.out.println("Admin logged in");
         } else {
-            User user = repository.findUser(username, password);
+            // Encrypt the user password before searching in the database
+            String encryptedPassword = PasswordUtil.encrypt(password);
+            User user = repository.findUser(username, encryptedPassword);
+
+            // Decrypt the password before setting as global var
+            String decryptedPassword = PasswordUtil.decrypt(user.getPassword());
+            user.setPassword(decryptedPassword);
+
             GlobalVariable.setRole(user);
             GlobalVariable.setUserID(user.getId());
             GlobalVariable.setUser(user);
             System.out.println("User logged in: " + GlobalVariable.getUserID());
             System.out.println("User role: " + GlobalVariable.getRole());
+            System.out.println("User password: " + GlobalVariable.getUser().getPassword());
         }
 
         // Close the login stage

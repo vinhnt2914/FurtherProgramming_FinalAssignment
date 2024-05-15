@@ -7,14 +7,21 @@ import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class InsuranceManager extends Provider {
     @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "insuranceManager")
     private List<Proposal> proposalList;
-    public InsuranceManager(String username, String password) {
-        super(username, password);
+//    public InsuranceManager(String username, String password) {
+//        super(username, password);
+//    }
+
+
+    public InsuranceManager(ManagerBuilder builder) {
+        super(builder);
+        proposalList = new ArrayList<>();
     }
 
     public InsuranceManager() {
@@ -28,13 +35,21 @@ public class InsuranceManager extends Provider {
         claim.setStatus(ClaimStatus.REJECTED);
     }
 
-    @Override
-    public String toString() {
-        return "InsuranceManager{" +
-                "proposalList=" + proposalList.toString() +
-                ", id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public static class ManagerBuilder extends GenericProviderBuilder<ManagerBuilder> {
+        @Override
+        public InsuranceManager build() {
+            return new InsuranceManager(this);
+        }
+    }
+
+    public List<Proposal> getProposalList() {
+        return proposalList;
+    }
+
+    public List<Integer> getProposalIDs() {
+        List<Integer> idList = new ArrayList<>();
+        for (Proposal p : proposalList) idList.add(p.getId());
+
+        return idList;
     }
 }

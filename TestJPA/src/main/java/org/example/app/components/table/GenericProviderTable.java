@@ -14,6 +14,14 @@ public abstract class GenericProviderTable<T extends Provider> extends TableView
     protected TableView<T> providerTableView;
     @FXML
     private TableColumn<T, Integer> idCol;
+    @FXML
+    private TableColumn<T, String> nameCol;
+    @FXML
+    private TableColumn<T, String> addressCol;
+    @FXML
+    private TableColumn<T, String> emailCol;
+    @FXML
+    private TableColumn<T, String> phoneCol;
 
     public GenericProviderTable() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/providerTable.fxml"));
@@ -33,7 +41,17 @@ public abstract class GenericProviderTable<T extends Provider> extends TableView
 
     private void setUpTableView() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
     }
+
     abstract void modifyTableView();
     abstract void populateTableView();
+
+    @Override
+    public void refreshTable() {
+        populateTableView();
+    }
 }

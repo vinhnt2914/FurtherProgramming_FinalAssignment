@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 public class PolicyHolder extends Beneficiary {
@@ -41,10 +40,6 @@ public class PolicyHolder extends Beneficiary {
     public List<Integer> getDependantsIds() {
         List<Integer> idList = new ArrayList<>();
         for (Dependant d: dependantSet) idList.add(d.getId());
-//        return dependantSet.stream()
-//                .map(Dependant::getId)
-//                .map(String::valueOf)
-//                .collect(Collectors.joining(","));
         return idList;
     }
 
