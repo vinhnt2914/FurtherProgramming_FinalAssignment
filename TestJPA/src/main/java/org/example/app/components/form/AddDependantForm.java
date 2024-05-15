@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.example.app.controllers.CustomerAdminController;
+import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.customer.Dependant;
@@ -44,9 +45,9 @@ public class AddDependantForm extends BorderPane {
     @FXML
     private Button cancelButton;
     private Stage stage;
-    private CustomerAdminController controller;
+    private RefreshableController controller;
 
-    public AddDependantForm(CustomerAdminController controller) {
+    public AddDependantForm(RefreshableController controller) {
         this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
@@ -95,7 +96,7 @@ public class AddDependantForm extends BorderPane {
                 repository.add(dependant);
                 repository.close();
                 close();
-                controller.refreshDependantTable();  // Call to refresh the table
+                controller.refresh();  // Call to refresh the table
             } else {
                 showAlert("Please select a policy holder.");
             }

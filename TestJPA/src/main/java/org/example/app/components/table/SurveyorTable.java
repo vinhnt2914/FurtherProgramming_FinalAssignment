@@ -9,12 +9,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.InsuranceSurveyorRepository;
-import org.example.repository.impl.ProposalRepository;
 
 import java.io.IOException;
 import java.util.List;
 
-public class SurveyorTable extends TableView<InsuranceSurveyor> {
+public class SurveyorTable extends TableView<InsuranceSurveyor> implements RefreshableTable {
     @FXML
     private TableView<InsuranceSurveyor> surveyorTableView;
     @FXML
@@ -55,5 +54,10 @@ public class SurveyorTable extends TableView<InsuranceSurveyor> {
         surveyorTableView.setItems(data);
         repository.close();
 
+    }
+
+    @Override
+    public void refreshTable() {
+        populateTableView();
     }
 }

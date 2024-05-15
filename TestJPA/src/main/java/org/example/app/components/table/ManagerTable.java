@@ -22,4 +22,9 @@ public class ManagerTable extends GenericProviderTable<InsuranceManager> {
         providerTableView.setItems(data);
         repository.close();
     }
+
+    @Override
+    public void refreshTable() {
+        populateTableView();
+    }
 }

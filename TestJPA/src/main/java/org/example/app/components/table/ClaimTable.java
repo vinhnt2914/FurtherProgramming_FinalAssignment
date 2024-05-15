@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ClaimTable extends TableView<Claim> {
+public class ClaimTable extends TableView<Claim> implements RefreshableTable {
     @FXML TableView<Claim> claimTable;
     @FXML
     private TableColumn<Claim, String> idCol;
@@ -76,4 +76,8 @@ public class ClaimTable extends TableView<Claim> {
         repository.close();
     }
 
+    @Override
+    public void refreshTable() {
+        populateTableView();
+    }
 }

@@ -21,11 +21,11 @@ import java.io.IOException;
 
 public class PolicyHolderButtonSet extends HBox {
     @FXML
-    private Button addButton;
+    public Button addButton;
     @FXML
-    private Button deleteButton;
+    public Button deleteButton;
     @FXML
-    private Button updateButton;
+    public Button updateButton;
     private PolicyHolderTable policyHolderTable;
     public PolicyHolderButtonSet(PolicyHolderTable policyHolderTable) {
         this.policyHolderTable = policyHolderTable;
@@ -39,31 +39,31 @@ public class PolicyHolderButtonSet extends HBox {
             throw new RuntimeException(exception);
         }
 
-        setUpButtonSet();
+//        setUpButtonSet();
     }
 
-    private void setUpButtonSet() {
-        this.addButton.setOnAction(this::add);
-        this.deleteButton.setOnAction(this::delete);
-        this.updateButton.setOnAction(this::update);
-    }
-
-    private void update(ActionEvent actionEvent) {
-        PolicyHolder selectedPolicyHolder = policyHolderTable.getSelectionModel().getSelectedItem();
-        if (selectedPolicyHolder != null) new UpdatePolicyHolderForm(selectedPolicyHolder);
-        else new ErrorAlert("Please select a policyHolder");
-    }
-
-    private void delete(ActionEvent actionEvent) {
-        CustomerRepository repository = new CustomerRepository();
-        PolicyHolder policyHolder = policyHolderTable.getSelectionModel().getSelectedItem();
-        repository.removeByID(policyHolder.getId());
-        repository.close();
-    }
-
-    private void add(ActionEvent actionEvent) {
-        new AddPolicyHolderForm();
-    }
+//    private void setUpButtonSet() {
+//        this.addButton.setOnAction(this::add);
+//        this.deleteButton.setOnAction(this::delete);
+//        this.updateButton.setOnAction(this::update);
+//    }
+//
+//    private void update(ActionEvent actionEvent) {
+//        PolicyHolder selectedPolicyHolder = policyHolderTable.getSelectionModel().getSelectedItem();
+//        if (selectedPolicyHolder != null) new UpdatePolicyHolderForm(selectedPolicyHolder, null);
+//        else new ErrorAlert("Please select a policyHolder");
+//    }
+//
+//    private void delete(ActionEvent actionEvent) {
+//        CustomerRepository repository = new CustomerRepository();
+//        PolicyHolder policyHolder = policyHolderTable.getSelectionModel().getSelectedItem();
+//        repository.removeByID(policyHolder.getId());
+//        repository.close();
+//    }
+//
+//    private void add(ActionEvent actionEvent) {
+//        new AddPolicyHolderForm();
+//    }
 
 
 }

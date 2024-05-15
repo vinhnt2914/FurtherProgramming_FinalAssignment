@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -48,6 +49,20 @@ public class PolicyOwner extends Customer {
         repo.removeByID(beneficiary.getId());
         repo.close();
         return beneficiary;
+    }
+
+    public double calculateFee() {
+        CustomerRepository repository = new CustomerRepository();
+        double totalCost = fee;
+        List<PolicyHolder> policyHolderList = repository.getAllPolicyHoldersOfPolicyOwner(this);
+        for (PolicyHolder h : policyHolderList) {
+            totalCost += fee;
+            for (Dependant d : h.getDependantSet()) {
+                totalCost += ((fee/100)*60);
+            }
+        }
+        repository.close();
+        return totalCost;
     }
 
     public static class PolicyOwnerBuilder extends GenericCustomerBuilder<PolicyOwnerBuilder> {

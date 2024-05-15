@@ -38,6 +38,7 @@ public class PageManager {
             case PolicyOwner -> setScenesForPolicyOwner();
             case Surveyor -> setScenesForSurveyor();
             case Manager -> setScenesForManager();
+            case Admin -> setScenesForAdmin();
         }
     }
 
@@ -59,5 +60,9 @@ public class PageManager {
     private void setScenesForManager() {
         scenes.put("info", "insuranceManager.fxml");
         scenes.put("dashboard", "insuranceManager.fxml");
+    }
+
+    private void setScenesForAdmin() {
+        scenes.put("customer", "customerAdmin.fxml");
     }
 }

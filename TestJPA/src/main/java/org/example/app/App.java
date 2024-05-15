@@ -5,10 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.example.app.components.menubar.GenericMenuBar;
-import org.example.app.components.menubar.PolicyHolderMenuBar;
-import org.example.app.components.menubar.PolicyOwnerMenuBar;
-import org.example.app.components.menubar.SurveyorMenuBar;
+import org.example.app.components.menubar.*;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.utility.PageManager;
@@ -49,13 +46,15 @@ public class App {
         switch (role) {
             case PolicyHolder -> {
                 return new PolicyHolderMenuBar();
-
             }
             case Surveyor -> {
                 return new SurveyorMenuBar();
             }
             case PolicyOwner -> {
                 return new PolicyOwnerMenuBar();
+            }
+            case Admin -> {
+                return new AdminMenuBar();
             }
         }
         return null;

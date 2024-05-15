@@ -11,13 +11,14 @@ import javafx.scene.layout.HBox;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.form.FileClaimForm;
+import org.example.app.components.table.RefreshableTable;
 import org.example.app.components.table.RequestTable;
 import org.example.global.CustomerQueryType;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PolicyHolderController implements Initializable {
+public class PolicyHolderController implements Initializable, RefreshableController {
     @FXML
     private Button myClaimButton;
     @FXML
@@ -44,7 +45,7 @@ public class PolicyHolderController implements Initializable {
     }
 
     private void openFileClaimForm(ActionEvent actionEvent) {
-        new FileClaimForm();
+        new FileClaimForm(this);
     }
 
     private void swapTable(Event event) {
@@ -62,5 +63,11 @@ public class PolicyHolderController implements Initializable {
         } else if (tableType.equalsIgnoreCase("Request")) {
             tableViewContainer.getChildren().add(new RequestTable());
         }
+    }
+
+    @Override
+    public void refresh() {
+        RefreshableTable tableView = (RefreshableTable) tableViewContainer.getChildren().get(0);
+        tableView.refreshTable();
     }
 }

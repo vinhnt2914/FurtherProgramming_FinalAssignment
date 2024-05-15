@@ -11,6 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.App;
 import org.example.global.GlobalVariable;
+import org.example.global.Role;
+import org.example.model.Admin;
 import org.example.model.User;
 import org.example.repository.impl.UserRepository;
 
@@ -37,12 +39,19 @@ public class LoginController implements Initializable{
     private void login(ActionEvent actionEvent) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        User user = repository.findUser(username, password);
-        GlobalVariable.setRole(user);
-        GlobalVariable.setUserID(user.getId());
-        GlobalVariable.setUser(user);
-        System.out.println("User logged in: " + GlobalVariable.getUserID());
-        System.out.println("User role: " + GlobalVariable.getRole());
+
+        if(username.equals("admin") && password.equals("123456")) {
+            GlobalVariable.setRole(Role.Admin);
+            GlobalVariable.setUser(Admin.getInstance());
+            System.out.println("Admin logged in");
+        } else {
+            User user = repository.findUser(username, password);
+            GlobalVariable.setRole(user);
+            GlobalVariable.setUserID(user.getId());
+            GlobalVariable.setUser(user);
+            System.out.println("User logged in: " + GlobalVariable.getUserID());
+            System.out.println("User role: " + GlobalVariable.getRole());
+        }
 
         // Close the login stage
         Stage stage = (Stage) loginPane.getScene().getWindow();

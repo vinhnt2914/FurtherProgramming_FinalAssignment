@@ -5,6 +5,6 @@ public class AdminMenuBar extends GenericMenuBar{
 
     @Override
     void modifyMenuBar() {
-        // Do nothing
+        menuBar.getChildren().removeAll(infoMenu, dashboardMenu);
     }
 }

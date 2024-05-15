@@ -17,7 +17,7 @@
             <Font size="16.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="claimMenu" text="Claim">
+      <Hyperlink fx:id="customerMenu" text="Customer">
          <font>
             <Font size="16.0" />
          </font>
@@ -27,7 +27,7 @@
             <Font size="16.0" />
          </font>
       </Hyperlink>
-      <Hyperlink fx:id="customerMenu" text="Customer">
+      <Hyperlink fx:id="claimMenu" text="Claim">
          <font>
             <Font size="16.0" />
          </font>

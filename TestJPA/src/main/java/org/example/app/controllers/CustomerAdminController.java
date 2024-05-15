@@ -15,6 +15,7 @@ import org.example.app.components.form.UpdateDependantForm;
 import org.example.app.components.form.UpdatePolicyHolderForm;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
+import org.example.app.components.table.RefreshableTable;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
@@ -23,7 +24,7 @@ import org.example.repository.impl.CustomerRepository;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerAdminController implements Initializable {
+public class CustomerAdminController implements Initializable, RefreshableController {
     @FXML
     private HBox buttonSetContainer;
     @FXML
@@ -47,7 +48,7 @@ public class CustomerAdminController implements Initializable {
         PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
         this.tableViewContainer.getChildren().add(policyHolderTable);
         this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
-//        setPolicyHolderButtonActions();
+        setPolicyHolderButtonActions();
     }
 
     private void swapTable(Event event) {
@@ -62,7 +63,7 @@ public class CustomerAdminController implements Initializable {
             tableViewContainer.getChildren().add(policyHolderTable);
             buttonSetContainer.getChildren().add(policyHolderButtonSet);
 
-//            setPolicyHolderButtonActions();
+            setPolicyHolderButtonActions();
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
@@ -71,25 +72,25 @@ public class CustomerAdminController implements Initializable {
             tableViewContainer.getChildren().add(dependantTable);
             buttonSetContainer.getChildren().add(dependantButtonSet);
 
-//            setDependantButtonActions();
+            setDependantButtonActions();
         }
     }
 
-//    private void setPolicyHolderButtonActions() {
-//        PolicyHolderButtonSet policyHolderButtonSet = (PolicyHolderButtonSet) buttonSetContainer.getChildren().get(0);
-//
-//        policyHolderButtonSet.addButton.setOnAction(event -> handleAddPolicyHolder());
-//        policyHolderButtonSet.editButton.setOnAction(event -> handleEditPolicyHolder());
-//        policyHolderButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyHolder());
-//    }
+    private void setPolicyHolderButtonActions() {
+        PolicyHolderButtonSet policyHolderButtonSet = (PolicyHolderButtonSet) buttonSetContainer.getChildren().get(0);
 
-//    private void setDependantButtonActions() {
-//        DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
-//
-//        dependantButtonSet.addButton.setOnAction(event -> handleAddDependant());
-//        dependantButtonSet.removeButton.setOnAction(event -> handleRemoveDependant());
-//        dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
-//    }
+        policyHolderButtonSet.addButton.setOnAction(event -> handleAddPolicyHolder());
+        policyHolderButtonSet.updateButton.setOnAction(event -> handleEditPolicyHolder());
+        policyHolderButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyHolder());
+    }
+
+    private void setDependantButtonActions() {
+        DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
+
+        dependantButtonSet.addButton.setOnAction(event -> handleAddDependant());
+        dependantButtonSet.deleteButton.setOnAction(event -> handleRemoveDependant());
+        dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
+    }
 
     private void handleAddPolicyHolder() {
         new AddPolicyHolderForm(this);
@@ -120,7 +121,7 @@ public class CustomerAdminController implements Initializable {
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder);
+            new UpdatePolicyHolderForm(selectedPolicyHolder, this);
 //            try {
 //                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
 //                Stage dialogStage = new Stage();
@@ -224,7 +225,7 @@ public class CustomerAdminController implements Initializable {
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant);
+            new UpdateDependantForm(selectedDependant, this);
 //            try {
 //                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
 //                Stage dialogStage = new Stage();
@@ -265,5 +266,11 @@ public class CustomerAdminController implements Initializable {
     public void refreshDependantTable() {
         DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
         tableViewContainer.getChildren().setAll(dependantTable);
+    }
+
+    @Override
+    public void refresh() {
+        RefreshableTable tableView = (RefreshableTable) tableViewContainer.getChildren().get(0);
+        tableView.refreshTable();
     }
 }

@@ -16,7 +16,7 @@ import org.example.repository.impl.RequestRepository;
 import java.io.IOException;
 import java.util.List;
 
-public class RequestTable extends TableView<Request> {
+public class RequestTable extends TableView<Request> implements RefreshableTable {
     @FXML
     private TableView<Request> requestTableView;
     @FXML
@@ -60,5 +60,10 @@ public class RequestTable extends TableView<Request> {
         ObservableList<Request> data = FXCollections.observableArrayList(requestList);
         requestTableView.setItems(data);
         repository.close();
+    }
+
+    @Override
+    public void refreshTable() {
+        populateTableView();
     }
 }

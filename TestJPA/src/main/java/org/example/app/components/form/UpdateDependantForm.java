@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
+import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 import org.example.app.controllers.CustomerAdminController;
@@ -22,9 +23,9 @@ public class UpdateDependantForm extends BorderPane {
     @FXML private Button saveButton, cancelButton;
     private Dependant selectedDependant;
     private Stage stage;
-    private CustomerAdminController controller;
+    private RefreshableController controller;
 
-    public UpdateDependantForm(Dependant dependant, CustomerAdminController controller) {
+    public UpdateDependantForm(Dependant dependant, RefreshableController controller) {
         this.selectedDependant = dependant;
         this.controller = controller;
         try {
@@ -67,7 +68,7 @@ public class UpdateDependantForm extends BorderPane {
             repository.update(selectedDependant);
             repository.close();
             close();
-            controller.refreshDependantTable();  // Refresh the table
+            controller.refresh();  // Refresh the table
         }
     }
 

@@ -67,4 +67,9 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
         customerTableView.setItems(data);
         repository.close();
     }
+
+    @Override
+    public void refreshTable() {
+        populateTableView(queryType);
+    }
 }

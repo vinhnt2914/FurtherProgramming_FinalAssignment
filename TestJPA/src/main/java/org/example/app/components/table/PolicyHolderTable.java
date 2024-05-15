@@ -45,4 +45,9 @@ public class PolicyHolderTable extends GenericCustomerTable<PolicyHolder> {
         customerTableView.setItems(data);
         repository.close();
     }
+
+    @Override
+    public void refreshTable() {
+        populateTableView(queryType);
+    }
 }

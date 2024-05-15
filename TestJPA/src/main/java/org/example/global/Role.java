@@ -5,5 +5,6 @@ public enum Role {
     PolicyHolder,
     PolicyOwner,
     Surveyor,
-    Manager
+    Manager,
+    Admin
 }

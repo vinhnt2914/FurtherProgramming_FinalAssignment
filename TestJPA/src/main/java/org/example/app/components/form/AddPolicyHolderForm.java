@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.CustomerAdminController;
+import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.customer.PolicyHolder;
@@ -24,9 +25,9 @@ public class AddPolicyHolderForm extends BorderPane {
     @FXML private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
     @FXML private Button saveButton, cancelButton;
     private Stage stage;
-    private CustomerAdminController controller;
+    private RefreshableController controller;
 
-    public AddPolicyHolderForm(CustomerAdminController controller) {
+    public AddPolicyHolderForm(RefreshableController controller) {
         this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
@@ -69,7 +70,7 @@ public class AddPolicyHolderForm extends BorderPane {
             repository.add(policyHolder);
             repository.close();
             close();
-            controller.refreshPolicyHolderTable(); // Refresh the table after adding
+            controller.refresh(); // Refresh the table after adding
         }
     }
 

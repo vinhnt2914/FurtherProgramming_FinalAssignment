@@ -97,4 +97,9 @@ public class InsuredPersonTable extends GenericCustomerTable<Beneficiary> {
         Stage stage = (Stage) customerTableView.getScene().getWindow();
         stage.close();
     }
+
+    @Override
+    public void refreshTable() {
+        populateTableView(queryType);
+    }
 }

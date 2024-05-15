@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.table.InsuredPersonTable;
+import org.example.app.controllers.RefreshableController;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
@@ -54,7 +55,9 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
     private Beneficiary insuredPerson;
     private CustomerRepository customerRepository;
     private ClaimRepository claimRepository;
-    public FileClaimForm() {
+    private RefreshableController controller;
+    public FileClaimForm(RefreshableController controller) {
+        this.controller = controller;
         customerRepository = new CustomerRepository();
         claimRepository = new ClaimRepository();
         claimService = new ClaimService();
@@ -123,6 +126,7 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
                 .build();
         claimRepository.add(claim);
         claimRepository.close();
+        controller.refresh();
     }
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {

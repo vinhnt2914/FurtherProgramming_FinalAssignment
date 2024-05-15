@@ -4,15 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
+import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
-import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -26,9 +25,8 @@ public class UpdatePolicyHolderForm extends BorderPane {
     @FXML private Button cancelButton;
     private PolicyHolder selectedPolicyHolder;
     private Stage stage;
-    private CustomerAdminController controller;  // Reference to the controller
-
-    public UpdatePolicyHolderForm(PolicyHolder policyHolder, CustomerAdminController controller) {
+    private RefreshableController controller;  // Reference to the controller
+    public UpdatePolicyHolderForm(PolicyHolder policyHolder, RefreshableController controller) {
         this.selectedPolicyHolder = policyHolder;
         this.controller = controller;  // Store the controller reference
 
@@ -69,7 +67,7 @@ public class UpdatePolicyHolderForm extends BorderPane {
             repository.update(selectedPolicyHolder);
             repository.close();
             close();
-            controller.refreshPolicyHolderTable();  // Refresh the table here
+            controller.refresh();  // Refresh the table here
         }
     }
 

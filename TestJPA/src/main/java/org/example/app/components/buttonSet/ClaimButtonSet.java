@@ -24,11 +24,11 @@ public class ClaimButtonSet extends HBox {
     @FXML
     private HBox claimButtonSet;
     @FXML
-    private Button addButton;
+    public Button addButton;
     @FXML
-    private Button deleteButton;
+    public Button deleteButton;
     @FXML
-    private Button updateButton;
+    public Button updateButton;
     private ClaimTable claimTable;
 
     public ClaimButtonSet(ClaimTable claimTable) {
@@ -43,32 +43,32 @@ public class ClaimButtonSet extends HBox {
             throw new RuntimeException(exception);
         }
 
-        setUpButtonSet();
+//        setUpButtonSet();
     }
 
-    private void setUpButtonSet() {
-        this.addButton.setOnAction(this::add);
-        this.deleteButton.setOnAction(this::delete);
-        this.updateButton.setOnAction(this::update);
-    }
-
-    private void update(ActionEvent actionEvent) {
-        Claim selectedClaim = claimTable.getSelectionModel().getSelectedItem();
-        if (selectedClaim != null) {
-            // Call update claim form
-            new UpdateClaimForm(selectedClaim);
-        }
-        else new ErrorAlert("Please select a dependant");
-    }
-
-    private void delete(ActionEvent actionEvent) {
-        ClaimRepository repository = new ClaimRepository();
-        Claim claim = claimTable.getSelectionModel().getSelectedItem();
-        repository.removeByID(claim.getId());
-        repository.close();
-    }
-
-    private void add(ActionEvent actionEvent) {
-        new FileClaimForm();
-    }
+//    private void setUpButtonSet() {
+//        this.addButton.setOnAction(this::add);
+//        this.deleteButton.setOnAction(this::delete);
+//        this.updateButton.setOnAction(this::update);
+//    }
+//
+//    private void update(ActionEvent actionEvent) {
+//        Claim selectedClaim = claimTable.getSelectionModel().getSelectedItem();
+//        if (selectedClaim != null) {
+//            // Call update claim form
+//            new UpdateClaimForm(selectedClaim);
+//        }
+//        else new ErrorAlert("Please select a dependant");
+//    }
+//
+//    private void delete(ActionEvent actionEvent) {
+//        ClaimRepository repository = new ClaimRepository();
+//        Claim claim = claimTable.getSelectionModel().getSelectedItem();
+//        repository.removeByID(claim.getId());
+//        repository.close();
+//    }
+//
+//    private void add(ActionEvent actionEvent) {
+//        new FileClaimForm();
+//    }
 }

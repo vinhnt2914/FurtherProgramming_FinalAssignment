@@ -1,6 +1,5 @@
 package org.example.app.components.table;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
@@ -10,7 +9,7 @@ import org.example.model.provider.Provider;
 
 import java.io.IOException;
 
-public abstract class GenericProviderTable<T extends Provider> extends TableView<T> {
+public abstract class GenericProviderTable<T extends Provider> extends TableView<T> implements RefreshableTable {
     @FXML
     protected TableView<T> providerTableView;
     @FXML

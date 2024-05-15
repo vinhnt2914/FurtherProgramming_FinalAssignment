@@ -3,6 +3,7 @@ package org.example.model.customer;
 import jakarta.persistence.*;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
+import org.example.model.items.Request;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,8 @@ public class Beneficiary extends Customer {
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch=FetchType.LAZY)
     private Set<Claim> claimList;
-
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
+    private Set<Request> requestList;
     public Beneficiary(GenericBeneficaryBuilder builder) {
         super(builder);
         this.claimList = new HashSet<>();

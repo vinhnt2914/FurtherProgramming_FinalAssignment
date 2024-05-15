@@ -18,11 +18,11 @@ public class DependantButtonSet extends HBox {
     @FXML
     private HBox dependantButtonSet;
     @FXML
-    private Button addButton;
+    public Button addButton;
     @FXML
-    private Button deleteButton;
+    public Button deleteButton;
     @FXML
-    private Button updateButton;
+    public Button updateButton;
     private DependantTable dependantTable;
     public DependantButtonSet(DependantTable dependantTable) {
         this.dependantTable = dependantTable;
@@ -36,29 +36,29 @@ public class DependantButtonSet extends HBox {
             throw new RuntimeException(exception);
         }
 
-        setUpButtonSet();
+//        setUpButtonSet();
     }
 
-    private void setUpButtonSet() {
-        this.addButton.setOnAction(this::add);
-        this.deleteButton.setOnAction(this::delete);
-        this.updateButton.setOnAction(this::update);
-    }
-
-    private void update(ActionEvent actionEvent) {
-        Dependant selectedDependant = dependantTable.getSelectionModel().getSelectedItem();
-        if (selectedDependant != null) new UpdateDependantForm(selectedDependant);
-        else new ErrorAlert("Please select a dependant");
-    }
-
-    private void delete(ActionEvent actionEvent) {
-        CustomerRepository repository = new CustomerRepository();
-        Dependant dependant = dependantTable.getSelectionModel().getSelectedItem();
-        repository.removeByID(dependant.getId());
-        repository.close();
-    }
-
-    private void add(ActionEvent actionEvent) {
-        new AddDependantForm();
-    }
+//    private void setUpButtonSet() {
+//        this.addButton.setOnAction(this::add);
+//        this.deleteButton.setOnAction(this::delete);
+//        this.updateButton.setOnAction(this::update);
+//    }
+//
+//    private void update(ActionEvent actionEvent) {
+//        Dependant selectedDependant = dependantTable.getSelectionModel().getSelectedItem();
+//        if (selectedDependant != null) new UpdateDependantForm(selectedDependant);
+//        else new ErrorAlert("Please select a dependant");
+//    }
+//
+//    private void delete(ActionEvent actionEvent) {
+//        CustomerRepository repository = new CustomerRepository();
+//        Dependant dependant = dependantTable.getSelectionModel().getSelectedItem();
+//        repository.removeByID(dependant.getId());
+//        repository.close();
+//    }
+//
+//    private void add(ActionEvent actionEvent) {
+//        new AddDependantForm();
+//    }
 }

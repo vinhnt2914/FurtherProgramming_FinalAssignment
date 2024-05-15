@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.app.components.alert.SuccessAlert;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
@@ -19,7 +18,7 @@ import org.example.repository.impl.ProposalRepository;
 import java.io.IOException;
 import java.util.List;
 
-public class ProposalTable extends TableView<Proposal> {
+public class ProposalTable extends TableView<Proposal> implements RefreshableTable {
     @FXML
     private TableView<Proposal> proposalTableView;
     @FXML
@@ -93,5 +92,10 @@ public class ProposalTable extends TableView<Proposal> {
         ClaimRepository repository = new ClaimRepository();
         repository.update(claim);
         repository.close();
+    }
+
+    @Override
+    public void refreshTable() {
+        populateTableView();
     }
 }

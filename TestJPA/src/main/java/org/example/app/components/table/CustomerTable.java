@@ -9,7 +9,7 @@ import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;
 
-public class CustomerTable extends GenericCustomerTable<Customer> {
+public class CustomerTable extends GenericCustomerTable<Customer>{
     public CustomerTable(CustomerQueryType.QueryType queryType) {
         super(queryType);
     }
@@ -26,5 +26,10 @@ public class CustomerTable extends GenericCustomerTable<Customer> {
         ObservableList<Customer> data = FXCollections.observableArrayList(customerList);
         customerTableView.setItems(data);
         repository.close();
+    }
+
+    @Override
+    public void refreshTable() {
+        populateTableView(queryType);
     }
 }

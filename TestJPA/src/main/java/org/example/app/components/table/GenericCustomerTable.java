@@ -11,7 +11,7 @@ import org.example.model.customer.Customer;
 import java.io.IOException;
 import java.net.URL;
 
-public abstract class GenericCustomerTable<T extends Customer> extends TableView<T> {
+public abstract class GenericCustomerTable<T extends Customer> extends TableView<T> implements RefreshableTable {
     @FXML
     protected TableView<T> customerTableView;
     @FXML
@@ -24,8 +24,10 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     protected TableColumn<T, String> phoneCol;
     @FXML
     protected TableColumn<T, String> addressCol;
+    protected CustomerQueryType.QueryType queryType;
 
     public GenericCustomerTable(CustomerQueryType.QueryType queryType) {
+        this.queryType = queryType;
         FXMLLoader fxmlLoader = new FXMLLoader(getFXMLPath());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
