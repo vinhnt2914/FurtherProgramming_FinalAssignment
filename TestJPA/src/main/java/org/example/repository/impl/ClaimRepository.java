@@ -4,6 +4,9 @@ import jakarta.persistence.TypedQuery;
 import org.example.model.items.Claim;
 import org.example.repository.EntityRepository;
 import org.example.repository.IClaimRepository;
+import org.hibernate.Session;
+
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -17,12 +20,28 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
     @Override
     public void add(Claim... claims) {
-        em.getTransaction().begin();
-        for (Claim c : claims) {
-            em.persist(c);
+        Session session = em.unwrap(org.hibernate.Session.class);
+        Transaction tx = session.beginTransaction();
+        try {
+            int batchSize = 50; // Adjust batch size as needed
+            for (int i = 0; i < claims.length; i++) {
+                session.save(claims[i]);
+                if (i > 0 && i % batchSize == 0) {
+                    session.flush();
+                    session.clear();
+                }
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw new RuntimeException("Failed to add claims", e);
+        } finally {
+            session.close();
         }
-        em.getTransaction().commit();
     }
+
 
     @Override
     public Claim findByID(String id) {

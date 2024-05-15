@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
@@ -13,19 +12,31 @@
         <class>org.example.model.items.InsuranceCard</class>
         <class>org.example.model.items.Claim</class>
         <properties>
+            <!-- JDBC Connection Properties -->
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"/>
-            <property name="javax.persistence.jdbc.user" value="postgres.txqfadgefjliryfwmtbw"/>
-            <property name="javax.persistence.jdbc.password" value="XkyI88IhCtiAggi6"/>
+            <property name="javax.persistence.jdbc.user" value="postgres.bnnrtwkqpwyjwpykaioi"/>
+            <property name="javax.persistence.jdbc.password" value="d6OKhkGzHlAiM2F8"/>
 
+            <!-- Hibernate Properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.log_slow_query" value="1"/>
+            <property name="hibernate.jdbc.batch_size" value="50"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+            <property name="hibernate.jdbc.batch_versioned_data" value="true"/>
+            <property name="hibernate.generate_statistics" value="true"/>
 
+            <!-- Connection Pooling Properties -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+
+            <property name="hibernate.log_slow_query" value="1"/>
         </properties>
     </persistence-unit>
-
-
 </persistence>

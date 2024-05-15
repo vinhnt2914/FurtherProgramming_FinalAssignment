@@ -1,187 +1,101 @@
 package org.example;
 
-import org.example.model.User;
-import org.example.model.customer.Dependant;
-import org.example.model.customer.PolicyHolder;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import org.example.model.customer.Beneficiary;
 import org.example.model.customer.PolicyOwner;
-import org.example.model.enums.ClaimStatus;
+import org.example.model.customer.BeneficiaryBuilder;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
-import org.example.model.items.Proposal;
-import org.example.model.items.Request;
-import org.example.model.provider.InsuranceManager;
-import org.example.model.provider.InsuranceSurveyor;
-import org.example.model.provider.Provider;
-import org.example.repository.impl.*;
+import org.example.repository.EMFactory;
+import org.example.repository.impl.BeneficiaryRepository;
+import org.example.repository.impl.ClaimRepository;
+import org.example.repository.impl.PolicyOwnerRepository;
 import org.example.service.ClaimService;
 import org.example.service.CustomerService;
 import org.example.service.InsuranceCardService;
+import org.example.model.enums.ClaimStatus;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        InsuranceCardService cardService = new InsuranceCardService();
-        CustomerService customerService = new CustomerService();
-        ClaimService claimService = new ClaimService();
 
-        InsuranceCard card1 = cardService.makeCard()
-                .cardNumber("0000000001")
-                .expireDate(LocalDate.of(2024,5,5))
-                .build();
+    private static final int BATCH_SIZE = 50;
 
-        InsuranceCard card2 = cardService.makeCard()
-                .cardNumber("0000000002")
-                .expireDate(LocalDate.of(2024,5,6))
-                .build();
+    public static void main(String[] args) {
+        EntityManager em = EMFactory.getInstance().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
 
-        InsuranceCard card3 = cardService.makeCard()
-                .cardNumber("0000000003")
-                .expireDate(LocalDate.of(2024,6,5))
-                .build();
+        try {
+            transaction.begin();
 
-        InsuranceCard card4 = cardService.makeCard()
-                .cardNumber("0000000004")
-                .expireDate(LocalDate.of(2024,7,5))
-                .build();
+            // Create PolicyOwner
+            CustomerService customerService = new CustomerService();
+            PolicyOwner policyOwner = customerService.makePolicyOwner()
+                    .username("policyowner123")
+                    .password("password123")
+                    .email("policyowner@example.com")
+                    .phone("123-456-7890")
+                    .address("123 Main St")
+                    .fullName("John Doe")
+                    .build();
 
-        PolicyHolder c1 = customerService
-                .makePolicyHolder()
-                .username("vinhrmit1234")
-                .password("Rmit@1234")
-                .email("vinh@gmail.com")
-                .phone("0818194444")
-                .address("Hanoi")
-                .fullName("Nguyen The Vinh")
-                .build();
+            em.persist(policyOwner);
 
-        Dependant c2 = customerService
-                .makeDependant()
-                .fullName("Nguyen The Quang")
-                .username("quangrmit1234")
-                .password("Rmit@1234")
-                .email("quang@gmail.com")
-                .phone("123456789")
-                .address("Haiphone")
-                .build();
+            // Create InsuranceCard
+            InsuranceCardService cardService = new InsuranceCardService();
+            InsuranceCard insuranceCard = cardService.makeCard()
+                    .cardNumber("1234-5678-9101-1121")
+                    .expireDate(LocalDate.of(2025, 12, 31))
+                    .policyOwner(policyOwner)
+                    .build();
 
-        Dependant c3 = customerService
-                .makeDependant()
-                .username("khairmit1234")
-                .password("Rmit@1234")
-                .email("khai@gmail.com")
-                .phone("123456812")
-                .address("Sapa")
-                .fullName("Tran Quang Khai")
-                .build();
+            em.persist(insuranceCard);
 
-        Dependant c4 = customerService
-                .makeDependant()
-                .username("quatrmit1234")
-                .password("Rmit@1234")
-                .email("quat@gmail.com")
-                .phone("412389123")
-                .address("Bac Ninh")
-                .fullName("Cao Ba Quat")
-                .build();
+            // Create Beneficiary
+            Beneficiary beneficiary = new BeneficiaryBuilder()
+                    .username("beneficiary123")
+                    .password("password123")
+                    .email("beneficiary@example.com")
+                    .phone("098-765-4321")
+                    .address("456 Secondary St")
+                    .fullName("Jane Smith")
+                    .build();
+            beneficiary.setPolicyOwner(policyOwner);
+            beneficiary.setInsuranceCard(insuranceCard);
 
-        PolicyOwner c5 = customerService
-                .makePolicyOwner()
-                .username("kienrmit1234")
-                .password("Rmit@1234")
-                .email("kien@gmail.com")
-                .phone("01421234112")
-                .address("Thanh Hoa")
-                .fullName("Dang Trung Kien")
-                .build();
+            em.persist(beneficiary);
 
-        // This line can cause the unsaved transient object error
-        // c2, c3, c4 by the time of persisting
-        // Solve using bulk adding, avoid persisting each object per transaction
-        // Persist everything under one transaction
-        c1.addDepdendants(c2, c3, c4); // Add dependants
-        c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
-        c1.setInsuranceCard(card1);
-        c2.setInsuranceCard(card2);
-        c3.setInsuranceCard(card3);
-        c4.setInsuranceCard(card4);
+            // Create Claim
+            ClaimService claimService = new ClaimService();
+            Claim claim = claimService.makeClaim()
+                    .id("claim123")
+                    .insuredPerson(beneficiary)
+                    .claimDate(LocalDate.now())
+                    .examDate(LocalDate.now().plusDays(7))
+                    .claimAmount(500.00)
+                    .status(ClaimStatus.NEW)
+                    .bankingInfo("Bank XYZ, Account: 123456789")
+                    .build();
 
-        Claim claim1 = claimService.makeClaim()
-                .id("f-000001")
-                .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,5,7))
-                .examDate(LocalDate.of(2024,8,8))
-                .claimAmount(2000)
-                .status(ClaimStatus.NEW)
-                .bankingInfo("TPBank-NguyenTheVinh-1234567")
-                .build();
+            em.persist(claim);
 
-        Claim claim2 = claimService.makeClaim()
-                .id("f-000002")
-                .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,2,2))
-                .examDate(LocalDate.of(2024,6,8))
-                .claimAmount(3000)
-                .status(ClaimStatus.NEW)
-                .bankingInfo("TPBank-NguyenTheVinh-1234567")
-                .build();
+            // Flush and clear the persistence context periodically to manage memory
+            em.flush();
+            em.clear();
 
-        Claim claim3 = claimService.makeClaim()
-                .id("f-000003")
-                .insuredPerson(c3)
-                .claimDate(LocalDate.of(2024,11,14))
-                .examDate(LocalDate.of(2024,9,25))
-                .claimAmount(500)
-                .status(ClaimStatus.NEW)
-                .bankingInfo("TPBank-NguyenBaThai-7654321")
-                .build();
+            transaction.commit();
 
-        Claim claim4 = claimService.makeClaim()
-                .id("f-000004")
-                .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,1,1))
-                .examDate(LocalDate.of(2024,10,5))
-                .claimAmount(5000)
-                .status(ClaimStatus.NEW)
-                .bankingInfo("TPBank-CaoBaQuat-321654")
-                .build();
+            System.out.println("PolicyOwner: " + policyOwner);
+            System.out.println("Beneficiary: " + beneficiary);
+            System.out.println("InsuranceCard: " + insuranceCard);
+            System.out.println("Claim: " + claim);
 
-        InsuranceSurveyor s1 = new InsuranceSurveyor("survey1", "Rmit@1234");
-        InsuranceManager m1 = new InsuranceManager("manager1", "Rmit@1234");
-
-        Request r1 = s1.makeRequest(c1, "bro ur dick smol");
-        Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
-        Proposal p2 = s1.propose(m1, claim2, "Check this claim out daddy");
-
-//        System.out.println(claim1);
-//        System.out.println(claim1.getInsuredPerson());
-//        System.out.println(c1);
-
-        CustomerRepository customerRepository = new CustomerRepository();
-        InsuranceCardRepository cardRepository = new InsuranceCardRepository();
-        ClaimRepository claimRepository = new ClaimRepository();
-        ProviderRepository providerRepository = new ProviderRepository();
-        ProposalRepository proposalRepository = new ProposalRepository();
-        // This could throw a no relation error
-        // If add a policyOwner, who does not have an insurance card
-//        customerRepository.add(c1,c2,c3,c4,c5);
-//        providerRepository.add(s1);
-//        providerRepository.add(m1);
-//        proposalRepository.add(p1);
-        proposalRepository.add(p2);
-
-
-//        User user = customerRepository.findByID(1);
-//        System.out.println(user);
-//        System.out.println(user instanceof PolicyHolder);
-//        System.out.println(customerRepository.getAll());
-//        System.out.println(cardRepository.findByID("0000000002"));
-
-        customerRepository.close();
-        cardRepository.close();
-        claimRepository.close();
-        providerRepository.close();
-        proposalRepository.close();
+        } catch (Exception e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 }

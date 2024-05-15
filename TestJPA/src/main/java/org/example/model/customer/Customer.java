@@ -3,13 +3,18 @@ package org.example.model.customer;
 import jakarta.persistence.*;
 import org.example.model.User;
 import org.example.model.items.Claim;
+import org.example.util.PasswordUtil;
+import org.hibernate.annotations.BatchSize;
 
-import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "customers")
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(
+        name = "Customer.findByUsername",
+        query = "SELECT c FROM Customer c WHERE c.username = :username"
+)
 public abstract class Customer extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +27,13 @@ public abstract class Customer extends User {
     private String phone;
     private String address;
     private String fullName;
-    @OneToMany(mappedBy = "insuredPerson",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "insuredPerson", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @BatchSize(size = 10)
     private Set<Claim> claimList;
 
     public Customer(GenericCustomerBuilder builder) {
         this.username = builder.username;
-        this.password = builder.password;
+        this.password = PasswordUtil.encrypt(builder.password);
         this.email = builder.email;
         this.phone = builder.phone;
         this.address = builder.address;
@@ -75,7 +79,11 @@ public abstract class Customer extends User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = PasswordUtil.encrypt(password); // Encrypt the password
+    }
+
+    public String getDecryptedPassword() {
+        return PasswordUtil.decrypt(this.password); // Decrypt the password
     }
 
     public String getEmail() {
@@ -127,7 +135,7 @@ public abstract class Customer extends User {
         StringBuilder sb = new StringBuilder();
         sb.append("Customer ID: ").append(id).append("\n")
                 .append("Username: ").append(username).append("\n")
-                .append("Password: ").append(password).append("\n")
+                .append("Password: ").append(getDecryptedPassword()).append("\n") // Display the decrypted password
                 .append("Email: ").append(email).append("\n")
                 .append("Phone: ").append(phone).append("\n")
                 .append("Address: ").append(address).append("\n")
