@@ -1,4 +1,9 @@
 package org.example.app.components.buttonSet;
 
-public class SurveyorButtonSet {
+import org.example.app.components.table.RefreshableTable;
+
+public class SurveyorButtonSet extends GenericButtonSet{
+    public SurveyorButtonSet(RefreshableTable table) {
+        super(table);
+    }
 }

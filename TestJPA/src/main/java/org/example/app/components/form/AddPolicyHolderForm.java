@@ -31,6 +31,11 @@ public class AddPolicyHolderForm extends GenericAddForm {
         super(controller);
     }
 
+    @Override
+    void modifyForm() {
+        titleLabel.setText("Add Policy Holder Form");
+    }
+
 //    public AddPolicyHolderForm(RefreshableController controller) {
 //        this.controller = controller;
 //        try {
@@ -87,30 +92,7 @@ public class AddPolicyHolderForm extends GenericAddForm {
 //        close();
 //    }
 
-    private boolean validateInput() {
-        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
-                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
-            new ErrorAlert("All fields must be filled out.");
-            return false;
-        }
 
-        if (!isValidEmail(emailField.getText())) {
-            new ErrorAlert("Please enter a valid email address.");
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean isFieldEmpty(TextField field) {
-        return field.getText() == null || field.getText().trim().isEmpty();
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
-    }
 
 
 }

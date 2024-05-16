@@ -9,18 +9,20 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public abstract class GenericAddForm extends BorderPane {
     @FXML
-    private Label titleLabel;
+    protected Label titleLabel;
     @FXML
-    private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
+    protected TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
     @FXML private Button saveButton, cancelButton;
     private Stage stage;
-    private RefreshableController controller;
+    protected RefreshableController controller;
 
     public GenericAddForm(RefreshableController controller) {
         this.controller = controller;
@@ -38,11 +40,14 @@ public abstract class GenericAddForm extends BorderPane {
         }
 
         setUpForm();
+        modifyForm();
     }
     private void setUpForm() {
         this.saveButton.setOnAction(this::add);
         this.cancelButton.setOnAction(this::cancel);
     }
+
+    abstract void modifyForm();
     private void cancel(ActionEvent actionEvent) {
         close();
     }
@@ -51,5 +56,28 @@ public abstract class GenericAddForm extends BorderPane {
         stage.close();
     }
 
+    protected boolean validateInput() {
+        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
+                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
+        }
 
+        if (!isValidEmail(emailField.getText())) {
+            new ErrorAlert("Please enter a valid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isFieldEmpty(TextField field) {
+        return field.getText() == null || field.getText().trim().isEmpty();
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return pattern.matcher(email).matches();
+    }
 }

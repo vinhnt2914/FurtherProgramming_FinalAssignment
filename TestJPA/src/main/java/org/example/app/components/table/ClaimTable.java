@@ -33,11 +33,8 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
     private TableColumn<Claim, ClaimStatus> statusCol;
     @FXML
     private TableColumn<Claim, String> bankingInfoCol;
-    private ClaimRepository repository;
 
     public ClaimTable() {
-        // Set up claim repository
-        this.repository = new ClaimRepository();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -69,6 +66,7 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
 
     private void populateTableView() {
         // Data is not formatted
+        ClaimRepository repository = new ClaimRepository();
         List<Claim> claimList = repository.getAll();
         // Format the data
         ObservableList<Claim> data = FXCollections.observableArrayList(claimList);

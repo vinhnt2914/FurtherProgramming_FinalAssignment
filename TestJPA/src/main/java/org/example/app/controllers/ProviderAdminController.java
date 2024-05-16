@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
+import org.example.app.components.buttonSet.PolicyHolderButtonSet;
+import org.example.app.components.buttonSet.SurveyorButtonSet;
 import org.example.app.components.table.ManagerTable;
 import org.example.app.components.table.SurveyorTable;
 import org.example.global.ProviderQueryType;
@@ -34,6 +36,14 @@ public class ProviderAdminController implements Initializable {
 //        PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
         this.tableViewContainer.getChildren().setAll(surveyorTable);
 //        this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
+    }
+
+    private void setUpSurveyorButtonActions() {
+        SurveyorButtonSet buttonSet = (SurveyorButtonSet) buttonSetContainer.getChildren().get(0);
+
+        buttonSet.addButton.setOnAction(event -> handleAddPolicyHolder());
+        buttonSet.updateButton.setOnAction(event -> handleEditPolicyHolder());
+        buttonSet.deleteButton.setOnAction(event -> handleDeletePolicyHolder());
     }
 
     private void swapTable(ActionEvent actionEvent) {

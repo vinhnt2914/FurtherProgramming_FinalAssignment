@@ -82,4 +82,8 @@ public class InsuranceSurveyor extends Provider {
     public InsuranceManager getManager() {
         return manager;
     }
+
+    public void setManager(InsuranceManager manager) {
+        this.manager = manager;
+    }
 }
