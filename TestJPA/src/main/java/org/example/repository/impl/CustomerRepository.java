@@ -125,4 +125,10 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<PolicyOwner> getAllPolicyOwners() {
+        TypedQuery<PolicyOwner> query = em.createQuery("from PolicyOwner", PolicyOwner.class);
+        return query.getResultList();
+    }
+
 }
