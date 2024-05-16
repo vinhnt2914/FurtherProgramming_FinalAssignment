@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.table.ClaimTable;
+import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 
 import java.io.IOException;
@@ -39,6 +41,7 @@ public class ClaimSortingForm extends VBox {
     @FXML
     private Button sortButton;
     private ClaimTable claimTable;
+    private Stage stage;
 
     public ClaimSortingForm(ClaimTable claimTable) {
         try {
@@ -47,11 +50,12 @@ public class ClaimSortingForm extends VBox {
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             VBox rootPane = fxmlLoader.load();
+
             Scene scene = new Scene(rootPane);
-            Stage stage = new Stage();
+            stage = new Stage();
             stage.setScene(scene);
             stage.show();
-            fxmlLoader.load();
+
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -64,24 +68,58 @@ public class ClaimSortingForm extends VBox {
         this.sortButton.setOnAction(this::sort);
     }
 
+    private void setUpComboBoxes() {
+        ObservableList<String> claimAmountOptions = FXCollections.observableArrayList();
+        claimAmountOptions.addAll("Greater than", "Less than");
+
+        ObservableList<String> dateOptions = FXCollections.observableArrayList();
+        dateOptions.addAll("Before", "After");
+
+        ObservableList<String> statusOptions = FXCollections.observableArrayList();
+        statusOptions.addAll("NEW", "PROCESSING", "DONE");
+
+        this.claimAmountComboBox.setItems(claimAmountOptions);
+        this.claimDateComboBox.setItems(dateOptions);
+        this.examDateComboBox.setItems(dateOptions);
+        this.statusComboBox.setItems(statusOptions);
+
+    }
+
     private void sort(ActionEvent actionEvent) {
         String amountOption = claimAmountComboBox.getValue();
         String claimDateOption = claimDateComboBox.getValue();
         String examDateOption = examDateComboBox.getValue();
         String statusOption = statusComboBox.getValue();
 
+        if (amountOption == null && claimDateOption == null && examDateOption == null && statusOption == null) {
+            claimTable.refreshTable();
+            close();
+            return;
+        }
+
+        // Repopulate table in case of performing sort on an empty table
+        claimTable.populateTableView(claimTable.queryType);
         List<Claim> claims = claimTable.getItems();
 
-        // Perform sorting based on selected criteria
+        final boolean[] errorDisplayed = {false};
+
         List<Claim> sortedClaims = claims.stream()
                 .sorted(Comparator.comparingDouble(Claim::getClaimAmount))
                 .filter(claim -> {
                     if (amountOption != null && !amountOption.isEmpty()) {
-                        double claimAmount = Double.parseDouble(claimAmountTextField.getText());
-                        if (amountOption.equals("Greater than")) {
-                            return claim.getClaimAmount() > claimAmount;
-                        } else if (amountOption.equals("Less than")) {
-                            return claim.getClaimAmount() < claimAmount;
+                        try {
+                            double claimAmount = Double.parseDouble(claimAmountTextField.getText());
+                            if (amountOption.equals("Greater than")) {
+                                return claim.getClaimAmount() > claimAmount;
+                            } else if (amountOption.equals("Less than")) {
+                                return claim.getClaimAmount() < claimAmount;
+                            }
+                        } catch (NumberFormatException e) {
+                            if (!errorDisplayed[0]) {
+                                errorDisplayed[0] = true;
+                                new ErrorAlert("Invalid claim amount");
+                            }
+                            return false;
                         }
                     }
                     return true;
@@ -108,29 +146,19 @@ public class ClaimSortingForm extends VBox {
                 })
                 .filter(claim -> {
                     if (statusOption != null && !statusOption.isEmpty()) {
-                        return claim.getStatus().equals(statusOption);
+                        ClaimStatus status = ClaimStatus.valueOf(statusOption);
+                        return claim.getStatus().equals(status);
                     }
                     return true;
                 })
                 .collect(Collectors.toList());
 
         claimTable.setItems(FXCollections.observableArrayList(sortedClaims));
+        close();
     }
 
-    private void setUpComboBoxes() {
-        ObservableList<String> claimAmountOptions = FXCollections.observableArrayList();
-        claimAmountOptions.addAll("Greater than", "Less than");
 
-        ObservableList<String> dateOptions = FXCollections.observableArrayList();
-        dateOptions.addAll("Before", "After");
-
-        ObservableList<String> statusOptions = FXCollections.observableArrayList();
-        dateOptions.addAll("NEW", "PROCESSING", "DONE");
-
-        this.claimAmountComboBox.setItems(claimAmountOptions);
-        this.claimDateComboBox.setItems(dateOptions);
-        this.examDateComboBox.setItems(dateOptions);
-        this.statusComboBox.setItems(statusOptions);
-
+    private void close() {
+        stage.close();
     }
 }

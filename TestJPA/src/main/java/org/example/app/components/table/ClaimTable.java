@@ -36,7 +36,7 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
     private TableColumn<Claim, ClaimStatus> statusCol;
     @FXML
     private TableColumn<Claim, String> bankingInfoCol;
-    private ClaimQueryType.QueryType queryType;
+    public ClaimQueryType.QueryType queryType;
 
     public ClaimTable(ClaimQueryType.QueryType queryType) {
         this.queryType = queryType;
