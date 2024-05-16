@@ -26,4 +26,18 @@ public class UserRepository extends EntityRepository implements IUserInterface {
     public User findByID(int id) {
         return em.find(User.class, id);
     }
+
+    @Override
+    public void update(User user) {
+        User userToUpdate = findByID(user.getId());
+
+        em.getTransaction().begin();
+
+        userToUpdate.setAddress(user.getAddress());
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setPhone(user.getPhone());
+        userToUpdate.setPassword(user.getPassword());
+
+        em.getTransaction().commit();
+    }
 }

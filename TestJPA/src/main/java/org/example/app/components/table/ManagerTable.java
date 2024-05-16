@@ -10,7 +10,7 @@ import org.example.repository.impl.ProviderRepository;
 
 import java.util.List;
 
-public class ManagerTable extends GenericProviderTable<InsuranceManager> {
+public class ManagerTable extends GenericProviderTable<InsuranceManager>{
     private TableColumn<InsuranceManager, List<Integer>> proposalsCol;
 
     public ManagerTable(ProviderQueryType.QueryType queryType) {

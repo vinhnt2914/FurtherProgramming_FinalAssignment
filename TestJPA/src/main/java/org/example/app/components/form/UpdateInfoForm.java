@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
+import org.example.model.User;
 import org.example.model.customer.Customer;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.UserRepository;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -22,13 +24,13 @@ public class UpdateInfoForm extends BorderPane {
     private TextField addressField, emailField, phoneField, passwordField;
     @FXML
     private Button saveButton, cancelButton;
-    private Customer selectedCustomer;
+    private User user;
     private Stage stage;
     private RefreshableController controller;
 
     public UpdateInfoForm(RefreshableController controller) {
         this.controller = controller;
-        selectedCustomer = (Customer) GlobalVariable.getUser();
+        user = GlobalVariable.getUser();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateDependantForm.fxml"));
             fxmlLoader.setRoot(this);
@@ -46,10 +48,10 @@ public class UpdateInfoForm extends BorderPane {
     }
 
     private void setUpForm() {
-        addressField.setText(selectedCustomer.getAddress());
-        emailField.setText(selectedCustomer.getEmail());
-        phoneField.setText(selectedCustomer.getPhone());
-        passwordField.setText(selectedCustomer.getPassword());
+        addressField.setText(user.getAddress());
+        emailField.setText(user.getEmail());
+        phoneField.setText(user.getPhone());
+        passwordField.setText(user.getPassword());
         saveButton.setOnAction(this::updateInfo);
         cancelButton.setOnAction(this::handleCancel);
     }
@@ -60,13 +62,13 @@ public class UpdateInfoForm extends BorderPane {
 
     private void updateInfo(ActionEvent actionEvent) {
         if (isInputValid()) {
-            CustomerRepository repository = new CustomerRepository();
-            selectedCustomer.setAddress(addressField.getText());
-            selectedCustomer.setEmail(emailField.getText());
-            selectedCustomer.setPhone(phoneField.getText());
-            selectedCustomer.setPassword(passwordField.getText());
+            UserRepository repository = new UserRepository();
+            user.setAddress(addressField.getText());
+            user.setEmail(emailField.getText());
+            user.setPhone(phoneField.getText());
+            user.setPassword(passwordField.getText());
 
-            repository.update(selectedCustomer);
+            repository.update(user);
             repository.close();
             close();
 
