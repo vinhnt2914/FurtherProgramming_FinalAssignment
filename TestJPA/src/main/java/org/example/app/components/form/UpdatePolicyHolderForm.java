@@ -12,6 +12,7 @@ import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.PolicyHolder;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.UserRepository;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -57,7 +58,7 @@ public class UpdatePolicyHolderForm extends BorderPane {
 
     private void updatePolicyHolder(ActionEvent actionEvent) {
         if (isInputValid()) {
-            CustomerRepository repository = new CustomerRepository();
+            UserRepository repository = new UserRepository();
 
             selectedPolicyHolder.setAddress(addressField.getText());
             selectedPolicyHolder.setEmail(emailField.getText());

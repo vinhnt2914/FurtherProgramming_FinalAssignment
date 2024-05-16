@@ -23,40 +23,6 @@ public abstract class Provider extends User {
     }
 
     public static abstract class GenericProviderBuilder<T extends GenericProviderBuilder<T>> extends GenericUserBuilder<T> {
-//        protected String username;
-//        protected String password;
-//        protected String email;
-//        protected String phone;
-//        protected String address;
-//        protected String fullName;
-//        public T self() {
-//            return (T) this;
-//        }
-//        public T username(String username) {
-//            this.username = username;
-//            return self();
-//        }
-//        public T password(String password) {
-//            this.password = password;
-//            return self();
-//        }
-//        public T email(String email) {
-//            this.email = email;
-//            return self();
-//        }
-//        public T phone(String phone) {
-//            this.phone = phone;
-//            return self();
-//        }
-//        public T address(String address) {
-//            this.address = address;
-//            return self();
-//        }
-//        public T fullName(String fullName) {
-//            this.fullName = fullName;
-//            return self();
-//        }
-//
-//        public abstract Provider build();
+        public abstract Provider build();
     }
 }

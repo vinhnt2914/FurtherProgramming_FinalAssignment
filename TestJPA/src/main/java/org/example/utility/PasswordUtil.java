@@ -37,4 +37,14 @@ public class PasswordUtil {
             throw new RuntimeException(e);
         }
     }
+
+    public static void main(String[] args) {
+        String originalPassword = "123456";
+        String encrypted1 = PasswordUtil.encrypt(originalPassword);
+        String encrypted2 = PasswordUtil.encrypt(originalPassword);
+        String encrypted3 = PasswordUtil.encrypt(originalPassword);
+        System.out.println(encrypted1);
+        System.out.println(encrypted2);
+        System.out.println(encrypted3);
+    }
 }

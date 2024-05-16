@@ -45,7 +45,7 @@ public class GenericInfoController implements Initializable, RefreshableControll
     }
 
     private void openUpdateInfo(ActionEvent actionEvent) {
-        new UpdateInfoForm(this);
+        new UpdateInfoForm(user, this);
     }
 
     private void setUpLabels() {

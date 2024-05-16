@@ -16,6 +16,7 @@ import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.UserRepository;
 import org.example.service.CustomerService;
 
 import java.io.IOException;
@@ -73,7 +74,6 @@ public class AddDependantForm extends BorderPane {
         if (validateInput()) {
             PolicyHolder selectedPolicyHolder = policyHolderComboBox.getValue();
             if (selectedPolicyHolder != null) {
-                CustomerRepository repository = new CustomerRepository();
                 CustomerService customerService = new CustomerService();
 
                 Dependant dependant = customerService.makeDependant()
@@ -83,6 +83,7 @@ public class AddDependantForm extends BorderPane {
                         .email(emailField.getText())
                         .phone(phoneField.getText())
                         .password(passwordField.getText()).build();
+
                 dependant.setPolicyHolder(selectedPolicyHolder);
 
                 // Handle policy owner for PolicyOwner role and Admin role
@@ -90,6 +91,7 @@ public class AddDependantForm extends BorderPane {
                     dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
                 } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
 
+                CustomerRepository repository = new CustomerRepository();
                 repository.add(dependant);
                 repository.close();
                 close();

@@ -5,10 +5,16 @@ import org.example.model.User;
 import org.example.model.customer.Customer;
 import org.example.repository.EntityRepository;
 import org.example.repository.IUserInterface;
+import org.example.utility.PasswordUtil;
 
 import java.util.List;
 
 public class UserRepository extends EntityRepository implements IUserInterface {
+    public void add(User user) {
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
+    }
     public List<User> getAll() {
         TypedQuery<User> query = em.createQuery("from User ", User.class);
         return query.getResultList();
@@ -33,10 +39,12 @@ public class UserRepository extends EntityRepository implements IUserInterface {
 
         em.getTransaction().begin();
 
+        String encryptedPassword = PasswordUtil.encrypt(user.getPassword());
+
         userToUpdate.setAddress(user.getAddress());
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setPhone(user.getPhone());
-        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setPassword(encryptedPassword);
 
         em.getTransaction().commit();
     }

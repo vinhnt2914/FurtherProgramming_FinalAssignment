@@ -45,6 +45,9 @@ public class App {
         Role role = GlobalVariable.getRole();
 
         switch (role) {
+            case Dependant -> {
+                return new DependantMenuBar();
+            }
             case PolicyHolder -> {
                 return new PolicyHolderMenuBar();
             }
@@ -55,7 +58,7 @@ public class App {
                 return new PolicyOwnerMenuBar();
             }
             case Manager -> {
-                return new PolicyOwnerMenuBar();
+                return new ManagerMenuBar();
             }
             case Admin -> {
                 return new AdminMenuBar();

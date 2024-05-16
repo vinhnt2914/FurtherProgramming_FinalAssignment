@@ -142,7 +142,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder, this);
+            new UpdateInfoForm(selectedPolicyHolder, this);
         } else new ErrorAlert("Please select a policyHolder");
     }
 
@@ -154,8 +154,8 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
 
         dependantButtonSet.addButton.setOnAction(event -> addDependant());
-        dependantButtonSet.deleteButton.setOnAction(event -> updateDependant());
-        dependantButtonSet.updateButton.setOnAction(event -> deleteDependant());
+        dependantButtonSet.deleteButton.setOnAction(event -> deleteDependant());
+        dependantButtonSet.updateButton.setOnAction(event -> updateDependant());
     }
 
     private void deleteDependant() {
@@ -172,7 +172,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant, this);
+            new UpdateInfoForm(selectedDependant, this);
         } else new ErrorAlert("Please select a policyHolder");
     }
 

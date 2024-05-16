@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Dependant extends Beneficiary {
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private PolicyHolder policyHolder;
 
     public Dependant(DependantBuilder builder) {

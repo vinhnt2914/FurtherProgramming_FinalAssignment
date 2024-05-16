@@ -9,10 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.example.app.components.buttonSet.DependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
-import org.example.app.components.form.AddDependantForm;
-import org.example.app.components.form.AddPolicyHolderForm;
-import org.example.app.components.form.UpdateDependantForm;
-import org.example.app.components.form.UpdatePolicyHolderForm;
+import org.example.app.components.form.*;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
 import org.example.app.components.table.RefreshableTable;
@@ -38,9 +35,9 @@ public class CustomerAdminController implements Initializable, RefreshableContro
     }
 
     private void setUpPage() {
-        ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
-        comboBoxOptions.addAll("Policy Holders", "Dependants");
-        this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
+        ObservableList<String> options = FXCollections.observableArrayList();
+        options.addAll("Policy Holders", "Dependants");
+        this.swapTableChoiceBox.getItems().addAll(options);
         this.swapTableChoiceBox.getSelectionModel().select("Policy Holders");
         this.swapTableChoiceBox.setOnAction(this::swapTable);
 
@@ -121,7 +118,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder, this);
+            new UpdateInfoForm(selectedPolicyHolder, this);
 //            try {
 //                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
 //                Stage dialogStage = new Stage();
@@ -225,7 +222,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant, this);
+            new UpdateInfoForm(selectedDependant, this);
 //            try {
 //                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
 //                Stage dialogStage = new Stage();

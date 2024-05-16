@@ -16,6 +16,7 @@ import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
+import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.UserRepository;
 import org.example.utility.PasswordUtil;
 
@@ -48,13 +49,12 @@ public class LoginController implements Initializable{
             GlobalVariable.setUser(Admin.getInstance());
             System.out.println("Admin logged in");
         } else {
-            // Encrypt the user password before searching in the database
             String encryptedPassword = PasswordUtil.encrypt(password);
+            // Encrypt the user password before searching in the database
+            System.out.println("ENCRYPTED PASSWORD: " + encryptedPassword);
             try {
                 User user = repository.findUser(username, encryptedPassword);
                 // Decrypt the password before setting as global var
-                String decryptedPassword = PasswordUtil.decrypt(user.getPassword());
-                user.setPassword(decryptedPassword);
 
                 GlobalVariable.setRole(user);
                 GlobalVariable.setUserID(user.getId());

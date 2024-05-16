@@ -9,7 +9,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.global.GlobalVariable;
+import org.example.global.RequestQueryType;
 import org.example.model.customer.Beneficiary;
+import org.example.model.customer.Customer;
 import org.example.model.items.Request;
 import org.example.repository.impl.RequestRepository;
 
@@ -25,10 +27,12 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
     private TableColumn<Request, Integer> fromCol;
     @FXML
     private TableColumn<Request, String> messageCol;
-    private RequestRepository repository;
+    private RequestQueryType.QueryType queryType;
+    private Beneficiary customer;
 
-    public RequestTable() {
-
+    public RequestTable(RequestQueryType.QueryType queryType, Beneficiary customer) {
+        this.customer = customer;
+        this.queryType = queryType;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/requestTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -49,12 +53,18 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
         });
         messageCol.setCellValueFactory(new PropertyValueFactory<>("message"));
 
-        populateTableView();
+        populateTableView(queryType);
     }
 
-    private void populateTableView() {
-        repository = new RequestRepository();
-        List<Request> requestList = repository.getAllTo((Beneficiary) GlobalVariable.getUser());
+    private void populateTableView(RequestQueryType.QueryType queryType) {
+        RequestRepository repository = new RequestRepository();
+        List<Request> requestList = null;
+
+        switch (queryType) {
+            case GET_ALL -> requestList = repository.getAll();
+            case GET_ALL_TO_CUSTOMER -> requestList = repository.getAllToCustomer(customer);
+        }
+
         System.out.println("DISPLAYING RESULT");
         requestList.forEach(System.out::println);
         ObservableList<Request> data = FXCollections.observableArrayList(requestList);
@@ -64,6 +74,6 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
 
     @Override
     public void refreshTable() {
-        populateTableView();
+        populateTableView(queryType);
     }
 }

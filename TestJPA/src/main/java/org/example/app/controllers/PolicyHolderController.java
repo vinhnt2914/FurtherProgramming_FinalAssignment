@@ -14,6 +14,9 @@ import org.example.app.components.form.FileClaimForm;
 import org.example.app.components.table.RefreshableTable;
 import org.example.app.components.table.RequestTable;
 import org.example.global.CustomerQueryType;
+import org.example.global.GlobalVariable;
+import org.example.global.RequestQueryType;
+import org.example.model.customer.PolicyHolder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -61,7 +64,8 @@ public class PolicyHolderController implements Initializable, RefreshableControl
                     QueryType.
                     GET_ALL_DEPENDANT_OF_POLICY_HOLDER));
         } else if (tableType.equalsIgnoreCase("Request")) {
-            tableViewContainer.getChildren().add(new RequestTable());
+            PolicyHolder currentUser = (PolicyHolder) GlobalVariable.getUser();
+            tableViewContainer.getChildren().add(new RequestTable(RequestQueryType.QueryType.GET_ALL_TO_CUSTOMER, currentUser));
         }
     }
 

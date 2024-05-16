@@ -75,9 +75,9 @@ public class ProviderAdminController implements Initializable, RefreshableContro
     }
 
     private void updateSurveyor() {
-        SurveyorTable surveyorTable = new SurveyorTable(ProviderQueryType.QueryType.GET_ALL_SURVEYOR);
-//        InsuranceSurveyor surveyor = surveyorTable.getSelectionModel().getSelectedItem();
-        new UpdateInfoForm(this);
+        SurveyorTable surveyorTable = (SurveyorTable) tableViewContainer.getChildren().get(0);
+        InsuranceSurveyor surveyor = surveyorTable.getSelectionModel().getSelectedItem();
+        new UpdateInfoForm(surveyor, this);
     }
 
     private void addSurveyor() {
@@ -108,9 +108,10 @@ public class ProviderAdminController implements Initializable, RefreshableContro
     }
 
     private void updateManager() {
-        ManagerTable surveyorTable = new ManagerTable(ProviderQueryType.QueryType.GET_ALL_MANAGER);
-//        InsuranceSurveyor surveyor = surveyorTable.getSelectionModel().getSelectedItem();
-        new UpdateInfoForm(this);
+        ManagerTable managerTable = (ManagerTable) tableViewContainer.getChildren().get(0);
+        InsuranceManager manager = managerTable.getSelectionModel().getSelectedItem();
+        System.out.println("SELECTED: " + manager);
+        new UpdateInfoForm(manager,this);
     }
 
     private void addManager() {
@@ -127,12 +128,16 @@ public class ProviderAdminController implements Initializable, RefreshableContro
             tableViewContainer.getChildren().setAll(surveyorTable);
             buttonSetContainer.getChildren().setAll(buttonSet);
 
+            setUpSurveyorButtonActions();
+
         } else if (tableType.equalsIgnoreCase("Insurance Manager")) {
             ManagerTable managerTable = new ManagerTable(ProviderQueryType.QueryType.GET_ALL_MANAGER);
             ManagerButtonSet buttonSet = new ManagerButtonSet(managerTable);
 
             tableViewContainer.getChildren().setAll(managerTable);
             buttonSetContainer.getChildren().setAll(buttonSet);
+
+            setUpManagerButtonActions();
         }
     }
 

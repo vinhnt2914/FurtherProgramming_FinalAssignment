@@ -43,7 +43,8 @@ public class PageManager {
     }
 
     private void setScenesForDependant() {
-        scenes.put("info", "dependant.fxml");
+        scenes.put("info", "genericInfo.fxml");
+        scenes.put("dashboard", "dependant.fxml");
     }
     private void setScenesForPolicyHolder() {
         scenes.put("info", "genericInfo.fxml");
@@ -58,12 +59,13 @@ public class PageManager {
         scenes.put("dashboard", "insuranceSurveyor.fxml");
     }
     private void setScenesForManager() {
-        scenes.put("info", "insuranceManager.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "insuranceManager.fxml");
     }
-
     private void setScenesForAdmin() {
         scenes.put("customer", "customerAdmin.fxml");
         scenes.put("provider", "providerAdmin.fxml");
+        scenes.put("request", "requestAdmin.fxml");
+        scenes.put("proposal", "proposalAdmin.fxml");
     }
 }

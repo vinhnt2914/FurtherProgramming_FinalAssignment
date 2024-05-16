@@ -12,6 +12,7 @@ import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.UserRepository;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -57,7 +58,7 @@ public class UpdateDependantForm extends BorderPane {
 
     private void updateDependant(ActionEvent actionEvent) {
         if (isInputValid()) {
-            CustomerRepository repository = new CustomerRepository();
+            UserRepository repository = new UserRepository();
             selectedDependant.setAddress(addressField.getText());
             selectedDependant.setEmail(emailField.getText());
             selectedDependant.setPhone(phoneField.getText());

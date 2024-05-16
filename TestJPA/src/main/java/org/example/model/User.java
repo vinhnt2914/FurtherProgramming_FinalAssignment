@@ -26,7 +26,11 @@ public abstract class User {
 
     public User(GenericUserBuilder builder) {
         this.username = builder.username;
-        this.password = PasswordUtil.encrypt(builder.password);
+        try {
+            this.password = PasswordUtil.encrypt(builder.password);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         this.email = builder.email;
         this.phone = builder.phone;
         this.address = builder.address;
@@ -91,12 +95,17 @@ public abstract class User {
     }
 
     public void setPassword(String password) {
-        this.password = PasswordUtil.encrypt(password); // Encrypt the password
+        this.password = password;
+//        try {
+//            this.password = PasswordUtil.encrypt(password); // Encrypt the password
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
-    public String getDecryptedPassword() {
-        return PasswordUtil.decrypt(this.password); // Decrypt the password
-    }
+//    public String getDecryptedPassword() {
+//        return PasswordUtil.decrypt(this.password); // Decrypt the password
+//    }
 
     public String getEmail() {
         return email;

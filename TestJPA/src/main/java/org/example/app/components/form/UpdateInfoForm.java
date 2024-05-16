@@ -28,11 +28,11 @@ public class UpdateInfoForm extends BorderPane {
     private Stage stage;
     private RefreshableController controller;
 
-    public UpdateInfoForm(RefreshableController controller) {
+    public UpdateInfoForm(User user, RefreshableController controller) {
         this.controller = controller;
-        user = GlobalVariable.getUser();
+        this.user = user;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateDependantForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateInfoForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();
@@ -48,10 +48,11 @@ public class UpdateInfoForm extends BorderPane {
     }
 
     private void setUpForm() {
+        System.out.println("This is the current user: " + user);
+
         addressField.setText(user.getAddress());
         emailField.setText(user.getEmail());
         phoneField.setText(user.getPhone());
-        passwordField.setText(user.getPassword());
         saveButton.setOnAction(this::updateInfo);
         cancelButton.setOnAction(this::handleCancel);
     }
