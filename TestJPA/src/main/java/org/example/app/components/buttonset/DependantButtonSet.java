@@ -5,33 +5,37 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import org.example.app.components.table.DependantTable;
+import org.example.app.components.table.RefreshableTable;
 
 import java.io.IOException;
 
-public class DependantButtonSet extends HBox {
-    @FXML
-    private HBox dependantButtonSet;
-    @FXML
-    public Button addButton;
-    @FXML
-    public Button deleteButton;
-    @FXML
-    public Button updateButton;
-    private DependantTable dependantTable;
-    public DependantButtonSet(DependantTable dependantTable) {
-        this.dependantTable = dependantTable;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/buttonSet/dependantButtonSet.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-
-//        setUpButtonSet();
+public class DependantButtonSet extends GenericButtonSet {
+    public DependantButtonSet(RefreshableTable table) {
+        super(table);
     }
+//    @FXML
+//    private HBox dependantButtonSet;
+//    @FXML
+//    public Button addButton;
+//    @FXML
+//    public Button deleteButton;
+//    @FXML
+//    public Button updateButton;
+//    private DependantTable dependantTable;
+//    public DependantButtonSet(DependantTable dependantTable) {
+//        this.dependantTable = dependantTable;
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/buttonSet/dependantButtonSet.fxml"));
+//        fxmlLoader.setRoot(this);
+//        fxmlLoader.setController(this);
+//
+//        try {
+//            fxmlLoader.load();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
+//
+////        setUpButtonSet();
+//    }
 
 //    private void setUpButtonSet() {
 //        this.addButton.setOnAction(this::add);

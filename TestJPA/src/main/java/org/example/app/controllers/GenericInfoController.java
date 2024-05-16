@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.example.app.components.form.UpdateInfoForm;
 import org.example.app.components.stats.PolicyOwnerStats;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GenericInfoController implements Initializable, RefreshableController {
+    public BorderPane genericDashboard;
     @FXML
     private Button updateInfoButton;
     @FXML

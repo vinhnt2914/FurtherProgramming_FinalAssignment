@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.global.ClaimQueryType;
+import org.example.global.GlobalVariable;
+import org.example.model.customer.PolicyHolder;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
@@ -33,8 +36,10 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
     private TableColumn<Claim, ClaimStatus> statusCol;
     @FXML
     private TableColumn<Claim, String> bankingInfoCol;
+    private ClaimQueryType.QueryType queryType;
 
-    public ClaimTable() {
+    public ClaimTable(ClaimQueryType.QueryType queryType) {
+        this.queryType = queryType;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -61,13 +66,28 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
         bankingInfoCol.setCellValueFactory(new PropertyValueFactory<>("bankingInfo"));
 
         // Populate table view data
-        populateTableView();
+        populateTableView(queryType);
     }
 
-    private void populateTableView() {
+    public void populateTableView(ClaimQueryType.QueryType queryType) {
         // Data is not formatted
         ClaimRepository repository = new ClaimRepository();
-        List<Claim> claimList = repository.getAll();
+        List<Claim> claimList = null;
+        switch (queryType) {
+            case GET_OF_POLICY_HOLDER -> {
+                PolicyHolder policyHolder = (PolicyHolder) GlobalVariable.getUser();
+                claimList = repository.getClaimsOfPolicyHolder(policyHolder);
+            }
+            case GET_ALL ->  claimList = repository.getAll();
+            case GET_ALL_NEW -> claimList = repository.getAllNew();
+            case GET_ALL_PROCESSING -> claimList = repository.getAllProcessing();
+            case GET_ALL_DONE -> claimList = repository.getAllDone();
+            case GET_ALL_OF_POLICYHOLDER -> {
+                PolicyHolder policyHolder = (PolicyHolder) GlobalVariable.getUser();
+                claimList = repository.getAllClaimsOfPolicyHolder(policyHolder);
+            }
+        }
+
         // Format the data
         ObservableList<Claim> data = FXCollections.observableArrayList(claimList);
         claimTable.setItems(data);
@@ -76,6 +96,6 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
 
     @Override
     public void refreshTable() {
-        populateTableView();
+        populateTableView(queryType);
     }
 }

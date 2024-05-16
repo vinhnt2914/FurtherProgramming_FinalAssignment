@@ -16,6 +16,7 @@ import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
 import org.example.app.components.table.RefreshableTable;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
@@ -43,7 +44,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
         comboBoxOptions.addAll("Claim", "Dependant", "PolicyHolder");
 
-        ClaimTable claimTable = new ClaimTable();
+        ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
         ClaimButtonSet claimButtonSet = new ClaimButtonSet(claimTable);
         this.tableViewContainer.getChildren().add(claimTable);
         this.buttonSetContainer.getChildren().add(claimButtonSet);
@@ -60,7 +61,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         buttonSetContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            ClaimTable claimTable = new ClaimTable();
+            ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
             ClaimButtonSet claimButtonSet = new ClaimButtonSet(claimTable);
             tableViewContainer.getChildren().add(claimTable);
             buttonSetContainer.getChildren().add(claimButtonSet);

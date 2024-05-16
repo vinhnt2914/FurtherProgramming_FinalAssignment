@@ -20,7 +20,7 @@ public class InsuranceSurveyor extends Provider {
             mappedBy = "insuranceSurveyor",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 
-    private Set<Request> requestList;
+    private Set<Request> requestSet;
     @OneToMany(mappedBy = "insuranceSurveyor")
     private Set<Proposal> proposalSet;
     @ManyToOne
@@ -29,7 +29,7 @@ public class InsuranceSurveyor extends Provider {
     public InsuranceSurveyor(SurveyorBuilder builder) {
         super(builder);
         this.manager = builder.manager;
-        requestList = new HashSet<>();
+        requestSet = new HashSet<>();
     }
 
     public InsuranceSurveyor() {
@@ -37,7 +37,6 @@ public class InsuranceSurveyor extends Provider {
 
     public Request makeRequest(Beneficiary customer, String message) {
         Request request = new Request(this, customer, message);
-        requestList.add(request); // Add to the request list
         return request;
     }
 
@@ -57,8 +56,8 @@ public class InsuranceSurveyor extends Provider {
         }
     }
 
-    public Set<Request> getRequestList() {
-        return requestList;
+    public Set<Request> getRequestSet() {
+        return requestSet;
     }
 
     public Set<Proposal> getProposalSet() {
@@ -74,7 +73,7 @@ public class InsuranceSurveyor extends Provider {
 
     public List<Integer> getRequestIDs() {
         List<Integer> idList = new ArrayList<>();
-        for (Request p : requestList) idList.add(p.getId());
+        for (Request p : requestSet) idList.add(p.getId());
 
         return idList;
     }

@@ -13,6 +13,7 @@ import org.example.app.components.table.DependantTable;
 import org.example.app.components.form.FileClaimForm;
 import org.example.app.components.table.RefreshableTable;
 import org.example.app.components.table.RequestTable;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.global.RequestQueryType;
@@ -41,8 +42,8 @@ public class PolicyHolderController implements Initializable, RefreshableControl
         comboBoxOptions.addAll("Claim", "Dependant", "Request");
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         // Set to Claim Table by default
-        this.swapTableChoiceBox.getSelectionModel().select("Claims");
-        this.tableViewContainer.getChildren().add(new ClaimTable());
+        this.swapTableChoiceBox.getSelectionModel().select("Claim");
+        this.tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER));
         this.fileClaimButton.setOnAction(this::openFileClaimForm);
         this.swapTableChoiceBox.setOnAction(this::swapTable);
     }
@@ -56,7 +57,7 @@ public class PolicyHolderController implements Initializable, RefreshableControl
         tableViewContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            tableViewContainer.getChildren().add(new ClaimTable());
+            tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER));
             // Swap to claim button (new ClaimButtonSet)
         } else if (tableType.equalsIgnoreCase("Dependant")) {
             tableViewContainer.getChildren().add(new DependantTable(

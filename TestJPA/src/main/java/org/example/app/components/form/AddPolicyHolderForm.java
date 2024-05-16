@@ -22,10 +22,6 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class AddPolicyHolderForm extends GenericAddForm {
-    @FXML private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
-    @FXML private Button saveButton, cancelButton;
-    private Stage stage;
-    private RefreshableController controller;
 
     public AddPolicyHolderForm(RefreshableController controller) {
         super(controller);
@@ -79,8 +75,11 @@ public class AddPolicyHolderForm extends GenericAddForm {
 
             repository.add(policyHolder);
             repository.close();
+
+            // Dont put refresh after close(), or controller will be null
+            controller.refresh();
             close();
-            controller.refresh(); // Refresh the table after adding
+
         }
     }
 

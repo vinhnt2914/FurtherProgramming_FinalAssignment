@@ -12,7 +12,6 @@ import java.util.List;
 
 public class ManagerTable extends GenericProviderTable<InsuranceManager>{
     private TableColumn<InsuranceManager, List<Integer>> proposalsCol;
-
     public ManagerTable(ProviderQueryType.QueryType queryType) {
         super(queryType);
     }

@@ -10,7 +10,5 @@
       <TableColumn fx:id="addressCol" minWidth="200.0" prefWidth="-1.0" text="Address" />
       <TableColumn fx:id="emailCol" minWidth="200.0" prefWidth="-1.0" text="Email" />
       <TableColumn fx:id="phoneCol" minWidth="200.0" prefWidth="-1.0" text="Phone" />
-      <TableColumn fx:id="requestCol" minWidth="200.0" prefWidth="-1.0" text="Requests" />
-      <TableColumn fx:id="proposalCol" minWidth="200.0" prefWidth="-1.0" text="Proposals" />
   </columns>
 </fx:root>

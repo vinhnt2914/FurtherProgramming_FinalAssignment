@@ -25,7 +25,6 @@ public class App {
 
     private void setUpStage() {
         pageManager = PageManager.getInstance();
-        pageManager.setScenes(GlobalVariable.getRole());
         // Set up the app
         mainStage = new Stage();
         layout = new BorderPane();
@@ -34,7 +33,7 @@ public class App {
         layout.setTop(menuBar);
 
         Hyperlink firstMenuItem = (Hyperlink) menuBar.getMenuBar().getChildren().getFirst();
-
+        System.out.println("FIRST MENU ITEM: " + firstMenuItem.getText());
         switchScene(firstMenuItem.getText());
         Scene scene = new Scene(layout);
         mainStage.setScene(scene);

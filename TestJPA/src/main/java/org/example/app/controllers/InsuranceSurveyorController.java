@@ -13,6 +13,7 @@ import org.example.app.components.form.RequestForm;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.CustomerTable;
 import org.example.app.components.table.ProposalTable;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Customer;
 import org.example.model.enums.ClaimStatus;
@@ -47,7 +48,7 @@ public class InsuranceSurveyorController implements Initializable {
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList("Claim", "Customer");
         swapTableChoiceBox.setItems(comboBoxOptions);
         swapTableChoiceBox.getSelectionModel().selectFirst();
-        tableViewContainer.getChildren().add(new ClaimTable());
+        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
         proposeButton.setOnAction(this::handlePropose);
         requestButton.setOnAction(this::handleRequest);
         swapTableChoiceBox.setOnAction(this::swapTable);
@@ -151,7 +152,7 @@ public class InsuranceSurveyorController implements Initializable {
         if (selectedOption != null) {
             tableViewContainer.getChildren().clear();
             if (selectedOption.equals("Claim")) {
-                tableViewContainer.getChildren().add(new ClaimTable());
+                tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
             } else if (selectedOption.equals("Customer")) {
                 tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
             }

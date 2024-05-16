@@ -2,6 +2,7 @@ package org.example.utility;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import org.example.global.GlobalVariable;
 import org.example.global.Role;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class PageManager {
 
     private PageManager() {
         scenes = new HashMap<>();
+        setScenes(GlobalVariable.getRole());
     }
 
     public static PageManager getInstance() {
@@ -26,6 +28,7 @@ public class PageManager {
 
     public Parent getScene(String sceneName) throws IOException {
         URL pageURL = getClass().getResource("/views/" + scenes.get(sceneName.toLowerCase()));
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(pageURL);
         return loader.load();
@@ -67,5 +70,7 @@ public class PageManager {
         scenes.put("provider", "providerAdmin.fxml");
         scenes.put("request", "requestAdmin.fxml");
         scenes.put("proposal", "proposalAdmin.fxml");
+        scenes.put("claim", "claimAdmin.fxml");
+
     }
 }

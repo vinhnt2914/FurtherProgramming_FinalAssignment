@@ -55,7 +55,17 @@ public class TestPopulateUser {
                 .fullName("Nguyen The Vinh")
                 .build();
 
-        Dependant c2 = customerService
+        PolicyHolder c2 = customerService
+                .makePolicyHolder()
+                .username("mairmit1234")
+                .password("Rmit@1234")
+                .email("mai@gmail.com")
+                .phone("0841241232")
+                .address("Hanoi")
+                .fullName("Pham Thanh Mai")
+                .build();
+
+        Dependant c3 = customerService
                 .makeDependant()
                 .fullName("Nguyen The Quang")
                 .username("quangrmit1234")
@@ -65,7 +75,7 @@ public class TestPopulateUser {
                 .address("Haiphone")
                 .build();
 
-        Dependant c3 = customerService
+        Dependant c4 = customerService
                 .makeDependant()
                 .username("khairmit1234")
                 .password("Rmit@1234")
@@ -75,7 +85,7 @@ public class TestPopulateUser {
                 .fullName("Tran Quang Khai")
                 .build();
 
-        Dependant c4 = customerService
+        Dependant c5 = customerService
                 .makeDependant()
                 .username("quatrmit1234")
                 .password("Rmit@1234")
@@ -85,7 +95,7 @@ public class TestPopulateUser {
                 .fullName("Cao Ba Quat")
                 .build();
 
-        PolicyOwner c5 = customerService
+        PolicyOwner c6 = customerService
                 .makePolicyOwner()
                 .username("kienrmit1234")
                 .password("Rmit@1234")
@@ -104,8 +114,9 @@ public class TestPopulateUser {
         c2.setInsuranceCard(card2);
         c3.setInsuranceCard(card3);
         c4.setInsuranceCard(card4);
-        c1.addDependants(c2, c3, c4); // Add dependants
-        c5.addBeneficaries(c1, c2, c3); // Add beneficiaries
+        c1.addDependants(c3, c4); // Add dependants
+        c2.addDependants(c5);
+        c6.addBeneficaries(c1); // Add beneficiaries
 
 
         Claim claim1 = claimService.makeClaim()
@@ -185,18 +196,15 @@ public class TestPopulateUser {
         ClaimRepository claimRepository = new ClaimRepository();
         ProviderRepository providerRepository = new ProviderRepository();
         ProposalRepository proposalRepository = new ProposalRepository();
+        RequestRepository requestRepository = new RequestRepository();
         // This could throw a no relation error
         // If add a policyOwner, who does not have an insurance card
 
-        customerRepository.add(c1);
-        customerRepository.add(c2);
-        customerRepository.add(c3);
-        customerRepository.add(c4);
-        customerRepository.add(c5);
-
+        customerRepository.add(c1,c2,c3,c4,c5,c6);
 
         providerRepository.add(m1);
         providerRepository.add(s1);
+        requestRepository.add(r1);
         proposalRepository.add(p1);
         proposalRepository.add(p2);
 

@@ -9,11 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.table.*;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.global.ProviderQueryType;
-import org.example.model.enums.ClaimStatus;
-import org.example.model.items.Proposal;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,21 +40,25 @@ public class InsuranceManagerController implements Initializable {
         swapTableChoiceBox.setOnAction(this::swapTable);
         approveButton.setOnAction(this::approveProposal);
         rejectButton.setOnAction(this::rejectProposal);
-        tableViewContainer.getChildren().add(new ClaimTable());
+        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
     }
 
     private void rejectProposal(ActionEvent actionEvent) {
         ProposalTable tableView = checkIfProposalTableView();
         if (tableView != null) {
             tableView.rejectProposal();
-        } else System.out.println("Not proposal table");
+        } else {
+            new ErrorAlert("This is not proposal table");
+        }
     }
 
     private void approveProposal(ActionEvent actionEvent) {
         ProposalTable tableView = checkIfProposalTableView();
         if (tableView != null) {
             tableView.approveProposal();
-        } else System.out.println("Not proposal table");
+        } else {
+            new ErrorAlert("This is not proposal table");
+        }
     }
 
     private ProposalTable checkIfProposalTableView() {
@@ -68,7 +72,7 @@ public class InsuranceManagerController implements Initializable {
         tableViewContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            tableViewContainer.getChildren().add(new ClaimTable());
+            tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
         } else if (tableType.equalsIgnoreCase("Customer")) {
             tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
         } else if (tableType.equalsIgnoreCase("Surveyor")) {
