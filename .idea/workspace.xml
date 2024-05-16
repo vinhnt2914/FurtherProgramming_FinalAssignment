@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/ClaimSortingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/ClaimSortingForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/claimSortingForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/claimSortingForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +211,7 @@
       <workItem from="1715828745212" duration="4671000" />
       <workItem from="1715839897555" duration="7758000" />
       <workItem from="1715847822594" duration="14587000" />
-      <workItem from="1715874353453" duration="2644000" />
+      <workItem from="1715874353453" duration="3266000" />
     </task>
     <servers />
   </component>
