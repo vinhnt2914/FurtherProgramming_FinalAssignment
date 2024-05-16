@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import org.example.app.components.sortingSet.ClaimSortingSet;
 import org.example.app.components.sortingSet.GenericSortingSet;
@@ -46,7 +47,8 @@ public class ClaimAdminController implements Initializable {
         sortOptionChoiceBox.setItems(options);
         sortOptionChoiceBox.getSelectionModel().selectFirst();
         sortOptionChoiceBox.setOnAction(this::sort);
-        
+
+
     }
 
     private void sort(ActionEvent actionEvent) {
