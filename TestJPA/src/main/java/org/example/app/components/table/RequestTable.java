@@ -29,7 +29,7 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
 
     public RequestTable() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/requestTable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/requestTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

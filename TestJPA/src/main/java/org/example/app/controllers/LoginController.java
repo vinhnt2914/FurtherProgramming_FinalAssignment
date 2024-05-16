@@ -1,5 +1,6 @@
 package org.example.app.controllers;
 
+import jakarta.persistence.NoResultException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.App;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.Admin;
@@ -48,18 +50,24 @@ public class LoginController implements Initializable{
         } else {
             // Encrypt the user password before searching in the database
             String encryptedPassword = PasswordUtil.encrypt(password);
-            User user = repository.findUser(username, encryptedPassword);
+            try {
+                User user = repository.findUser(username, encryptedPassword);
+                // Decrypt the password before setting as global var
+                String decryptedPassword = PasswordUtil.decrypt(user.getPassword());
+                user.setPassword(decryptedPassword);
 
-            // Decrypt the password before setting as global var
-            String decryptedPassword = PasswordUtil.decrypt(user.getPassword());
-            user.setPassword(decryptedPassword);
+                GlobalVariable.setRole(user);
+                GlobalVariable.setUserID(user.getId());
+                GlobalVariable.setUser(user);
+                System.out.println("User logged in: " + GlobalVariable.getUserID());
+                System.out.println("User role: " + GlobalVariable.getRole());
+                System.out.println("User password: " + GlobalVariable.getUser().getPassword());
+            } catch (NoResultException e) {
+                new ErrorAlert("Username or password is incorrect!");
+                return;
+            }
 
-            GlobalVariable.setRole(user);
-            GlobalVariable.setUserID(user.getId());
-            GlobalVariable.setUser(user);
-            System.out.println("User logged in: " + GlobalVariable.getUserID());
-            System.out.println("User role: " + GlobalVariable.getRole());
-            System.out.println("User password: " + GlobalVariable.getUser().getPassword());
+
         }
 
         // Close the login stage

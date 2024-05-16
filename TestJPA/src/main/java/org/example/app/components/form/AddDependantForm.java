@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import org.example.app.controllers.CustomerAdminController;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
@@ -22,7 +20,6 @@ import org.example.service.CustomerService;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class AddDependantForm extends BorderPane {
@@ -50,7 +47,7 @@ public class AddDependantForm extends BorderPane {
     public AddDependantForm(RefreshableController controller) {
         this.controller = controller;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/addDependantForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

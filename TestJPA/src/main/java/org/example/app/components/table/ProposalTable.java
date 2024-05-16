@@ -31,7 +31,7 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
     private TableColumn<Proposal, String> messageCol;
     public ProposalTable() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/proposalTable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/proposalTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

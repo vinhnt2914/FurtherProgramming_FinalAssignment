@@ -8,7 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.global.GlobalVariable;
+import org.example.global.ProviderQueryType;
 import org.example.model.items.Request;
+import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.InsuranceSurveyorRepository;
 import org.example.repository.impl.ProviderRepository;
@@ -20,20 +23,9 @@ public class SurveyorTable extends GenericProviderTable<InsuranceSurveyor>{
     private TableColumn<InsuranceSurveyor, List<Integer>> requestsCol;
     private TableColumn<InsuranceSurveyor, List<Integer>> proposalsCol;
 
-//    public SurveyorTable() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/surveyorTable.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
-//
-//        setUpTableView();
-//        populateTableView();
-//    }
+    public SurveyorTable(ProviderQueryType.QueryType queryType) {
+        super(queryType);
+    }
 
     @Override
     void modifyTableView() {
@@ -55,9 +47,19 @@ public class SurveyorTable extends GenericProviderTable<InsuranceSurveyor>{
     }
 
     @Override
-    void populateTableView() {
+    void populateTableView(ProviderQueryType.QueryType queryType) {
         ProviderRepository repository = new ProviderRepository();
-        List<InsuranceSurveyor> surveyorList = repository.getAllSurveyor();
+        List<InsuranceSurveyor> surveyorList = null;
+
+        switch (queryType) {
+            case GET_ALL_SURVEYOR ->
+                surveyorList = repository.getAllSurveyor();
+            case GET_ALL_SURVEYOR_OF_MANAGER -> {
+                InsuranceManager manager = (InsuranceManager) GlobalVariable.getUser();
+                surveyorList = repository.getAllSurveyorOfManager(manager);
+            }
+        }
+
         ObservableList<InsuranceSurveyor> data = FXCollections.observableArrayList(surveyorList);
         providerTableView.setItems(data);
         repository.close();
@@ -73,6 +75,6 @@ public class SurveyorTable extends GenericProviderTable<InsuranceSurveyor>{
 
     @Override
     public void refreshTable() {
-        populateTableView();
+        populateTableView(queryType);
     }
 }

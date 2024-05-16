@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.model.provider.Provider;
@@ -12,6 +13,7 @@ public interface IProviderRepository {
     Provider findByID(int id);
     List<Provider> getAll();
     List<InsuranceSurveyor> getAllSurveyor();
+    List<InsuranceSurveyor> getAllSurveyorOfManager(InsuranceManager manager);
     List<InsuranceManager> getAllManager();
     Provider removeByID(int id);
 }

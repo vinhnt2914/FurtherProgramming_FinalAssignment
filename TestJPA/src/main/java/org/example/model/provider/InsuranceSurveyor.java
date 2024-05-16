@@ -1,8 +1,6 @@
 package org.example.model.provider;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
@@ -25,9 +23,12 @@ public class InsuranceSurveyor extends Provider {
     private Set<Request> requestList;
     @OneToMany(mappedBy = "insuranceSurveyor")
     private Set<Proposal> proposalSet;
+    @ManyToOne
+    private InsuranceManager manager;
 
     public InsuranceSurveyor(SurveyorBuilder builder) {
         super(builder);
+        this.manager = builder.manager;
         requestList = new HashSet<>();
     }
 
@@ -45,6 +46,11 @@ public class InsuranceSurveyor extends Provider {
     }
 
     public static class SurveyorBuilder extends GenericProviderBuilder<SurveyorBuilder> {
+        protected InsuranceManager manager;
+        public SurveyorBuilder manager(InsuranceManager manager) {
+            this.manager = manager;
+            return self();
+        }
         @Override
         public InsuranceSurveyor build() {
             return new InsuranceSurveyor(this);
@@ -71,5 +77,9 @@ public class InsuranceSurveyor extends Provider {
         for (Request p : requestList) idList.add(p.getId());
 
         return idList;
+    }
+
+    public InsuranceManager getManager() {
+        return manager;
     }
 }

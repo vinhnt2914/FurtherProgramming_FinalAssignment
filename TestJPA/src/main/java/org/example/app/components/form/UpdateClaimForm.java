@@ -42,7 +42,7 @@ public class UpdateClaimForm extends BorderPane implements ClaimForm{
     public UpdateClaimForm(Claim claim) {
         this.selectedClaim = claim;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updateClaimForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateClaimForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

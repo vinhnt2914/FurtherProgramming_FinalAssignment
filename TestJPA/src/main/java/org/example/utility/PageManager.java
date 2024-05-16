@@ -46,15 +46,15 @@ public class PageManager {
         scenes.put("info", "dependant.fxml");
     }
     private void setScenesForPolicyHolder() {
-        scenes.put("info", "customerInfo.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "policyHolder.fxml");
     }
     private void setScenesForPolicyOwner() {
-        scenes.put("info", "customerInfo.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "policyOwner.fxml");
     }
     private void setScenesForSurveyor() {
-        scenes.put("info", "insuranceSurveyor.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "insuranceSurveyor.fxml");
     }
     private void setScenesForManager() {

@@ -1,21 +1,10 @@
 package org.example.app.components.buttonSet;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import org.example.app.components.alert.ErrorAlert;
-import org.example.app.components.form.AddDependantForm;
-import org.example.app.components.form.FileClaimForm;
-import org.example.app.components.form.UpdateClaimForm;
-import org.example.app.components.form.UpdateDependantForm;
 import org.example.app.components.table.ClaimTable;
-import org.example.app.components.table.DependantTable;
-import org.example.model.customer.Dependant;
-import org.example.model.items.Claim;
-import org.example.repository.impl.ClaimRepository;
-import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
 
@@ -33,7 +22,7 @@ public class ClaimButtonSet extends HBox {
 
     public ClaimButtonSet(ClaimTable claimTable) {
         this.claimTable = claimTable;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimButtonSet.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/buttonSet/claimButtonSet.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

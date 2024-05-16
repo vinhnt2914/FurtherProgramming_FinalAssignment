@@ -8,20 +8,21 @@ import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class InsuranceManager extends Provider {
     @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "insuranceManager")
-    private List<Proposal> proposalList;
-//    public InsuranceManager(String username, String password) {
-//        super(username, password);
-//    }
-
+    private Set<Proposal> proposalSet;
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.REMOVE)
+    private Set<InsuranceSurveyor> surveyorSet;
 
     public InsuranceManager(ManagerBuilder builder) {
         super(builder);
-        proposalList = new ArrayList<>();
+        proposalSet = new HashSet<>();
+        surveyorSet = new HashSet<>();
     }
 
     public InsuranceManager() {
@@ -42,13 +43,13 @@ public class InsuranceManager extends Provider {
         }
     }
 
-    public List<Proposal> getProposalList() {
-        return proposalList;
+    public Set<Proposal> getProposalList() {
+        return proposalSet;
     }
 
     public List<Integer> getProposalIDs() {
         List<Integer> idList = new ArrayList<>();
-        for (Proposal p : proposalList) idList.add(p.getId());
+        for (Proposal p : proposalSet) idList.add(p.getId());
 
         return idList;
     }

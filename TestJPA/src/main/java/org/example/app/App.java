@@ -9,6 +9,7 @@ import org.example.app.components.menubar.*;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.utility.PageManager;
+import org.example.utility.PasswordUtil;
 
 import java.io.IOException;
 
@@ -51,6 +52,9 @@ public class App {
                 return new SurveyorMenuBar();
             }
             case PolicyOwner -> {
+                return new PolicyOwnerMenuBar();
+            }
+            case Manager -> {
                 return new PolicyOwnerMenuBar();
             }
             case Admin -> {

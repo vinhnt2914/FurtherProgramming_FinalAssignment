@@ -21,36 +21,41 @@ import org.example.service.CustomerService;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class AddPolicyHolderForm extends BorderPane {
+public class AddPolicyHolderForm extends GenericAddForm {
     @FXML private TextField nameField, usernameField, addressField, emailField, phoneField, passwordField;
     @FXML private Button saveButton, cancelButton;
     private Stage stage;
     private RefreshableController controller;
 
     public AddPolicyHolderForm(RefreshableController controller) {
-        this.controller = controller;
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
-            fxmlLoader.setRoot(this);
-            fxmlLoader.setController(this);
-            BorderPane rootPane = fxmlLoader.load();
-            Scene scene = new Scene(rootPane);
-            stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-
-        setUpForm();
+        super(controller);
     }
 
-    private void setUpForm() {
-        this.saveButton.setOnAction(this::addPolicyHolder);
-        this.cancelButton.setOnAction(this::handleCancel);
-    }
+//    public AddPolicyHolderForm(RefreshableController controller) {
+//        this.controller = controller;
+//        try {
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
+//            fxmlLoader.setRoot(this);
+//            fxmlLoader.setController(this);
+//            BorderPane rootPane = fxmlLoader.load();
+//            Scene scene = new Scene(rootPane);
+//            stage = new Stage();
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
+//
+//        setUpForm();
+//    }
 
-    private void addPolicyHolder(ActionEvent actionEvent) {
+//    private void setUpForm() {
+//        this.saveButton.setOnAction(this::addPolicyHolder);
+//        this.cancelButton.setOnAction(this::handleCancel);
+//    }
+
+    @Override
+    void add(ActionEvent actionEvent) {
         if (validateInput()) {
             CustomerRepository repository = new CustomerRepository();
             CustomerService customerService = new CustomerService();
@@ -74,9 +79,13 @@ public class AddPolicyHolderForm extends BorderPane {
         }
     }
 
-    private void handleCancel(ActionEvent actionEvent) {
-        close();
-    }
+//    private void addPolicyHolder(ActionEvent actionEvent) {
+//
+//    }
+//
+//    private void handleCancel(ActionEvent actionEvent) {
+//        close();
+//    }
 
     private boolean validateInput() {
         if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
@@ -103,8 +112,5 @@ public class AddPolicyHolderForm extends BorderPane {
         return pattern.matcher(email).matches();
     }
 
-    private void close() {
-        stage.close();
-    }
 
 }

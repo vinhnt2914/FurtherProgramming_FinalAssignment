@@ -11,9 +11,7 @@ import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
-import org.example.model.User;
 import org.example.model.customer.Customer;
-import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 
 import java.io.IOException;
@@ -32,7 +30,7 @@ public class UpdateInfoForm extends BorderPane {
         this.controller = controller;
         selectedCustomer = (Customer) GlobalVariable.getUser();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateDependantForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

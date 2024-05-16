@@ -67,7 +67,7 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
 
     private void loadFormFromFXML() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/fileClaimForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/fileClaimForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

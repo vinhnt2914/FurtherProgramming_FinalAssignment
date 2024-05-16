@@ -44,7 +44,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     }
 
     private URL getFXMLPath() {
-        return getClass().getResource("/views/components/customerTable.fxml");
+        return getClass().getResource("/views/components/table/customerTable.fxml");
     }
 
     private void setUpTableView() {

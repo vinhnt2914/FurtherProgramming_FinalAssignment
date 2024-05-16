@@ -43,7 +43,6 @@ public abstract class CustomAlert extends VBox {
             Scene scene = new Scene(rootPane);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
 
             this.messageLabel.setText(message);
             okButton.setOnAction(this::close);

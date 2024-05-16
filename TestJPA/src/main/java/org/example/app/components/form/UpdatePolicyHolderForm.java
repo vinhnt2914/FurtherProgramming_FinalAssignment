@@ -31,7 +31,7 @@ public class UpdatePolicyHolderForm extends BorderPane {
         this.controller = controller;  // Store the controller reference
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updatePolicyHolderForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +12,6 @@ import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
-import org.example.app.controllers.CustomerAdminController;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -29,7 +27,7 @@ public class UpdateDependantForm extends BorderPane {
         this.selectedDependant = dependant;
         this.controller = controller;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateDependantForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();

@@ -23,7 +23,7 @@ public class UserRepository extends EntityRepository implements IUserInterface {
     }
 
     @Override
-    public User getUserByID(int id) {
+    public User findByID(int id) {
         return em.find(User.class, id);
     }
 }

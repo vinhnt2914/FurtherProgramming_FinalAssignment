@@ -153,15 +153,6 @@ public class TestPopulateUser {
         c3.addClaim(claim3);
         c4.addClaim(claim4);
 
-        InsuranceSurveyor s1 = providerService.makeSurveyor()
-                .username("survey1")
-                .password("Rmit@1234")
-                .email("surveyor@gmail.com")
-                .phone("091231231")
-                .address("HaiPhong")
-                .fullName("Nguyen The The")
-                .build();
-
         InsuranceManager m1 = providerService.makeManager()
                 .username("manager1")
                 .password("Rmit@1234")
@@ -169,6 +160,16 @@ public class TestPopulateUser {
                 .phone("092139129")
                 .address("HaNoi")
                 .fullName("Nguyen Vinh Vinh")
+                .build();
+
+        InsuranceSurveyor s1 = providerService.makeSurveyor()
+                .username("survey1")
+                .password("Rmit@1234")
+                .email("surveyor@gmail.com")
+                .phone("091231231")
+                .address("HaiPhong")
+                .fullName("Nguyen The The")
+                .manager(m1)
                 .build();
 
         Request r1 = s1.makeRequest(c1, "bro ur dick smol");
@@ -194,8 +195,8 @@ public class TestPopulateUser {
         customerRepository.add(c5);
 
 
-        providerRepository.add(s1);
         providerRepository.add(m1);
+        providerRepository.add(s1);
         proposalRepository.add(p1);
         proposalRepository.add(p2);
 

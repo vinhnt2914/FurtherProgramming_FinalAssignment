@@ -4,6 +4,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import org.example.global.ProviderQueryType;
 import org.example.model.provider.InsuranceManager;
 import org.example.repository.impl.ProviderRepository;
 
@@ -11,6 +12,11 @@ import java.util.List;
 
 public class ManagerTable extends GenericProviderTable<InsuranceManager> {
     private TableColumn<InsuranceManager, List<Integer>> proposalsCol;
+
+    public ManagerTable(ProviderQueryType.QueryType queryType) {
+        super(queryType);
+    }
+
     @Override
     void modifyTableView() {
         proposalsCol = new TableColumn<>("Proposals");
@@ -25,7 +31,8 @@ public class ManagerTable extends GenericProviderTable<InsuranceManager> {
     }
 
     @Override
-    void populateTableView() {
+    void populateTableView(ProviderQueryType.QueryType queryType) {
+        // Query type is not necessary as manager is only viewed by admin
         ProviderRepository repository = new ProviderRepository();
         List<InsuranceManager> managerList = repository.getAllManager();
         ObservableList<InsuranceManager> data = FXCollections.observableArrayList(managerList);
@@ -35,6 +42,6 @@ public class ManagerTable extends GenericProviderTable<InsuranceManager> {
 
     @Override
     public void refreshTable() {
-        populateTableView();
+        populateTableView(queryType);
     }
 }

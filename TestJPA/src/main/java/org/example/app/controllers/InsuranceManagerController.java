@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.example.app.components.table.*;
 import org.example.global.CustomerQueryType;
+import org.example.global.ProviderQueryType;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Proposal;
 
@@ -71,7 +72,7 @@ public class InsuranceManagerController implements Initializable {
         } else if (tableType.equalsIgnoreCase("Customer")) {
             tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
         } else if (tableType.equalsIgnoreCase("Surveyor")) {
-            tableViewContainer.getChildren().add(new SurveyorTable());
+            tableViewContainer.getChildren().add(new SurveyorTable(ProviderQueryType.QueryType.GET_ALL_SURVEYOR_OF_MANAGER));
         } else tableViewContainer.getChildren().add(new ProposalTable());
     }
 }

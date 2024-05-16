@@ -38,7 +38,7 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
     public ClaimTable() {
         // Set up claim repository
         this.repository = new ClaimRepository();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/claimTable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/claimTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
