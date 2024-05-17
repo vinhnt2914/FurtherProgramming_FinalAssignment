@@ -109,27 +109,30 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     }
 
     private void fileClaim(ActionEvent actionEvent) {
-        String id = idField.getText();
-        LocalDate claimDate = claimDatePicker.getValue();
-        LocalDate examDate = examDatePicker.getValue();
-        double claimAmount = Double.parseDouble(claimAmountField.getText());
-        ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
-        String bankingInfo = bankingInfoField.getText();
-        Claim claim = claimService.makeClaim()
-                .id(id)
-                .insuredPerson(insuredPerson)
-                .claimDate(claimDate)
-                .examDate(examDate)
-                .claimAmount(claimAmount)
-                .status(status)
-                .bankingInfo(bankingInfo)
-                .build();
-        claimRepository.add(claim);
-        claimRepository.close();
-        controller.refresh();
-        close();
-    }
+        if (validateInput()) {
+            String id = idField.getText();
+            LocalDate claimDate = claimDatePicker.getValue();
+            LocalDate examDate = examDatePicker.getValue();
+            double claimAmount = Double.parseDouble(claimAmountField.getText());
+            ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
+            String bankingInfo = bankingInfoField.getText();
 
+            Claim claim = claimService.makeClaim()
+                    .id(id)
+                    .insuredPerson(insuredPerson)
+                    .claimDate(claimDate)
+                    .examDate(examDate)
+                    .claimAmount(claimAmount)
+                    .status(status)
+                    .bankingInfo(bankingInfo)
+                    .build();
+
+            claimRepository.add(claim);
+            claimRepository.close();
+            controller.refresh();
+            close();
+        }
+    }
     private void close() {
         stage.close();
     }
