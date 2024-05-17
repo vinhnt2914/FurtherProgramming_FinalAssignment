@@ -5,6 +5,7 @@ import org.example.model.customer.*;
 import org.example.repository.EntityRepository;
 import org.example.repository.ICustomerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository extends EntityRepository implements ICustomerRepository {
@@ -78,6 +79,18 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         TypedQuery<Beneficiary> query = em.createQuery("from Beneficiary b where b.policyOwner = :policyOwner", Beneficiary.class);
         query.setParameter("policyOwner", policyOwner);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Beneficiary> getAllPolicyHoldersAndDependants() {
+        List<Beneficiary> res = new ArrayList<>();
+        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ", PolicyHolder.class);
+        List<PolicyHolder> policyHolderList = query.getResultList();
+        policyHolderList.forEach(policyHolder -> {
+            res.add(policyHolder);
+            res.addAll(policyHolder.getDependantSet());
+        });
+        return res;
     }
 
     // Update general attribute for customer object

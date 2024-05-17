@@ -69,7 +69,8 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
         List<Beneficiary> beneficiaryList = new ArrayList<>();
         switch (queryType) {
             case GET_ALL_DEPENDANT_AND_POLICY_HOLDER -> {
-                
+                List<Beneficiary> data = repository.getAllPolicyHoldersAndDependants();
+                beneficiaryList.addAll(data);
             }
             case GET_ALL_DEPENDANT_OF_POLICY_HOLDER -> {
                 List<Dependant> data = repository.getAllDependantsOfPolicyHolder((PolicyHolder) GlobalVariable.getUser());
