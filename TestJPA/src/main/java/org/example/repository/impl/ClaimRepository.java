@@ -9,6 +9,7 @@ import org.example.model.items.Claim;
 import org.example.repository.EntityRepository;
 import org.example.repository.IClaimRepository;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -114,4 +115,14 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
         return query.getResultList();
     }
+
+    @Override
+    public BigDecimal getTotalClaimAmountByStatus(ClaimStatus status) {
+        TypedQuery<Double> query = em.createQuery(
+                "SELECT SUM(c.claimAmount) FROM Claim c WHERE c.status = :status", Double.class);
+        query.setParameter("status", status);
+        Double totalAmount = query.getSingleResult();
+        return totalAmount != null ? BigDecimal.valueOf(totalAmount) : BigDecimal.ZERO;
+    }
+
 }

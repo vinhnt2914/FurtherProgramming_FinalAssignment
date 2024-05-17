@@ -55,7 +55,6 @@ public abstract class GenericMenuBar extends HBox {
         providerMenu.setOnAction(this::openProvider);
         requestMenu.setOnAction(this::openRequest);
         proposalMenu.setOnAction(this::openProposal);
-        System.out.println("Menubar set up complete");
     }
 
     private void openProposal(ActionEvent actionEvent) {
@@ -74,10 +73,8 @@ public abstract class GenericMenuBar extends HBox {
         App.getInstance().switchScene("info");
     }
 
-
     private void openCustomer(ActionEvent actionEvent) {
         App.getInstance().switchScene("customer");
-        System.out.println("Switching scenes");
     }
 
     private void openInsuranceCard(ActionEvent actionEvent) {

@@ -1,4 +1,4 @@
-package org.example.app.components.buttonSet;
+package org.example.app.components.buttonset;
 
 import org.example.app.components.table.RefreshableTable;
 
