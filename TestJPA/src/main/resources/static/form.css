@@ -20,6 +20,10 @@
     -fx-background-color: #7971bb;
 }
 
+.date-picker .button {
+    -fx-min-width: 10;
+}
+
 /* Calendar Popup */
 .date-picker-popup {
     -fx-background-color: #7971bb;
@@ -77,6 +81,7 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-min-width: 150;
 }
 
 #submitButton, #updateClaimButton {

@@ -49,16 +49,6 @@
                     </BorderPane.margin>
                 </Text>
             </left>
-            <bottom>
-                <HBox fx:id="sortingContainer" alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="842.0" BorderPane.alignment="CENTER_RIGHT">
-                    <BorderPane.margin>
-                        <Insets top="20.0" />
-                    </BorderPane.margin>
-               <padding>
-                  <Insets right="20.0" />
-               </padding>
-                </HBox>
-            </bottom>
         </BorderPane>
     </top>
     <center>
