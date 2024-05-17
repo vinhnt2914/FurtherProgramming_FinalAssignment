@@ -81,7 +81,7 @@ public class ProviderAdminController implements Initializable, RefreshableContro
     }
 
     private void addSurveyor() {
-        new AddSurveyorForm();
+        new AddSurveyorForm(this);
     }
 
     private void setUpManagerButtonActions() {

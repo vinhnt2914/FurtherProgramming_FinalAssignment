@@ -81,18 +81,18 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" minWidth="300.0">
                     <children>
-                        <Label text="Policy Owner: ">
+                        <Label text="Insurance Manager">
                             <HBox.margin>
                                 <Insets right="50.0" />
                             </HBox.margin>
                         </Label>
                         <HBox HBox.hgrow="ALWAYS" />
-                  <VBox fx:id="policyOwnerContainer">
-                     <children>
-                        <Button fx:id="selectPolicyOwnerButton" mnemonicParsing="false" text="Select" />
-                        <Label fx:id="policyOwnerLabel" />
-                     </children>
-                  </VBox>
+                        <VBox fx:id="managerContainer">
+                            <children>
+                                <Button fx:id="selectManagerButton" mnemonicParsing="false" text="Select" />
+                                <Label fx:id="managerLabel" />
+                            </children>
+                        </VBox>
                     </children>
                 </HBox>
             </children>
@@ -104,7 +104,7 @@
     <top>
         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="1000.0" style="-fx-border-width: 0 0 3px 0; -fx-border-color: #F1F1F7;" BorderPane.alignment="CENTER">
             <children>
-                <Label text="Add Policy Holder" textFill="#7971bb">
+                <Label text="Add Surveyor" textFill="#7971bb">
                     <font>
                         <Font name="System Bold" size="25.0" />
                     </font>

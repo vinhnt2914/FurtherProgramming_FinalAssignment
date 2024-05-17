@@ -11,7 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
+import org.example.app.components.table.SelectPolicyOwnerTable;
 import org.example.app.controllers.RefreshableController;
+import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.User;
@@ -40,7 +42,7 @@ public class AddPolicyHolderForm extends BorderPane {
     @FXML
     private VBox policyOwnerContainer;
     @FXML
-    private ComboBox<PolicyOwner> policyOwnerComboBox;
+    private Button selectPolicyOwnerButton;
     @FXML
     private Label policyOwnerLabel;
     @FXML
@@ -49,7 +51,7 @@ public class AddPolicyHolderForm extends BorderPane {
     private Button cancelButton;
     private Stage stage;
     private RefreshableController controller;
-
+    private PolicyOwner policyOwner;
     public AddPolicyHolderForm(RefreshableController controller) {
         this.controller = controller;
         try {
@@ -70,56 +72,20 @@ public class AddPolicyHolderForm extends BorderPane {
     }
 
     private void setUpForm() {
-
-        policyOwnerLabel.setVisible(false);
-
         User user = GlobalVariable.getUser();
         if (user instanceof PolicyOwner) {
-            policyOwnerContainer.getChildren().remove(policyOwnerComboBox);
-            policyOwnerLabel.setVisible(true);
+            policyOwnerContainer.getChildren().remove(selectPolicyOwnerButton);
             policyOwnerLabel.setText(user.getId() + " - " + user.getFullName());
-        } else {
-            setUpPolicyOwnerComboBox();
+            this.policyOwner = (PolicyOwner) user;
         }
 
+        this.selectPolicyOwnerButton.setOnAction(this::openSelectPolicyOwner);
         this.saveButton.setOnAction(this::addPolicyHolder);
         this.cancelButton.setOnAction(this::handleCancel);
     }
 
-    private void setUpPolicyOwnerComboBox() {
-        policyOwnerComboBox.setCellFactory(param -> new ListCell<>() {
-            @Override
-            protected void updateItem(PolicyOwner item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item != null) {
-                    setText(item.getId() + " - " + item.getFullName());
-                } else {
-                    setText(null);
-                }
-            }
-        });
-
-        policyOwnerComboBox.setButtonCell(new ListCell<>() {
-            @Override
-            protected void updateItem(PolicyOwner item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item != null) {
-                    setText(item.getId() + " - " + item.getFullName());
-                } else {
-                    setText(null);
-                }
-            }
-        });
-
-        loadPolicyOwners();
-
-    }
-
-    private void loadPolicyOwners() {
-        CustomerRepository repository = new CustomerRepository();
-        List<PolicyOwner> policyOwnerList = repository.getAllPolicyOwners();
-        ObservableList<PolicyOwner> data = FXCollections.observableArrayList(policyOwnerList);
-        policyOwnerComboBox.setItems(data);
+    private void openSelectPolicyOwner(ActionEvent actionEvent) {
+        new SelectPolicyOwnerTable(CustomerQueryType.QueryType.GET_ALL_POLICY_OWNER, this);
     }
 
     void addPolicyHolder(ActionEvent actionEvent) {
@@ -136,19 +102,7 @@ public class AddPolicyHolderForm extends BorderPane {
                     .password(passwordField.getText())
                     .build();
 
-            if (GlobalVariable.getRole() == Role.PolicyOwner) {
-                policyHolder.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
-            } else if (GlobalVariable.getRole() == Role.Admin){
-                System.out.println("READ VALUE: " + policyOwnerComboBox.getValue());
-                PolicyOwner policyOwner = policyOwnerComboBox.getValue();
-                if (policyOwner != null) {
-                    System.out.println("SELECTED POLICY OWNER: " + policyOwner);
-                    policyHolder.setPolicyOwner(policyOwner);
-                } else {
-                    new ErrorAlert("Please select an policy owner");
-                    return;
-                }
-            }
+            policyHolder.setPolicyOwner(policyOwner);
 
             repository.add(policyHolder);
             repository.close();
@@ -161,7 +115,8 @@ public class AddPolicyHolderForm extends BorderPane {
 
     private boolean validateInput() {
         if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
-                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField) ||
+                isPolicyOwnerNull()) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }
@@ -185,6 +140,11 @@ public class AddPolicyHolderForm extends BorderPane {
         return pattern.matcher(email).matches();
     }
 
+    private boolean isPolicyOwnerNull() {
+        if (GlobalVariable.getRole() == Role.PolicyOwner) return false;
+        return policyOwner == null;
+    }
+
     private void handleCancel(ActionEvent actionEvent) {
         close();
     }
@@ -192,8 +152,9 @@ public class AddPolicyHolderForm extends BorderPane {
         stage.close();
     }
 
-
-
-
+    public void setPolicyOwner(PolicyOwner policyOwner) {
+        this.policyOwner = policyOwner;
+        policyOwnerLabel.setText(policyOwner.getId() + " - " + policyOwner.getFullName());
+    }
 
 }
