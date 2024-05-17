@@ -17,7 +17,9 @@ public class PageManager {
     private PageManager() {
         scenes = new HashMap<>();
         setScenes(GlobalVariable.getRole());
+        setCommonScenes();  // Add this method to define common scenes like login
     }
+
 
     public static PageManager getInstance() {
         if (instance == null) {
@@ -27,12 +29,20 @@ public class PageManager {
     }
 
     public Parent getScene(String sceneName) throws IOException {
-        URL pageURL = getClass().getResource("/views/" + scenes.get(sceneName.toLowerCase()));
+        String scenePath = scenes.get(sceneName.toLowerCase());
+        if (scenePath == null) {
+            throw new IllegalArgumentException("Scene not defined for: " + sceneName);
+        }
 
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(pageURL);
+        URL pageURL = getClass().getResource("/views/" + scenePath);
+        if (pageURL == null) {
+            throw new IOException("Resource not found: /views/" + scenePath);
+        }
+
+        FXMLLoader loader = new FXMLLoader(pageURL);
         return loader.load();
     }
+
 
     public void setScenes(Role role) {
         switch (role) {
@@ -45,6 +55,9 @@ public class PageManager {
         }
     }
 
+    private void setCommonScenes() {
+        scenes.put("login", "login.fxml");
+    }
     private void setScenesForDependant() {
         scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "dependant.fxml");

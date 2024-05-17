@@ -47,4 +47,8 @@ public class GlobalVariable {
     public static void setRole(Role role) {
         GlobalVariable.role = role;
     }
+    public static void setCurrentUser(User user) {
+        GlobalVariable.user = user;
+        setRole(user);
+    }
 }

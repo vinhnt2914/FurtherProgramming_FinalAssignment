@@ -36,6 +36,12 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginButton.setOnAction(this::login);
         repository = new UserRepository();
+        resetLoginUI();
+    }
+
+    private void resetLoginUI() {
+        usernameField.clear();
+        passwordField.clear();
     }
 
     private void login(ActionEvent actionEvent) {

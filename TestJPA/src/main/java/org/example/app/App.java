@@ -81,4 +81,23 @@ public class App {
             throw new RuntimeException(e);
         }
     }
+
+    public void logout() {
+        System.out.println("Logging out. Resetting user and role...");
+
+        // Log the current user and role before resetting
+        System.out.println("Current user: " + (GlobalVariable.getUser() != null ? GlobalVariable.getUser().getClass().getSimpleName() : "None"));
+        System.out.println("Current role: " + (GlobalVariable.getRole() != null ? GlobalVariable.getRole() : "None"));
+
+
+        GlobalVariable.setCurrentUser(null);
+
+        System.out.println("User and role have been reset.");
+        System.out.println("Application will now exit.");
+
+
+        System.exit(0);
+    }
+
+
 }
