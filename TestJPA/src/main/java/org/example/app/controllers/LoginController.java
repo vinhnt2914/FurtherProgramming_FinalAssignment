@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.App;
 import org.example.app.components.alert.ErrorAlert;
@@ -16,14 +15,13 @@ import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
-import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.UserRepository;
 import org.example.utility.PasswordUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable{
+public class LoginController implements Initializable {
     @FXML
     private AnchorPane loginPane;
     @FXML
@@ -44,21 +42,21 @@ public class LoginController implements Initializable{
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if(username.equals("admin") && password.equals("123456")) {
+        if (username.equals("admin") && password.equals("123456")) {
             GlobalVariable.setRole(Role.Admin);
             GlobalVariable.setUser(Admin.getInstance());
             System.out.println("Admin logged in");
         } else {
             String encryptedPassword = PasswordUtil.encrypt(password);
-            // Encrypt the user password before searching in the database
             System.out.println("ENCRYPTED PASSWORD: " + encryptedPassword);
             try {
                 User user = repository.findUser(username, encryptedPassword);
-                // Decrypt the password before setting as global var
-
                 GlobalVariable.setRole(user);
                 GlobalVariable.setUserID(user.getId());
                 GlobalVariable.setUser(user);
+
+                User.setCurrentUser(user);
+
                 System.out.println("User logged in: " + GlobalVariable.getUserID());
                 System.out.println("User role: " + GlobalVariable.getRole());
                 System.out.println("User password: " + GlobalVariable.getUser().getPassword());
@@ -66,8 +64,6 @@ public class LoginController implements Initializable{
                 new ErrorAlert("Username or password is incorrect!");
                 return;
             }
-
-
         }
 
         // Close the login stage

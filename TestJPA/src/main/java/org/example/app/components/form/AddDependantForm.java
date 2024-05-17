@@ -23,6 +23,7 @@ import org.example.service.CustomerService;
 import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class AddDependantForm extends BorderPane {
     @FXML
@@ -173,8 +174,25 @@ public class AddDependantForm extends BorderPane {
 
     private void loadPolicyHolders() {
         CustomerRepository repository = new CustomerRepository();
-        List<PolicyHolder> policyHolders = repository.getAllPolicyHolders();
-        ObservableList<PolicyHolder> policyHolderList = FXCollections.observableArrayList(policyHolders);
-        policyHolderComboBox.setItems(policyHolderList);
+        User currentUser = User.getCurrentUser();
+        System.out.println("Current User: " + currentUser);
+        if (currentUser instanceof PolicyOwner) {
+            PolicyOwner policyOwner = (PolicyOwner) currentUser;
+            System.out.println("Policy Owner: " + policyOwner.getFullName());
+            List<PolicyHolder> policyHolders = repository.getAllPolicyHolders()
+                    .stream()
+                    .filter(ph -> ph.getPolicyOwner() != null && ph.getPolicyOwner().getId() == policyOwner.getId())
+                    .collect(Collectors.toList());
+            System.out.println("Filtered Policy Holders: " + policyHolders);
+            ObservableList<PolicyHolder> policyHolderList = FXCollections.observableArrayList(policyHolders);
+            policyHolderComboBox.setItems(policyHolderList);
+        } else {
+
+            List<PolicyHolder> policyHolders = repository.getAllPolicyHolders();
+            System.out.println("All Policy Holders: " + policyHolders);
+            ObservableList<PolicyHolder> policyHolderList = FXCollections.observableArrayList(policyHolders);
+            policyHolderComboBox.setItems(policyHolderList);
+        }
     }
+
 }

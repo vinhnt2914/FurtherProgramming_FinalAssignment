@@ -24,6 +24,8 @@ public abstract class User {
     @Column
     protected String address;
 
+    private static User currentUser;
+
     public User(GenericUserBuilder builder) {
         this.username = builder.username;
         try {
@@ -47,29 +49,36 @@ public abstract class User {
         protected String phone;
         protected String address;
         protected String fullName;
+
         public T self() {
             return (T) this;
         }
+
         public T username(String username) {
             this.username = username;
             return self();
         }
+
         public T password(String password) {
             this.password = password;
             return self();
         }
+
         public T email(String email) {
             this.email = email;
             return self();
         }
+
         public T phone(String phone) {
             this.phone = phone;
             return self();
         }
+
         public T address(String address) {
             this.address = address;
             return self();
         }
+
         public T fullName(String fullName) {
             this.fullName = fullName;
             return self();
@@ -81,15 +90,19 @@ public abstract class User {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
@@ -103,7 +116,7 @@ public abstract class User {
 //        }
     }
 
-//    public String getDecryptedPassword() {
+    //    public String getDecryptedPassword() {
 //        return PasswordUtil.decrypt(this.password); // Decrypt the password
 //    }
 
@@ -137,6 +150,14 @@ public abstract class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
     }
 
     @Override
