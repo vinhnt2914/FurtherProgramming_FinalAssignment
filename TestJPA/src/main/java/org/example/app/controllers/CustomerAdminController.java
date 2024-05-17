@@ -197,9 +197,10 @@ public class CustomerAdminController implements Initializable, RefreshableContro
                 if (response == ButtonType.OK) {
                     CustomerRepository repository = new CustomerRepository();
                     repository.removeByID(selectedPolicyOwner.getId());
-                    tableView.getItems().remove(selectedPolicyOwner);
-                    System.out.println("Deleted Policy Owner: " + selectedPolicyOwner.getFullName());
+//                    tableView.getItems().remove(selectedPolicyOwner);
+//                    System.out.println("Deleted Policy Owner: " + selectedPolicyOwner.getFullName());
                     repository.close();
+                    refresh();
                 }
             });
         } else {
@@ -208,10 +209,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
     }
 
     private void handleEditPolicyOwner() {
-
         PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
-
-
         PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
 
         if (selectedPolicyOwner != null) {

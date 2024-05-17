@@ -65,10 +65,11 @@ public class InsuranceCard {
         return "InsuranceCard{" +
                 "cardNumber='" + cardNumber + '\'' +
                 ", cardHolder=" + cardHolder.getId() +
-                ", policyOwner=" + policyOwner.getId() +
+                ", policyOwner=" + (policyOwner != null ? policyOwner.getId() : "None") +
                 ", expireDate=" + expireDate +
                 '}';
     }
+
 
     public static class InsuranceCardBuilder {
         protected String cardNumber;

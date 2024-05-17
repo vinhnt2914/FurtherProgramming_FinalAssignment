@@ -1,5 +1,6 @@
 package org.example.app.components.form;
 
+import jakarta.persistence.RollbackException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,32 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.SuccessAlert;
-import org.example.app.components.table.RefreshableTable;
-import org.example.app.components.table.SelectBeneficiaryTable;
 import org.example.app.controllers.RefreshableController;
-import org.example.global.CustomerQueryType;
-import org.example.global.GlobalVariable;
-import org.example.global.Role;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.PolicyOwner;
 import org.example.model.items.InsuranceCard;
 import org.example.repository.impl.InsuranceCardRepository;
-import org.example.service.InsuranceCardService;
 
 import java.io.IOException;
 
-public class AddInsuranceCardForm extends VBox implements SelectableForm{
-    @FXML
-    private TextField cardNumberField;
+public class UpdateInsuranceCardForm extends VBox implements SelectableForm{
     @FXML
     private DatePicker expireDatePicker;
-    @FXML
-    private Button selectCardHolderButton;
     @FXML
     private Label cardHolderLabel;
     @FXML
@@ -41,13 +30,20 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
     private Button submitButton;
     @FXML
     private Button cancelButton;
-    private Beneficiary beneficiary;
+    private InsuranceCard selectedCard;
+    private Beneficiary cardHolder;
     private Stage stage;
     private RefreshableController controller;
-    public AddInsuranceCardForm(RefreshableController controller) {
+
+    public UpdateInsuranceCardForm(RefreshableController controller, InsuranceCard card) {
+        this.selectedCard = card;
+        this.cardHolder = card.getCardHolder();
         this.controller = controller;
+
+        System.out.println("SET CARD: " + this.selectedCard);
+        System.out.println("CARD NUMBER: " + this.selectedCard.getCardNumber());
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/addInsuranceCardForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/updateInsuranceCardForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             VBox rootPane = fxmlLoader.load();
@@ -63,31 +59,30 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
     }
 
     private void setUpForm() {
-        this.selectCardHolderButton.setOnAction(this::openSelectCardHolder);
-        this.submitButton.setOnAction(this::addInsuranceCard);
+        expireDatePicker.setValue(selectedCard.getExpireDate());
+        cardHolderLabel.setText(cardHolder.getId() + " - " + cardHolder.getFullName());
+
+        if (cardHolder.getPolicyOwner() == null) policyOwnerLabel.setText("No policy owner");
+        else {
+            policyOwnerLabel.setText(
+                    cardHolder.getPolicyOwner().getId()
+                            + " - "
+                            + cardHolder.getPolicyOwner().getFullName());
+        }
+
+        this.submitButton.setOnAction(this::updateInsuranceCard);
     }
 
-    private void openSelectCardHolder(ActionEvent actionEvent) {
-        Role role = GlobalVariable.getRole();
-        if (role == Role.Admin) {
-            new SelectBeneficiaryTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT_AND_POLICY_HOLDER, this);
-        } else new SelectBeneficiaryTable(CustomerQueryType.QueryType.GET_ALL_BENEFICIARY_OF_POLICY_OWNER, this);
-    }
-
-    private void addInsuranceCard(ActionEvent actionEvent) {
-        InsuranceCardService service = new InsuranceCardService();
+    private void updateInsuranceCard(ActionEvent actionEvent) {
         InsuranceCardRepository repository = new InsuranceCardRepository();
-        InsuranceCard card = service.makeCard()
-                .cardNumber(cardNumberField.getText())
-                .expireDate(expireDatePicker.getValue())
-                .cardHolder(beneficiary)
-                .policyOwner(beneficiary.getPolicyOwner())
-                .build();
 
-        repository.add(card);
+        selectedCard.setExpireDate(expireDatePicker.getValue());
+
+        repository.update(selectedCard);
+
         repository.close();
         controller.refresh();
-        new SuccessAlert("Insurance card added successfully");
+        new SuccessAlert("Insurance Card Updated!");
         close();
     }
 
@@ -97,13 +92,13 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
 
     @Override
     public void setBeneficiary(Beneficiary beneficiary) {
-        this.beneficiary = beneficiary;
+        this.cardHolder = beneficiary;
         displayBeneficiary();
     }
 
     private void displayBeneficiary() {
-        this.cardHolderLabel.setText(beneficiary.getId() + " - " + beneficiary.getFullName());
-        PolicyOwner policyOwner = beneficiary.getPolicyOwner();
+        this.cardHolderLabel.setText(cardHolder.getId() + " - " + cardHolder.getFullName());
+        PolicyOwner policyOwner = cardHolder.getPolicyOwner();
         if (policyOwner == null) {
             policyOwnerLabel.setText("No policy owner");
             return;

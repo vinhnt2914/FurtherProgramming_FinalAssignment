@@ -79,10 +79,9 @@ public class PolicyOwner extends Customer {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("PolicyOwner[id: %s, name: %s]", getId(), getFullName()));
-
-        return sb.toString();
+        return "PolicyOwner{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                '}';
     }
-
 }
