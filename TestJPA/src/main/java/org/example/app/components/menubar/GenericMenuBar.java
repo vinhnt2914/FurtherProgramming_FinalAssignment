@@ -3,8 +3,11 @@ package org.example.app.components.menubar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.example.app.App;
 
 import java.io.IOException;
@@ -26,6 +29,8 @@ public abstract class GenericMenuBar extends HBox {
     protected Hyperlink requestMenu;
     @FXML
     protected Hyperlink proposalMenu;
+    @FXML
+    protected Hyperlink logoutMenu;
 
     public GenericMenuBar() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/menuBar.fxml"));
@@ -52,6 +57,7 @@ public abstract class GenericMenuBar extends HBox {
         customerMenu.setOnAction(this::openCustomer);
         requestMenu.setOnAction(this::openRequest);
         proposalMenu.setOnAction(this::openProposal);
+        logoutMenu.setOnAction(this::handleLogout);
         System.out.println("Menubar set up complete");
     }
 
@@ -86,5 +92,23 @@ public abstract class GenericMenuBar extends HBox {
 
     public HBox getMenuBar() {
         return menuBar;
+    }
+    private void handleLogout(ActionEvent actionEvent) {
+
+        System.out.println("Logout button clicked!");
+
+
+        showLoginScreen();
+    }
+    private void showLoginScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) logoutMenu.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

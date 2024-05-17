@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/buttonSet/PolicyOwnerButtonSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/form/AddPolicyOwnerForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/form/UpdatePolicyOwnerForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/PolicyOwnerTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/addPolicyOwnerForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/updatePolicyOwnerForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/test/TestLogOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/global/CustomerQueryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/global/CustomerQueryType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/menubar/GenericMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/menubar/GenericMenuBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/global/CustomerQueryType$QueryType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/global/CustomerQueryType$QueryType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/addPolicyOwnerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/addPolicyOwnerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/menuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/menuBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/updatePolicyOwnerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/updatePolicyOwnerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/menubar/GenericMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/menubar/GenericMenuBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/components/addPolicyOwnerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/addPolicyOwnerForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/components/menuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/menuBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/components/updatePolicyOwnerForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/updatePolicyOwnerForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "duybui1311"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/vinhnt2914/FurtherProgramming_FinalAssignment.git",
+    "accountId": "354486db-a80c-4351-b3c8-353612dfe9c2"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -50,6 +60,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.TestCustomerAdmin.executor": "Run",
+    "Application.login.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -156,8 +167,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="login" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestLoginPage" />
+      <module name="TestJPA" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testlogout" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.TestLogOut" />
+      <module name="TestJPA" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.TestDependantPage" />
+      <item itemvalue="Application.login" />
+      <item itemvalue="Application.testlogout" />
       <item itemvalue="Application.TestCustomerAdmin" />
       <item itemvalue="Application.TestInsuranceSurveyorPage" />
       <item itemvalue="Application.TestPopulateUser" />
@@ -173,6 +203,13 @@
         <item itemvalue="Application.TestInsuranceManager" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -205,6 +242,7 @@
       <workItem from="1715670178489" duration="6569000" />
       <workItem from="1715684682784" duration="7873000" />
       <workItem from="1715737131229" duration="5655000" />
+      <workItem from="1715914551533" duration="748000" />
     </task>
     <servers />
   </component>
