@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
-import org.example.app.components.table.InsuredPersonTable;
+import org.example.app.components.table.SelectBeneficiaryTable;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
@@ -26,7 +26,7 @@ import org.example.service.ClaimService;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class FileClaimForm extends BorderPane implements ClaimForm{
+public class FileClaimForm extends BorderPane implements SelectableForm{
     @FXML
     private Label insuredPersonLabel;
     @FXML
@@ -56,6 +56,7 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
     private CustomerRepository customerRepository;
     private ClaimRepository claimRepository;
     private RefreshableController controller;
+    private Stage stage;
     public FileClaimForm(RefreshableController controller) {
         this.controller = controller;
         customerRepository = new CustomerRepository();
@@ -72,7 +73,7 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
             fxmlLoader.setController(this);
             BorderPane rootPane = fxmlLoader.load();
             Scene scene = new Scene(rootPane);
-            Stage stage = new Stage();
+            stage = new Stage();
             stage.setScene(scene);
             stage.show();
         } catch (IOException exception) {
@@ -95,14 +96,13 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
     }
 
     private void handleCancel(ActionEvent actionEvent) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+        close();
     }
 
     private void setToMyClaim(ActionEvent actionEvent) {
         PolicyHolder policyHolder = (PolicyHolder) customerRepository.findByID(GlobalVariable.getUserID());
         if (policyHolder != null) {
-            setInsuredPerson(policyHolder);
+            setBeneficiary(policyHolder);
         } else {
             new ErrorAlert("Data Retrieval Error");
         }
@@ -127,37 +127,24 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
         claimRepository.add(claim);
         claimRepository.close();
         controller.refresh();
+        close();
+    }
+
+    private void close() {
+        stage.close();
     }
 
     private void openSelectInsuredPerson(ActionEvent actionEvent) {
         Role role = GlobalVariable.getRole();
         switch (role) {
             case PolicyHolder ->
-                    new InsuredPersonTable(
+                    new SelectBeneficiaryTable(
                             CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER,
                             this);
             case PolicyOwner ->
-                    new InsuredPersonTable(
+                    new SelectBeneficiaryTable(
                             CustomerQueryType.QueryType.GET_ALL_BENEFICIARY_OF_POLICY_OWNER,
                             this);
-        }
-    }
-
-    @Override
-    public void setInsuredPerson(Beneficiary insuredPerson) {
-        this.insuredPerson = insuredPerson;
-
-        insuredPersonLabel.setText(
-                String.format("%s - %s",
-                        insuredPerson.getId(),
-                        insuredPerson.getFullName()));
-
-
-        if (insuredPerson.getInsuranceCard() != null) {
-            cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
-        } else {
-
-            cardNumberLabel.setText("No insurance card available");
         }
     }
 
@@ -186,6 +173,26 @@ public class FileClaimForm extends BorderPane implements ClaimForm{
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+
+    @Override
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.insuredPerson = beneficiary;
+        displayInsuredPerson();
+    }
+    private void displayInsuredPerson() {
+        insuredPersonLabel.setText(
+                String.format("%s - %s",
+                        insuredPerson.getId(),
+                        insuredPerson.getFullName()));
+
+
+        if (insuredPerson.getInsuranceCard() != null) {
+            cardNumberLabel.setText(insuredPerson.getInsuranceCard().getCardNumber());
+        } else {
+
+            cardNumberLabel.setText("No insurance card available");
         }
     }
 }

@@ -67,7 +67,11 @@ public class UpdateInfoForm extends BorderPane {
             user.setAddress(addressField.getText());
             user.setEmail(emailField.getText());
             user.setPhone(phoneField.getText());
-            user.setPassword(passwordField.getText());
+
+            String password = passwordField.getText();
+            if (!password.isEmpty()) {
+                user.setPassword(passwordField.getText());
+            }
 
             repository.update(user);
             repository.close();
@@ -93,9 +97,6 @@ public class UpdateInfoForm extends BorderPane {
         }
         if (isFieldEmpty(phoneField)) {
             errorMessage += "No valid phone!\n";
-        }
-        if (isFieldEmpty(passwordField)) {
-            errorMessage += "No valid password!\n";
         }
 
         if (errorMessage.isEmpty()) {

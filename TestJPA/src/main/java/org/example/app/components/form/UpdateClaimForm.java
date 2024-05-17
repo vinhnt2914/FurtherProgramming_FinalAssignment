@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
-import org.example.app.components.table.InsuredPersonTable;
+import org.example.app.components.table.SelectBeneficiaryTable;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
@@ -18,7 +18,7 @@ import org.example.repository.impl.ClaimRepository;
 
 import java.io.IOException;
 
-public class UpdateClaimForm extends BorderPane implements ClaimForm{
+public class UpdateClaimForm extends BorderPane implements SelectableForm{
     @FXML
     private Label insuredPersonLabel;
     @FXML
@@ -72,11 +72,11 @@ public class UpdateClaimForm extends BorderPane implements ClaimForm{
         Role role = GlobalVariable.getRole();
         switch (role) {
             case PolicyHolder ->
-                    new InsuredPersonTable(
+                    new SelectBeneficiaryTable(
                             CustomerQueryType.QueryType.GET_ALL_DEPENDANT_OF_POLICY_HOLDER,
                             this);
             case PolicyOwner ->
-                    new InsuredPersonTable(
+                    new SelectBeneficiaryTable(
                             CustomerQueryType.QueryType.GET_ALL_BENEFICIARY_OF_POLICY_OWNER,
                             this);
         }
@@ -134,8 +134,8 @@ public class UpdateClaimForm extends BorderPane implements ClaimForm{
     }
 
     @Override
-    public void setInsuredPerson(Beneficiary insuredPerson) {
-        this.insuredPerson = insuredPerson;
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.insuredPerson = beneficiary;
         insuredPersonLabel.setText(
                 String.format("%s - %s",
                         insuredPerson.getId(),

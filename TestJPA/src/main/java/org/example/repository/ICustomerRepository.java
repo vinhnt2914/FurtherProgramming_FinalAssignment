@@ -15,6 +15,7 @@ public interface ICustomerRepository {
     List<PolicyHolder> getAllPolicyHolders();
     List<PolicyHolder> getAllPolicyHoldersOfPolicyOwner(PolicyOwner policyOwner);
     List<Beneficiary> getAllBeneficiaryOfPolicyOwner(PolicyOwner policyOwner);
+    List<PolicyOwner> getAllPolicyOwners();
     void update(Customer customer);
     Customer removeByID(int id);
 }

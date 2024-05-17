@@ -117,12 +117,10 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         return customerToRemove;
     }
 
-    public PolicyHolder getPolicyHolder() {
-        List<Customer> customers = getAll();
-        return customers.stream()
-                .filter(customer -> customer instanceof PolicyHolder)
-                .map(customer -> (PolicyHolder) customer)
-                .findFirst()
-                .orElse(null);
+    @Override
+    public List<PolicyOwner> getAllPolicyOwners() {
+        TypedQuery<PolicyOwner> query = em.createQuery("from PolicyOwner", PolicyOwner.class);
+        return query.getResultList();
     }
+
 }

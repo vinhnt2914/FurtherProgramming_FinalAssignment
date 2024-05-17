@@ -71,6 +71,7 @@ public class PageManager {
         scenes.put("request", "requestAdmin.fxml");
         scenes.put("proposal", "proposalAdmin.fxml");
         scenes.put("claim", "claimAdmin.fxml");
+        scenes.put("insurancecard", "insuranceCardAdmin.fxml");
 
     }
 }

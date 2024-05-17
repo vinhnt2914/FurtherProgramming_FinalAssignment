@@ -10,17 +10,15 @@ import java.util.Set;
 
 @Entity
 public class Beneficiary extends Customer {
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "policy_owner_id")
     private PolicyOwner policyOwner;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            mappedBy = "cardHolder",
-            fetch=FetchType.LAZY) // When persist customer, we persist the card as well
+    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST},
+            mappedBy = "cardHolder") // When persist customer, we persist the card as well
     protected InsuranceCard insuranceCard;
     @OneToMany(mappedBy = "insuredPerson",
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch=FetchType.LAZY)
+            cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Set<Claim> claimList;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private Set<Request> requestList;

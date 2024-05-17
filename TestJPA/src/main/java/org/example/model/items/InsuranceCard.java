@@ -12,7 +12,7 @@ public class InsuranceCard {
     private String cardNumber;
     @OneToOne
     private Beneficiary cardHolder;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "policyOwner_id")
     private PolicyOwner policyOwner;
     @Temporal(TemporalType.DATE)
@@ -22,6 +22,8 @@ public class InsuranceCard {
         this.cardHolder = cardBuilder.cardHolder;
         this.policyOwner = cardBuilder.policyOwner;
         this.expireDate = cardBuilder.expireDate;
+
+        cardHolder.setInsuranceCard(this);
     }
     public InsuranceCard() {
     }

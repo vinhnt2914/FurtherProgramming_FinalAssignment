@@ -10,13 +10,16 @@ import javafx.scene.layout.HBox;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.buttonSet.DependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
+import org.example.app.components.buttonSet.PolicyOwnerButtonSet;
 import org.example.app.components.form.*;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
+import org.example.app.components.table.PolicyOwnerTable;
 import org.example.app.components.table.RefreshableTable;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
+import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 
 import java.net.URL;
@@ -37,15 +40,14 @@ public class CustomerAdminController implements Initializable, RefreshableContro
     }
 
     private void setUpPage() {
-        ObservableList<String> options = FXCollections.observableArrayList();
-        options.addAll("Policy Holders", "Dependants");
-        this.swapTableChoiceBox.getItems().addAll(options);
+        ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
+        comboBoxOptions.addAll("Policy Holders", "Dependants", "Policy Owners");
+        this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         this.swapTableChoiceBox.getSelectionModel().select("Policy Holders");
         this.swapTableChoiceBox.setOnAction(this::swapTable);
 
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
         PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
-
         this.tableViewContainer.getChildren().add(policyHolderTable);
         this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
         setPolicyHolderButtonActions();
@@ -73,6 +75,14 @@ public class CustomerAdminController implements Initializable, RefreshableContro
             buttonSetContainer.getChildren().add(dependantButtonSet);
 
             setDependantButtonActions();
+        } else if (tableType.equalsIgnoreCase("Policy Owners")) {
+            PolicyOwnerTable policyOwnerTable = new PolicyOwnerTable(CustomerQueryType.QueryType.GET_ALL_POLICY_OWNER);
+            PolicyOwnerButtonSet policyOwnerButtonSet = new PolicyOwnerButtonSet(policyOwnerTable);
+
+            tableViewContainer.getChildren().add(policyOwnerTable);
+            buttonSetContainer.getChildren().add(policyOwnerButtonSet);
+
+            setPolicyOwnerButtonActions();
         }
     }
 
@@ -90,6 +100,13 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         dependantButtonSet.addButton.setOnAction(event -> handleAddDependant());
         dependantButtonSet.deleteButton.setOnAction(event -> handleRemoveDependant());
         dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
+    }
+    private void setPolicyOwnerButtonActions() {
+        PolicyOwnerButtonSet policyOwnerButtonSet = (PolicyOwnerButtonSet) buttonSetContainer.getChildren().get(0);
+
+        policyOwnerButtonSet.addButton.setOnAction(event -> handleAddPolicyOwner());
+        policyOwnerButtonSet.updateButton.setOnAction(event -> handleEditPolicyOwner());
+        policyOwnerButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyOwner());
     }
 
     private void handleAddPolicyHolder() {
@@ -157,9 +174,62 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
             new UpdateInfoForm(selectedDependant, this);
+//            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Dependant Selected");
+            alert.setContentText("Please select a dependant in the table.");
+            alert.showAndWait();
+        }
+    }
+
+    private void handleDeletePolicyOwner() {
+        PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
+        PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
+        if (selectedPolicyOwner != null) {
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText("Delete Policy Owner");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected policy owner?");
+
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    CustomerRepository repository = new CustomerRepository();
+                    repository.removeByID(selectedPolicyOwner.getId());
+                    tableView.getItems().remove(selectedPolicyOwner);
+                    System.out.println("Deleted Policy Owner: " + selectedPolicyOwner.getFullName());
+                    repository.close();
+                }
+            });
         } else {
             new ErrorAlert("Please select a dependant");
         }
+    }
+
+    private void handleEditPolicyOwner() {
+
+        PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
+
+
+        PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
+
+        if (selectedPolicyOwner != null) {
+
+            new UpdateInfoForm(selectedPolicyOwner, this);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Policy Owner Selected");
+            alert.setContentText("Please select a policy owner in the table.");
+            alert.showAndWait();
+        }
+    }
+
+
+    private void handleAddPolicyOwner() {
+        new AddPolicyOwnerForm(this);
     }
 
     @Override

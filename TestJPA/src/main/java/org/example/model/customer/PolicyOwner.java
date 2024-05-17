@@ -4,6 +4,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
+import org.example.model.items.InsuranceCard;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.HashSet;
@@ -13,9 +14,7 @@ import java.util.Set;
 @Entity
 public class PolicyOwner extends Customer {
     @OneToMany(mappedBy = "policyOwner",
-            cascade = CascadeType.PERSIST,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Beneficiary> beneficiarySet;
     private double fee;
     public PolicyOwner(PolicyOwnerBuilder builder) {

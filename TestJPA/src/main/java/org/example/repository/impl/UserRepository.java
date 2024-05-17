@@ -39,12 +39,15 @@ public class UserRepository extends EntityRepository implements IUserInterface {
 
         em.getTransaction().begin();
 
-        String encryptedPassword = PasswordUtil.encrypt(user.getPassword());
+        // If the password changed
+        if (!user.getPassword().equals(userToUpdate.getPassword())) {
+            String encryptedPassword = PasswordUtil.encrypt(user.getPassword());
+            userToUpdate.setPassword(encryptedPassword);
+        }
 
         userToUpdate.setAddress(user.getAddress());
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setPhone(user.getPhone());
-        userToUpdate.setPassword(encryptedPassword);
 
         em.getTransaction().commit();
     }

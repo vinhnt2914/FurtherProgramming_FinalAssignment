@@ -25,26 +25,6 @@ public class TestPopulateUser {
         ClaimService claimService = new ClaimService();
         ProviderService providerService = new ProviderService();
 
-        InsuranceCard card1 = cardService.makeCard()
-                .cardNumber("0000000001")
-                .expireDate(LocalDate.of(2024,5,5))
-                .build();
-
-        InsuranceCard card2 = cardService.makeCard()
-                .cardNumber("0000000002")
-                .expireDate(LocalDate.of(2024,5,6))
-                .build();
-
-        InsuranceCard card3 = cardService.makeCard()
-                .cardNumber("0000000003")
-                .expireDate(LocalDate.of(2024,6,5))
-                .build();
-
-        InsuranceCard card4 = cardService.makeCard()
-                .cardNumber("0000000004")
-                .expireDate(LocalDate.of(2024,7,5))
-                .build();
-
         PolicyHolder c1 = customerService
                 .makePolicyHolder()
                 .username("vinhrmit1234")
@@ -72,7 +52,7 @@ public class TestPopulateUser {
                 .password("Rmit@1234")
                 .email("quang@gmail.com")
                 .phone("123456789")
-                .address("Haiphone")
+                .address("Haiphong")
                 .build();
 
         Dependant c4 = customerService
@@ -106,24 +86,67 @@ public class TestPopulateUser {
                 .fee(500)
                 .build();
 
-        // This line can cause the unsaved transient object error
-        // c2, c3, c4 by the time of persisting
-        // Solve using bulk adding, avoid persisting each object per transaction
-        // Persist everything under one transaction
-        c1.setInsuranceCard(card1);
-        c2.setInsuranceCard(card2);
-        c3.setInsuranceCard(card3);
-        c4.setInsuranceCard(card4);
+        Dependant c7 = customerService
+                .makeDependant()
+                .username("trungrmit1234")
+                .password("Rmit@1234")
+                .email("trung@gmail.com")
+                .phone("0987654321")
+                .address("Da Nang")
+                .fullName("Tran Van Trung")
+                .build();
+
         c1.addDependants(c3, c4); // Add dependants
         c2.addDependants(c5);
         c6.addBeneficaries(c1); // Add beneficiaries
 
+        InsuranceCard card1 = cardService.makeCard()
+                .cardNumber("0000000001")
+                .expireDate(LocalDate.of(2024, 5, 5))
+                .cardHolder(c1)
+                .policyOwner(c1.getPolicyOwner())
+                .build();
+
+        InsuranceCard card2 = cardService.makeCard()
+                .cardNumber("0000000002")
+                .expireDate(LocalDate.of(2024, 5, 6))
+                .cardHolder(c2)
+                .policyOwner(c2.getPolicyOwner())
+                .build();
+
+        InsuranceCard card3 = cardService.makeCard()
+                .cardNumber("0000000003")
+                .expireDate(LocalDate.of(2024, 6, 5))
+                .cardHolder(c3)
+                .policyOwner(c3.getPolicyOwner())
+                .build();
+
+        InsuranceCard card4 = cardService.makeCard()
+                .cardNumber("0000000004")
+                .expireDate(LocalDate.of(2024, 7, 5))
+                .cardHolder(c4)
+                .policyOwner(c4.getPolicyOwner())
+                .build();
+
+        InsuranceCard card5 = cardService.makeCard()
+                .cardNumber("0000000005")
+                .expireDate(LocalDate.of(2024, 8, 5))
+                .cardHolder(c5)
+                .policyOwner(c5.getPolicyOwner())
+                .build();
+
+        InsuranceCard card6 = cardService.makeCard()
+                .cardNumber("0000000006")
+                .expireDate(LocalDate.of(2024, 9, 5))
+                .cardHolder(c7)
+                .policyOwner(c7.getPolicyOwner())
+                .build();
 
         Claim claim1 = claimService.makeClaim()
                 .id("f-000001")
                 .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,5,7))
-                .examDate(LocalDate.of(2024,8,8))
+                .claimDate(LocalDate.of(2024, 5, 7))
+                .examDate(LocalDate.of(2024, 8, 8))
                 .claimAmount(2000)
                 .status(ClaimStatus.NEW)
                 .bankingInfo("TPBank-NguyenTheVinh-1234567")
@@ -132,8 +155,8 @@ public class TestPopulateUser {
         Claim claim2 = claimService.makeClaim()
                 .id("f-000002")
                 .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,2,2))
-                .examDate(LocalDate.of(2024,6,8))
+                .claimDate(LocalDate.of(2024, 2, 2))
+                .examDate(LocalDate.of(2024, 6, 8))
                 .claimAmount(3000)
                 .status(ClaimStatus.NEW)
                 .bankingInfo("TPBank-NguyenTheVinh-1234567")
@@ -142,8 +165,8 @@ public class TestPopulateUser {
         Claim claim3 = claimService.makeClaim()
                 .id("f-000003")
                 .insuredPerson(c3)
-                .claimDate(LocalDate.of(2024,11,14))
-                .examDate(LocalDate.of(2024,9,25))
+                .claimDate(LocalDate.of(2024, 11, 14))
+                .examDate(LocalDate.of(2024, 9, 25))
                 .claimAmount(500)
                 .status(ClaimStatus.NEW)
                 .bankingInfo("TPBank-NguyenBaThai-7654321")
@@ -152,17 +175,28 @@ public class TestPopulateUser {
         Claim claim4 = claimService.makeClaim()
                 .id("f-000004")
                 .insuredPerson(c1)
-                .claimDate(LocalDate.of(2024,1,1))
-                .examDate(LocalDate.of(2024,10,5))
+                .claimDate(LocalDate.of(2024, 1, 1))
+                .examDate(LocalDate.of(2024, 10, 5))
                 .claimAmount(5000)
                 .status(ClaimStatus.NEW)
                 .bankingInfo("TPBank-CaoBaQuat-321654")
                 .build();
 
-        c2.addClaim(claim1);
-        c2.addClaim(claim2);
-        c3.addClaim(claim3);
-        c4.addClaim(claim4);
+        Claim claim5 = claimService.makeClaim()
+                .id("f-000005")
+                .insuredPerson(c7)
+                .claimDate(LocalDate.of(2024, 3, 15))
+                .examDate(LocalDate.of(2024, 4, 10))
+                .claimAmount(2500)
+                .status(ClaimStatus.NEW)
+                .bankingInfo("TPBank-TranVanA-9876543")
+                .build();
+
+//        c2.addClaim(claim1);
+//        c2.addClaim(claim2);
+//        c3.addClaim(claim3);
+//        c4.addClaim(claim4);
+//        c7.addClaim(claim5);
 
         InsuranceManager m1 = providerService.makeManager()
                 .username("manager1")
@@ -183,13 +217,9 @@ public class TestPopulateUser {
                 .manager(m1)
                 .build();
 
-        Request r1 = s1.makeRequest(c1, "bro ur dick smol");
-        Proposal p1 = s1.propose(m1, claim1, "i slept with ur mom last night, also check this claim out");
-        Proposal p2 = s1.propose(m1, claim2, "Check this claim out daddy");
-
-//        System.out.println(claim1);
-//        System.out.println(claim1.getInsuredPerson());
-//        System.out.println(c1);
+        Request r1 = s1.makeRequest(c1, "Check insurance details");
+        Proposal p1 = s1.propose(m1, claim1, "Review this claim");
+        Proposal p2 = s1.propose(m1, claim2, "Please check this claim");
 
         CustomerRepository customerRepository = new CustomerRepository();
         InsuranceCardRepository cardRepository = new InsuranceCardRepository();
@@ -197,10 +227,10 @@ public class TestPopulateUser {
         ProviderRepository providerRepository = new ProviderRepository();
         ProposalRepository proposalRepository = new ProposalRepository();
         RequestRepository requestRepository = new RequestRepository();
-        // This could throw a no relation error
-        // If add a policyOwner, who does not have an insurance card
 
-        customerRepository.add(c1,c2,c3,c4,c5,c6);
+        customerRepository.add(c1, c2, c3, c4, c5, c6, c7);
+//        cardRepository.add(card1, card2, card3, card4, card5, card6);
+//        claimRepository.add(claim1, claim2, claim3, claim4, claim5);
 
         providerRepository.add(m1);
         providerRepository.add(s1);
@@ -208,17 +238,11 @@ public class TestPopulateUser {
         proposalRepository.add(p1);
         proposalRepository.add(p2);
 
-
-//        User user = customerRepository.findByID(1);
-//        System.out.println(user);
-//        System.out.println(user instanceof PolicyHolder);
-//        System.out.println(customerRepository.getAll());
-//        System.out.println(cardRepository.findByID("0000000002"));
-
         customerRepository.close();
         cardRepository.close();
         claimRepository.close();
         providerRepository.close();
         proposalRepository.close();
+        requestRepository.close();
     }
 }

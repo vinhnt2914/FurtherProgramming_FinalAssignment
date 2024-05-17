@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
+import org.example.model.User;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
@@ -91,7 +92,7 @@ public class AddDependantForm extends BorderPane {
                     dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
                 } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
 
-                CustomerRepository repository = new CustomerRepository();
+                UserRepository repository = new UserRepository();
                 repository.add(dependant);
                 repository.close();
                 close();
@@ -149,7 +150,7 @@ public class AddDependantForm extends BorderPane {
             protected void updateItem(PolicyHolder item, boolean empty) {
                 super.updateItem(item, empty);
                 if (item != null) {
-                    setText(item.getFullName());
+                    setText(item.getId() + " - " + item.getFullName());
                 } else {
                     setText(null);
                 }
@@ -162,7 +163,7 @@ public class AddDependantForm extends BorderPane {
             protected void updateItem(PolicyHolder item, boolean empty) {
                 super.updateItem(item, empty);
                 if (item != null) {
-                    setText(item.getFullName());
+                    setText(item.getId() + " - " + item.getFullName());
                 } else {
                     setText(null);
                 }
