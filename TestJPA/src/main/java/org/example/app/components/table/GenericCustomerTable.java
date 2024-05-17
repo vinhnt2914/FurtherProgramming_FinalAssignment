@@ -24,7 +24,7 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     protected TableColumn<T, String> phoneCol;
     @FXML
     protected TableColumn<T, String> addressCol;
-    protected CustomerQueryType.QueryType queryType;
+    public CustomerQueryType.QueryType queryType;
 
     public GenericCustomerTable(CustomerQueryType.QueryType queryType) {
         this.queryType = queryType;
@@ -57,5 +57,5 @@ public abstract class GenericCustomerTable<T extends Customer> extends TableView
     }
 
     abstract void modifyTableView();
-    abstract void populateTableView(CustomerQueryType.QueryType queryType);
+    public abstract void populateTableView(CustomerQueryType.QueryType queryType);
 }

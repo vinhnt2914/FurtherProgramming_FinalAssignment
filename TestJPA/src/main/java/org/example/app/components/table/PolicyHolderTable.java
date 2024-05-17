@@ -33,7 +33,7 @@ public class PolicyHolderTable extends GenericCustomerTable<PolicyHolder> {
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<PolicyHolder> policyHolderList = null;
         switch (queryType) {

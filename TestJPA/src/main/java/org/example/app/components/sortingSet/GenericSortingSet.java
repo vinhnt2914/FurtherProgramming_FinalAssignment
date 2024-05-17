@@ -1,11 +1,14 @@
 package org.example.app.components.sortingSet;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import org.example.app.components.sorting.ClaimSortingForm;
+import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.RefreshableTable;
 
 import java.io.IOException;
@@ -14,11 +17,9 @@ public abstract class GenericSortingSet extends HBox {
     @FXML
     protected Button sortButton;
     @FXML
-    private Label sortLabel;
-    @FXML
     public ChoiceBox<String> sortOptionChoiceBox;
     public RefreshableTable table;
-    public GenericSortingSet(String label) {
+    public GenericSortingSet() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/sorting/sortingSet.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -28,11 +29,12 @@ public abstract class GenericSortingSet extends HBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-        setUpSortingSet(label);
+        setUpSortButton();
     }
 
-    private void setUpSortingSet(String label) {
-        sortLabel.setText(label);
+    private void setUpSortButton() {
+        this.sortButton.setOnAction(this::openSortingForm);
     }
+
+    abstract void openSortingForm(ActionEvent actionEvent);
 }

@@ -20,7 +20,7 @@ public class PolicyOwnerTable extends GenericCustomerTable<PolicyOwner> {
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<PolicyOwner> policyOwnerList = null;
         switch (queryType) {

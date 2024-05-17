@@ -77,7 +77,7 @@ public class SelectPolicyOwnerTable extends GenericCustomerTable<PolicyOwner> {
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<PolicyOwner> policyOwnerList = repository.getAllPolicyOwners();
         ObservableList<PolicyOwner> data = FXCollections.observableArrayList(policyOwnerList);

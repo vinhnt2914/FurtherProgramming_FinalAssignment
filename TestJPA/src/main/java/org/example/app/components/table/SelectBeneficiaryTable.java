@@ -64,7 +64,7 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<Beneficiary> beneficiaryList = new ArrayList<>();
         switch (queryType) {

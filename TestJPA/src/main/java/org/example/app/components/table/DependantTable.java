@@ -53,7 +53,7 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<Dependant> dependantList = null;
         switch (queryType) {

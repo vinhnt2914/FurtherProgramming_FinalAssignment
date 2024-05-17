@@ -63,6 +63,14 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
     }
 
     @Override
+    public List<Claim> getAllProcessingAndDone() {
+        TypedQuery<Claim> query = em.createQuery("from Claim c where c.status = :status1 or c.status = :status2", Claim.class);
+        query.setParameter("status1", ClaimStatus.PROCESSING);
+        query.setParameter("status2", ClaimStatus.DONE);
+        return query.getResultList();
+    }
+
+    @Override
     public void update(Claim claim) {
         Claim claimToUpdate = findByID(claim.getId());
 

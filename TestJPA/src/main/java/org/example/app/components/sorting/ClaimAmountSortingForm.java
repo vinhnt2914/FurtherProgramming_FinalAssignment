@@ -10,20 +10,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
-import org.example.app.components.table.ClaimTable;
+import org.example.app.controllers.ClaimAdminController;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
+import org.example.repository.impl.ClaimRepository;
 
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClaimSortingForm extends VBox {
+public class ClaimAmountSortingForm extends VBox {
     @FXML
     private ComboBox<String> claimAmountComboBox;
     @FXML
@@ -40,12 +41,11 @@ public class ClaimSortingForm extends VBox {
     private DatePicker examDatePicker;
     @FXML
     private Button sortButton;
-    private ClaimTable claimTable;
     private Stage stage;
-
-    public ClaimSortingForm(ClaimTable claimTable) {
+    private ClaimAdminController controller;
+    public ClaimAmountSortingForm(ClaimAdminController controller) {
         try {
-            this.claimTable = claimTable;
+            this.controller = controller;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/sorting/claimSortingForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
@@ -76,7 +76,7 @@ public class ClaimSortingForm extends VBox {
         dateOptions.addAll("Before", "After");
 
         ObservableList<String> statusOptions = FXCollections.observableArrayList();
-        statusOptions.addAll("NEW", "PROCESSING", "DONE");
+        statusOptions.addAll("Only PROCESSING", "Only DONE");
 
         this.claimAmountComboBox.setItems(claimAmountOptions);
         this.claimDateComboBox.setItems(dateOptions);
@@ -91,14 +91,13 @@ public class ClaimSortingForm extends VBox {
         String statusOption = statusComboBox.getValue();
 
         if (amountOption == null && claimDateOption == null && examDateOption == null && statusOption == null) {
-            claimTable.refreshTable();
+            controller.displayTotalClaimAmount(controller.calculateTotalClaimAmount());
             close();
             return;
         }
 
-        // Repopulate table in case of performing sort on an empty table
-        claimTable.populateTableView(claimTable.queryType);
-        List<Claim> claims = claimTable.getItems();
+        ClaimRepository repository = new ClaimRepository();
+        List<Claim> claims = repository.getAllProcessingAndDone();
 
         final boolean[] errorDisplayed = {false};
 
@@ -145,19 +144,30 @@ public class ClaimSortingForm extends VBox {
                 })
                 .filter(claim -> {
                     if (statusOption != null && !statusOption.isEmpty()) {
-                        ClaimStatus status = ClaimStatus.valueOf(statusOption);
-                        return claim.getStatus().equals(status);
+                        // If "Only PROCESSING" option is selected
+                        if (statusOption.equals("Only PROCESSING")) {
+                            return claim.getStatus() == ClaimStatus.PROCESSING;
+                        }
+                        // If "Only DONE" option is selected
+                        else if (statusOption.equals("Only DONE")) {
+                            return claim.getStatus() == ClaimStatus.DONE;
+                        }
                     }
+                    // If no status option is selected, include all claims
                     return true;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
-        claimTable.setItems(FXCollections.observableArrayList(sortedClaims));
+        double res = sortedClaims.stream()
+                .mapToDouble(Claim::getClaimAmount)
+                .sum();
+
+        controller.displayTotalClaimAmount(res);
         close();
     }
-
 
     private void close() {
         stage.close();
     }
+
 }

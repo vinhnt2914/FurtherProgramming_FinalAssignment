@@ -14,6 +14,7 @@ public interface IClaimRepository {
     List<Claim> getAllNew();
     List<Claim> getAllProcessing();
     List<Claim> getAllDone();
+    List<Claim> getAllProcessingAndDone();
     void update(Claim claim);
     Claim removeByID(String id);
     List<Claim> getClaimsOfDependant(Dependant dependant);
