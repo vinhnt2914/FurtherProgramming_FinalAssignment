@@ -29,8 +29,8 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
     private TableColumn<Proposal, Integer> surveyorCol;
     @FXML
     private TableColumn<Proposal, String> messageCol;
-    public ProposalTable() {
 
+    public ProposalTable() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/proposalTable.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -72,6 +72,13 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
             Claim claim = proposal.getClaim();
             claim.setStatus(ClaimStatus.REJECTED);
             updateProposal(claim);
+
+            // Remove the proposal after rejection
+            ProposalRepository proposalRepository = new ProposalRepository();
+            proposalRepository.removeByID(proposal.getId());
+            proposalRepository.close();
+
+            refreshTable();
         } else {
             System.out.println("Select something!");
         }
@@ -83,6 +90,13 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
             Claim claim = proposal.getClaim();
             claim.setStatus(ClaimStatus.PROCESSING);
             updateProposal(claim);
+
+            // Remove the proposal after approval
+            ProposalRepository proposalRepository = new ProposalRepository();
+            proposalRepository.removeByID(proposal.getId());
+            proposalRepository.close();
+
+            refreshTable();
         } else {
             System.out.println("Select something!");
         }
