@@ -5,55 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/ClaimAmountSortingForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/CustomerSortingForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sortingSet/CustomerSortingSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/customerSortingForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/ClaimSortingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sorting/ClaimSortingForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sortingSet/ClaimSortingSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sortingSet/ClaimSortingSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sortingSet/GenericSortingSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/sortingSet/GenericSortingSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/CustomerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/CustomerTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/DependantTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/DependantTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/GenericCustomerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/GenericCustomerTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/PolicyHolderTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/PolicyHolderTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/PolicyOwnerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/PolicyOwnerTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/SelectBeneficiaryTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/SelectBeneficiaryTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/SelectPolicyOwnerTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/table/SelectPolicyOwnerTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/ClaimAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/ClaimAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/controllers/CustomerAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/IClaimRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/IClaimRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/ClaimRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/ClaimRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/static/buttonSet.css" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/static/buttonSet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/static/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/static/form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/claimAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/claimAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/buttonSet/buttonSet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/buttonSet/buttonSet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/form/addInsuranceCardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/form/addInsuranceCardForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/form/claimSortingForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/form/claimSortingForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/claimSortingForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/claimSortingForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/sortingSet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/sorting/sortingSet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/genericInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/genericInfo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/sorting/ClaimSortingForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/sorting/ClaimSortingForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/sortingSet/ClaimSortingSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/sortingSet/ClaimSortingSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/sortingSet/GenericSortingSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/sortingSet/GenericSortingSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/CustomerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/CustomerTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/DependantTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/DependantTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/GenericCustomerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/GenericCustomerTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/PolicyHolderTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/PolicyHolderTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/PolicyOwnerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/PolicyOwnerTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/SelectBeneficiaryTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/SelectBeneficiaryTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/table/SelectPolicyOwnerTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/table/SelectPolicyOwnerTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/ClaimAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/ClaimAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/controllers/CustomerAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/buttonSet.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/buttonSet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/claimAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/claimAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/buttonSet/buttonSet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/buttonSet/buttonSet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/form/addInsuranceCardForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/form/addInsuranceCardForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/form/claimSortingForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/form/claimSortingForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/sorting/claimSortingForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/sorting/claimSortingForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/sorting/sortingSet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/sorting/sortingSet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/genericInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/genericInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/CustomAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/CustomAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/ErrorAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/ErrorAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/SuccessAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/SuccessAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/WarningAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/alert/WarningAlert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/alert.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/alert.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +221,7 @@
       <workItem from="1715847822594" duration="14587000" />
       <workItem from="1715874353453" duration="3266000" />
       <workItem from="1715908386039" duration="10269000" />
-      <workItem from="1715928980727" duration="19958000" />
+      <workItem from="1715928980727" duration="21086000" />
     </task>
     <servers />
   </component>

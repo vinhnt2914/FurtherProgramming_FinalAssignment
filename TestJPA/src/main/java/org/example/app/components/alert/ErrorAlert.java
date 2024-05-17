@@ -6,7 +6,7 @@ public class ErrorAlert extends CustomAlert{
     }
 
     @Override
-    void setUpAlert() {
-
+    void modifyAlert() {
+        getStylesheets().add(getClass().getResource("/static/failAlert.css").toExternalForm());
     }
 }

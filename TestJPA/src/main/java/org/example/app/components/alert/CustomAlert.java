@@ -24,7 +24,8 @@ public abstract class CustomAlert extends VBox {
     private Button okButton;
 
     public CustomAlert(String message) {
-        displayAlert(message);
+        setUpAlert(message);
+        modifyAlert();
     }
 
     private void close(ActionEvent actionEvent) {
@@ -32,9 +33,9 @@ public abstract class CustomAlert extends VBox {
         stage.close();
     }
 
-    abstract void setUpAlert();
+    abstract void modifyAlert();
 
-    private void displayAlert(String message) {
+    private void setUpAlert(String message) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/alert.fxml"));
             fxmlLoader.setRoot(this);
