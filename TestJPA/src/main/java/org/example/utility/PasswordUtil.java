@@ -23,28 +23,4 @@ public class PasswordUtil {
             throw new RuntimeException(e);
         }
     }
-
-    public static String decrypt(String encryptedPassword) {
-        try {
-            SecretKeySpec secretKeySpec = new SecretKeySpec(key, ALGORITHM);
-            Cipher cipher = Cipher.getInstance(ALGORITHM);
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
-            byte[] decodedBytes = Base64.getDecoder().decode(encryptedPassword);
-            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
-            return new String(decryptedBytes);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Decryption error", e);
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String[] args) {
-        String originalPassword = "123456";
-        String encrypted1 = PasswordUtil.encrypt(originalPassword);
-        String encrypted2 = PasswordUtil.encrypt(originalPassword);
-        String encrypted3 = PasswordUtil.encrypt(originalPassword);
-        System.out.println(encrypted1);
-        System.out.println(encrypted2);
-        System.out.println(encrypted3);
-    }
 }

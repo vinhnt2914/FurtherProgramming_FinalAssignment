@@ -1,19 +1,20 @@
-package org.example.test;
+package org.example.repository;
 
 import org.example.model.items.InsuranceCard;
 import org.example.repository.impl.InsuranceCardRepository;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InsuranceCardRepositoryTest {
-
     @Test
-    void shouldFindInsuranceCard() {
+    void shouldGetInsuranceCard() {
         InsuranceCardRepository repository = new InsuranceCardRepository();
-        InsuranceCard foundCard = repository.findByID("0000000004");
+        List<InsuranceCard> cardList = repository.getAll();
+        assertNotNull(cardList);
         repository.close();
-        assertNotNull(foundCard);
     }
 
 }

@@ -37,6 +37,7 @@ public class Beneficiary extends Customer {
     }
     public void setPolicyOwner(PolicyOwner policyOwner) {
         this.policyOwner = policyOwner;
+        policyOwner.addBeneficaries(this);
     }
 
     public InsuranceCard getInsuranceCard() {

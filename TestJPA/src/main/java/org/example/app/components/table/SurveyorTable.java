@@ -3,17 +3,11 @@ package org.example.app.components.table;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.global.GlobalVariable;
 import org.example.global.ProviderQueryType;
-import org.example.model.items.Request;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
-import org.example.repository.impl.InsuranceSurveyorRepository;
 import org.example.repository.impl.ProviderRepository;
 
 import java.io.IOException;

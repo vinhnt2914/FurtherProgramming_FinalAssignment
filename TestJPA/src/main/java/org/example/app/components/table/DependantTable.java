@@ -57,7 +57,7 @@ public class DependantTable extends GenericCustomerTable<Dependant> {
         CustomerRepository repository = new CustomerRepository();
         List<Dependant> dependantList = null;
         switch (queryType) {
-            case GET_ALL_DEPENDANT -> dependantList = repository.getAllDependant();
+            case GET_ALL_DEPENDANT -> dependantList = repository.getAllDependants();
             case GET_ALL_DEPENDANT_OF_POLICY_HOLDER ->
                 dependantList = repository.getAllDependantsOfPolicyHolder((PolicyHolder) GlobalVariable.getUser());
             case GET_ALL_DEPENDANT_OF_POLICY_OWNER ->

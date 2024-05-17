@@ -88,56 +88,6 @@ public class InsuranceSurveyorController implements Initializable {
         return null;
     }
 
-    private boolean promptForPropose(Claim claim) {
-        Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationDialog.setTitle("Propose Claim");
-        confirmationDialog.setHeaderText("Propose Claim");
-        confirmationDialog.setContentText("Do you want to propose this claim to the manager?");
-
-        Optional<ButtonType> result = confirmationDialog.showAndWait();
-
-        return result.isPresent() && result.get() == ButtonType.OK;
-    }
-
-    private void proposeClaim(Claim claim) {
-        ClaimRepository claimRepository = new ClaimRepository();
-        claim.setStatus(ClaimStatus.PROPOSED_TO_MANAGER);
-        claimRepository.update(claim);
-    }
-
-    private boolean promptForRequest(Claim claim) {
-
-        Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationDialog.setTitle("Additional Information Request");
-        confirmationDialog.setHeaderText("Additional Information Request");
-        confirmationDialog.setContentText("Do you want to request additional information for this claim?");
-
-        confirmationDialog.showAndWait();
-
-        return confirmationDialog.getResult() == ButtonType.OK;
-    }
-
-    private void updateClaimStatus(Claim claim) {
-
-        IClaimRepository claimRepository = new ClaimRepository();
-
-
-        claim.setStatus(ClaimStatus.INFORMATION_REQUESTED);
-
-
-        claimRepository.update(claim);
-    }
-
-    private void showSuccessMessage(String message) {
-
-        Alert successDialog = new Alert(Alert.AlertType.INFORMATION);
-        successDialog.setTitle("Success");
-        successDialog.setHeaderText("Success");
-        successDialog.setContentText(message);
-        successDialog.showAndWait();
-    }
-
-
     private void showErrorMessage(String message) {
 
         Alert errorDialog = new Alert(Alert.AlertType.ERROR);

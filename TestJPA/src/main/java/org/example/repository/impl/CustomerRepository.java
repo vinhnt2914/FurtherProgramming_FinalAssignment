@@ -108,13 +108,6 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
         em.getTransaction().commit();
     }
-
-    public List<Dependant> getAllDependant() {
-        em.getTransaction().begin();
-        TypedQuery<Dependant> query = em.createQuery("from Dependant ", Dependant.class);
-        return query.getResultList();
-    }
-
     @Override
     public Customer removeByID(int id) {
         em.getTransaction().begin();
