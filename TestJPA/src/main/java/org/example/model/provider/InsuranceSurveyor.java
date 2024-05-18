@@ -35,8 +35,8 @@ public class InsuranceSurveyor extends Provider {
     public InsuranceSurveyor() {
     }
 
-    public Request makeRequest(Beneficiary customer, String message) {
-        Request request = new Request(this, customer, message);
+    public Request makeRequest(PolicyHolder policyHolder, Claim claim, String message) {
+        Request request = new Request(this, policyHolder, claim, message);
         return request;
     }
 

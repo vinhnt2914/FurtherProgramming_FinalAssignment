@@ -33,7 +33,12 @@ public class ProposalRepository extends EntityRepository implements IProposalRep
 
     @Override
     public List<Proposal> getAll() {
-        TypedQuery<Proposal> query = em.createQuery("from Proposal ", Proposal.class);
+        TypedQuery<Proposal> query = em.createQuery(
+                "from Proposal p " +
+                        "join fetch p.insuranceSurveyor " +
+                        "join fetch p.insuranceManager " +
+                        "join fetch p.claim ",
+                Proposal.class);
         return query.getResultList();
     }
 

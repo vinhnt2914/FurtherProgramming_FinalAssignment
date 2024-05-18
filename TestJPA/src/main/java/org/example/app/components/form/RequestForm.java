@@ -58,7 +58,7 @@ public class RequestForm extends VBox {
             String message = messageArea.getText();
             if (message.isEmpty()) message = "Nothing";
             InsuranceSurveyor insuranceSurveyor = (InsuranceSurveyor) GlobalVariable.getUser();
-            Request request = new Request(insuranceSurveyor, claim.getEntireInsuredPerson(), message);
+            Request request = new Request(insuranceSurveyor, claim.getEntireInsuredPerson(), claim, message);
             repository.add(request);
             repository.close();
         }

@@ -41,7 +41,6 @@ public class InsuranceSurveyorController implements Initializable {
     private HBox tableViewContainer;
     @FXML
     private HBox sortingContainer;
-    private List<Customer> originalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage(); // Call setUpPage after initializing claimTable
@@ -117,8 +116,7 @@ public class InsuranceSurveyorController implements Initializable {
                 sortingContainer.getChildren().setAll(sortingSet);
             } else if (selectedOption.equals("Customer")) {
                 CustomerTable customerTable = new CustomerTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT_AND_POLICY_HOLDER);
-                this.originalData = customerTable.getItems();
-                CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable, originalData);
+                CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable);
 
                 tableViewContainer.getChildren().setAll(customerTable);
                 sortingContainer.getChildren().setAll(sortingSet);

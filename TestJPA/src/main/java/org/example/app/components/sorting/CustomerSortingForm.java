@@ -33,12 +33,10 @@ public class CustomerSortingForm<T extends Customer> extends VBox {
     private Button sortButton;
     private GenericCustomerTable<T> customerTable;
     private Stage stage;
-    private List<T> originalData;
-
-    public CustomerSortingForm(GenericCustomerTable<T> customerTable, List<T> originalData) {
+    public CustomerSortingForm(GenericCustomerTable<T> customerTable) {
         try {
             this.customerTable = customerTable;
-            this.originalData = originalData;
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/sorting/customerSortingForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
@@ -77,15 +75,13 @@ public class CustomerSortingForm<T extends Customer> extends VBox {
         String fullNameOption = fullNameComboBox.getValue();
 
         if (idOption == null && fullNameOption == null) {
-            ObservableList<T> data = FXCollections.observableArrayList(originalData);
-            customerTable.setItems(data);
+            customerTable.refreshTable();
             close();
             return;
         }
 
-        ObservableList<T> data = FXCollections.observableArrayList(originalData);
-        customerTable.setItems(data);
-//        customerTable.populateTableView(customerTable.queryType);
+        // Reload data before sorting
+        customerTable.populateTableView(customerTable.queryType);
 
         List<T> customers = customerTable.getItems();
 

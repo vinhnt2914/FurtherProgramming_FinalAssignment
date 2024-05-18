@@ -7,6 +7,7 @@
   <columns>
     <TableColumn fx:id="idCol" minWidth="100.0" prefWidth="-1.0" text="ID" />
     <TableColumn fx:id="fromCol" minWidth="200.0" prefWidth="-1.0" text="From" />
+      <TableColumn fx:id="claimCol" minWidth="200.0" prefWidth="-1.0" text="Claim" />
       <TableColumn fx:id="messageCol" minWidth="500.0" prefWidth="75.0" text="Message" />
   </columns>
 </fx:root>

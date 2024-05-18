@@ -49,7 +49,13 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
     public List<InsuranceSurveyor> getAllSurveyor() {
         TypedQuery<InsuranceSurveyor> query = em.createQuery(
                 "from InsuranceSurveyor s " +
-                        "join fetch s.manager",
+                        "join fetch s.manager m " +
+                        "join fetch s.proposalSet ps " +
+                        "join fetch ps.claim c1 " +
+                        "join fetch s.requestSet rs " +
+                        "join fetch rs.beneficiary b " +
+                        "join fetch b.insuranceCard ic " +
+                        "join fetch ic.policyOwner",
                 InsuranceSurveyor.class);
         return query.getResultList();
     }
@@ -64,7 +70,10 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
     @Override
     public List<InsuranceManager> getAllManager() {
         TypedQuery<InsuranceManager> query = em.createQuery(
-                "from InsuranceManager m ",
+                "from InsuranceManager m " +
+                        "join fetch m.proposalSet ps " +
+                        "join fetch ps.claim c " +
+                        "join fetch ps.insuranceSurveyor",
                 InsuranceManager.class);
         return query.getResultList();
     }

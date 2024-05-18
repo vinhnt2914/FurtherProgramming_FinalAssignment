@@ -1,5 +1,6 @@
 package org.example.repository.impl;
 
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.example.model.User;
 import org.example.model.customer.Customer;
@@ -25,7 +26,11 @@ public class UserRepository extends EntityRepository implements IUserInterface {
         TypedQuery<User> query = em.createQuery("from User u where u.username = :username AND u.password = :password", User.class)
                 .setParameter("username", username)
                 .setParameter("password", password);
-        return query.getSingleResult();
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override

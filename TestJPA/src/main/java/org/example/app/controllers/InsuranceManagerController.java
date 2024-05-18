@@ -33,7 +33,6 @@ public class InsuranceManagerController implements Initializable {
     private HBox tableViewContainer;
     @FXML
     private HBox sortingContainer;
-    private List<Customer> orginalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -91,8 +90,7 @@ public class InsuranceManagerController implements Initializable {
 
         } else if (tableType.equalsIgnoreCase("Customer")) {
             CustomerTable customerTable = new CustomerTable(CustomerQueryType.QueryType.GET_ALL);
-            this.orginalData = customerTable.getItems();
-            CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable, orginalData);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable);
 
             tableViewContainer.getChildren().setAll(customerTable);
             sortingContainer.getChildren().setAll(sortingSet);

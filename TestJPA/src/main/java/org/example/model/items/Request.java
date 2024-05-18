@@ -14,10 +14,14 @@ public class Request {
     private InsuranceSurveyor insuranceSurveyor;
     @ManyToOne
     private Beneficiary beneficiary;
+    @OneToOne
+    private Claim claim;
     private String message;
-    public Request(InsuranceSurveyor insuranceSurveyor, Beneficiary customer, String message) {
+
+    public Request(InsuranceSurveyor insuranceSurveyor, Beneficiary beneficiary, Claim claim, String message) {
         this.insuranceSurveyor = insuranceSurveyor;
-        this.beneficiary = customer;
+        this.beneficiary = beneficiary;
+        this.claim = claim;
         this.message = message;
     }
 
@@ -41,12 +45,16 @@ public class Request {
         this.insuranceSurveyor = insuranceSurveyor;
     }
 
-    public Customer getCustomer() {
+    public Beneficiary getBeneficiary() {
         return beneficiary;
     }
 
-    public void setCustomer(Beneficiary customer) {
-        this.beneficiary = customer;
+    public void setBeneficiary(Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
+    }
+
+    public Claim getClaim() {
+        return claim;
     }
 
     public String getMessage() {
@@ -61,8 +69,8 @@ public class Request {
     public String toString() {
         return "Request{" +
                 "id=" + id +
-                ", insuranceSurveyor=" + insuranceSurveyor.getId() +
-                ", customer=" + beneficiary.getId() +
+                ", insuranceSurveyor=" + insuranceSurveyor +
+                ", beneficiary=" + beneficiary +
                 ", message='" + message + '\'' +
                 '}';
     }

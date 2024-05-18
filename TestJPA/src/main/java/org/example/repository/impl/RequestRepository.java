@@ -32,7 +32,16 @@ public class RequestRepository extends EntityRepository implements IRequestRepos
 
     @Override
     public List<Request> getAll() {
-        TypedQuery<Request> query = em.createQuery("from Request ", Request.class);
+        TypedQuery<Request> query = em.createQuery(
+                "from Request r " +
+                        "join fetch r.insuranceSurveyor s " +
+                        "join fetch r.beneficiary b " +
+                        "join fetch b.insuranceCard ic " +
+                        "join fetch ic.policyOwner " +
+                        "join fetch s.manager " +
+                        "join fetch r.claim c " +
+                        "join fetch c.proposal ",
+                Request.class);
         return query.getResultList();
     }
 

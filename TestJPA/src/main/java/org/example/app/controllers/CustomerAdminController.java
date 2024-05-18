@@ -36,7 +36,6 @@ public class CustomerAdminController implements Initializable, RefreshableContro
     private HBox tableViewContainer;
     @FXML
     private ChoiceBox<String> swapTableChoiceBox;
-    private List<? extends Customer> orignalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -50,9 +49,8 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         this.swapTableChoiceBox.setOnAction(this::swapTable);
 
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
-        this.orignalData = policyHolderTable.getItems();
         PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
-        CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
+        CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable);
 
         this.tableViewContainer.getChildren().add(policyHolderTable);
         this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
@@ -65,9 +63,8 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
         if (tableType.equalsIgnoreCase("Policy Holders")) {
             PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
-            this.orignalData = policyHolderTable.getItems();
             PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable);
 
             tableViewContainer.getChildren().setAll(policyHolderTable);
             buttonSetContainer.getChildren().setAll(policyHolderButtonSet);
@@ -77,10 +74,9 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
-            this.orignalData = dependantTable.getItems();
 
             DependantButtonSet dependantButtonSet = new DependantButtonSet(dependantTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(dependantTable, orignalData);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(dependantTable);
 
             tableViewContainer.getChildren().setAll(dependantTable);
             buttonSetContainer.getChildren().setAll(dependantButtonSet);
@@ -89,10 +85,9 @@ public class CustomerAdminController implements Initializable, RefreshableContro
             setDependantButtonActions();
         } else if (tableType.equalsIgnoreCase("Policy Owners")) {
             PolicyOwnerTable policyOwnerTable = new PolicyOwnerTable(CustomerQueryType.QueryType.GET_ALL_POLICY_OWNER);
-            this.orignalData = policyOwnerTable.getItems();
 
             PolicyOwnerButtonSet policyOwnerButtonSet = new PolicyOwnerButtonSet(policyOwnerTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(policyOwnerTable, orignalData);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyOwnerTable);
 
             tableViewContainer.getChildren().setAll(policyOwnerTable);
             buttonSetContainer.getChildren().setAll(policyOwnerButtonSet);

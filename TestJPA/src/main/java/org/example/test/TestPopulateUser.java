@@ -217,7 +217,7 @@ public class TestPopulateUser {
                 .manager(m1)
                 .build();
 
-        Request r1 = s1.makeRequest(c1, "Check insurance details");
+        Request r1 = s1.makeRequest(c1, claim1, "Check insurance details");
         Proposal p1 = s1.propose(m1, claim1, "Review this claim");
         Proposal p2 = s1.propose(m1, claim2, "Please check this claim");
 

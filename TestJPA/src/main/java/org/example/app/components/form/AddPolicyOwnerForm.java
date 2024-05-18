@@ -12,7 +12,9 @@ import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
+import org.example.repository.impl.UserRepository;
 import org.example.service.CustomerService;
+import org.example.utility.PasswordUtil;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -65,17 +67,26 @@ public class AddPolicyOwnerForm extends BorderPane {
 
     private void addPolicyOwner(ActionEvent actionEvent) {
         if (validateInput()) {
-            CustomerRepository repository = new CustomerRepository();
+            UserRepository repository = new UserRepository();
             CustomerService customerService = new CustomerService();
-
             try {
+
+                String username = usernameField.getText();
+                String password = passwordField.getText();
+                String hashedPassword = PasswordUtil.encrypt(password);
+
+                if (repository.findUser(username, hashedPassword) != null) {
+                    new ErrorAlert("This username is already taken!");
+                    return;
+                }
+
                 PolicyOwner policyOwner = customerService.makePolicyOwner()
                         .fullName(nameField.getText())
-                        .username(usernameField.getText())
+                        .username(username)
                         .address(addressField.getText())
                         .email(emailField.getText())
                         .phone(phoneField.getText())
-                        .password(passwordField.getText())
+                        .password(password)
                         .fee(Double.parseDouble(feeField.getText()))
                         .build();
 
@@ -86,7 +97,6 @@ public class AddPolicyOwnerForm extends BorderPane {
             } catch (NumberFormatException e) {
                 new ErrorAlert("Fee must be a valid number");
             }
-
         }
     }
 

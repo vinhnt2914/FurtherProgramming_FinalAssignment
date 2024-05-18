@@ -26,6 +26,8 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
     @FXML
     private TableColumn<Request, Integer> fromCol;
     @FXML
+    private TableColumn<Request, String> claimCol;
+    @FXML
     private TableColumn<Request, String> messageCol;
     private RequestQueryType.QueryType queryType;
     private Beneficiary customer;
@@ -51,9 +53,13 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
             Request request = cellData.getValue();
             return new ReadOnlyObjectWrapper<>(request.getInsuranceSurveyor().getId());
         });
+        claimCol.setCellValueFactory(cellData -> {
+            Request request = cellData.getValue();
+            return new ReadOnlyObjectWrapper<>(request.getClaim().getId());
+        });
         messageCol.setCellValueFactory(new PropertyValueFactory<>("message"));
-
         populateTableView(queryType);
+
     }
 
     private void populateTableView(RequestQueryType.QueryType queryType) {
@@ -65,8 +71,6 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
             case GET_ALL_TO_CUSTOMER -> requestList = repository.getAllToCustomer(customer);
         }
 
-        System.out.println("DISPLAYING RESULT");
-        requestList.forEach(System.out::println);
         ObservableList<Request> data = FXCollections.observableArrayList(requestList);
         requestTableView.setItems(data);
         repository.close();
