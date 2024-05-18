@@ -8,7 +8,7 @@
     -fx-padding: 10;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-min-width: 200;
+    -fx-min-width: 120;
 }
 
 .button:hover {
@@ -16,6 +16,7 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-min-width: 120;
 }
 
 .choice-box {

@@ -14,7 +14,7 @@ public class TestDependantPage extends Application {
         BorderPane root = loader.load();
 
         // Create a scene and set the root node
-        Scene scene = new Scene(root, 819, 551);
+        Scene scene = new Scene(root, 1000, 600);
 
         // Set the scene onto the stage
         primaryStage.setScene(scene);

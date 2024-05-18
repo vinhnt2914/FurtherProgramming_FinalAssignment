@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="menuBar" spacing="50.0" stylesheets="@../../static/navbar.css" type="HBox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="menuBar" spacing="50.0" style="-fx-background-color: white;" stylesheets="@../../static/navbar.css" type="HBox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Hyperlink fx:id="infoMenu" text="Info">
          <font>

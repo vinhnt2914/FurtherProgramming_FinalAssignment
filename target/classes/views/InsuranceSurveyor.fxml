@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceSurveyorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceSurveyorController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,26 +64,7 @@
       </VBox>
    </center>
    <top>
-      <BorderPane prefHeight="121.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
-         <top>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField prefHeight="37.0" prefWidth="803.0" promptText="Search for anything">
-                     <HBox.margin>
-                        <Insets left="30.0" right="50.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Surveyor" wrappingWidth="144.13671875">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-         </top>
+      <BorderPane prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
          <left>
             <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Surveyor" BorderPane.alignment="CENTER">
                <font>
@@ -106,4 +87,8 @@
          </right>
       </BorderPane>
    </top>
+   <stylesheets>
+      <URL value="@../static/Button.css" />
+      <URL value="@../static/borderPane.css" />
+   </stylesheets>
 </BorderPane>

@@ -5,7 +5,7 @@
     -fx-background-radius: 5;
     -fx-font-size: 14px;
     -fx-text-fill: #333333;
-    -fx-min-width: 300;
+    -fx-min-width: 200;
 }
 
 .date-picker .arrow-button {
@@ -46,7 +46,7 @@
     -fx-border-color: #7971bb;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
-    -fx-min-width: 300;
+    -fx-min-width: 250;
     -fx-font-size: 14px;
 }
 
@@ -54,7 +54,7 @@
     -fx-border-color: #7971bb;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
-    -fx-min-width: 300;
+    -fx-min-width: 250;
     -fx-font-size: 14px;
 }
 
@@ -73,7 +73,7 @@
     -fx-padding: 10;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-min-width: 100;
+    -fx-min-width: 150;
 }
 
 .button:hover {
@@ -91,6 +91,7 @@
     -fx-border-color: linear-gradient(to right, #28fa6a, #a0f6a7);
     -fx-border-width: 2;
     -fx-font-size: 14px;
+    -fx-min-width: 150;
 }
 
 #submitButton:hover, #updateClaimButton:hover {
@@ -108,5 +109,5 @@
     -fx-font-weight: bold;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
-    -fx-min-width: 300;
+    -fx-min-width: 200;
 }
