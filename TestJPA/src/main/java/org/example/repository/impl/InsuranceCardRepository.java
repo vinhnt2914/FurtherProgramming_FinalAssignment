@@ -33,8 +33,10 @@ public class InsuranceCardRepository extends EntityRepository implements IInsura
     @Override
     public List<InsuranceCard> getAll() {
         String queryString = "SELECT ic FROM InsuranceCard ic " +
-                "LEFT JOIN FETCH ic.cardHolder ch " +
-                "LEFT JOIN FETCH ic.policyOwner po";
+                "join fetch ic.cardHolder ch " +
+                "join fetch ic.policyOwner po " +
+                "join fetch ch.insuranceCard chIC " +
+                "join fetch chIC.policyOwner ";
 
         TypedQuery<InsuranceCard> query = em.createQuery(queryString, InsuranceCard.class);
         return query.getResultList();

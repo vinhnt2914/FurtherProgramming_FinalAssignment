@@ -7,16 +7,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.buttonSet.InsuranceCardButtonSet;
-import org.example.app.components.buttonSet.PolicyHolderButtonSet;
 import org.example.app.components.form.AddInsuranceCardForm;
-import org.example.app.components.form.UpdateInfoForm;
 import org.example.app.components.form.UpdateInsuranceCardForm;
 import org.example.app.components.table.InsuranceCardTable;
-import org.example.app.components.table.PolicyOwnerTable;
 import org.example.app.components.table.RefreshableTable;
-import org.example.model.customer.PolicyOwner;
 import org.example.model.items.InsuranceCard;
-import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.InsuranceCardRepository;
 
 import java.net.URL;

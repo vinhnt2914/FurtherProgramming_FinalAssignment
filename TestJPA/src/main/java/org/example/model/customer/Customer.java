@@ -8,18 +8,10 @@ import org.example.utility.PasswordUtil;
 import java.io.Serializable;
 import java.util.*;
 
-@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Customer extends User {
-
     public Customer(GenericCustomerBuilder builder) {
         super(builder);
-//        this.username = builder.username;
-//        this.password = PasswordUtil.encrypt(builder.password);
-//        this.email = builder.email;
-//        this.phone = builder.phone;
-//        this.address = builder.address;
-//        this.fullName = builder.fullName;
     }
 
     public Customer() {

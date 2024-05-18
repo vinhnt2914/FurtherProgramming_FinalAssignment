@@ -1,8 +1,12 @@
 package org.example.repository.impl;
 
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.TypedQuery;
 import org.example.model.User;
 import org.example.model.customer.*;
+import org.example.model.provider.InsuranceManager;
+import org.example.model.provider.InsuranceSurveyor;
+import org.example.model.provider.Provider;
 import org.example.repository.EntityRepository;
 import org.example.repository.ICustomerRepository;
 
@@ -39,21 +43,30 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<Customer> getAll() {
-        TypedQuery<Customer> query = em.createQuery("from Customer", Customer.class);
-        return query.getResultList();
+        List<Dependant> dependantList = getAllDependants();
+        List<PolicyHolder> policyHolderList = getAllPolicyHolders();
+        List<PolicyOwner> policyOwnerList = getAllPolicyOwners();
+        List<Customer> customerList = new ArrayList<>();
+        customerList.addAll(dependantList);
+        customerList.addAll(policyHolderList);
+        customerList.addAll(policyOwnerList);
+        return customerList;
     }
 
     @Override
     public List<Dependant> getAllDependants() {
-
-        TypedQuery<User> query = em.createQuery("FROM User", User.class);
-        List<User> userList = query.getResultList();
-
-        return userList.stream()
-                .filter(user -> user instanceof Dependant)
-                .map(user -> (Dependant) user)
-                .toList();
+        TypedQuery<Dependant> query = em.createQuery(
+                "SELECT d FROM Dependant d " +
+                        "JOIN FETCH d.policyHolder ph " +
+                        "JOIN FETCH ph.policyOwner po " +
+                        "JOIN FETCH d.insuranceCard ic " +
+                        "JOIN FETCH ph.insuranceCard phIC " +
+                        "JOIN FETCH ic.policyOwner icPo " +
+                        "JOIN FETCH phIC.policyOwner",
+                Dependant.class);
+        return query.getResultList();
     }
+
 
     @Override
     public List<Dependant> getAllDependantsOfPolicyHolder(PolicyHolder policyHolder) {
@@ -64,20 +77,18 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<Dependant> getAllDependantsOfPolicyOwner(PolicyOwner policyOwner) {
-        TypedQuery<Dependant> query = em.createQuery("from Dependant d where d.policyOwner = :policyOwner", Dependant.class);
+        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ph where ph.policyOwner = :policyOwner", PolicyHolder.class);
         query.setParameter("policyOwner", policyOwner);
-        return query.getResultList();
+        List<PolicyHolder> policyHolderList = query.getResultList();
+        List<Dependant> dependantList = new ArrayList<>();
+        policyHolderList.forEach(policyHolder -> dependantList.addAll(policyHolder.getDependantSet()));
+        return dependantList;
     }
 
     @Override
     public List<PolicyHolder> getAllPolicyHolders() {
-        TypedQuery<User> query = em.createQuery("FROM User", User.class);
-        List<User> userList = query.getResultList();
-
-        return userList.stream()
-                .filter(user -> user instanceof PolicyHolder)
-                .map(user -> (PolicyHolder) user)
-                .toList();
+        TypedQuery<PolicyHolder> query = em.createQuery("FROM PolicyHolder ph join fetch ph.policyOwner join fetch ph.insuranceCard ic join fetch ic.policyOwner", PolicyHolder.class);
+        return query.getResultList();
     }
 
     @Override
@@ -89,20 +100,21 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<Beneficiary> getAllBeneficiaryOfPolicyOwner(PolicyOwner policyOwner) {
-        TypedQuery<Beneficiary> query = em.createQuery("from Beneficiary b where b.policyOwner = :policyOwner", Beneficiary.class);
+        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ph where ph.policyOwner = :policyOwner", PolicyHolder.class);
         query.setParameter("policyOwner", policyOwner);
-        return query.getResultList();
+        List<PolicyHolder> policyHolders = query.getResultList();
+        List<Beneficiary> res = new ArrayList<>(policyHolders);
+        policyHolders.forEach(policyHolder -> res.addAll(policyHolder.getDependantSet()));
+        return res;
     }
 
     @Override
     public List<Beneficiary> getAllPolicyHoldersAndDependants() {
+        List<PolicyHolder> policyHolderList = getAllPolicyHolders();
+        List<Dependant> dependantList = getAllDependants();
         List<Beneficiary> res = new ArrayList<>();
-        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ", PolicyHolder.class);
-        List<PolicyHolder> policyHolderList = query.getResultList();
-        policyHolderList.forEach(policyHolder -> {
-            res.add(policyHolder);
-            res.addAll(policyHolder.getDependantSet());
-        });
+        res.addAll(policyHolderList);
+        res.addAll(dependantList);
         return res;
     }
 

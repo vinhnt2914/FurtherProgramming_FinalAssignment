@@ -98,7 +98,7 @@ public class TestPopulateUser {
 
         c1.addDependants(c3, c4); // Add dependants
         c2.addDependants(c5);
-        c6.addBeneficaries(c1); // Add beneficiaries
+        c6.addPolicyHolders(c1); // Add beneficiaries
 
         InsuranceCard card1 = cardService.makeCard()
                 .cardNumber("0000000001")

@@ -16,13 +16,10 @@ import java.util.Set;
 public class InsuranceManager extends Provider {
     @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "insuranceManager")
     private Set<Proposal> proposalSet;
-    @OneToMany(mappedBy = "manager", cascade = CascadeType.REMOVE)
-    private Set<InsuranceSurveyor> surveyorSet;
 
     public InsuranceManager(ManagerBuilder builder) {
         super(builder);
         proposalSet = new HashSet<>();
-        surveyorSet = new HashSet<>();
     }
 
     public InsuranceManager() {

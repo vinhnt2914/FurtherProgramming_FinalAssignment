@@ -37,7 +37,14 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
     @Override
     public List<Claim> getAll() {
-        TypedQuery<Claim> query = em.createQuery("from Claim ", Claim.class);
+        TypedQuery<Claim> query = em.createQuery("from Claim c " +
+                "join fetch c.insuredPerson ip " +
+                "join fetch c.proposal p " +
+                "join fetch p.insuranceManager " +
+                "join fetch p.insuranceSurveyor " +
+                "join fetch ip.insuranceCard ic " +
+                "join fetch ic.policyOwner po "
+                , Claim.class);
         return query.getResultList();
     }
 

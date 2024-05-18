@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Dependant extends Beneficiary {
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private PolicyHolder policyHolder;
 
     public Dependant(DependantBuilder builder) {
@@ -21,8 +21,12 @@ public class Dependant extends Beneficiary {
 
     public void setPolicyHolder(PolicyHolder policyHolder) {
         this.policyHolder = policyHolder;
+
     }
 
+    public PolicyOwner getPolicyOwner() {
+        return this.policyHolder.getPolicyOwner();
+    }
     @Override
     public String toString() {
         return String.format("Dependant[id: %s, name: %s, policyHolder: %s]",

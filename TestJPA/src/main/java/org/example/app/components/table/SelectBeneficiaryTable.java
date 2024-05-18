@@ -95,8 +95,8 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     }
 
     private void setSelectedInsuredPerson(Beneficiary dependant) {
-        if (dependant.getInsuranceCard() == null) {
-            new ErrorAlert("This person doesn't have an insurance card. Please select someone else");
+        if (dependant.getInsuranceCard() != null) {
+            new ErrorAlert("This person already have an insurance card. Please select someone else");
             return;
         }
         form.setBeneficiary(dependant);

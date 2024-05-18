@@ -100,7 +100,7 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     }
 
     private void setToMyClaim(ActionEvent actionEvent) {
-        PolicyHolder policyHolder = (PolicyHolder) customerRepository.findByID(GlobalVariable.getUserID());
+        PolicyHolder policyHolder = (PolicyHolder) GlobalVariable.getUser();
         if (policyHolder != null) {
             setBeneficiary(policyHolder);
         } else {

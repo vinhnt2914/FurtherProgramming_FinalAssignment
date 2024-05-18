@@ -13,11 +13,11 @@ public class Request {
     @ManyToOne
     private InsuranceSurveyor insuranceSurveyor;
     @ManyToOne
-    private Beneficiary customer;
+    private Beneficiary beneficiary;
     private String message;
     public Request(InsuranceSurveyor insuranceSurveyor, Beneficiary customer, String message) {
         this.insuranceSurveyor = insuranceSurveyor;
-        this.customer = customer;
+        this.beneficiary = customer;
         this.message = message;
     }
 
@@ -42,11 +42,11 @@ public class Request {
     }
 
     public Customer getCustomer() {
-        return customer;
+        return beneficiary;
     }
 
     public void setCustomer(Beneficiary customer) {
-        this.customer = customer;
+        this.beneficiary = customer;
     }
 
     public String getMessage() {
@@ -62,7 +62,7 @@ public class Request {
         return "Request{" +
                 "id=" + id +
                 ", insuranceSurveyor=" + insuranceSurveyor.getId() +
-                ", customer=" + customer.getId() +
+                ", customer=" + beneficiary.getId() +
                 ", message='" + message + '\'' +
                 '}';
     }

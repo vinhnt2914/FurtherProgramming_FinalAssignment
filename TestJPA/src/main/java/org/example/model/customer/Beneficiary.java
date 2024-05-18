@@ -4,40 +4,30 @@ import jakarta.persistence.*;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
 import org.example.model.items.Request;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Beneficiary extends Customer {
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "policy_owner_id")
-    private PolicyOwner policyOwner;
-
     @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST},
             mappedBy = "cardHolder") // When persist customer, we persist the card as well
     protected InsuranceCard insuranceCard;
     @OneToMany(mappedBy = "insuredPerson",
             cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
-    private Set<Claim> claimList;
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
-    private Set<Request> requestList;
+    protected Set<Claim> claimList;
+    @OneToMany(mappedBy = "beneficiary", cascade = CascadeType.REMOVE)
+    protected Set<Request> requestList;
     public Beneficiary(GenericBeneficaryBuilder builder) {
         super(builder);
         this.claimList = new HashSet<>();
-        this.policyOwner = builder.policyOwner;
     }
 
     public Beneficiary() {
         super();
-    }
-
-    public PolicyOwner getPolicyOwner() {
-        return policyOwner;
-    }
-    public void setPolicyOwner(PolicyOwner policyOwner) {
-        this.policyOwner = policyOwner;
-        policyOwner.addBeneficaries(this);
     }
 
     public InsuranceCard getInsuranceCard() {
@@ -46,7 +36,6 @@ public class Beneficiary extends Customer {
     public void setInsuranceCard(InsuranceCard insuranceCard) {
         this.insuranceCard = insuranceCard;
         insuranceCard.setCardHolder(this);
-        insuranceCard.setPolicyOwner(policyOwner);
     }
     public Set<Claim> getClaimList() {
         return claimList;
@@ -59,6 +48,15 @@ public class Beneficiary extends Customer {
     public void addClaim(Claim claim) {
         this.claimList.add(claim);
         claim.setInsuredPerson(this);
+    }
+
+    public PolicyOwner getPolicyOwner() {
+        if (this instanceof Dependant dependant) {
+            return dependant.getPolicyOwner();
+        } else if (this instanceof PolicyHolder policyHolder) {
+            return policyHolder.getPolicyOwner();
+        }
+        return null;
     }
 
 

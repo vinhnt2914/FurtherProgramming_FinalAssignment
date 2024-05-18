@@ -9,9 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
+import org.example.model.Admin;
 import org.example.model.User;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
@@ -87,10 +89,10 @@ public class AddDependantForm extends BorderPane {
 
                 dependant.setPolicyHolder(selectedPolicyHolder);
 
-                // Handle policy owner for PolicyOwner role and Admin role
-                if (GlobalVariable.getRole() == Role.PolicyOwner) {
-                    dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
-                } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
+//                // Handle policy owner for PolicyOwner role and Admin role
+//                if (GlobalVariable.getRole() == Role.PolicyOwner) {
+//                    dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
+//                } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
 
                 UserRepository repository = new UserRepository();
                 repository.add(dependant);
@@ -173,7 +175,15 @@ public class AddDependantForm extends BorderPane {
 
     private void loadPolicyHolders() {
         CustomerRepository repository = new CustomerRepository();
-        List<PolicyHolder> policyHolders = repository.getAllPolicyHolders();
+        List<PolicyHolder> policyHolders = null;
+        User user = GlobalVariable.getUser();
+        switch (user) {
+            case PolicyOwner policyOwner ->
+                    policyHolders = repository.getAllPolicyHoldersOfPolicyOwner(policyOwner);
+            case Admin admin ->
+                policyHolders = repository.getAllPolicyHolders();
+            default -> new ErrorAlert("Something went wrong. Please try again");
+        }
         ObservableList<PolicyHolder> policyHolderList = FXCollections.observableArrayList(policyHolders);
         policyHolderComboBox.setItems(policyHolderList);
     }

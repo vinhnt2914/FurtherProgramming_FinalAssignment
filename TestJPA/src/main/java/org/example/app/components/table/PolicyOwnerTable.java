@@ -2,6 +2,8 @@ package org.example.app.components.table;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
@@ -9,6 +11,7 @@ import org.example.repository.impl.CustomerRepository;
 import java.util.List;
 
 public class PolicyOwnerTable extends GenericCustomerTable<PolicyOwner> {
+    private TableColumn<PolicyOwner, Double> feeCol;
 
     public PolicyOwnerTable(CustomerQueryType.QueryType queryType) {
         super(queryType);
@@ -16,7 +19,10 @@ public class PolicyOwnerTable extends GenericCustomerTable<PolicyOwner> {
 
     @Override
     void modifyTableView() {
-        // No additional columns required for PolicyOwnerTable
+        feeCol = new TableColumn<>("Fee");
+        feeCol.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        feeCol.setMinWidth(150);
+        customerTableView.getColumns().add(feeCol);
     }
 
     @Override
