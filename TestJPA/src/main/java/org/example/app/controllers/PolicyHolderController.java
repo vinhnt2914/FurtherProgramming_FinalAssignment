@@ -43,9 +43,14 @@ public class PolicyHolderController implements Initializable, RefreshableControl
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         // Set to Claim Table by default
         this.swapTableChoiceBox.getSelectionModel().select("Claim");
-        this.tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER));
+        this.tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER_AND_THEIR_DEPENDANTS));
         this.fileClaimButton.setOnAction(this::openFileClaimForm);
         this.swapTableChoiceBox.setOnAction(this::swapTable);
+        this.myClaimButton.setOnAction(this::swapToMyClaim);
+    }
+
+    private void swapToMyClaim(ActionEvent actionEvent) {
+        tableViewContainer.getChildren().setAll(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICY_HOLDER));
     }
 
     private void openFileClaimForm(ActionEvent actionEvent) {
@@ -54,19 +59,18 @@ public class PolicyHolderController implements Initializable, RefreshableControl
 
     private void swapTable(Event event) {
         String tableType = swapTableChoiceBox.getValue();
-        tableViewContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER));
+            tableViewContainer.getChildren().setAll(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER_AND_THEIR_DEPENDANTS));
             // Swap to claim button (new ClaimButtonSet)
         } else if (tableType.equalsIgnoreCase("Dependant")) {
-            tableViewContainer.getChildren().add(new DependantTable(
+            tableViewContainer.getChildren().setAll(new DependantTable(
                     CustomerQueryType.
                     QueryType.
                     GET_ALL_DEPENDANT_OF_POLICY_HOLDER));
         } else if (tableType.equalsIgnoreCase("Request")) {
             PolicyHolder currentUser = (PolicyHolder) GlobalVariable.getUser();
-            tableViewContainer.getChildren().add(new RequestTable(RequestQueryType.QueryType.GET_ALL_TO_CUSTOMER, currentUser));
+            tableViewContainer.getChildren().setAll(new RequestTable(RequestQueryType.QueryType.GET_ALL_TO_CUSTOMER, currentUser));
         }
     }
 

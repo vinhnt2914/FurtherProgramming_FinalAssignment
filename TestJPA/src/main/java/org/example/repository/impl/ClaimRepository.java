@@ -111,7 +111,7 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
     }
 
     @Override
-    public List<Claim> getAllClaimsOfPolicyHolder(PolicyHolder policyHolder) {
+    public List<Claim> getClaimsOfPolicyHolderAndTheirDependants(PolicyHolder policyHolder) {
         Set<Beneficiary> dependents = new HashSet<>(policyHolder.getDependantSet());
 
         dependents.add(policyHolder);

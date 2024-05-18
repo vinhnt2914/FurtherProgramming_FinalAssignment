@@ -32,9 +32,14 @@ public class InsuranceCardRepository extends EntityRepository implements IInsura
 
     @Override
     public List<InsuranceCard> getAll() {
-        TypedQuery<InsuranceCard> query = em.createQuery("from InsuranceCard ", InsuranceCard.class);
+        String queryString = "SELECT ic FROM InsuranceCard ic " +
+                "LEFT JOIN FETCH ic.cardHolder ch " +
+                "LEFT JOIN FETCH ic.policyOwner po";
+
+        TypedQuery<InsuranceCard> query = em.createQuery(queryString, InsuranceCard.class);
         return query.getResultList();
     }
+
 
     @Override
     public void update(InsuranceCard insuranceCard) {

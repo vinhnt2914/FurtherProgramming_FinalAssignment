@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.global.ClaimQueryType;
 import org.example.global.GlobalVariable;
+import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
@@ -74,7 +75,11 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
         ClaimRepository repository = new ClaimRepository();
         List<Claim> claimList = null;
         switch (queryType) {
-            case GET_OF_POLICY_HOLDER -> {
+            case GET_ALL_OF_DEPENDANT -> {
+                Dependant dependant = (Dependant) GlobalVariable.getUser();
+                claimList = repository.getClaimsOfDependant(dependant);
+            }
+            case GET_ALL_OF_POLICY_HOLDER -> {
                 PolicyHolder policyHolder = (PolicyHolder) GlobalVariable.getUser();
                 claimList = repository.getClaimsOfPolicyHolder(policyHolder);
             }
@@ -82,9 +87,9 @@ public class ClaimTable extends TableView<Claim> implements RefreshableTable {
             case GET_ALL_NEW -> claimList = repository.getAllNew();
             case GET_ALL_PROCESSING -> claimList = repository.getAllProcessing();
             case GET_ALL_DONE -> claimList = repository.getAllDone();
-            case GET_ALL_OF_POLICYHOLDER -> {
+            case GET_ALL_OF_POLICYHOLDER_AND_THEIR_DEPENDANTS -> {
                 PolicyHolder policyHolder = (PolicyHolder) GlobalVariable.getUser();
-                claimList = repository.getAllClaimsOfPolicyHolder(policyHolder);
+                claimList = repository.getClaimsOfPolicyHolderAndTheirDependants(policyHolder);
             }
         }
 

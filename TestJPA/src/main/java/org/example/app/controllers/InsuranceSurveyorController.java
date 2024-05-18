@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.example.app.components.form.ProposalForm;
 import org.example.app.components.form.RequestForm;
+import org.example.app.components.sortingSet.ClaimSortingSet;
+import org.example.app.components.sortingSet.CustomerSortingSet;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.CustomerTable;
 import org.example.app.components.table.ProposalTable;
@@ -37,7 +39,9 @@ public class InsuranceSurveyorController implements Initializable {
     private Button proposeButton;
     @FXML
     private HBox tableViewContainer;
-
+    @FXML
+    private HBox sortingContainer;
+    private List<Customer> originalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage(); // Call setUpPage after initializing claimTable
@@ -48,10 +52,15 @@ public class InsuranceSurveyorController implements Initializable {
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList("Claim", "Customer");
         swapTableChoiceBox.setItems(comboBoxOptions);
         swapTableChoiceBox.getSelectionModel().selectFirst();
-        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
         proposeButton.setOnAction(this::handlePropose);
         requestButton.setOnAction(this::handleRequest);
         swapTableChoiceBox.setOnAction(this::swapTable);
+
+        ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
+        ClaimSortingSet sortingSet = new ClaimSortingSet(claimTable);
+
+        tableViewContainer.getChildren().setAll(claimTable);
+        sortingContainer.getChildren().setAll(sortingSet);
     }
 
     private void handleRequest(ActionEvent actionEvent) {
@@ -100,11 +109,19 @@ public class InsuranceSurveyorController implements Initializable {
     private void swapTable(ActionEvent event) {
         String selectedOption = swapTableChoiceBox.getValue();
         if (selectedOption != null) {
-            tableViewContainer.getChildren().clear();
             if (selectedOption.equals("Claim")) {
-                tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
+                ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
+                ClaimSortingSet sortingSet = new ClaimSortingSet(claimTable);
+
+                tableViewContainer.getChildren().setAll(claimTable);
+                sortingContainer.getChildren().setAll(sortingSet);
             } else if (selectedOption.equals("Customer")) {
-                tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
+                CustomerTable customerTable = new CustomerTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT_AND_POLICY_HOLDER);
+                this.originalData = customerTable.getItems();
+                CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable, originalData);
+
+                tableViewContainer.getChildren().setAll(customerTable);
+                sortingContainer.getChildren().setAll(sortingSet);
             }
         }
     }

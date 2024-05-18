@@ -43,9 +43,11 @@ public class ClaimAmountSortingForm extends VBox {
     private Button sortButton;
     private Stage stage;
     private ClaimAdminController controller;
-    public ClaimAmountSortingForm(ClaimAdminController controller) {
+    private List<Claim> claimList;
+    public ClaimAmountSortingForm(ClaimAdminController controller, List<Claim> claimList) {
         try {
             this.controller = controller;
+            this.claimList = claimList;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/sorting/claimSortingForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);

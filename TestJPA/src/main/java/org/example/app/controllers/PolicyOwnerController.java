@@ -122,7 +122,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
             // Call update claim form
             new UpdateClaimForm(selectedClaim);
         }
-        else new ErrorAlert("Please select a dependant");
+        else new ErrorAlert("Please select a claim");
     }
 
     private void addClaim() {
@@ -136,7 +136,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (policyHolder != null) {
             repository.removeByID(policyHolder.getId());
             repository.close();
-        }
+        } else new ErrorAlert("Please select a policy holder");
     }
 
     private void updatePolicyHolder() {
@@ -166,7 +166,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (dependant != null) {
             repository.removeByID(dependant.getId());
             repository.close();
-        }
+        } else new ErrorAlert("Please select a dependant");
     }
 
     private void updateDependant() {
@@ -174,7 +174,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
             new UpdateInfoForm(selectedDependant, this);
-        } else new ErrorAlert("Please select a policyHolder");
+        } else new ErrorAlert("Please select a dependant");
     }
 
     private void addDependant() {

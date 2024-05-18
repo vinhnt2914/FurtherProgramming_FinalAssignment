@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 public class Beneficiary extends Customer {
-    @ManyToOne(cascade = {CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "policy_owner_id")
     private PolicyOwner policyOwner;
 

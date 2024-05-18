@@ -18,12 +18,14 @@ import org.example.app.components.table.PolicyHolderTable;
 import org.example.app.components.table.PolicyOwnerTable;
 import org.example.app.components.table.RefreshableTable;
 import org.example.global.CustomerQueryType;
+import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerAdminController implements Initializable, RefreshableController {
@@ -34,7 +36,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
     private HBox tableViewContainer;
     @FXML
     private ChoiceBox<String> swapTableChoiceBox;
-
+    private List<? extends Customer> orignalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -48,8 +50,10 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         this.swapTableChoiceBox.setOnAction(this::swapTable);
 
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
+        this.orignalData = policyHolderTable.getItems();
         PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
-        CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable);
+        CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
+
         this.tableViewContainer.getChildren().add(policyHolderTable);
         this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
         this.sortingContainer.getChildren().add(sortingSet);
@@ -61,8 +65,9 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
         if (tableType.equalsIgnoreCase("Policy Holders")) {
             PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
+            this.orignalData = policyHolderTable.getItems();
             PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
 
             tableViewContainer.getChildren().setAll(policyHolderTable);
             buttonSetContainer.getChildren().setAll(policyHolderButtonSet);
@@ -72,8 +77,10 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
+            this.orignalData = dependantTable.getItems();
+
             DependantButtonSet dependantButtonSet = new DependantButtonSet(dependantTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(dependantTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(dependantTable, orignalData);
 
             tableViewContainer.getChildren().setAll(dependantTable);
             buttonSetContainer.getChildren().setAll(dependantButtonSet);
@@ -82,8 +89,10 @@ public class CustomerAdminController implements Initializable, RefreshableContro
             setDependantButtonActions();
         } else if (tableType.equalsIgnoreCase("Policy Owners")) {
             PolicyOwnerTable policyOwnerTable = new PolicyOwnerTable(CustomerQueryType.QueryType.GET_ALL_POLICY_OWNER);
+            this.orignalData = policyOwnerTable.getItems();
+
             PolicyOwnerButtonSet policyOwnerButtonSet = new PolicyOwnerButtonSet(policyOwnerTable);
-            CustomerSortingSet sortingSet = new CustomerSortingSet(policyOwnerTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyOwnerTable, orignalData);
 
             tableViewContainer.getChildren().setAll(policyOwnerTable);
             buttonSetContainer.getChildren().setAll(policyOwnerButtonSet);

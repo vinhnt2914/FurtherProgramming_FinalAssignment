@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.form.SelectableForm;
 import org.example.global.CustomerQueryType;
 import org.example.global.GlobalVariable;
@@ -22,6 +23,7 @@ import java.util.List;
 public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     private TableColumn<Beneficiary, String> actionCol;
     private SelectableForm form;
+    private Stage stage;
 
     public SelectBeneficiaryTable(CustomerQueryType.QueryType queryType, SelectableForm form) {
         super(queryType);
@@ -30,15 +32,15 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     }
 
     private void setUpStage() {
-        Stage primaryStage = new Stage();
+        stage = new Stage();
 
         // Create a scene and set the root node
         Scene scene = new Scene(this);
 
         // Set the scene onto the stage
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Select Beneficiary Table");
-        primaryStage.show();
+        stage.setScene(scene);
+        stage.setTitle("Select Beneficiary Table");
+        stage.show();
     }
 
     @Override
@@ -93,10 +95,15 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     }
 
     private void setSelectedInsuredPerson(Beneficiary dependant) {
-        System.out.println("Selected: " + dependant);
+        if (dependant.getInsuranceCard() == null) {
+            new ErrorAlert("This person doesn't have an insurance card. Please select someone else");
+            return;
+        }
         form.setBeneficiary(dependant);
-        // Close the table view
-        Stage stage = (Stage) customerTableView.getScene().getWindow();
+        close();
+    }
+
+    private void close() {
         stage.close();
     }
 

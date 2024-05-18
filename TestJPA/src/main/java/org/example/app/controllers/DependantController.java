@@ -14,7 +14,7 @@ public class DependantController implements Initializable {
     private HBox tableViewContainer;
     @Override
     public synchronized void initialize(URL url, ResourceBundle resourceBundle) {
-        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_OF_DEPENDANT));
+        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_DEPENDANT));
     }
 
 

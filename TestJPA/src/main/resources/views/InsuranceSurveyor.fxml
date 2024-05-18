@@ -49,7 +49,7 @@
                         <Insets bottom="15.0" top="15.0" />
                      </padding>
                   </Button>
-                  <HBox HBox.hgrow="ALWAYS" />
+                  <HBox fx:id="sortingContainer" HBox.hgrow="ALWAYS" />
                   <ChoiceBox fx:id="swapTableChoiceBox" prefWidth="150.0" />
                </children>
                <padding>

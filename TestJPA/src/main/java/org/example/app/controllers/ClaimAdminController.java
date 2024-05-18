@@ -15,6 +15,7 @@ import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -29,6 +30,7 @@ public class ClaimAdminController implements Initializable {
     private Button filterButton;
     @FXML
     private double totalClaimAmount;
+    private List<Claim> originalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -42,10 +44,12 @@ public class ClaimAdminController implements Initializable {
 
         this.filterButton.setOnAction(this::openSortingForm);
         displayTotalClaimAmount(calculateTotalClaimAmount());
+
+        originalData = claimTable.getItems();
     }
 
     private void openSortingForm(ActionEvent actionEvent) {
-        new ClaimAmountSortingForm(this);
+        new ClaimAmountSortingForm(this, originalData);
     }
 
     public void displayTotalClaimAmount(double claimAmount) {

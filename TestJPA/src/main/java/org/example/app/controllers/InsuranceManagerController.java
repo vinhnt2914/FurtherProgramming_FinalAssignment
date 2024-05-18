@@ -10,12 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import org.example.app.components.alert.ErrorAlert;
+import org.example.app.components.sortingSet.ClaimSortingSet;
+import org.example.app.components.sortingSet.CustomerSortingSet;
 import org.example.app.components.table.*;
 import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.global.ProviderQueryType;
+import org.example.model.customer.Customer;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InsuranceManagerController implements Initializable {
@@ -27,6 +31,9 @@ public class InsuranceManagerController implements Initializable {
     private Button rejectButton;
     @FXML
     private HBox tableViewContainer;
+    @FXML
+    private HBox sortingContainer;
+    private List<Customer> orginalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -40,7 +47,12 @@ public class InsuranceManagerController implements Initializable {
         swapTableChoiceBox.setOnAction(this::swapTable);
         approveButton.setOnAction(this::approveProposal);
         rejectButton.setOnAction(this::rejectProposal);
-        tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
+
+        ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
+        ClaimSortingSet sortingSet = new ClaimSortingSet(claimTable);
+
+        tableViewContainer.getChildren().setAll(claimTable);
+        sortingContainer.getChildren().setAll(sortingSet);
     }
 
     private void rejectProposal(ActionEvent actionEvent) {
@@ -69,14 +81,27 @@ public class InsuranceManagerController implements Initializable {
 
     private void swapTable(Event event) {
         String tableType = swapTableChoiceBox.getValue();
-        tableViewContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL));
+            ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
+            ClaimSortingSet sortingSet = new ClaimSortingSet(claimTable);
+
+            tableViewContainer.getChildren().setAll(claimTable);
+            sortingContainer.getChildren().setAll(sortingSet);
+
         } else if (tableType.equalsIgnoreCase("Customer")) {
-            tableViewContainer.getChildren().add(new CustomerTable(CustomerQueryType.QueryType.GET_ALL));
+            CustomerTable customerTable = new CustomerTable(CustomerQueryType.QueryType.GET_ALL);
+            this.orginalData = customerTable.getItems();
+            CustomerSortingSet sortingSet = new CustomerSortingSet(customerTable, orginalData);
+
+            tableViewContainer.getChildren().setAll(customerTable);
+            sortingContainer.getChildren().setAll(sortingSet);
         } else if (tableType.equalsIgnoreCase("Surveyor")) {
-            tableViewContainer.getChildren().add(new SurveyorTable(ProviderQueryType.QueryType.GET_ALL_SURVEYOR_OF_MANAGER));
-        } else tableViewContainer.getChildren().add(new ProposalTable());
+            tableViewContainer.getChildren().setAll(new SurveyorTable(ProviderQueryType.QueryType.GET_ALL_SURVEYOR_OF_MANAGER));
+            sortingContainer.getChildren().clear();
+        } else {
+            tableViewContainer.getChildren().setAll(new ProposalTable());
+            sortingContainer.getChildren().clear();
+        }
     }
 }

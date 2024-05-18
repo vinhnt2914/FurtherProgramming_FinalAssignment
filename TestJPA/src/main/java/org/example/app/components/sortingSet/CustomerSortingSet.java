@@ -5,14 +5,18 @@ import org.example.app.components.sorting.CustomerSortingForm;
 import org.example.app.components.table.GenericCustomerTable;
 import org.example.model.customer.Customer;
 
+import java.util.List;
+
 public class CustomerSortingSet extends GenericSortingSet{
-    public CustomerSortingSet(GenericCustomerTable<? extends Customer> customerTable) {
+    private List<? extends Customer> originalData;
+    public CustomerSortingSet(GenericCustomerTable<? extends Customer> customerTable, List<? extends Customer> originalData) {
         super();
         this.table = customerTable;
+        this.originalData = originalData;
     }
 
     @Override
     void openSortingForm(ActionEvent actionEvent) {
-        new CustomerSortingForm((GenericCustomerTable) table);
+        new CustomerSortingForm((GenericCustomerTable) table, originalData);
     }
 }

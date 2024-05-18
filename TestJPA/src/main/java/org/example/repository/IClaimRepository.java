@@ -19,6 +19,6 @@ public interface IClaimRepository {
     Claim removeByID(String id);
     List<Claim> getClaimsOfDependant(Dependant dependant);
     List<Claim> getClaimsOfPolicyHolder(PolicyHolder policyHolder);
-    List<Claim> getAllClaimsOfPolicyHolder(PolicyHolder policyHolder);
+    List<Claim> getClaimsOfPolicyHolderAndTheirDependants(PolicyHolder policyHolder);
 
 }

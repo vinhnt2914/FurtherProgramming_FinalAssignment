@@ -1,12 +1,14 @@
 package org.example.repository.impl;
 
 import jakarta.persistence.TypedQuery;
+import org.example.model.User;
 import org.example.model.customer.*;
 import org.example.repository.EntityRepository;
 import org.example.repository.ICustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CustomerRepository extends EntityRepository implements ICustomerRepository {
 
@@ -43,8 +45,14 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<Dependant> getAllDependants() {
-        TypedQuery<Dependant> query = em.createQuery("from Dependant ", Dependant.class);
-        return query.getResultList();
+
+        TypedQuery<User> query = em.createQuery("FROM User", User.class);
+        List<User> userList = query.getResultList();
+
+        return userList.stream()
+                .filter(user -> user instanceof Dependant)
+                .map(user -> (Dependant) user)
+                .toList();
     }
 
     @Override
@@ -63,8 +71,13 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<PolicyHolder> getAllPolicyHolders() {
-        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder ", PolicyHolder.class);
-        return query.getResultList();
+        TypedQuery<User> query = em.createQuery("FROM User", User.class);
+        List<User> userList = query.getResultList();
+
+        return userList.stream()
+                .filter(user -> user instanceof PolicyHolder)
+                .map(user -> (PolicyHolder) user)
+                .toList();
     }
 
     @Override
