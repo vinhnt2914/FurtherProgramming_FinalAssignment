@@ -13,7 +13,11 @@ import org.example.app.components.table.DependantTable;
 import org.example.app.components.form.FileClaimForm;
 import org.example.app.components.table.RefreshableTable;
 import org.example.app.components.table.RequestTable;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
+import org.example.global.GlobalVariable;
+import org.example.global.RequestQueryType;
+import org.example.model.customer.PolicyHolder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,10 +42,15 @@ public class PolicyHolderController implements Initializable, RefreshableControl
         comboBoxOptions.addAll("Claim", "Dependant", "Request");
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         // Set to Claim Table by default
-        this.swapTableChoiceBox.getSelectionModel().select("Claims");
-        this.tableViewContainer.getChildren().add(new ClaimTable());
+        this.swapTableChoiceBox.getSelectionModel().select("Claim");
+        this.tableViewContainer.getChildren().add(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER_AND_THEIR_DEPENDANTS));
         this.fileClaimButton.setOnAction(this::openFileClaimForm);
         this.swapTableChoiceBox.setOnAction(this::swapTable);
+        this.myClaimButton.setOnAction(this::swapToMyClaim);
+    }
+
+    private void swapToMyClaim(ActionEvent actionEvent) {
+        tableViewContainer.getChildren().setAll(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICY_HOLDER));
     }
 
     private void openFileClaimForm(ActionEvent actionEvent) {
@@ -50,18 +59,18 @@ public class PolicyHolderController implements Initializable, RefreshableControl
 
     private void swapTable(Event event) {
         String tableType = swapTableChoiceBox.getValue();
-        tableViewContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            tableViewContainer.getChildren().add(new ClaimTable());
+            tableViewContainer.getChildren().setAll(new ClaimTable(ClaimQueryType.QueryType.GET_ALL_OF_POLICYHOLDER_AND_THEIR_DEPENDANTS));
             // Swap to claim button (new ClaimButtonSet)
         } else if (tableType.equalsIgnoreCase("Dependant")) {
-            tableViewContainer.getChildren().add(new DependantTable(
+            tableViewContainer.getChildren().setAll(new DependantTable(
                     CustomerQueryType.
                     QueryType.
                     GET_ALL_DEPENDANT_OF_POLICY_HOLDER));
         } else if (tableType.equalsIgnoreCase("Request")) {
-            tableViewContainer.getChildren().add(new RequestTable());
+            PolicyHolder currentUser = (PolicyHolder) GlobalVariable.getUser();
+            tableViewContainer.getChildren().setAll(new RequestTable(RequestQueryType.QueryType.GET_ALL_TO_CUSTOMER, currentUser));
         }
     }
 

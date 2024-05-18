@@ -6,7 +6,7 @@ public class WarningAlert extends CustomAlert{
     }
 
     @Override
-    void setUpAlert() {
+    void modifyAlert() {
 
     }
 }

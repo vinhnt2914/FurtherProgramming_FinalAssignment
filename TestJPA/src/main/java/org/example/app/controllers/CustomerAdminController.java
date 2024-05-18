@@ -7,31 +7,36 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.buttonSet.DependantButtonSet;
 import org.example.app.components.buttonSet.PolicyHolderButtonSet;
-import org.example.app.components.form.AddDependantForm;
-import org.example.app.components.form.AddPolicyHolderForm;
-import org.example.app.components.form.UpdateDependantForm;
-import org.example.app.components.form.UpdatePolicyHolderForm;
+import org.example.app.components.buttonSet.PolicyOwnerButtonSet;
+import org.example.app.components.form.*;
+import org.example.app.components.sortingSet.CustomerSortingSet;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
+import org.example.app.components.table.PolicyOwnerTable;
 import org.example.app.components.table.RefreshableTable;
 import org.example.global.CustomerQueryType;
+import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
+import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerAdminController implements Initializable, RefreshableController {
+    public HBox sortingContainer;
     @FXML
     private HBox buttonSetContainer;
     @FXML
     private HBox tableViewContainer;
     @FXML
     private ChoiceBox<String> swapTableChoiceBox;
-
+    private List<? extends Customer> orignalData;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpPage();
@@ -39,40 +44,61 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
     private void setUpPage() {
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
-        comboBoxOptions.addAll("Policy Holders", "Dependants");
+        comboBoxOptions.addAll("Policy Holders", "Dependants", "Policy Owners");
         this.swapTableChoiceBox.getItems().addAll(comboBoxOptions);
         this.swapTableChoiceBox.getSelectionModel().select("Policy Holders");
         this.swapTableChoiceBox.setOnAction(this::swapTable);
 
         PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
+        this.orignalData = policyHolderTable.getItems();
         PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
+        CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
+
         this.tableViewContainer.getChildren().add(policyHolderTable);
         this.buttonSetContainer.getChildren().add(policyHolderButtonSet);
+        this.sortingContainer.getChildren().add(sortingSet);
         setPolicyHolderButtonActions();
     }
 
     private void swapTable(Event event) {
         String tableType = swapTableChoiceBox.getValue();
-        tableViewContainer.getChildren().clear();
-        buttonSetContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Policy Holders")) {
             PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
+            this.orignalData = policyHolderTable.getItems();
             PolicyHolderButtonSet policyHolderButtonSet = new PolicyHolderButtonSet(policyHolderTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyHolderTable, orignalData);
 
-            tableViewContainer.getChildren().add(policyHolderTable);
-            buttonSetContainer.getChildren().add(policyHolderButtonSet);
+            tableViewContainer.getChildren().setAll(policyHolderTable);
+            buttonSetContainer.getChildren().setAll(policyHolderButtonSet);
+            sortingContainer.getChildren().setAll(sortingSet);
 
             setPolicyHolderButtonActions();
 
         } else if (tableType.equalsIgnoreCase("Dependants")) {
             DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
-            DependantButtonSet dependantButtonSet = new DependantButtonSet(dependantTable);
+            this.orignalData = dependantTable.getItems();
 
-            tableViewContainer.getChildren().add(dependantTable);
-            buttonSetContainer.getChildren().add(dependantButtonSet);
+            DependantButtonSet dependantButtonSet = new DependantButtonSet(dependantTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(dependantTable, orignalData);
+
+            tableViewContainer.getChildren().setAll(dependantTable);
+            buttonSetContainer.getChildren().setAll(dependantButtonSet);
+            sortingContainer.getChildren().setAll(sortingSet);
 
             setDependantButtonActions();
+        } else if (tableType.equalsIgnoreCase("Policy Owners")) {
+            PolicyOwnerTable policyOwnerTable = new PolicyOwnerTable(CustomerQueryType.QueryType.GET_ALL_POLICY_OWNER);
+            this.orignalData = policyOwnerTable.getItems();
+
+            PolicyOwnerButtonSet policyOwnerButtonSet = new PolicyOwnerButtonSet(policyOwnerTable);
+            CustomerSortingSet sortingSet = new CustomerSortingSet(policyOwnerTable, orignalData);
+
+            tableViewContainer.getChildren().setAll(policyOwnerTable);
+            buttonSetContainer.getChildren().setAll(policyOwnerButtonSet);
+            sortingContainer.getChildren().setAll(sortingSet);
+
+            setPolicyOwnerButtonActions();
         }
     }
 
@@ -91,66 +117,25 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         dependantButtonSet.deleteButton.setOnAction(event -> handleRemoveDependant());
         dependantButtonSet.updateButton.setOnAction(event -> handleUpdateDependant());
     }
+    private void setPolicyOwnerButtonActions() {
+        PolicyOwnerButtonSet policyOwnerButtonSet = (PolicyOwnerButtonSet) buttonSetContainer.getChildren().get(0);
+
+        policyOwnerButtonSet.addButton.setOnAction(event -> handleAddPolicyOwner());
+        policyOwnerButtonSet.updateButton.setOnAction(event -> handleEditPolicyOwner());
+        policyOwnerButtonSet.deleteButton.setOnAction(event -> handleDeletePolicyOwner());
+    }
 
     private void handleAddPolicyHolder() {
         new AddPolicyHolderForm(this);
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addPolicyHolderForm.fxml"));
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Add Policy Holder");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-//            dialogStage.setScene(new Scene(loader.load()));
-//
-//            AddPolicyHolderFormController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//
-//            dialogStage.showAndWait();
-//            refreshPolicyHolderTable();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("Could not load add form");
-//            alert.setContentText("Please try again.");
-//            alert.showAndWait();
-//        }
     }
 
     private void handleEditPolicyHolder() {
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder, this);
-//            try {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updatePolicyHolderForm.fxml"));
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Edit Policy Holder");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(tableView.getScene().getWindow());
-//                dialogStage.setScene(new Scene(loader.load()));
-//
-//                EditPolicyHolderFormController controller = loader.getController();
-//                controller.setPolicyHolder(selectedPolicyHolder);
-//                controller.setDialogStage(dialogStage);
-//
-//                dialogStage.showAndWait();
-//                tableView.refresh();
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Could not load edit form");
-//                alert.setContentText("Please try again.");
-//                alert.showAndWait();
-//            }
+            new UpdateInfoForm(selectedPolicyHolder, this);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Policy Holder Selected");
-            alert.setContentText("Please select a policy holder in the table.");
-            alert.showAndWait();
+            new ErrorAlert("Please select a policy holder");
         }
     }
 
@@ -183,27 +168,6 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
     private void handleAddDependant() {
         new AddDependantForm(this);
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/addDependantForm.fxml"));
-//            Stage dialogStage = new Stage();
-//            dialogStage.setTitle("Add Dependant");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            dialogStage.initOwner(tableViewContainer.getScene().getWindow());
-//            dialogStage.setScene(new Scene(loader.load()));
-//
-//            AddDependantFormController controller = loader.getController();
-//            controller.setDialogStage(dialogStage);
-//
-//            dialogStage.showAndWait();
-//            refreshDependantTable();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Error");
-//            alert.setHeaderText("Could not load add form");
-//            alert.setContentText("Please try again.");
-//            alert.showAndWait();
-//        }
     }
 
     private void handleRemoveDependant() {
@@ -225,28 +189,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant, this);
-//            try {
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/components/updateDependantForm.fxml"));
-//                Stage dialogStage = new Stage();
-//                dialogStage.setTitle("Update Dependant");
-//                dialogStage.initModality(Modality.WINDOW_MODAL);
-//                dialogStage.initOwner(tableView.getScene().getWindow());
-//                dialogStage.setScene(new Scene(loader.load()));
-//
-//                UpdateDependantFormController controller = loader.getController();
-//                controller.setDialogStage(dialogStage);
-//                controller.setDependant(selectedDependant);
-//
-//                dialogStage.showAndWait();
-//                refreshDependantTable();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Could not load update form");
-//                alert.setContentText("Please try again.");
-//                alert.showAndWait();
+            new UpdateInfoForm(selectedDependant, this);
 //            }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -257,15 +200,50 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         }
     }
 
+    private void handleDeletePolicyOwner() {
+        PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
+        PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
+        if (selectedPolicyOwner != null) {
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText("Delete Policy Owner");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected policy owner?");
 
-    public void refreshPolicyHolderTable() {
-        PolicyHolderTable policyHolderTable = new PolicyHolderTable(CustomerQueryType.QueryType.GET_ALL_POLICY_HOLDER);
-        tableViewContainer.getChildren().setAll(policyHolderTable);
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    CustomerRepository repository = new CustomerRepository();
+                    repository.removeByID(selectedPolicyOwner.getId());
+//                    tableView.getItems().remove(selectedPolicyOwner);
+//                    System.out.println("Deleted Policy Owner: " + selectedPolicyOwner.getFullName());
+                    repository.close();
+                    refresh();
+                }
+            });
+        } else {
+            new ErrorAlert("Please select a dependant");
+        }
     }
 
-    public void refreshDependantTable() {
-        DependantTable dependantTable = new DependantTable(CustomerQueryType.QueryType.GET_ALL_DEPENDANT);
-        tableViewContainer.getChildren().setAll(dependantTable);
+    private void handleEditPolicyOwner() {
+        PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
+        PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
+
+        if (selectedPolicyOwner != null) {
+
+            new UpdateInfoForm(selectedPolicyOwner, this);
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Policy Owner Selected");
+            alert.setContentText("Please select a policy owner in the table.");
+            alert.showAndWait();
+        }
+    }
+
+
+    private void handleAddPolicyOwner() {
+        new AddPolicyOwnerForm(this);
     }
 
     @Override

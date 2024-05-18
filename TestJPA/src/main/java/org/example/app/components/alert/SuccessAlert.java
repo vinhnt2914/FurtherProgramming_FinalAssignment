@@ -6,7 +6,7 @@ public class SuccessAlert extends CustomAlert{
     }
 
     @Override
-    void setUpAlert() {
+    void modifyAlert() {
         // Sth here later
     }
 }

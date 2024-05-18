@@ -6,29 +6,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+import org.example.app.components.form.AddSurveyorForm;
 import org.example.app.components.form.ProposalForm;
+import org.example.global.ProviderQueryType;
 import org.example.model.provider.InsuranceManager;
 
 public class SelectManagerTable extends ManagerTable{
     private TableColumn<InsuranceManager, String> actionCol;
-    private ProposalForm proposalForm;
-
-    public SelectManagerTable(ProposalForm proposalForm) {
-        super();
-        this.proposalForm = proposalForm;
+    private AddSurveyorForm form;
+    private Stage stage;
+    public SelectManagerTable(ProviderQueryType.QueryType queryType, AddSurveyorForm form) {
+        super(queryType);
+        this.form = form;
         setUpStage();
     }
 
     private void setUpStage() {
-        Stage primaryStage = new Stage();
+        stage = new Stage();
 
         // Create a scene and set the root node
         Scene scene = new Scene(this);
 
         // Set the scene onto the stage
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("InsuredPersonTable test");
-        primaryStage.show();
+        stage.setScene(scene);
+        stage.setTitle("Select Manager Table");
+        stage.show();
     }
 
     @Override
@@ -54,7 +56,12 @@ public class SelectManagerTable extends ManagerTable{
     }
 
     private void setSelectedManager(InsuranceManager manager) {
-        proposalForm.setManager(manager);
+        form.setManager(manager);
+        close();
+    }
+
+    private void close() {
+        stage.close();
     }
 
     private Button createSelectButton() {

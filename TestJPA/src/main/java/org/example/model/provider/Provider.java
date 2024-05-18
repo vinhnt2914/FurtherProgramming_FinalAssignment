@@ -2,24 +2,20 @@ package org.example.model.provider;
 
 import jakarta.persistence.*;
 import org.example.model.User;
+import org.example.model.customer.Customer;
+import org.example.utility.PasswordUtil;
 
-@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Provider extends User {
 
-    public Provider(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public Provider(GenericProviderBuilder builder) {
+        super(builder);
     }
 
     public Provider() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
+    public static abstract class GenericProviderBuilder<T extends GenericProviderBuilder<T>> extends GenericUserBuilder<T> {
+        public abstract Provider build();
     }
 }

@@ -1,15 +1,17 @@
 package org.example.model.provider;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.Customer;
+import org.example.model.customer.Dependant;
+import org.example.model.customer.PolicyHolder;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 import org.example.model.items.Request;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,10 +19,17 @@ public class InsuranceSurveyor extends Provider {
     @OneToMany(
             mappedBy = "insuranceSurveyor",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private Set<Request> requestList;
-    public InsuranceSurveyor(String username, String password) {
-        super(username, password);
-        requestList = new HashSet<>();
+
+    private Set<Request> requestSet;
+    @OneToMany(mappedBy = "insuranceSurveyor")
+    private Set<Proposal> proposalSet;
+    @ManyToOne
+    private InsuranceManager manager;
+
+    public InsuranceSurveyor(SurveyorBuilder builder) {
+        super(builder);
+        this.manager = builder.manager;
+        requestSet = new HashSet<>();
     }
 
     public InsuranceSurveyor() {
@@ -28,7 +37,6 @@ public class InsuranceSurveyor extends Provider {
 
     public Request makeRequest(Beneficiary customer, String message) {
         Request request = new Request(this, customer, message);
-        requestList.add(request); // Add to the request list
         return request;
     }
 
@@ -36,15 +44,45 @@ public class InsuranceSurveyor extends Provider {
         return new Proposal(this, claim, insuranceManager, message);
     }
 
-    @Override
-    public String toString() {
-        return "InsuranceSurveyor{" +
-                "requestList=" + requestList.toString() +
-                ", id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public static class SurveyorBuilder extends GenericProviderBuilder<SurveyorBuilder> {
+        protected InsuranceManager manager;
+        public SurveyorBuilder manager(InsuranceManager manager) {
+            this.manager = manager;
+            return self();
+        }
+        @Override
+        public InsuranceSurveyor build() {
+            return new InsuranceSurveyor(this);
+        }
     }
 
+    public Set<Request> getRequestSet() {
+        return requestSet;
+    }
 
+    public Set<Proposal> getProposalSet() {
+        return proposalSet;
+    }
+
+    public List<Integer> getProposalIDs() {
+        List<Integer> idList = new ArrayList<>();
+        for (Proposal p : proposalSet) idList.add(p.getId());
+
+        return idList;
+    }
+
+    public List<Integer> getRequestIDs() {
+        List<Integer> idList = new ArrayList<>();
+        for (Request p : requestSet) idList.add(p.getId());
+
+        return idList;
+    }
+
+    public InsuranceManager getManager() {
+        return manager;
+    }
+
+    public void setManager(InsuranceManager manager) {
+        this.manager = manager;
+    }
 }

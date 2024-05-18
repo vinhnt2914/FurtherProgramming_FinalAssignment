@@ -37,7 +37,7 @@ public class RequestRepository extends EntityRepository implements IRequestRepos
     }
 
     @Override
-    public List<Request> getAllTo(Beneficiary customer) {
+    public List<Request> getAllToCustomer(Beneficiary customer) {
         TypedQuery<Request> query = em.createQuery("from Request r where r.customer = :customer", Request.class);
         query.setParameter("customer", customer);
         return query.getResultList();

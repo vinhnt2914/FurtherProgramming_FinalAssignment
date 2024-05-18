@@ -2,6 +2,7 @@ package org.example.utility;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import org.example.global.GlobalVariable;
 import org.example.global.Role;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class PageManager {
 
     private PageManager() {
         scenes = new HashMap<>();
+        setScenes(GlobalVariable.getRole());
     }
 
     public static PageManager getInstance() {
@@ -26,6 +28,7 @@ public class PageManager {
 
     public Parent getScene(String sceneName) throws IOException {
         URL pageURL = getClass().getResource("/views/" + scenes.get(sceneName.toLowerCase()));
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(pageURL);
         return loader.load();
@@ -43,26 +46,32 @@ public class PageManager {
     }
 
     private void setScenesForDependant() {
-        scenes.put("info", "dependant.fxml");
+        scenes.put("info", "genericInfo.fxml");
+        scenes.put("dashboard", "dependant.fxml");
     }
     private void setScenesForPolicyHolder() {
-        scenes.put("info", "customerInfo.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "policyHolder.fxml");
     }
     private void setScenesForPolicyOwner() {
-        scenes.put("info", "customerInfo.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "policyOwner.fxml");
     }
     private void setScenesForSurveyor() {
-        scenes.put("info", "insuranceSurveyor.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "insuranceSurveyor.fxml");
     }
     private void setScenesForManager() {
-        scenes.put("info", "insuranceManager.fxml");
+        scenes.put("info", "genericInfo.fxml");
         scenes.put("dashboard", "insuranceManager.fxml");
     }
-
     private void setScenesForAdmin() {
         scenes.put("customer", "customerAdmin.fxml");
+        scenes.put("provider", "providerAdmin.fxml");
+        scenes.put("request", "requestAdmin.fxml");
+        scenes.put("proposal", "proposalAdmin.fxml");
+        scenes.put("claim", "claimAdmin.fxml");
+        scenes.put("insurancecard", "insuranceCardAdmin.fxml");
+
     }
 }

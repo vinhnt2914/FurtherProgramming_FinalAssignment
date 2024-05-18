@@ -7,9 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.example.app.components.table.SelectManagerTable;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.global.GlobalVariable;
-import org.example.model.customer.Beneficiary;
 import org.example.model.items.Claim;
 import org.example.model.items.Proposal;
 import org.example.model.provider.InsuranceManager;
@@ -17,7 +16,6 @@ import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.ProposalRepository;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public class ProposalForm extends VBox {
     @FXML
@@ -28,10 +26,7 @@ public class ProposalForm extends VBox {
     private TextArea messageArea;
     @FXML
     private Button submitButton;
-    @FXML
-    private Button selectManagerButton;
     private Claim claim;
-    private InsuranceManager manager;
 
     public ProposalForm(Claim claim) {
         this.claim = claim;
@@ -41,7 +36,7 @@ public class ProposalForm extends VBox {
 
     private void loadFormFromFXML() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/proposalForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/proposalForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             VBox rootPane = fxmlLoader.load();
@@ -55,19 +50,18 @@ public class ProposalForm extends VBox {
     }
 
     private void setUpForm() {
+        InsuranceSurveyor surveyor = (InsuranceSurveyor) GlobalVariable.getUser();
         this.claimLabel.setText(claim.getId());
+        this.managerLabel.setText(surveyor.getManager().getId() + " - " + surveyor.getManager().getFullName());
         this.submitButton.setOnAction(this::submitProposal);
-        this.selectManagerButton.setOnAction(this::openSelectManager);
     }
 
-    private void openSelectManager(ActionEvent actionEvent) {
-        new SelectManagerTable(this);
-    }
 
     private void submitProposal(ActionEvent actionEvent) {
         if (validateInput()) {
             ProposalRepository repository = new ProposalRepository();
             InsuranceSurveyor surveyor = (InsuranceSurveyor) GlobalVariable.getUser();
+            InsuranceManager manager = surveyor.getManager();
             String message = messageArea.getText();
             if (message.isEmpty()) message = "Nothing";
             Proposal proposal = new Proposal(surveyor, claim, manager, message);
@@ -76,14 +70,10 @@ public class ProposalForm extends VBox {
         }
     }
 
-    public void setManager(InsuranceManager manager) {
-        this.manager = manager;
-        managerLabel.setText(String.valueOf(manager.getId()));
-    }
 
     private boolean validateInput() {
-        if (manager == null || isFieldEmpty(messageArea)) {
-            showAlert("All fields must be filled out.");
+        if (isFieldEmpty(messageArea)) {
+            new ErrorAlert("Please fill out all fields");
             return false;
         }
 
@@ -94,11 +84,4 @@ public class ProposalForm extends VBox {
         return field.getText() == null || field.getText().trim().isEmpty();
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Validation Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

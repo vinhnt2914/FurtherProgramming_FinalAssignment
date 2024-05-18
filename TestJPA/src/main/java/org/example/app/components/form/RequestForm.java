@@ -1,7 +1,5 @@
 package org.example.app.components.form;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +33,7 @@ public class RequestForm extends VBox {
 
     private void loadFormFromFXML() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/requestForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/form/requestForm.fxml"));
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             VBox rootPane = fxmlLoader.load();

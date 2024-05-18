@@ -20,7 +20,7 @@ public class CustomerTable extends GenericCustomerTable<Customer>{
     }
 
     @Override
-    void populateTableView(CustomerQueryType.QueryType queryType) {
+    public void populateTableView(CustomerQueryType.QueryType queryType) {
         CustomerRepository repository = new CustomerRepository();
         List<Customer> customerList = repository.getAll();
         ObservableList<Customer> data = FXCollections.observableArrayList(customerList);

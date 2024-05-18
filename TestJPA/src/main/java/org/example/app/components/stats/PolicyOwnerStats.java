@@ -16,7 +16,7 @@ public class PolicyOwnerStats extends HBox {
     private Label numOfBeneficiaryLabel;
 
     public PolicyOwnerStats() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/policyOwnerStats.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/stats/policyOwnerStats.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -31,6 +31,6 @@ public class PolicyOwnerStats extends HBox {
     private void setUpStats() {
         PolicyOwner policyOwner = (PolicyOwner) GlobalVariable.getUser();
         insuranceFeeLabel.setText("$" + policyOwner.calculateFee());
-        numOfBeneficiaryLabel.setText(String.valueOf(policyOwner.getBeneficiarySet().size()));
+        numOfBeneficiaryLabel.setText(String.valueOf(policyOwner.calculateTotalBeneficiaries()));
     }
 }

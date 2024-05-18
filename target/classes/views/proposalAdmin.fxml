@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.ProposalAdminController">
+    <top>
+        <BorderPane prefHeight="121.0" prefWidth="842.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
+            <top>
+                <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField prefHeight="37.0" prefWidth="803.0" promptText="Search for anything">
+                            <HBox.margin>
+                                <Insets right="50.0" />
+                            </HBox.margin>
+                        </TextField>
+                        <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Request" wrappingWidth="106.13671875">
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+            </top>
+            <right>
+                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt; Admin" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <BorderPane.margin>
+                        <Insets right="15.0" />
+                    </BorderPane.margin>
+                </Text>
+            </right>
+            <left>
+                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Request" textAlignment="CENTER" wrappingWidth="137.515625" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                    <BorderPane.margin>
+                        <Insets left="15.0" />
+                    </BorderPane.margin>
+                </Text>
+            </left>
+            <bottom>
+                <HBox alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="842.0" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets top="20.0" />
+                    </BorderPane.margin>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </top>
+    <center>
+        <HBox fx:id="tableViewContainer" alignment="CENTER" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>

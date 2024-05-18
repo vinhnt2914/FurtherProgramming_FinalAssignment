@@ -2,10 +2,13 @@ package org.example.model.customer;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import org.example.repository.impl.CustomerRepository;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,42 +16,31 @@ import java.util.Set;
 @Entity
 public class PolicyOwner extends Customer {
     @OneToMany(mappedBy = "policyOwner",
-            cascade = CascadeType.PERSIST,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private Set<Beneficiary> beneficiarySet;
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Set<PolicyHolder> policyHolderSet;
     private double fee;
     public PolicyOwner(PolicyOwnerBuilder builder) {
         super(builder);
-        this.beneficiarySet = new HashSet<>();
+        this.policyHolderSet = new HashSet<>();
         this.fee = builder.fee;
     }
     public PolicyOwner() {
     }
 
-    public void addBeneficaries(Beneficiary... beneficiaries) {
-        for (Beneficiary c : beneficiaries) {
-            if (c instanceof PolicyHolder) {
-                beneficiarySet.add(c);
-                c.setPolicyOwner(this);
-                for (Dependant d : ((PolicyHolder) c).getDependantSet()) {
-                    beneficiarySet.add(d);
-                    d.setPolicyOwner(this);
-                }
-            }
+    public void addPolicyHolders(PolicyHolder... policyHolders) {
+        policyHolderSet.addAll(Arrays.asList(policyHolders));
+    }
+
+    public Set<PolicyHolder> getPolicyHolderSet() {
+        return policyHolderSet;
+    }
+
+    public int calculateTotalBeneficiaries() {
+        int total = policyHolderSet.size();
+        for (PolicyHolder ph : policyHolderSet) {
+            total += ph.getDependantSet().size();
         }
-    }
-
-    public Set<Beneficiary> getBeneficiarySet() {
-        return beneficiarySet;
-    }
-
-    public Beneficiary removeBeneficiary(Beneficiary beneficiary) {
-        CustomerRepository repo = new CustomerRepository();
-        beneficiarySet.remove(beneficiary);
-        repo.removeByID(beneficiary.getId());
-        repo.close();
-        return beneficiary;
+        return total;
     }
 
     public double calculateFee() {
@@ -78,12 +70,15 @@ public class PolicyOwner extends Customer {
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("PolicyOwner[id: %s, name: %s]", getId(), getFullName()));
-
-        return sb.toString();
+    public double getFee() {
+        return fee;
     }
 
+    @Override
+    public String toString() {
+        return "PolicyOwner{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

@@ -20,6 +20,10 @@
     -fx-background-color: #7971bb;
 }
 
+.date-picker .button {
+    -fx-min-width: 10;
+}
+
 /* Calendar Popup */
 .date-picker-popup {
     -fx-background-color: #7971bb;
@@ -46,6 +50,14 @@
     -fx-font-size: 14px;
 }
 
+.text-area {
+    -fx-border-color: #7971bb;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-min-width: 300;
+    -fx-font-size: 14px;
+}
+
 .label {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -61,6 +73,7 @@
     -fx-padding: 10;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
+    -fx-min-width: 100;
 }
 
 .button:hover {
@@ -68,6 +81,7 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-min-width: 150;
 }
 
 #submitButton, #updateClaimButton {
@@ -84,6 +98,7 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-min-width: 150;
 }
 
 .combo-box {

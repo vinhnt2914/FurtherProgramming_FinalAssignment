@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.CustomerAdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.CustomerAdminController">
     <top>
         <BorderPane prefHeight="121.0" prefWidth="842.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
             <top>
@@ -50,10 +53,10 @@
             <bottom>
                 <HBox alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="842.0" BorderPane.alignment="CENTER">
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" spacing="30.0" HBox.hgrow="ALWAYS">
                             <children>
                         <HBox fx:id="buttonSetContainer" alignment="CENTER" minWidth="300.0" spacing="30.0" />
-                                <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                <HBox fx:id="sortingContainer" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                 <ChoiceBox fx:id="swapTableChoiceBox" prefWidth="150.0" />
                             </children>
                      <padding>

@@ -16,6 +16,7 @@ import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.DependantTable;
 import org.example.app.components.table.PolicyHolderTable;
 import org.example.app.components.table.RefreshableTable;
+import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
@@ -43,7 +44,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         ObservableList<String> comboBoxOptions = FXCollections.observableArrayList();
         comboBoxOptions.addAll("Claim", "Dependant", "PolicyHolder");
 
-        ClaimTable claimTable = new ClaimTable();
+        ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
         ClaimButtonSet claimButtonSet = new ClaimButtonSet(claimTable);
         this.tableViewContainer.getChildren().add(claimTable);
         this.buttonSetContainer.getChildren().add(claimButtonSet);
@@ -60,7 +61,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         buttonSetContainer.getChildren().clear();
 
         if (tableType.equalsIgnoreCase("Claim")) {
-            ClaimTable claimTable = new ClaimTable();
+            ClaimTable claimTable = new ClaimTable(ClaimQueryType.QueryType.GET_ALL);
             ClaimButtonSet claimButtonSet = new ClaimButtonSet(claimTable);
             tableViewContainer.getChildren().add(claimTable);
             buttonSetContainer.getChildren().add(claimButtonSet);
@@ -121,7 +122,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
             // Call update claim form
             new UpdateClaimForm(selectedClaim);
         }
-        else new ErrorAlert("Please select a dependant");
+        else new ErrorAlert("Please select a claim");
     }
 
     private void addClaim() {
@@ -135,14 +136,14 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (policyHolder != null) {
             repository.removeByID(policyHolder.getId());
             repository.close();
-        }
+        } else new ErrorAlert("Please select a policy holder");
     }
 
     private void updatePolicyHolder() {
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder selectedPolicyHolder = tableView.getSelectionModel().getSelectedItem();
         if (selectedPolicyHolder != null) {
-            new UpdatePolicyHolderForm(selectedPolicyHolder, this);
+            new UpdateInfoForm(selectedPolicyHolder, this);
         } else new ErrorAlert("Please select a policyHolder");
     }
 
@@ -154,8 +155,8 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         DependantButtonSet dependantButtonSet = (DependantButtonSet) buttonSetContainer.getChildren().get(0);
 
         dependantButtonSet.addButton.setOnAction(event -> addDependant());
-        dependantButtonSet.deleteButton.setOnAction(event -> updateDependant());
-        dependantButtonSet.updateButton.setOnAction(event -> deleteDependant());
+        dependantButtonSet.deleteButton.setOnAction(event -> deleteDependant());
+        dependantButtonSet.updateButton.setOnAction(event -> updateDependant());
     }
 
     private void deleteDependant() {
@@ -165,15 +166,15 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (dependant != null) {
             repository.removeByID(dependant.getId());
             repository.close();
-        }
+        } else new ErrorAlert("Please select a dependant");
     }
 
     private void updateDependant() {
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            new UpdateDependantForm(selectedDependant, this);
-        } else new ErrorAlert("Please select a policyHolder");
+            new UpdateInfoForm(selectedDependant, this);
+        } else new ErrorAlert("Please select a dependant");
     }
 
     private void addDependant() {
