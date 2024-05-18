@@ -61,11 +61,6 @@ public class Beneficiary extends Customer {
 
 
     public abstract static class GenericBeneficaryBuilder<T extends GenericBeneficaryBuilder<T>> extends GenericCustomerBuilder<T> {
-        protected PolicyOwner policyOwner;
-        public T policyOwner(PolicyOwner policyOwner) {
-            this.policyOwner = policyOwner;
-            return self();
-        }
     }
 
     @Override

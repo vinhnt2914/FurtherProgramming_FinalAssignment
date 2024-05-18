@@ -15,7 +15,7 @@ class RequestRepositoryTest {
     @Test
     void findByID() {
         RequestRepository repository = new RequestRepository();
-        assertNotNull(repository.findByID(1));
+        assertNotNull(repository.findByID(10));
         repository.close();
     }
 

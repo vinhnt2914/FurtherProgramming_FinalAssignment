@@ -8,10 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.global.GlobalVariable;
 import org.example.global.RequestQueryType;
 import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
 import org.example.model.items.Request;
 import org.example.repository.impl.RequestRepository;
 
@@ -30,10 +28,10 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
     @FXML
     private TableColumn<Request, String> messageCol;
     private RequestQueryType.QueryType queryType;
-    private Beneficiary customer;
+    private Beneficiary beneficiary;
 
-    public RequestTable(RequestQueryType.QueryType queryType, Beneficiary customer) {
-        this.customer = customer;
+    public RequestTable(RequestQueryType.QueryType queryType, Beneficiary beneficiary) {
+        this.beneficiary = beneficiary;
         this.queryType = queryType;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/requestTable.fxml"));
         fxmlLoader.setRoot(this);
@@ -68,7 +66,7 @@ public class RequestTable extends TableView<Request> implements RefreshableTable
 
         switch (queryType) {
             case GET_ALL -> requestList = repository.getAll();
-            case GET_ALL_TO_CUSTOMER -> requestList = repository.getAllToCustomer(customer);
+            case GET_ALL_TO_CUSTOMER -> requestList = repository.getAllToBeneficiary(beneficiary);
         }
 
         ObservableList<Request> data = FXCollections.observableArrayList(requestList);

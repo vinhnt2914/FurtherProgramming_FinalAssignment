@@ -1,0 +1,4416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.repository.UserRepositoryTest" time="2.941" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\FurtherProgramming_FinalAssignment\target\test-classes;D:\FurtherProgramming_FinalAssignment\target\classes;C:\Users\vinhh\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\vinhh\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\vinhh\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\vinhh\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\vinhh\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\vinhh\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\vinhh\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\vinhh\.m2\repository\net\bytebuddy\byte-buddy\1.14.11\byte-buddy-1.14.11.jar;C:\Users\vinhh\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.0\jakarta.xml.bind-api-4.0.0.jar;C:\Users\vinhh\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.0\jakarta.activation-api-2.1.0.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.2\jaxb-runtime-4.0.2.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.2\jaxb-core-4.0.2.jar;C:\Users\vinhh\.m2\repository\org\eclipse\angus\angus-activation\2.0.0\angus-activation-2.0.0.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\txw2\4.0.2\txw2-4.0.2.jar;C:\Users\vinhh\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.1\istack-commons-runtime-4.1.1.jar;C:\Users\vinhh\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\vinhh\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\vinhh\.m2\repository\org\postgresql\postgresql\42.7.3\postgresql-42.7.3.jar;C:\Users\vinhh\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-fxml\21-ea+24\javafx-fxml-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-fxml\21-ea+24\javafx-fxml-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-controls\21-ea+24\javafx-controls-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-controls\21-ea+24\javafx-controls-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-graphics\21-ea+24\javafx-graphics-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-graphics\21-ea+24\javafx-graphics-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-base\21-ea+24\javafx-base-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-base\21-ea+24\javafx-base-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\vinhh\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\vinhh\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\vinhh\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Bangkok"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="C:\Users\vinhh\AppData\Local\Temp\surefire13818177490827157820\surefirebooter-20240519005054170_3.jar C:\Users\vinhh\AppData\Local\Temp\surefire13818177490827157820 2024-05-19T00-50-54_066-jvmRun1 surefire-20240519005054170_1tmp surefire_0-20240519005054170_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\FurtherProgramming_FinalAssignment\target\test-classes;D:\FurtherProgramming_FinalAssignment\target\classes;C:\Users\vinhh\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\vinhh\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\vinhh\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\vinhh\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\vinhh\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\vinhh\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\vinhh\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\vinhh\.m2\repository\net\bytebuddy\byte-buddy\1.14.11\byte-buddy-1.14.11.jar;C:\Users\vinhh\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.0\jakarta.xml.bind-api-4.0.0.jar;C:\Users\vinhh\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.0\jakarta.activation-api-2.1.0.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.2\jaxb-runtime-4.0.2.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.2\jaxb-core-4.0.2.jar;C:\Users\vinhh\.m2\repository\org\eclipse\angus\angus-activation\2.0.0\angus-activation-2.0.0.jar;C:\Users\vinhh\.m2\repository\org\glassfish\jaxb\txw2\4.0.2\txw2-4.0.2.jar;C:\Users\vinhh\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.1\istack-commons-runtime-4.1.1.jar;C:\Users\vinhh\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\vinhh\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\vinhh\.m2\repository\org\postgresql\postgresql\42.7.3\postgresql-42.7.3.jar;C:\Users\vinhh\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-fxml\21-ea+24\javafx-fxml-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-fxml\21-ea+24\javafx-fxml-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-controls\21-ea+24\javafx-controls-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-controls\21-ea+24\javafx-controls-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-graphics\21-ea+24\javafx-graphics-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-graphics\21-ea+24\javafx-graphics-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-base\21-ea+24\javafx-base-21-ea+24.jar;C:\Users\vinhh\.m2\repository\org\openjfx\javafx-base\21-ea+24\javafx-base-21-ea+24-win.jar;C:\Users\vinhh\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\vinhh\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\vinhh\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\vinhh\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\vinhh"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\FurtherProgramming_FinalAssignment"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\vinhh\AppData\Local\Temp\surefire13818177490827157820\surefirebooter-20240519005054170_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.3+7-LTS-152"/>
+    <property name="user.name" value="vinhh"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\vinhh\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\vinhh\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.3"/>
+    <property name="user.dir" value="D:\FurtherProgramming_FinalAssignment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\MATLAB\R2023b\bin;C:\Program Files\Java\jdk-21\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\vinhh\AppData\Local\Microsoft\WindowsApps;D:\IntelliJ IDEA 2023.2.4\bin;;C:\Users\vinhh\AppData\Local\GitHubDesktop\bin;C:\Users\vinhh\Downloads\apache-maven-3.9.6-bin\apache-maven-3.9.6\bin;D:\Microsoft VS Code\bin;C:\Users\vinhh\AppData\Roaming\npm;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.3+7-LTS-152"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="getAll" classname="org.example.repository.UserRepositoryTest" time="2.613">
+    <system-out><![CDATA[Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_3.id is not null 
+                then 3 
+            when u1_2.id is not null 
+                then 4 
+            when u1_6.id is not null 
+                then 1 
+            when u1_1.id is not null 
+                then 2 
+            when u1_4.id is not null 
+                then 5 
+            when u1_5.id is not null 
+                then 6 
+            end,
+            u1_0.address,
+            u1_0.email,
+            u1_0.fullName,
+            u1_0.password,
+            u1_0.phone,
+            u1_0.username,
+            u1_1.id,
+            u1_2.policyHolder_id,
+            u1_3.id,
+            u1_3.policyOwner_id,
+            u1_4.fee,
+            u1_4.id,
+            u1_5.id,
+            u1_6.manager_id,
+            u1_6.id 
+        from
+            users u1_0 
+        left join
+            Beneficiary u1_1 
+                on u1_0.id=u1_1.id 
+        left join
+            Dependant u1_2 
+                on u1_0.id=u1_2.id 
+        left join
+            PolicyHolder u1_3 
+                on u1_0.id=u1_3.id 
+        left join
+            PolicyOwner u1_4 
+                on u1_0.id=u1_4.id 
+        left join
+            InsuranceManager u1_5 
+                on u1_0.id=u1_5.id 
+        left join
+            InsuranceSurveyor u1_6 
+                on u1_0.id=u1_6.id
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+Hibernate: 
+    select
+        im1_0.id,
+        im1_1.address,
+        im1_1.email,
+        im1_1.fullName,
+        im1_1.password,
+        im1_1.phone,
+        im1_1.username 
+    from
+        InsuranceManager im1_0 
+    join
+        users im1_1 
+            on im1_0.id=im1_1.id 
+    where
+        im1_0.id=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+]]></system-out>
+  </testcase>
+  <testcase name="findByID" classname="org.example.repository.UserRepositoryTest" time="0.129">
+    <system-out><![CDATA[Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.id is not null 
+                then 3 
+            when u1_2.id is not null 
+                then 4 
+            when u1_3.id is not null 
+                then 1 
+            when u1_4.id is not null 
+                then 2 
+            when u1_5.id is not null 
+                then 5 
+            when u1_6.id is not null 
+                then 6 
+            end,
+            u1_0.address,
+            u1_0.email,
+            u1_0.fullName,
+            u1_0.password,
+            u1_0.phone,
+            u1_0.username,
+            u1_4.id,
+            ic1_0.cardNumber,
+            ic1_0.cardHolder_id,
+            ic1_0.expireDate,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            ic2_0.cardNumber,
+            ic2_0.cardHolder_id,
+            ic2_0.expireDate,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee,
+            u1_1.id,
+            po4_0.id,
+            po4_1.address,
+            po4_1.email,
+            po4_1.fullName,
+            po4_1.password,
+            po4_1.phone,
+            po4_1.username,
+            po4_0.fee,
+            u1_5.fee,
+            u1_5.id,
+            u1_6.id,
+            m1_0.id,
+            m1_1.address,
+            m1_1.email,
+            m1_1.fullName,
+            m1_1.password,
+            m1_1.phone,
+            m1_1.username,
+            u1_3.id 
+        from
+            users u1_0 
+        left join
+            PolicyHolder u1_1 
+                on u1_0.id=u1_1.id 
+        left join
+            Dependant u1_2 
+                on u1_0.id=u1_2.id 
+        left join
+            InsuranceSurveyor u1_3 
+                on u1_0.id=u1_3.id 
+        left join
+            Beneficiary u1_4 
+                on u1_0.id=u1_4.id 
+        left join
+            PolicyOwner u1_5 
+                on u1_0.id=u1_5.id 
+        left join
+            InsuranceManager u1_6 
+                on u1_0.id=u1_6.id 
+        left join
+            InsuranceCard ic1_0 
+                on u1_4.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ic1_0.policyOwner_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=u1_2.policyHolder_id 
+        left join
+            InsuranceCard ic2_0 
+                on ph1_2.id=ic2_0.cardHolder_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ic2_0.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po4_0 
+        join
+            users po4_1 
+                on po4_0.id=po4_1.id) 
+            on po4_0.id=u1_1.policyOwner_id 
+        left join
+            (InsuranceManager m1_0 
+        join
+            users m1_1 
+                on m1_0.id=m1_1.id) 
+            on m1_0.id=u1_3.manager_id 
+        where
+            u1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="findUser" classname="org.example.repository.UserRepositoryTest" time="0.193">
+    <system-out><![CDATA[Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_3.id is not null 
+                then 3 
+            when u1_2.id is not null 
+                then 4 
+            when u1_6.id is not null 
+                then 1 
+            when u1_1.id is not null 
+                then 2 
+            when u1_4.id is not null 
+                then 5 
+            when u1_5.id is not null 
+                then 6 
+            end,
+            u1_0.address,
+            u1_0.email,
+            u1_0.fullName,
+            u1_0.password,
+            u1_0.phone,
+            u1_0.username,
+            u1_1.id,
+            u1_2.policyHolder_id,
+            u1_3.id,
+            u1_3.policyOwner_id,
+            u1_4.fee,
+            u1_4.id,
+            u1_5.id,
+            u1_6.manager_id,
+            u1_6.id 
+        from
+            users u1_0 
+        left join
+            Beneficiary u1_1 
+                on u1_0.id=u1_1.id 
+        left join
+            Dependant u1_2 
+                on u1_0.id=u1_2.id 
+        left join
+            PolicyHolder u1_3 
+                on u1_0.id=u1_3.id 
+        left join
+            PolicyOwner u1_4 
+                on u1_0.id=u1_4.id 
+        left join
+            InsuranceManager u1_5 
+                on u1_0.id=u1_5.id 
+        left join
+            InsuranceSurveyor u1_6 
+                on u1_0.id=u1_6.id 
+        where
+            u1_0.username=? 
+            and u1_0.password=?
+Hibernate: 
+    select
+        ic1_0.cardNumber,
+        ch1_0.id,
+        case 
+            when ch1_1.id is not null 
+                then 3 
+            when ch1_2.id is not null 
+                then 4 
+            when ch1_0.id is not null 
+                then 2 
+            when po2_0.id is not null 
+                then 5 
+            end,
+            ch1_3.address,
+            ch1_3.email,
+            ch1_3.fullName,
+            ch1_3.password,
+            ch1_3.phone,
+            ch1_3.username,
+            ph1_0.id,
+            ph1_1.address,
+            ph1_1.email,
+            ph1_1.fullName,
+            ph1_1.password,
+            ph1_1.phone,
+            ph1_1.username,
+            ph1_2.id,
+            po1_0.id,
+            po1_1.address,
+            po1_1.email,
+            po1_1.fullName,
+            po1_1.password,
+            po1_1.phone,
+            po1_1.username,
+            po1_0.fee,
+            ch1_1.id,
+            po2_0.id,
+            po2_1.address,
+            po2_1.email,
+            po2_1.fullName,
+            po2_1.password,
+            po2_1.phone,
+            po2_1.username,
+            po2_0.fee,
+            ic1_0.expireDate,
+            po3_0.id,
+            po3_1.address,
+            po3_1.email,
+            po3_1.fullName,
+            po3_1.password,
+            po3_1.phone,
+            po3_1.username,
+            po3_0.fee 
+        from
+            InsuranceCard ic1_0 
+        left join
+            (Beneficiary ch1_0 
+        left join
+            PolicyHolder ch1_1 
+                on ch1_0.id=ch1_1.id 
+        left join
+            Dependant ch1_2 
+                on ch1_0.id=ch1_2.id 
+        join
+            users ch1_3 
+                on ch1_0.id=ch1_3.id) 
+            on ch1_0.id=ic1_0.cardHolder_id 
+        left join
+            (PolicyHolder ph1_0 
+        join
+            users ph1_1 
+                on ph1_0.id=ph1_1.id 
+        join
+            Beneficiary ph1_2 
+                on ph1_0.id=ph1_2.id) 
+            on ph1_0.id=ch1_2.policyHolder_id 
+        left join
+            (PolicyOwner po1_0 
+        join
+            users po1_1 
+                on po1_0.id=po1_1.id) 
+            on po1_0.id=ph1_0.policyOwner_id 
+        left join
+            (PolicyOwner po2_0 
+        join
+            users po2_1 
+                on po2_0.id=po2_1.id) 
+            on po2_0.id=ch1_1.policyOwner_id 
+        left join
+            (PolicyOwner po3_0 
+        join
+            users po3_1 
+                on po3_0.id=po3_1.id) 
+            on po3_0.id=ic1_0.policyOwner_id 
+        where
+            ic1_0.cardHolder_id=?
+]]></system-out>
+  </testcase>
+</testsuite>

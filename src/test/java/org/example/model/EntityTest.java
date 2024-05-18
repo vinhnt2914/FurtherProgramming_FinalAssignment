@@ -99,7 +99,7 @@ class EntityTest {
                 .manager(m1)
                 .build();
 
-        Request r1 = s1.makeRequest(c1, "Check insurance details");
+        Request r1 = s1.makeRequest(c1, claim1,"Check insurance details");
         Proposal p1 = s1.propose(m1, claim1, "Review this claim");
 
         assertNotNull(c1);
@@ -117,7 +117,7 @@ class EntityTest {
         assertSame(card1.getCardHolder(), c1);
         assertSame(card1.getPolicyOwner(), c3);
         assertSame(s1.getManager(), m1);
-        assertSame(r1.getCustomer(), c1);
+        assertSame(r1.getBeneficiary(), c1);
         assertSame(r1.getInsuranceSurveyor(), s1);
         assertSame(p1.getInsuranceSurveyor(), s1);
         assertSame(p1.getInsuranceManager(), m1);

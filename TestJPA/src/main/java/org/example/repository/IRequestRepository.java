@@ -11,7 +11,7 @@ public interface IRequestRepository {
     void add(Request... requests);
     Request findByID(int id);
     List<Request> getAll();
-    List<Request> getAllToCustomer(Beneficiary customer);
+    List<Request> getAllToBeneficiary(Beneficiary customer);
     Request removeByID(int id);
     void close();
 }

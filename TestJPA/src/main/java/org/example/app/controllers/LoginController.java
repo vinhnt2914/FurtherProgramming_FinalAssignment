@@ -52,20 +52,19 @@ public class LoginController implements Initializable{
             String encryptedPassword = PasswordUtil.encrypt(password);
             // Encrypt the user password before searching in the database
             System.out.println("ENCRYPTED PASSWORD: " + encryptedPassword);
-            try {
-                User user = repository.findUser(username, encryptedPassword);
-                // Decrypt the password before setting as global var
 
-                GlobalVariable.setRole(user);
-                GlobalVariable.setUserID(user.getId());
-                GlobalVariable.setUser(user);
-                System.out.println("User logged in: " + GlobalVariable.getUserID());
-                System.out.println("User role: " + GlobalVariable.getRole());
-                System.out.println("User password: " + GlobalVariable.getUser().getPassword());
-            } catch (NoResultException e) {
+            User user = repository.findUser(username, encryptedPassword);
+            if (user == null) {
                 new ErrorAlert("Username or password is incorrect!");
                 return;
             }
+
+            GlobalVariable.setRole(user);
+            GlobalVariable.setUserID(user.getId());
+            GlobalVariable.setUser(user);
+            System.out.println("User logged in: " + GlobalVariable.getUserID());
+            System.out.println("User role: " + GlobalVariable.getRole());
+            System.out.println("User password: " + GlobalVariable.getUser().getPassword());
 
 
         }

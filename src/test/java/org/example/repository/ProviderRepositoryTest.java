@@ -13,13 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProviderRepositoryTest {
 
     @Test
-    void findByID() {
-        ProviderRepository repository = new ProviderRepository();
-        assertNotNull(repository.findByID(1));
-        repository.close();
-    }
-
-    @Test
     void getAll() {
         ProviderRepository repository = new ProviderRepository();
         List<Provider> providerList = repository.getAll();

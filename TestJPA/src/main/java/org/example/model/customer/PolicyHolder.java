@@ -20,6 +20,7 @@ public class PolicyHolder extends Beneficiary {
     public PolicyHolder(PolicyHolderBuilder builder) {
         super(builder);
         this.dependantSet = new HashSet<>();
+        this.policyOwner = builder.policyOwner;
     }
 
     public PolicyHolder() {
@@ -55,7 +56,11 @@ public class PolicyHolder extends Beneficiary {
     }
 
     public static class PolicyHolderBuilder extends GenericBeneficaryBuilder<PolicyHolderBuilder> {
-
+        protected PolicyOwner policyOwner;
+        public PolicyHolderBuilder policyOwner(PolicyOwner policyOwner) {
+            this.policyOwner = policyOwner;
+            return self();
+        }
         @Override
         public PolicyHolder build() {
             return new PolicyHolder(this);

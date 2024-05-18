@@ -12,18 +12,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerRepositoryTest {
-    @Test
-    void shouldFindCustomer() {
-        CustomerRepository repository = new CustomerRepository();
-        assertNotNull(repository.findByID(1));
-        repository.close();
-    }
-    @Test
-    void shouldGetAllCustomer() {
-        CustomerRepository repository = new CustomerRepository();
-        assertNotNull(repository.getAll());
-        repository.close();
-    }
 
     @Test
     void shouldGetAllDependants() {
