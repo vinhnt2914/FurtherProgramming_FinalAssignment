@@ -176,7 +176,10 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
             return false;
         }
 
-        return true;
+        if (!validator.validateClaimId(idField)) {
+            new ErrorAlert("Claim ID must follow the format 'f-xxxxxxxxxx'.");
+        }
+        return false;
     }
 
 

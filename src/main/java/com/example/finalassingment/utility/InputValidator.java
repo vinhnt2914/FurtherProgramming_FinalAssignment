@@ -9,15 +9,12 @@ public class InputValidator {
     public InputValidator() {
     }
 
-    public boolean isNull(Object o) {
-        return o == null;
-    }
 
     public boolean isNull(Object... objects) {
         for (Object o : objects) {
-            if (o == null) return false;
+            if (o == null) return true;
         }
-        return true;
+        return false;
     }
 
     public boolean isEmpty(TextField field) {
@@ -40,7 +37,6 @@ public class InputValidator {
         }
     }
 
-
     public boolean validateEmail(TextField field) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(emailRegex);
@@ -49,22 +45,16 @@ public class InputValidator {
 
     public boolean validatePhoneNumber(TextField field) {
         String regex = "\\d{10}";
-
         return field.getText().matches(regex);
     }
 
-
     public boolean validateCardNumber(TextField field) {
         String regex = "\\d{10}";
-
         return field.getText().matches(regex);
     }
 
     public boolean validateClaimId(TextField field) {
         String regex = "f-\\d{10}";
-
         return field.getText().matches(regex);
     }
-
-
 }

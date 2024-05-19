@@ -1,9 +1,12 @@
 package com.example.finalassingment.app.controllers;
 
+import com.example.finalassingment.app.components.alert.ErrorAlert;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
 import com.example.finalassingment.app.components.buttonSet.ManagerButtonSet;
@@ -59,23 +62,34 @@ public class ProviderAdminController implements Initializable, RefreshableContro
         SurveyorTable tableView = (SurveyorTable) tableViewContainer.getChildren().get(0);
         InsuranceSurveyor selectedSurveyor = tableView.getSelectionModel().getSelectedItem();
         if (selectedSurveyor != null) {
-            ProviderRepository repository = new ProviderRepository();
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText("Delete Surveyor");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected surveyor?");
 
-            repository.removeByID(selectedSurveyor.getId());
-            tableView.getItems().remove(selectedSurveyor);
-            System.out.println("Removed Surveyor: " + selectedSurveyor.getFullName());
-            repository.close();
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    ProviderRepository repository = new ProviderRepository();
+                    repository.removeByID(selectedSurveyor.getId());
+                    tableView.getItems().remove(selectedSurveyor);
+                    System.out.println("Removed Surveyor: " + selectedSurveyor.getFullName());
+                    repository.close();
+                }
+            });
         } else {
-            System.out.println("No Surveyor selected");
+            new ErrorAlert("No Surveyor selected");
         }
     }
 
     private void updateSurveyor() {
         SurveyorTable surveyorTable = (SurveyorTable) tableViewContainer.getChildren().get(0);
         InsuranceSurveyor surveyor = surveyorTable.getSelectionModel().getSelectedItem();
-        new UpdateInfoForm(surveyor, this);
+        if (surveyor != null) {
+            new UpdateInfoForm(surveyor, this);
+        } else {
+            new ErrorAlert("No Surveyor selected");
+        }
     }
-
     private void addSurveyor() {
         new AddSurveyorForm(this);
     }
@@ -92,23 +106,37 @@ public class ProviderAdminController implements Initializable, RefreshableContro
         ManagerTable tableView = (ManagerTable) tableViewContainer.getChildren().get(0);
         InsuranceManager selectedManager = tableView.getSelectionModel().getSelectedItem();
         if (selectedManager != null) {
-            ProviderRepository repository = new ProviderRepository();
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText("Delete Manager");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected manager?");
 
-            repository.removeByID(selectedManager.getId());
-            tableView.getItems().remove(selectedManager);
-            System.out.println("Removed Manager: " + selectedManager.getFullName());
-            repository.close();
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    ProviderRepository repository = new ProviderRepository();
+                    repository.removeByID(selectedManager.getId());
+                    tableView.getItems().remove(selectedManager);
+                    System.out.println("Removed Manager: " + selectedManager.getFullName());
+                    repository.close();
+                }
+            });
         } else {
-            System.out.println("No Manager selected");
+            new ErrorAlert("No Manager selected");
         }
     }
+
 
     private void updateManager() {
         ManagerTable managerTable = (ManagerTable) tableViewContainer.getChildren().get(0);
         InsuranceManager manager = managerTable.getSelectionModel().getSelectedItem();
-        System.out.println("SELECTED: " + manager);
-        new UpdateInfoForm(manager,this);
+        if (manager != null) {
+            System.out.println("SELECTED: " + manager);
+            new UpdateInfoForm(manager, this);
+        } else {
+            new ErrorAlert("No Manager selected");
+        }
     }
+
 
     private void addManager() {
         new AddManagerForm(this);

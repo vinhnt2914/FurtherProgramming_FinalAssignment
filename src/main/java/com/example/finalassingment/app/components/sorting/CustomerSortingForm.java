@@ -31,6 +31,9 @@ public class CustomerSortingForm<T extends Customer> extends VBox {
     private TextField fullNameField;
     @FXML
     private Button sortButton;
+    @FXML
+    private Button cancelButton;
+
     private GenericCustomerTable<T> customerTable;
     private Stage stage;
     public CustomerSortingForm(GenericCustomerTable<T> customerTable) {
@@ -56,6 +59,7 @@ public class CustomerSortingForm<T extends Customer> extends VBox {
 
     private void setUpSortingForm() {
         setUpComboBoxes();
+        this.cancelButton.setOnAction(this::handleCancel);
         this.sortButton.setOnAction(this::sort);
     }
 
@@ -126,7 +130,9 @@ public class CustomerSortingForm<T extends Customer> extends VBox {
         customerTable.setItems(sortedData);
         close();
     }
-
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
+    }
     private void close() {
         stage.close();
     }

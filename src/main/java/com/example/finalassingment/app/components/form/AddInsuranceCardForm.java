@@ -66,6 +66,7 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
     private void setUpForm() {
         this.selectCardHolderButton.setOnAction(this::openSelectCardHolder);
         this.submitButton.setOnAction(this::addInsuranceCard);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
     private void openSelectCardHolder(ActionEvent actionEvent) {
@@ -130,5 +131,9 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
             return;
         }
         this.policyOwnerLabel.setText(policyOwner.getId() + " - " + policyOwner.getFullName());
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
     }
 }

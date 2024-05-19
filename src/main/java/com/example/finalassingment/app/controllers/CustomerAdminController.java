@@ -131,7 +131,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         if (selectedPolicyHolder != null) {
             new UpdateInfoForm(selectedPolicyHolder, this);
         } else {
-            new ErrorAlert("Please select a policy holder");
+            new ErrorAlert("No Policy Holder selected");
         }
     }
 
@@ -154,11 +154,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
                 }
             });
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Policy Holder Selected");
-            alert.setContentText("Please select a policy holder in the table.");
-            alert.showAndWait();
+            new ErrorAlert("No Policy Holder selected");
         }
     }
 
@@ -170,14 +166,22 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
-            CustomerRepository repository = new CustomerRepository();
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText("Delete Dependant");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected dependant?");
 
-            repository.removeByID(selectedDependant.getId());
-            tableView.getItems().remove(selectedDependant);
-            System.out.println("Removed Dependant: " + selectedDependant.getFullName());
-            repository.close();
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    CustomerRepository repository = new CustomerRepository();
+                    repository.removeByID(selectedDependant.getId());
+                    tableView.getItems().remove(selectedDependant);
+                    System.out.println("Removed Dependant: " + selectedDependant.getFullName());
+                    repository.close();
+                }
+            });
         } else {
-            System.out.println("No Dependant selected");
+            new ErrorAlert("No Dependant selected");
         }
     }
 
@@ -186,39 +190,33 @@ public class CustomerAdminController implements Initializable, RefreshableContro
         Dependant selectedDependant = tableView.getSelectionModel().getSelectedItem();
         if (selectedDependant != null) {
             new UpdateInfoForm(selectedDependant, this);
-//            }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Dependant Selected");
-            alert.setContentText("Please select a dependant in the table.");
-            alert.showAndWait();
+            new ErrorAlert("No Dependant selected");
         }
     }
 
-    private void handleDeletePolicyOwner() {
-        PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
-        PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
-        if (selectedPolicyOwner != null) {
-            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationAlert.setTitle("Confirm Deletion");
-            confirmationAlert.setHeaderText("Delete Policy Owner");
-            confirmationAlert.setContentText("Are you sure you want to delete the selected policy owner?");
+        private void handleDeletePolicyOwner() {
+            PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
+            PolicyOwner selectedPolicyOwner = tableView.getSelectionModel().getSelectedItem();
+            if (selectedPolicyOwner != null) {
+                Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmationAlert.setTitle("Confirm Deletion");
+                confirmationAlert.setHeaderText("Delete Policy Owner");
+                confirmationAlert.setContentText("Are you sure you want to delete the selected policy owner?");
 
-            confirmationAlert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    CustomerRepository repository = new CustomerRepository();
-                    repository.removeByID(selectedPolicyOwner.getId());
-//                    tableView.getItems().remove(selectedPolicyOwner);
-//                    System.out.println("Deleted Policy Owner: " + selectedPolicyOwner.getFullName());
-                    repository.close();
-                    refresh();
-                }
-            });
-        } else {
-            new ErrorAlert("Please select a dependant");
+                confirmationAlert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        CustomerRepository repository = new CustomerRepository();
+                        repository.removeByID(selectedPolicyOwner.getId());
+                        repository.close();
+                        refresh();
+                    }
+                });
+            } else {
+                new ErrorAlert("Please select a policy owner");
+                System.out.println("No Policy Owner selected");
+            }
         }
-    }
 
     private void handleEditPolicyOwner() {
         PolicyOwnerTable tableView = (PolicyOwnerTable) tableViewContainer.getChildren().get(0);
@@ -228,12 +226,7 @@ public class CustomerAdminController implements Initializable, RefreshableContro
 
             new UpdateInfoForm(selectedPolicyOwner, this);
         } else {
-
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Policy Owner Selected");
-            alert.setContentText("Please select a policy owner in the table.");
-            alert.showAndWait();
+            System.out.println("No Policy Owner selected");
         }
     }
 

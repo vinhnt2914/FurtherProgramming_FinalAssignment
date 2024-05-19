@@ -59,6 +59,7 @@ public class UpdateInsuranceCardForm extends VBox implements SelectableForm{
     }
 
     private void setUpForm() {
+        this.cancelButton.setOnAction(this::handleCancel);
         expireDatePicker.setValue(selectedCard.getExpireDate());
         cardHolderLabel.setText(cardHolder.getId() + " - " + cardHolder.getFullName());
 
@@ -106,5 +107,8 @@ public class UpdateInsuranceCardForm extends VBox implements SelectableForm{
             return;
         }
         this.policyOwnerLabel.setText(policyOwner.getId() + " - " + policyOwner.getFullName());
+    }
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
     }
 }

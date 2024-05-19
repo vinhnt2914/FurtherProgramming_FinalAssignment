@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.controllers;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.app.components.table.ClaimTable;
 import com.example.finalassingment.app.components.table.CustomerTable;
 import com.example.finalassingment.app.components.table.ProposalTable;
@@ -60,6 +61,7 @@ public class InsuranceManagerController implements Initializable {
         ProposalTable tableView = checkIfProposalTableView();
         if (tableView != null) {
             tableView.rejectProposal();
+            new SuccessAlert("Rejected");
         } else {
             new ErrorAlert("This is not proposal table");
         }
@@ -69,6 +71,7 @@ public class InsuranceManagerController implements Initializable {
         ProposalTable tableView = checkIfProposalTableView();
         if (tableView != null) {
             tableView.approveProposal();
+            new SuccessAlert("Approved");
         } else {
             new ErrorAlert("This is not proposal table");
         }
