@@ -3,4 +3,6 @@
     -fx-background-radius: 5;
     -fx-border-radius: 5;
     -fx-border-width: 3;
+    -fx-min-height: 600;
+    -fx-min-width: 1000;
 }

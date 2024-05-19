@@ -13,7 +13,7 @@
     <top>
         <BorderPane prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
             <right>
-                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt;  Customer" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt;  Admin" textAlignment="CENTER" BorderPane.alignment="CENTER">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -23,7 +23,7 @@
                 </Text>
             </right>
             <left>
-                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" textAlignment="CENTER" wrappingWidth="137.515625" BorderPane.alignment="CENTER">
+                <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Provider" textAlignment="CENTER" wrappingWidth="115.9156494140625" BorderPane.alignment="CENTER">
                     <font>
                         <Font name="System Bold" size="25.0" />
                     </font>
