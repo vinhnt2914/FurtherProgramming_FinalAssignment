@@ -1,6 +1,5 @@
 package org.example.app.components.form;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,25 +12,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.components.table.SelectManagerTable;
-import org.example.app.components.table.SelectPolicyOwnerTable;
 import org.example.app.controllers.RefreshableController;
-import org.example.global.CustomerQueryType;
-import org.example.global.GlobalVariable;
 import org.example.global.ProviderQueryType;
-import org.example.global.Role;
-import org.example.model.customer.PolicyHolder;
-import org.example.model.customer.PolicyOwner;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
-import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.ProviderRepository;
-import org.example.service.CustomerService;
+import org.example.repository.impl.UserRepository;
 import org.example.service.ProviderService;
+import org.example.utility.PasswordUtil;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-public class AddSurveyorForm extends BorderPane{
+public class AddSurveyorForm extends BorderPane {
     @FXML
     private TextField nameField;
     @FXML
@@ -89,32 +82,46 @@ public class AddSurveyorForm extends BorderPane{
 
     void addSurveyor(ActionEvent actionEvent) {
         if (validateInput()) {
-            ProviderRepository repository = new ProviderRepository();
+            UserRepository userRepository = new UserRepository();
+            ProviderRepository providerRepository = new ProviderRepository();
             ProviderService service = new ProviderService();
 
-            InsuranceSurveyor surveyor = service.makeSurveyor()
-                    .fullName(nameField.getText())
-                    .username(usernameField.getText())
-                    .address(addressField.getText())
-                    .email(emailField.getText())
-                    .phone(phoneField.getText())
-                    .password(passwordField.getText())
-                    .manager(manager)
-                    .build();
+            try {
+                String username = usernameField.getText();
+                String password = passwordField.getText();
+                String hashedPassword = PasswordUtil.encrypt(password);
 
-            repository.add(surveyor);
-            repository.close();
+                if (userRepository.findUser(username, hashedPassword) != null) {
+                    new ErrorAlert("This username is already taken!");
+                    return;
+                }
 
-            // Dont put refresh after close(), or controller will be null
-            controller.refresh();
-            close();
+                InsuranceSurveyor surveyor = service.makeSurveyor()
+                        .fullName(nameField.getText())
+                        .username(username)
+                        .address(addressField.getText())
+                        .email(emailField.getText())
+                        .phone(phoneField.getText())
+                        .password(password)
+                        .manager(manager)
+                        .build();
+
+                providerRepository.add(surveyor);
+                providerRepository.close();
+                controller.refresh(); // Refresh the table after adding
+                close();
+            } catch (NumberFormatException e) {
+                new ErrorAlert("Please enter valid input values.");
+            } finally {
+                userRepository.close();
+            }
         }
     }
 
     private boolean validateInput() {
         if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
                 isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField) ||
-                isPolicyOwnerNull()) {
+                isManagerNull()) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }
@@ -131,20 +138,20 @@ public class AddSurveyorForm extends BorderPane{
         return field.getText() == null || field.getText().trim().isEmpty();
     }
 
-
     private boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
 
-    private boolean isPolicyOwnerNull() {
+    private boolean isManagerNull() {
         return manager == null;
     }
 
     private void handleCancel(ActionEvent actionEvent) {
         close();
     }
+
     private void close() {
         stage.close();
     }

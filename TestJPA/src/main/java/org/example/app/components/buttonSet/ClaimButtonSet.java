@@ -1,4 +1,4 @@
-package org.example.app.components.buttonSet;
+package org.example.app.components.buttonset;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
