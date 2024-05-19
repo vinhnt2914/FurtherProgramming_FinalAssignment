@@ -1,6 +1,7 @@
 package com.example.finalassingment.app.components.form;
 
 import com.example.finalassingment.app.components.alert.ErrorAlert;
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,6 +65,7 @@ public class RequestForm extends VBox {
 
             try {
                 repository.add(request);
+                new SuccessAlert("Claim requested!");
             } catch (ConstraintViolationException e) {
                 new ErrorAlert("There's already a request with this claim!");
             } finally {

@@ -163,7 +163,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
     }
 
     private void deleteDependant() {
-        CustomerRepository repository = new CustomerRepository();
+        UserRepository repository = new UserRepository();
         DependantTable tableView = (DependantTable) tableViewContainer.getChildren().get(0);
         Dependant dependant = tableView.getSelectionModel().getSelectedItem();
         if (dependant != null) {

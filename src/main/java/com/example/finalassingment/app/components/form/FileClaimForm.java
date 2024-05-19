@@ -54,7 +54,6 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     private ComboBox<String> statusComboBox;
     @FXML
     private TextField bankingInfoField;
-    private ClaimDirector claimDirector;
     private Beneficiary insuredPerson;
     private RefreshableController controller;
     private Stage stage;
@@ -107,14 +106,17 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     }
 
     private void fileClaim(ActionEvent actionEvent) {
-        if (validateInput()) {
+        ClaimRepository repository = new ClaimRepository();
+        ClaimDirector director = new ClaimDirector();
+        try {
             String id = idField.getText();
             LocalDate claimDate = claimDatePicker.getValue();
             LocalDate examDate = examDatePicker.getValue();
             double claimAmount = Double.parseDouble(claimAmountField.getText());
             ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
             String bankingInfo = bankingInfoField.getText();
-            Claim claim = claimDirector.makeClaim()
+
+            Claim claim = director.makeClaim()
                     .id(id)
                     .insuredPerson(insuredPerson)
                     .claimDate(claimDate)
@@ -123,16 +125,14 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
                     .status(status)
                     .bankingInfo(bankingInfo)
                     .build();
-            try {
-                ClaimRepository repository = new ClaimRepository();
-                repository.add(claim);
-                repository.close();
-                close();
-                new SuccessAlert("Claim filed successfully");
-                controller.refresh();
-            } catch (RollbackException e1) {
-                new ErrorAlert("There's already a claim with this id!");
-            }
+
+            repository.add(claim);
+            repository.close();
+            close();
+            new SuccessAlert("Claim filed successfully");
+            controller.refresh();
+        } catch (RollbackException e1) {
+            new ErrorAlert("There's already a claim with this id!");
         }
     }
 
@@ -157,11 +157,6 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     private boolean validateInput() {
         InputValidator validator = new InputValidator();
         if (validator.isEmpty(idField, claimAmountField, bankingInfoField)) {
-            new ErrorAlert("All fields must be filled out.");
-            return false;
-        }
-
-        if (validator.isNull(claimDatePicker.getValue(), examDatePicker.getValue(), statusComboBox.getValue())) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }

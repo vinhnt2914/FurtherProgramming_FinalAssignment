@@ -84,7 +84,6 @@ public class UpdateClaimForm extends BorderPane implements SelectableForm{
     }
 
     private void updateClaim(ActionEvent actionEvent) {
-        if (validateInput()) {
             ClaimRepository repository = new ClaimRepository();
 
             if (insuredPerson == null) {
@@ -99,7 +98,6 @@ public class UpdateClaimForm extends BorderPane implements SelectableForm{
 
             repository.update(selectedClaim);
             repository.close();
-        }
 
         close();
     }
@@ -110,11 +108,6 @@ public class UpdateClaimForm extends BorderPane implements SelectableForm{
     private boolean validateInput() {
         InputValidator validator = new InputValidator();
         if (validator.isEmpty(claimAmountField, bankingInfoField)) {
-            new ErrorAlert("All fields must be filled out.");
-            return false;
-        }
-
-        if (validator.isNull(claimDatePicker.getValue(), examDatePicker.getValue())) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }
