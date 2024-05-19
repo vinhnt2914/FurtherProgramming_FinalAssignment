@@ -80,6 +80,12 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <options>
+                                <option>--module-path</option>
+                                <option>"D:\openjfx-21.0.3_windows-x64_bin-sdk\javafx-sdk-21.0.3\lib"</option>
+                                <option>--add-modules</option>
+                                <option>javafx.controls,javafx.fxml</option>
+                            </options>
                         </configuration>
                     </execution>
                 </executions>
