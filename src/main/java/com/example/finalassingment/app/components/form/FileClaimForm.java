@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import jakarta.persistence.RollbackException;
 import javafx.collections.FXCollections;
@@ -131,8 +132,9 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
             try {
                 claimRepository.add(claim);
                 claimRepository.close();
-                controller.refresh();
                 close();
+                new SuccessAlert("Claim filed successfully");
+                controller.refresh();
             } catch (RollbackException e1) {
                 new ErrorAlert("There's already a claim with this id!");
             }

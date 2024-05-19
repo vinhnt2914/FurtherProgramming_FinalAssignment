@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +60,7 @@ public class UpdateInfoForm extends BorderPane {
     }
 
     private void updateInfo(ActionEvent actionEvent) {
-        if (isInputValid()) {
+        if (validateInput()) {
             UserRepository repository = new UserRepository();
             user.setAddress(addressField.getText());
             user.setEmail(emailField.getText());
@@ -82,35 +83,22 @@ public class UpdateInfoForm extends BorderPane {
         stage.close();
     }
 
-
-    private boolean isInputValid() {
-        String errorMessage = "";
-
-        if (isFieldEmpty(addressField)) {
-            errorMessage += "No valid address!\n";
-        }
-        if (isFieldEmpty(emailField) || !isValidEmail(emailField.getText())) {
-            errorMessage += "No valid email!\n";
-        }
-        if (isFieldEmpty(phoneField)) {
-            errorMessage += "No valid phone!\n";
-        }
-
-        if (errorMessage.isEmpty()) {
-            return true;
-        } else {
-            new ErrorAlert(errorMessage);
+    private boolean validateInput() {
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(addressField, emailField, phoneField)) {
+            new ErrorAlert("All fields must be filled out.");
             return false;
         }
-    }
 
-    private boolean isFieldEmpty(TextField field) {
-        return field.getText() == null || field.getText().trim().isEmpty();
-    }
+        if (!validator.validateEmail(emailField)) {
+            new ErrorAlert("Your email is invalid");
+            return false;
+        }
 
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
+        if (!validator.validatePhoneNumber(phoneField)) {
+            new ErrorAlert("Your phone number is invalid");
+            return false;
+        }
+        return true;
     }
 }

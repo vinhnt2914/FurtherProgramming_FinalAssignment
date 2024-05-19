@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import com.example.finalassingment.app.components.alert.ErrorAlert;
@@ -49,6 +50,7 @@ public class AddManagerForm extends GenericAddForm {
                 repository.add(manager);
                 repository.close();
                 close();
+                new SuccessAlert("Insurance manager added successfully!");
                 controller.refresh(); // Refresh the table after adding
             } catch (NumberFormatException e) {
                 new ErrorAlert("Please enter valid input values.");

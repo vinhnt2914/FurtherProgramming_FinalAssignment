@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -116,9 +117,10 @@ public class AddPolicyHolderForm extends BorderPane {
 
                 policyHolder.setPolicyOwner(policyOwner);
                 repository.add(policyHolder);
-                controller.refresh();
                 repository.close();
                 close();
+                new SuccessAlert("Policy Holder added successfully!");
+                controller.refresh();
             } catch (NumberFormatException e) {
                 new ErrorAlert("Please enter valid input values.");
             } finally {

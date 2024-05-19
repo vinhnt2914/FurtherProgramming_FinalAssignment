@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -104,6 +105,7 @@ public class AddDependantForm extends BorderPane {
                     repository.add(dependant);
                     repository.close();
                     close();
+                    new SuccessAlert("Dependant added successfully!");
                     controller.refresh(); // Refresh the table after adding
                 } catch (NumberFormatException e) {
                     new ErrorAlert("Please enter valid input values.");
@@ -132,6 +134,7 @@ public class AddDependantForm extends BorderPane {
         }
         if (!validator.validatePhoneNumber(phoneField)) {
             new ErrorAlert("Not a valid phone number");
+            return false;
         }
         return true;
     }

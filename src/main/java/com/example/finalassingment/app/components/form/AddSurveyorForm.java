@@ -1,6 +1,7 @@
 package com.example.finalassingment.app.components.form;
 
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -110,8 +111,9 @@ public class AddSurveyorForm extends BorderPane {
 
                 providerRepository.add(surveyor);
                 providerRepository.close();
-                controller.refresh(); // Refresh the table after adding
                 close();
+                new SuccessAlert("Policy Owner added successfully!");
+                controller.refresh(); // Refresh the table after adding
             } catch (NumberFormatException e) {
                 new ErrorAlert("Please enter valid input values.");
             } finally {

@@ -43,8 +43,6 @@ public abstract class GenericAddForm extends BorderPane {
 
         setUpForm();
         modifyForm();
-
-        System.out.println("ADD FORM, CONTROLLER IS: " + controller);
     }
     private void setUpForm() {
         this.saveButton.setOnAction(this::add);

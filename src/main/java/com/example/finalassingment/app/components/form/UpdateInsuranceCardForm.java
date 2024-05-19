@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.ErrorAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,12 +74,14 @@ public class UpdateInsuranceCardForm extends VBox implements SelectableForm{
     }
 
     private void updateInsuranceCard(ActionEvent actionEvent) {
+        if (expireDatePicker.getValue() == null) {
+            new ErrorAlert("Please select an expire date");
+            return;
+        }
+
         InsuranceCardRepository repository = new InsuranceCardRepository();
-
         selectedCard.setExpireDate(expireDatePicker.getValue());
-
         repository.update(selectedCard);
-
         repository.close();
         controller.refresh();
         new SuccessAlert("Insurance Card Updated!");

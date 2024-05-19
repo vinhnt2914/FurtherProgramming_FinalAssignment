@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -93,6 +94,7 @@ public class AddPolicyOwnerForm extends BorderPane {
                 repository.add(policyOwner);
                 repository.close();
                 close();
+                new SuccessAlert("Policy Owner added successfully!");
                 controller.refresh(); // Refresh the table after adding
             } catch (NumberFormatException e) {
                 new ErrorAlert("Fee must be a valid number");

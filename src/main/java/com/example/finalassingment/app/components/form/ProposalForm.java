@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.SuccessAlert;
+import com.example.finalassingment.app.components.table.ProposalTable;
 import com.example.finalassingment.repository.impl.ClaimRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,12 +80,11 @@ public class ProposalForm extends VBox {
             Proposal proposal = new Proposal(surveyor, claim, manager, message);
             try {
                 proposalRepository.add(proposal);
+                proposalRepository.close();
+                new SuccessAlert("Proposal filed successfully");
             } catch (ConstraintViolationException e) {
                 new ErrorAlert("There's already a proposal with this claim!");
-            } finally {
-                proposalRepository.close();
             }
-
         }
     }
 

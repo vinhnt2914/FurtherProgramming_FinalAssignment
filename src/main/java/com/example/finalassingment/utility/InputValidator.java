@@ -26,9 +26,9 @@ public class InputValidator {
 
     public boolean isEmpty(TextField... fields) {
         for (TextField f : fields) {
-            if (f.getText() == null || f.getText().trim().isEmpty()) return false;
+            if (f.getText() == null || f.getText().trim().isEmpty()) return true;
         }
-        return true;
+        return false;
     }
 
     public boolean isDouble(TextField field) {
