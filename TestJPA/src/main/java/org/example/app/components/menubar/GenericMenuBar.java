@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import org.example.app.App;
 
 import java.io.IOException;
+import java.net.URL;
 
 public abstract class GenericMenuBar extends HBox {
     @FXML
@@ -28,16 +29,23 @@ public abstract class GenericMenuBar extends HBox {
     protected Hyperlink requestMenu;
     @FXML
     protected Hyperlink proposalMenu;
+    @FXML
+    protected Hyperlink logoutMenu;
 
     public GenericMenuBar() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/menuBar.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        URL url = getClass().getResource("/views/components/menuBar.fxml");
+        if (url == null) {
+            throw new IllegalStateException("Cannot find FXML file at /views/components/menuBar.fxml");
+        }
+        fxmlLoader.setLocation(url);
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
-            throw new RuntimeException(exception);
+            throw new RuntimeException("Failed to load menu bar FXML", exception);
         }
 
         setUpMenuBar();
@@ -55,6 +63,7 @@ public abstract class GenericMenuBar extends HBox {
         providerMenu.setOnAction(this::openProvider);
         requestMenu.setOnAction(this::openRequest);
         proposalMenu.setOnAction(this::openProposal);
+        logoutMenu.setOnAction(this::logout);
         System.out.println("Menubar set up complete");
     }
 
@@ -94,5 +103,8 @@ public abstract class GenericMenuBar extends HBox {
 
     public HBox getMenuBar() {
         return menuBar;
+    }
+    private void logout(ActionEvent actionEvent) {
+        App.getInstance().logout();
     }
 }

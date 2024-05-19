@@ -92,13 +92,26 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<PolicyHolder> getAllPolicyHolders() {
-        TypedQuery<PolicyHolder> query = em.createQuery("FROM PolicyHolder ph join fetch ph.policyOwner join fetch ph.insuranceCard ic join fetch ic.policyOwner", PolicyHolder.class);
+        TypedQuery<PolicyHolder> query = em.createQuery(
+                "FROM PolicyHolder ph " +
+                        "join fetch ph.policyOwner " +
+                        "join fetch ph.insuranceCard ic " +
+                        "join fetch ic.policyOwner",
+                PolicyHolder.class);
         return query.getResultList();
     }
 
     @Override
     public List<PolicyHolder> getAllPolicyHoldersOfPolicyOwner(PolicyOwner policyOwner) {
-        TypedQuery<PolicyHolder> query = em.createQuery("from PolicyHolder h where h.policyOwner = :policyOwner", PolicyHolder.class);
+        TypedQuery<PolicyHolder> query = em.createQuery(
+                "from PolicyHolder h " +
+                        "join fetch h.insuranceCard " +
+                        "join fetch h.policyOwner " +
+                        "join fetch h.dependantSet ds " +
+                        "join fetch ds.insuranceCard ic " +
+                        "join fetch ic.policyOwner " +
+                        "where h.policyOwner = :policyOwner",
+                PolicyHolder.class);
         query.setParameter("policyOwner", policyOwner);
         return query.getResultList();
     }

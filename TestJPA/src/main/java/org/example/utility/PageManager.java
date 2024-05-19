@@ -72,6 +72,9 @@ public class PageManager {
         scenes.put("proposal", "proposalAdmin.fxml");
         scenes.put("claim", "claimAdmin.fxml");
         scenes.put("insurancecard", "insuranceCardAdmin.fxml");
+    }
 
+    public static void setInstance(PageManager instance) {
+        PageManager.instance = instance;
     }
 }
