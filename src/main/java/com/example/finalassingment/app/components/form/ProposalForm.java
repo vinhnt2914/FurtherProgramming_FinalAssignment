@@ -89,7 +89,7 @@ public class ProposalForm extends VBox {
 
 
     private boolean validateInput() {
-        if (isFieldEmpty(messageArea)) {
+        if (isEmpty(messageArea)) {
             new ErrorAlert("Please fill out all fields");
             return false;
         }
@@ -97,7 +97,7 @@ public class ProposalForm extends VBox {
         return true;
     }
 
-    private boolean isFieldEmpty(TextInputControl field) {
+    private boolean isEmpty(TextArea field) {
         return field.getText() == null || field.getText().trim().isEmpty();
     }
 

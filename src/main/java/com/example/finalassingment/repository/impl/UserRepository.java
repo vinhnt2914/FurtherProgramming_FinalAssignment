@@ -15,6 +15,7 @@ public class UserRepository extends EntityRepository implements IUserRepository 
         em.persist(user);
         em.getTransaction().commit();
     }
+
     public List<User> getAll() {
         TypedQuery<User> query = em.createQuery("from User ", User.class);
         return query.getResultList();

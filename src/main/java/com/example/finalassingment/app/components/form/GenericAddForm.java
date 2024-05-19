@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import com.example.finalassingment.app.components.alert.ErrorAlert;
 import com.example.finalassingment.app.controllers.RefreshableController;
 
+import javax.xml.validation.Validator;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -59,27 +61,22 @@ public abstract class GenericAddForm extends BorderPane {
     }
 
     protected boolean validateInput() {
-        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
-                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(usernameField, passwordField, nameField, addressField, phoneField, emailField)) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }
 
-        if (!isValidEmail(emailField.getText())) {
+        if (!validator.validateEmail(emailField)) {
             new ErrorAlert("Please enter a valid email address.");
             return false;
         }
 
+        if (!validator.validatePhoneNumber(phoneField)) {
+            new ErrorAlert("Your phone number is not valid");
+            return false;
+        }
+
         return true;
-    }
-
-    private boolean isFieldEmpty(TextField field) {
-        return field.getText() == null || field.getText().trim().isEmpty();
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
     }
 }

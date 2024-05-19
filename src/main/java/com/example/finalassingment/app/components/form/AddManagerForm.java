@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import com.example.finalassingment.app.components.alert.ErrorAlert;
 import com.example.finalassingment.app.controllers.RefreshableController;
@@ -56,4 +57,6 @@ public class AddManagerForm extends GenericAddForm {
             }
         }
     }
+
+
 }

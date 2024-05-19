@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,7 +84,7 @@ public class UpdateClaimForm extends BorderPane implements SelectableForm{
     }
 
     private void updateClaim(ActionEvent actionEvent) {
-        if (isInputValid()) {
+        if (validateInput()) {
             ClaimRepository repository = new ClaimRepository();
 
             if (insuredPerson == null) {
@@ -106,31 +107,24 @@ public class UpdateClaimForm extends BorderPane implements SelectableForm{
     private void close() {
     }
 
-    private boolean isInputValid() {
-        String errorMessage = "";
-
-        if (insuredPersonLabel.getText().isEmpty()) {
-            errorMessage += "Invalid insured person!\n";
-        }
-        if (claimDatePicker.getValue() == null) {
-            errorMessage += "Invalid claim date!\n";
-        }
-        if (examDatePicker.getValue() == null) {
-            errorMessage += "Invalid exam date!\n";
-        }
-        if (claimAmountField.getText().isEmpty()) {
-            errorMessage += "Invalid claim amount!\n";
-        }
-        if (bankingInfoField.getText().isEmpty()) {
-            errorMessage += "Invalid banking info!\n";
-        }
-
-        if (errorMessage.isEmpty()) {
-            return true;
-        } else {
-            new ErrorAlert(errorMessage);
+    private boolean validateInput() {
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(claimAmountField, bankingInfoField)) {
+            new ErrorAlert("All fields must be filled out.");
             return false;
         }
+
+        if (validator.isNull(claimDatePicker.getValue(), examDatePicker.getValue())) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
+        }
+
+        if (!validator.isDouble(claimAmountField)) {
+            new ErrorAlert("Please enter a valid claim amount!");
+            return false;
+        }
+
+        return true;
     }
 
     @Override

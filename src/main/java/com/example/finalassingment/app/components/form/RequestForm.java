@@ -74,7 +74,7 @@ public class RequestForm extends VBox {
 
     private boolean validateInput() {
         if (isFieldEmpty(messageArea)) {
-            showAlert("Message field must be filled out.");
+            new ErrorAlert("Message field must be filled out.");
             return false;
         }
         return true;
@@ -82,13 +82,5 @@ public class RequestForm extends VBox {
 
     private boolean isFieldEmpty(TextInputControl field) {
         return field.getText() == null || field.getText().trim().isEmpty();
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Validation Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import jakarta.persistence.RollbackException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -157,32 +158,25 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     }
 
     private boolean validateInput() {
-        if (isFieldEmpty(idField) || claimDatePicker.getValue() == null || examDatePicker.getValue() == null ||
-                isFieldEmpty(claimAmountField) || statusComboBox.getValue() == null || isFieldEmpty(bankingInfoField)) {
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(idField, claimAmountField, bankingInfoField)) {
             new ErrorAlert("All fields must be filled out.");
             return false;
         }
 
-        if (!isValidAmount(claimAmountField.getText())) {
-            new ErrorAlert("Please enter a valid claim amount.");
+        if (validator.isNull(claimDatePicker.getValue(), examDatePicker.getValue(), statusComboBox.getValue())) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
+        }
+
+        if (!validator.isDouble(claimAmountField)) {
+            new ErrorAlert("Please enter a valid claim amount!");
             return false;
         }
 
         return true;
     }
 
-    private boolean isFieldEmpty(TextField field) {
-        return field.getText() == null || field.getText().trim().isEmpty();
-    }
-
-    private boolean isValidAmount(String amount) {
-        try {
-            Double.parseDouble(amount);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 
     @Override
     public void setBeneficiary(Beneficiary beneficiary) {

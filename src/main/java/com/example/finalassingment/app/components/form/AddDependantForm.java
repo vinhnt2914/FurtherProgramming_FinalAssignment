@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.utility.InputValidator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -110,7 +111,7 @@ public class AddDependantForm extends BorderPane {
                     repository.close();
                 }
             } else {
-                showAlert("Please select a policy holder.");
+                new ErrorAlert("Please select a policy holder.");
             }
         }
     }
@@ -120,36 +121,19 @@ public class AddDependantForm extends BorderPane {
     }
 
     private boolean validateInput() {
-        if (isFieldEmpty(nameField) || isFieldEmpty(usernameField) || isFieldEmpty(addressField) ||
-                isFieldEmpty(emailField) || isFieldEmpty(phoneField) || isFieldEmpty(passwordField)) {
-            showAlert("All fields must be filled out.");
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(nameField, usernameField, addressField, emailField, phoneField, passwordField)) {
+            new ErrorAlert("All fields must be filled out.");
             return false;
         }
-
-        if (!isValidEmail(emailField.getText())) {
-            showAlert("Please enter a valid email address.");
+        if (!validator.validateEmail(emailField)) {
+            new ErrorAlert("Please enter a valid email address.");
             return false;
         }
-
+        if (!validator.validatePhoneNumber(phoneField)) {
+            new ErrorAlert("Not a valid phone number");
+        }
         return true;
-    }
-
-    private boolean isFieldEmpty(TextField field) {
-        return field.getText() == null || field.getText().trim().isEmpty();
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Validation Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void close() {

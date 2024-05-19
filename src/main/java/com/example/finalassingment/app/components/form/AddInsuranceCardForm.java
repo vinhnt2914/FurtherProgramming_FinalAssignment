@@ -1,6 +1,7 @@
 package com.example.finalassingment.app.components.form;
 
 import com.example.finalassingment.app.components.alert.ErrorAlert;
+import com.example.finalassingment.utility.InputValidator;
 import jakarta.persistence.RollbackException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,25 +76,40 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
     }
 
     private void addInsuranceCard(ActionEvent actionEvent) {
-        InsuranceCardService service = new InsuranceCardService();
-        InsuranceCardRepository repository = new InsuranceCardRepository();
-        InsuranceCard card = service.makeCard()
-                .cardNumber(cardNumberField.getText())
-                .expireDate(expireDatePicker.getValue())
-                .cardHolder(beneficiary)
-                .policyOwner(beneficiary.getPolicyOwner())
-                .build();
+        if (validateInput()) {
+            InsuranceCardService service = new InsuranceCardService();
+            InsuranceCardRepository repository = new InsuranceCardRepository();
+            InsuranceCard card = service.makeCard()
+                    .cardNumber(cardNumberField.getText())
+                    .expireDate(expireDatePicker.getValue())
+                    .cardHolder(beneficiary)
+                    .policyOwner(beneficiary.getPolicyOwner())
+                    .build();
 
-        try {
-            repository.add(card);
-            repository.close();
-            controller.refresh();
-            new SuccessAlert("Insurance card added successfully");
-            close();
-        } catch (RollbackException e) {
-            new ErrorAlert("There's already an insurance card with this number");
+            try {
+                repository.add(card);
+                repository.close();
+                controller.refresh();
+                new SuccessAlert("Insurance card added successfully");
+                close();
+            } catch (RollbackException e) {
+                new ErrorAlert("There's already an insurance card with this number");
+            }
         }
 
+    }
+
+    private boolean validateInput() {
+        InputValidator validator = new InputValidator();
+        if (validator.isEmpty(cardNumberField)) {
+            new ErrorAlert("All fields must be filled out.");
+            return false;
+        }
+        if (!validator.validateCardNumber(cardNumberField)) {
+            new ErrorAlert("Not a valid card number");
+            return false;
+        }
+        return true;
     }
 
     private void close() {
