@@ -1,5 +1,8 @@
 package com.example.finalassingment.app.components.table;
 
+import com.example.finalassingment.global.GlobalVariable;
+import com.example.finalassingment.global.ProposalQueryType;
+import com.example.finalassingment.model.provider.InsuranceManager;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,7 +32,9 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
     private TableColumn<Proposal, Integer> surveyorCol;
     @FXML
     private TableColumn<Proposal, String> messageCol;
-    public ProposalTable() {
+    private ProposalQueryType.QueryType queryType;
+    public ProposalTable(ProposalQueryType.QueryType queryType) {
+        this.queryType = queryType;
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/components/table/proposalTable.fxml"));
         fxmlLoader.setRoot(this);
@@ -42,7 +47,7 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
         }
 
         setUpTableView();
-        populateTableView();
+        populateTableView(queryType);
     }
 
     private void setUpTableView() {
@@ -58,9 +63,15 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
         messageCol.setCellValueFactory(new PropertyValueFactory<>("message"));
     }
 
-    private void populateTableView() {
+    private void populateTableView(ProposalQueryType.QueryType queryType) {
         ProposalRepository repository = new ProposalRepository();
-        List<Proposal> proposalList = repository.getAll();
+        List<Proposal> proposalList = null;
+
+        switch (queryType) {
+            case GET_ALL -> proposalList = repository.getAll();
+            case GET_ALL_TO_MANAGER -> proposalList = repository.getAllToManager((InsuranceManager) GlobalVariable.getUser());
+        }
+
         ObservableList<Proposal> data = FXCollections.observableArrayList(proposalList);
         proposalTableView.setItems(data);
         repository.close();
@@ -96,6 +107,6 @@ public class ProposalTable extends TableView<Proposal> implements RefreshableTab
 
     @Override
     public void refreshTable() {
-        populateTableView();
+        populateTableView(queryType);
     }
 }

@@ -78,7 +78,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
         );
         EntityGraph<PolicyHolder> entityGraph = em.createEntityGraph(PolicyHolder.class);
         entityGraph.addAttributeNodes("insuranceCard", "policyOwner");
-        query.setHint("javax.persistence.fetchgraph", entityGraph);
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
         query.setParameter("policyOwner", policyOwner);
 
         List<PolicyHolder> policyHolderList = query.getResultList();
@@ -114,7 +114,7 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
                 PolicyHolder.class
         );
         query.setParameter("policyOwner", policyOwner);
-        query.setHint("javax.persistence.fetchgraph", entityGraph);
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
 
         return query.getResultList();
     }

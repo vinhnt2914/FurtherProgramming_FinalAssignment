@@ -1,5 +1,6 @@
 package com.example.finalassingment.repository.impl;
 
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.model.customer.Beneficiary;
 import com.example.finalassingment.model.customer.Dependant;
@@ -38,14 +39,13 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
 
     @Override
     public List<Claim> getAll() {
-        TypedQuery<Claim> query = em.createQuery("from Claim c " +
-                "join fetch c.insuredPerson ip " +
-                "join fetch c.proposal p " +
-                "join fetch p.insuranceManager " +
-                "join fetch p.insuranceSurveyor " +
-                "join fetch ip.insuranceCard ic " +
-                "join fetch ic.policyOwner po "
-                , Claim.class);
+        TypedQuery<Claim> query = em.createQuery("from Claim ", Claim.class);
+        EntityGraph<Claim> entityGraph = em.createEntityGraph(Claim.class);
+        entityGraph.addAttributeNodes("insuredPerson", "proposal");
+        entityGraph.addSubgraph("insuredPerson").addAttributeNodes("insuranceCard");
+        entityGraph.addSubgraph("insuredPerson").addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+        entityGraph.addSubgraph("proposal").addAttributeNodes("insuranceManager", "insuranceSurveyor");
+        query.setHint("javax.persistence.fetchgraph", entityGraph);
         return query.getResultList();
     }
 

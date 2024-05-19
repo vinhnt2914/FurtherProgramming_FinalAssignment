@@ -4,6 +4,7 @@ import com.example.finalassingment.app.components.table.ClaimTable;
 import com.example.finalassingment.app.components.table.CustomerTable;
 import com.example.finalassingment.app.components.table.ProposalTable;
 import com.example.finalassingment.app.components.table.SurveyorTable;
+import com.example.finalassingment.global.ProposalQueryType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -99,7 +100,7 @@ public class InsuranceManagerController implements Initializable {
             tableViewContainer.getChildren().setAll(new SurveyorTable(ProviderQueryType.QueryType.GET_ALL_SURVEYOR_OF_MANAGER));
             sortingContainer.getChildren().clear();
         } else {
-            tableViewContainer.getChildren().setAll(new ProposalTable());
+            tableViewContainer.getChildren().setAll(new ProposalTable(ProposalQueryType.QueryType.GET_ALL_TO_MANAGER));
             sortingContainer.getChildren().clear();
         }
     }

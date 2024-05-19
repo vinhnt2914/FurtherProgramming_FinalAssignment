@@ -1,5 +1,6 @@
 package com.example.finalassingment.repository.impl;
 
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.model.customer.Beneficiary;
 import com.example.finalassingment.model.items.Request;
@@ -32,18 +33,20 @@ public class RequestRepository extends EntityRepository implements IRequestRepos
 
     @Override
     public List<Request> getAll() {
-        TypedQuery<Request> query = em.createQuery(
-                "from Request r " +
-                        "join fetch r.insuranceSurveyor s " +
-                        "join fetch r.beneficiary b " +
-                        "join fetch b.insuranceCard ic " +
-                        "join fetch ic.policyOwner " +
-                        "join fetch s.manager " +
-                        "join fetch r.claim c " +
-                        "join fetch c.proposal ",
-                Request.class);
+        TypedQuery<Request> query = em.createQuery("SELECT r FROM Request r", Request.class);
+
+        EntityGraph<Request> entityGraph = em.createEntityGraph(Request.class);
+        entityGraph.addAttributeNodes("insuranceSurveyor", "beneficiary", "claim");
+        entityGraph.addSubgraph("insuranceSurveyor").addAttributeNodes("manager");
+        entityGraph.addSubgraph("beneficiary").addAttributeNodes("insuranceCard");
+        entityGraph.addSubgraph("beneficiary").addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+        entityGraph.addSubgraph("claim").addAttributeNodes("proposal");
+
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
+
 
     @Override
     public List<Request> getAllToBeneficiary(Beneficiary beneficiary) {

@@ -1,5 +1,6 @@
 package com.example.finalassingment.repository.impl;
 
+import com.example.finalassingment.model.provider.InsuranceManager;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.model.items.Proposal;
 import com.example.finalassingment.repository.EntityRepository;
@@ -37,6 +38,13 @@ public class ProposalRepository extends EntityRepository implements IProposalRep
                         "join fetch p.insuranceManager " +
                         "join fetch p.claim ",
                 Proposal.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Proposal> getAllToManager(InsuranceManager manager) {
+        TypedQuery<Proposal> query = em.createQuery("from Proposal p where p.insuranceManager = :manager", Proposal.class);
+        query.setParameter("manager", manager);
         return query.getResultList();
     }
 

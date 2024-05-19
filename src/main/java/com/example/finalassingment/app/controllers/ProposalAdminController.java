@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.controllers;
 
+import com.example.finalassingment.global.ProposalQueryType;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import com.example.finalassingment.app.components.table.ProposalTable;
@@ -16,7 +17,7 @@ public class ProposalAdminController implements Initializable {
     }
 
     private void setUpPage() {
-        ProposalTable proposalTable = new ProposalTable();
+        ProposalTable proposalTable = new ProposalTable(ProposalQueryType.QueryType.GET_ALL);
         this.tableViewContainer.getChildren().add(proposalTable);
     }
 }

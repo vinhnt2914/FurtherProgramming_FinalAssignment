@@ -1,5 +1,6 @@
 package com.example.finalassingment.repository.impl;
 
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
@@ -44,39 +45,45 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
 
     @Override
     public List<InsuranceSurveyor> getAllSurveyor() {
-        TypedQuery<InsuranceSurveyor> query = em.createQuery(
-                "from InsuranceSurveyor s " +
-                        "join fetch s.manager m " +
-                        "join fetch s.proposalSet ps " +
-                        "join fetch ps.claim c1 " +
-                        "join fetch s.requestSet rs " +
-                        "join fetch rs.beneficiary b " +
-                        "join fetch b.insuranceCard ic " +
-                        "join fetch ic.policyOwner",
-                InsuranceSurveyor.class);
+        TypedQuery<InsuranceSurveyor> query = em.createQuery("SELECT s FROM InsuranceSurveyor s", InsuranceSurveyor.class);
+
+        EntityGraph<InsuranceSurveyor> entityGraph = em.createEntityGraph(InsuranceSurveyor.class);
+        entityGraph.addAttributeNodes("manager", "proposalSet", "requestSet");
+        entityGraph.addSubgraph("proposalSet").addAttributeNodes("claim", "insuranceSurveyor");
+        entityGraph.addSubgraph("requestSet").addAttributeNodes("beneficiary");
+        entityGraph.addSubgraph("requestSet").addSubgraph("beneficiary").addAttributeNodes("insuranceCard");
+        entityGraph.addSubgraph("requestSet").addSubgraph("beneficiary").addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
+
 
     @Override
     public List<InsuranceSurveyor> getAllSurveyorOfManager(InsuranceManager manager) {
         TypedQuery<InsuranceSurveyor> query = em.createQuery(
-                "from InsuranceSurveyor s " +
-                        "join fetch s.manager " +
-                        "join fetch s.proposalSet ps " +
-                        "join fetch ps.claim " +
-                "where s.manager = :manager", InsuranceSurveyor.class);
+                "SELECT s FROM InsuranceSurveyor s WHERE s.manager = :manager", InsuranceSurveyor.class);
         query.setParameter("manager", manager);
+
+        EntityGraph<InsuranceSurveyor> entityGraph = em.createEntityGraph(InsuranceSurveyor.class);
+        entityGraph.addAttributeNodes("manager", "proposalSet");
+        entityGraph.addSubgraph("proposalSet").addAttributeNodes("claim");
+
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
 
+
     @Override
     public List<InsuranceManager> getAllManager() {
-        TypedQuery<InsuranceManager> query = em.createQuery(
-                "from InsuranceManager m " +
-                        "join fetch m.proposalSet ps " +
-                        "join fetch ps.claim c " +
-                        "join fetch ps.insuranceSurveyor",
-                InsuranceManager.class);
+        TypedQuery<InsuranceManager> query = em.createQuery("SELECT m FROM InsuranceManager m", InsuranceManager.class);
+        EntityGraph<InsuranceManager> entityGraph = em.createEntityGraph(InsuranceManager.class);
+        entityGraph.addAttributeNodes("proposalSet");
+        entityGraph.addSubgraph("proposalSet").addAttributeNodes("claim", "insuranceSurveyor");
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
 
