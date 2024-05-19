@@ -17,6 +17,8 @@ public class InsuranceManager extends Provider {
     @OneToMany(cascade = {CascadeType.REMOVE}, mappedBy = "insuranceManager")
     private Set<Proposal> proposalSet;
 
+    @OneToMany(mappedBy = "manager", cascade = {CascadeType.REMOVE})
+    private List<InsuranceSurveyor> surveyorList;
     public InsuranceManager(ManagerBuilder builder) {
         super(builder);
         proposalSet = new HashSet<>();

@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b05ebf48-a4bc-4d2c-864e-2ff50f2ae51a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/menubar/GenericMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/app/components/menubar/GenericMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/repository/impl/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/utility/PageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/utility/PageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/menuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/resources/views/components/menuBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/app/components/menubar/GenericMenuBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/app/components/menubar/GenericMenuBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/repository/impl/CustomerRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/utility/PageManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/utility/PageManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/components/menuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/components/menuBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestJPA/src/main/java/org/example/model/provider/InsuranceManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +231,7 @@
       <workItem from="1715928980727" duration="26293000" />
       <workItem from="1715994270631" duration="11513000" />
       <workItem from="1716015124952" duration="32795000" />
-      <workItem from="1716080289032" duration="2380000" />
+      <workItem from="1716080289032" duration="3766000" />
     </task>
     <servers />
   </component>

@@ -62,7 +62,12 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
 
     @Override
     public List<InsuranceSurveyor> getAllSurveyorOfManager(InsuranceManager manager) {
-        TypedQuery<InsuranceSurveyor> query = em.createQuery("from InsuranceSurveyor s where s.manager = :manager", InsuranceSurveyor.class);
+        TypedQuery<InsuranceSurveyor> query = em.createQuery(
+                "from InsuranceSurveyor s " +
+                        "join fetch s.manager " +
+                        "join fetch s.proposalSet ps " +
+                        "join fetch ps.claim " +
+                "where s.manager = :manager", InsuranceSurveyor.class);
         query.setParameter("manager", manager);
         return query.getResultList();
     }
