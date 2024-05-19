@@ -16,7 +16,6 @@ public class InsuranceSurveyor extends Provider {
     @OneToMany(
             mappedBy = "insuranceSurveyor",
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-
     private Set<Request> requestSet;
     @OneToMany(mappedBy = "insuranceSurveyor")
     private Set<Proposal> proposalSet;

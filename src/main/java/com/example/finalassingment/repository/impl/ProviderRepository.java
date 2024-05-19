@@ -59,7 +59,6 @@ public class ProviderRepository extends EntityRepository implements IProviderRep
         return query.getResultList();
     }
 
-
     @Override
     public List<InsuranceSurveyor> getAllSurveyorOfManager(InsuranceManager manager) {
         TypedQuery<InsuranceSurveyor> query = em.createQuery(
