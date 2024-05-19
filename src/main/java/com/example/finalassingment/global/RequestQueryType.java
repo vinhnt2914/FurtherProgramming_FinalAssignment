@@ -1,5 +1,7 @@
 package com.example.finalassingment.global;
-
+/**
+ * @author Group 11
+ */
 public class RequestQueryType {
     public QueryType queryType;
     public enum QueryType {

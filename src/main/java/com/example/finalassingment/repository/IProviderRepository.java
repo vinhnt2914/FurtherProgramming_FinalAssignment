@@ -1,5 +1,7 @@
 package com.example.finalassingment.repository;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
 import com.example.finalassingment.model.provider.Provider;
@@ -15,4 +17,5 @@ public interface IProviderRepository {
     List<InsuranceSurveyor> getAllSurveyorOfManager(InsuranceManager manager);
     List<InsuranceManager> getAllManager();
     Provider removeByID(int id);
+
 }

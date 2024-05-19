@@ -1,5 +1,7 @@
 package com.example.finalassingment.global;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.model.User;
 import com.example.finalassingment.model.customer.Dependant;
 import com.example.finalassingment.model.customer.PolicyHolder;

@@ -1,8 +1,10 @@
 package com.example.finalassingment.model.customer;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.model.User;
 
-//@Inheritance(strategy = InheritanceType.JOINED)
+
 public abstract class Customer extends User {
     public Customer(GenericCustomerBuilder builder) {
         super(builder);

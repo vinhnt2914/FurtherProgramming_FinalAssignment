@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.alert;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public abstract class CustomAlert extends VBox {

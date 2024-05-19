@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.global.GlobalVariable;
 import com.example.finalassingment.global.ProposalQueryType;
 import com.example.finalassingment.model.provider.InsuranceManager;

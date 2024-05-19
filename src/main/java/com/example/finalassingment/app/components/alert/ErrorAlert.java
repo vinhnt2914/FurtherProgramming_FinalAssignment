@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.alert;
-
+/**
+ * @author Group 11
+ */
 public class ErrorAlert extends CustomAlert{
     public ErrorAlert(String message) {
         super(message);

@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.form;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import com.example.finalassingment.app.components.alert.ErrorAlert;
 import com.example.finalassingment.app.controllers.RefreshableController;
-
-import javax.xml.validation.Validator;
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public abstract class GenericAddForm extends BorderPane {
     @FXML

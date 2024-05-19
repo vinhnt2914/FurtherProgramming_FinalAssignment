@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.form;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
@@ -16,9 +18,8 @@ import com.example.finalassingment.model.customer.PolicyOwner;
 import com.example.finalassingment.repository.impl.UserRepository;
 import com.example.finalassingment.service.CustomerService;
 import com.example.finalassingment.utility.PasswordUtil;
-
 import java.io.IOException;
-import java.util.regex.Pattern;
+
 
 public class AddPolicyOwnerForm extends BorderPane {
     @FXML

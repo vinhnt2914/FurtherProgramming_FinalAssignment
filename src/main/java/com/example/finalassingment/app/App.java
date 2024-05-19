@@ -1,5 +1,7 @@
 package com.example.finalassingment.app;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.app.components.menubar.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

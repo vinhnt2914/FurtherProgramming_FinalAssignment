@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.form;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.app.components.alert.SuccessAlert;
 import com.example.finalassingment.utility.InputValidator;
 import jakarta.persistence.RollbackException;
@@ -25,8 +27,6 @@ import com.example.finalassingment.model.items.Claim;
 import com.example.finalassingment.repository.impl.ClaimRepository;
 import com.example.finalassingment.repository.impl.CustomerRepository;
 import com.example.finalassingment.service.ClaimService;
-import org.hibernate.exception.ConstraintViolationException;
-
 import java.io.IOException;
 import java.time.LocalDate;
 

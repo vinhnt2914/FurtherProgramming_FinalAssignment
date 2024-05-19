@@ -1,5 +1,7 @@
 package com.example.finalassingment.model;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import com.example.finalassingment.utility.PasswordUtil;
 

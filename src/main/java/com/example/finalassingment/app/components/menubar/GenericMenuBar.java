@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.menubar;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

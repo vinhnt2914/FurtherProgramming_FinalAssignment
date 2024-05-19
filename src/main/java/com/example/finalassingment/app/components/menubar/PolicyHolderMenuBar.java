@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.menubar;
-
+/**
+ * @author Group 11
+ */
 public class PolicyHolderMenuBar extends GenericMenuBar{
 
     @Override

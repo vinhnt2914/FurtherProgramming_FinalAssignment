@@ -1,4 +1,7 @@
 package com.example.finalassingment.app.components.table;
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.app.components.form.AddInsuranceCardForm;
 import com.example.finalassingment.app.components.form.FileClaimForm;
 import javafx.collections.FXCollections;

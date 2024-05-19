@@ -1,5 +1,7 @@
 package com.example.finalassingment.model.items;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import com.example.finalassingment.model.customer.Beneficiary;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;

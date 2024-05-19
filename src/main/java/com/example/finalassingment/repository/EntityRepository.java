@@ -1,5 +1,7 @@
 package com.example.finalassingment.repository;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.EntityManager;
 
 public abstract class EntityRepository {

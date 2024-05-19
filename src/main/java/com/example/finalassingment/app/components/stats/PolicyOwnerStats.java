@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.stats;
-
+/**
+ * @author Group 11
+ */
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;

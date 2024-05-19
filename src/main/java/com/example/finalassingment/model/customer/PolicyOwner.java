@@ -1,5 +1,7 @@
 package com.example.finalassingment.model.customer;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;

@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.sortingSet;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import com.example.finalassingment.app.components.sorting.ClaimSortingForm;
 import com.example.finalassingment.app.components.table.ClaimTable;

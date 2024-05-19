@@ -1,4 +1,7 @@
 module com.example.finalassingment {
+    /**
+     * @author Group 11
+     */
     requires javafx.controls;
     requires javafx.fxml;
     requires jakarta.persistence;

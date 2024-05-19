@@ -1,5 +1,7 @@
 package com.example.finalassingment.repository;
-
+/**
+ * @author Group 11
+ */
 import com.example.finalassingment.model.customer.Dependant;
 import com.example.finalassingment.model.customer.PolicyHolder;
 import com.example.finalassingment.model.items.Claim;
