@@ -1,7 +1,8 @@
 package org.example.repository;
-
+/**
+ * @author Group 11
+ */
 import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
 
 public interface IBeneficiaryRepository {
     void add(Beneficiary beneficiary);

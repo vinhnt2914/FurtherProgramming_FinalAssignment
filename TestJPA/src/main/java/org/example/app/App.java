@@ -1,5 +1,7 @@
 package org.example.app;
-
+/**
+ * @author Group 11
+ */
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
@@ -9,7 +11,7 @@ import org.example.app.components.menubar.*;
 import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.utility.PageManager;
-import org.example.utility.PasswordUtil;
+
 
 import java.io.IOException;
 

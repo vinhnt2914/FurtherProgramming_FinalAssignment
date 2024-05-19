@@ -1,5 +1,7 @@
 package org.example.repository;
-
+/**
+ * @author Group 11
+ */
 import org.example.model.User;
 
 public interface IUserInterface {

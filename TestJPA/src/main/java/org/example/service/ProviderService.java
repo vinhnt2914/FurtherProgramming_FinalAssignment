@@ -1,5 +1,7 @@
 package org.example.service;
-
+/**
+ * @author Group 11
+ */
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 

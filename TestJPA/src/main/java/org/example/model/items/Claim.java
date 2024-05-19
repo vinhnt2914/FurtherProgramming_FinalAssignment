@@ -1,5 +1,7 @@
 package org.example.model.items;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import org.example.model.customer.Beneficiary;
 import org.example.model.enums.ClaimStatus;

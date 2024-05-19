@@ -1,5 +1,7 @@
 package org.example.app.components.sorting;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
@@ -18,11 +19,10 @@ import org.example.app.controllers.ClaimAdminController;
 import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
-
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class ClaimAmountSortingForm extends VBox {
     @FXML

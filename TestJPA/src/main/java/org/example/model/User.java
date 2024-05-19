@@ -1,7 +1,8 @@
 package org.example.model;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
-import org.example.model.customer.Customer;
 import org.example.utility.PasswordUtil;
 
 @Entity

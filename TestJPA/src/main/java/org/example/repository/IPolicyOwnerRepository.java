@@ -1,8 +1,10 @@
 package org.example.repository;
 
-import org.example.model.customer.Beneficiary;
+/**
+ * @author Group 11
+ */
 import org.example.model.customer.PolicyOwner;
-import org.example.repository.EntityRepository;
+
 
 public interface IPolicyOwnerRepository  {
     void add(PolicyOwner policyOwner);

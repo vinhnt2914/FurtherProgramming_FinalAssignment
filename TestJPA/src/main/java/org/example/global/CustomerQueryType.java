@@ -1,5 +1,7 @@
 package org.example.global;
-
+/**
+ * @author Group 11
+ */
 public class CustomerQueryType {
     public QueryType queryType;
     public enum QueryType {

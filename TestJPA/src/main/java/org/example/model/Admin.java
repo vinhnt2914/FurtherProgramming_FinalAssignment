@@ -1,5 +1,7 @@
 package org.example.model;
-
+/**
+ * @author Group 11
+ */
 public class Admin extends User {
     private final String username = "admin";
     private final String password = "123456";

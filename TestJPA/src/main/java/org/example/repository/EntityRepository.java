@@ -1,9 +1,8 @@
 package org.example.repository;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-
 public abstract class EntityRepository {
     protected final EntityManager em;
 

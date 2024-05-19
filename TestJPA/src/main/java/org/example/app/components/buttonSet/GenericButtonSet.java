@@ -1,10 +1,13 @@
 package org.example.app.components.buttonset;
+/**
+ * @author Group 11
+ */
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import org.example.app.components.table.DependantTable;
+
 import org.example.app.components.table.RefreshableTable;
 
 import java.io.IOException;

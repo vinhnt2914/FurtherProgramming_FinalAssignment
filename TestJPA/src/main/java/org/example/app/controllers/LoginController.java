@@ -1,6 +1,8 @@
 package org.example.app.controllers;
 
-import jakarta.persistence.NoResultException;
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.App;
 import org.example.app.components.alert.ErrorAlert;
@@ -16,7 +17,6 @@ import org.example.global.GlobalVariable;
 import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
-import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.UserRepository;
 import org.example.utility.PasswordUtil;
 

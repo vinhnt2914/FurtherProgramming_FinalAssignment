@@ -1,9 +1,11 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import org.example.app.components.table.ProposalTable;
-import org.example.app.components.table.RequestTable;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;

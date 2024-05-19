@@ -1,12 +1,9 @@
 package org.example.model.customer;
 
-import jakarta.persistence.*;
+/**
+ * @author Group 11
+ */
 import org.example.model.User;
-import org.example.model.items.Claim;
-import org.example.utility.PasswordUtil;
-
-import java.io.Serializable;
-import java.util.*;
 
 //@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Customer extends User {

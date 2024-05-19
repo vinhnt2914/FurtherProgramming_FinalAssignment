@@ -1,5 +1,7 @@
 package org.example.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;

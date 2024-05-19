@@ -1,4 +1,7 @@
 package org.example.app.components.form;
+/**
+ * @author Group 11
+ */
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +15,6 @@ import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
-import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
 import org.example.model.customer.Dependant;

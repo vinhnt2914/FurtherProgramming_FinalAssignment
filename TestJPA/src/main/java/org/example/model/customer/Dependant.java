@@ -1,7 +1,9 @@
 package org.example.model.customer;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+
 import jakarta.persistence.ManyToOne;
 
 @Entity

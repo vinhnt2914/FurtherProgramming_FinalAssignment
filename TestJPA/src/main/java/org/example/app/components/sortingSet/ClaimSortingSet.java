@@ -1,5 +1,7 @@
 package org.example.app.components.sortingSet;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import org.example.app.components.sorting.ClaimSortingForm;
 import org.example.app.components.table.ClaimTable;

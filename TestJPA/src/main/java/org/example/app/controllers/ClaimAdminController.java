@@ -1,5 +1,7 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +17,6 @@ import org.example.model.items.Claim;
 import org.example.repository.impl.ClaimRepository;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 

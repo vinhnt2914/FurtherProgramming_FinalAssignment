@@ -1,5 +1,7 @@
 package org.example.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,7 +9,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import org.example.app.components.form.AddSurveyorForm;
-import org.example.app.components.form.ProposalForm;
 import org.example.global.ProviderQueryType;
 import org.example.model.provider.InsuranceManager;
 

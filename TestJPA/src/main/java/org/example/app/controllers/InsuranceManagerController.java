@@ -1,5 +1,7 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +18,7 @@ import org.example.app.components.table.*;
 import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
 import org.example.global.ProviderQueryType;
-import org.example.model.customer.Customer;
+
 
 import java.net.URL;
 import java.util.List;

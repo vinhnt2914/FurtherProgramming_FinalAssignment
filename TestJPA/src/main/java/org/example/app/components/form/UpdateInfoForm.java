@@ -1,5 +1,7 @@
 package org.example.app.components.form;
-
+/**
+ * @author Group 11
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
-import org.example.global.GlobalVariable;
 import org.example.model.User;
-import org.example.model.customer.Customer;
-import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.UserRepository;
 
 import java.io.IOException;

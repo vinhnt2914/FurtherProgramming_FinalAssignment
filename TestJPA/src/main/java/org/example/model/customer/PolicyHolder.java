@@ -1,9 +1,9 @@
 package org.example.model.customer;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;
-import org.hibernate.annotations.*;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

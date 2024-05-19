@@ -1,5 +1,7 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,20 +16,10 @@ import org.example.app.components.sortingSet.ClaimSortingSet;
 import org.example.app.components.sortingSet.CustomerSortingSet;
 import org.example.app.components.table.ClaimTable;
 import org.example.app.components.table.CustomerTable;
-import org.example.app.components.table.ProposalTable;
 import org.example.global.ClaimQueryType;
 import org.example.global.CustomerQueryType;
-import org.example.model.customer.Customer;
-import org.example.model.enums.ClaimStatus;
 import org.example.model.items.Claim;
-import org.example.repository.IClaimRepository;
-import org.example.repository.ICustomerRepository;
-import org.example.repository.impl.ClaimRepository;
-import org.example.repository.impl.CustomerRepository;
-
 import java.net.URL;
-import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class InsuranceSurveyorController implements Initializable {

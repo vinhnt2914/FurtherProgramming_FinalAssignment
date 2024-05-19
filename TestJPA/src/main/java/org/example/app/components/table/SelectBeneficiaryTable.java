@@ -1,4 +1,7 @@
 package org.example.app.components.table;
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

@@ -1,8 +1,10 @@
 package org.example.model.items;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
+
 import org.example.model.provider.InsuranceSurveyor;
 
 @Entity

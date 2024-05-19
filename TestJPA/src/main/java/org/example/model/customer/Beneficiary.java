@@ -1,12 +1,11 @@
 package org.example.model.customer;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.*;
 import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
 import org.example.model.items.Request;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
 import java.util.Set;

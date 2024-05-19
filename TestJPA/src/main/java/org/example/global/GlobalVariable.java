@@ -1,12 +1,12 @@
 package org.example.global;
-
+/**
+ * @author Group 11
+ */
 import org.example.model.User;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;
 import org.example.model.provider.InsuranceSurveyor;
-
-import java.net.URL;
 
 
 public class GlobalVariable {

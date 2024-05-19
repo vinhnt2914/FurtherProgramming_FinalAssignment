@@ -1,10 +1,11 @@
 package org.example.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.example.global.CustomerQueryType;
 import org.example.model.customer.Customer;
-import org.example.model.customer.Dependant;
 import org.example.repository.impl.CustomerRepository;
 
 import java.util.List;

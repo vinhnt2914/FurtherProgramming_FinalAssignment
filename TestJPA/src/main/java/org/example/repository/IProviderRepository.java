@@ -1,6 +1,8 @@
 package org.example.repository;
+/**
+ * @author Group 11
+ */
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.example.model.provider.InsuranceManager;
 import org.example.model.provider.InsuranceSurveyor;
 import org.example.model.provider.Provider;

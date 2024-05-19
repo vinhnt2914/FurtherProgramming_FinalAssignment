@@ -1,5 +1,7 @@
 package org.example.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

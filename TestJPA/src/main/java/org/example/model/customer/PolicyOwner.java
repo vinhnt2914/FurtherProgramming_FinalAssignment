@@ -1,12 +1,12 @@
 package org.example.model.customer;
-
+/**
+ * @author Group 11
+ */
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import org.example.repository.impl.CustomerRepository;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+
 
 import java.util.Arrays;
 import java.util.HashSet;

@@ -1,14 +1,16 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.HBox;
-import org.example.app.components.buttonSet.ManagerButtonSet;
-import org.example.app.components.buttonSet.PolicyHolderButtonSet;
-import org.example.app.components.buttonSet.SurveyorButtonSet;
+import org.example.app.components.buttonset.ManagerButtonSet;
+import org.example.app.components.buttonset.PolicyHolderButtonSet;
+import org.example.app.components.buttonset.SurveyorButtonSet;
 import org.example.app.components.form.AddManagerForm;
 import org.example.app.components.form.AddSurveyorForm;
 import org.example.app.components.form.UpdateInfoForm;

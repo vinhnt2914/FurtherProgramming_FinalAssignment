@@ -1,5 +1,7 @@
 package org.example.app.components.table;
-
+/**
+ * @author Group 11
+ */
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.model.customer.Beneficiary;
 import org.example.model.customer.PolicyOwner;
-import org.example.model.items.Claim;
 import org.example.model.items.InsuranceCard;
 import org.example.repository.impl.InsuranceCardRepository;
 

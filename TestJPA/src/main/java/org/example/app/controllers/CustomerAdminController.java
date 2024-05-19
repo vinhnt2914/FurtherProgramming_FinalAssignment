@@ -1,5 +1,7 @@
 package org.example.app.controllers;
-
+/**
+ * @author Group 11
+ */
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -18,7 +20,6 @@ import org.example.app.components.table.PolicyHolderTable;
 import org.example.app.components.table.PolicyOwnerTable;
 import org.example.app.components.table.RefreshableTable;
 import org.example.global.CustomerQueryType;
-import org.example.model.customer.Customer;
 import org.example.model.customer.Dependant;
 import org.example.model.customer.PolicyHolder;
 import org.example.model.customer.PolicyOwner;

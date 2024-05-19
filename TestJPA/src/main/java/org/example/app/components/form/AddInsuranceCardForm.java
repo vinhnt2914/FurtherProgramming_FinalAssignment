@@ -1,4 +1,7 @@
 package org.example.app.components.form;
+/**
+ * @author Group 11
+ */
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,11 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.app.components.alert.SuccessAlert;
-import org.example.app.components.table.RefreshableTable;
 import org.example.app.components.table.SelectBeneficiaryTable;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.CustomerQueryType;

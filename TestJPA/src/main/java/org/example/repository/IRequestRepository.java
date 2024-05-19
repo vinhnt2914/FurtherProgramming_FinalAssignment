@@ -1,7 +1,9 @@
 package org.example.repository;
-
+/**
+ * @author Group 11
+ */
 import org.example.model.customer.Beneficiary;
-import org.example.model.customer.Customer;
+
 import org.example.model.items.Request;
 
 import java.util.List;

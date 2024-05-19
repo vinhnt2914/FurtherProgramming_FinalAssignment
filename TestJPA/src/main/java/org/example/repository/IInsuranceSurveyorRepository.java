@@ -1,7 +1,8 @@
 package org.example.repository;
+/**
+ * @author Group 11
+ */
 
-import org.example.model.items.InsuranceCard;
-import org.example.model.items.Request;
 import org.example.model.provider.InsuranceSurveyor;
 
 import java.util.List;
