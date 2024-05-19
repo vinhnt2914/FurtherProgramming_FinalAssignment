@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalassingment.app.controllers.DependantController">
+   <top>
+      <BorderPane prefHeight="160.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
+         <top>
+              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER_LEFT">
+                  <children>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="1000.0" spacing="150.0" HBox.hgrow="ALWAYS">
+                     <children>
+                            <VBox alignment="CENTER" prefHeight="95.0" prefWidth="170.0">
+                                <children>
+                                    <Label fx:id="dependantEmail" text="Email:" textFill="#757292">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                                    <Label fx:id="dependantAddress" text="Address:" textFill="#757292">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                                </children>
+                            </VBox>
+                            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="170.0">
+                                <children>
+                                    <Label fx:id="dependantPhone" text="Phone:" textFill="#757292">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                                    <Label fx:id="dependantInsuranceCard" layoutX="10.0" layoutY="10.0" text="Insurance Card:" textFill="#757292">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                                </children>
+                            </VBox>
+                     </children>
+                  </HBox>
+                  </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+              </HBox>
+         </top>
+         <right>
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt; Policy Holder &gt; Dependants" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets right="15.0" />
+               </BorderPane.margin>
+            </Text>
+         </right>
+         <left>
+            <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Dependant" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="15.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+         </left>
+      </BorderPane>
+   </top>
+   <center>
+      <HBox fx:id="tableViewContainer" alignment="CENTER" minHeight="400.0" minWidth="600.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin></HBox>
+   </center>
+   <stylesheets>
+      <URL value="@../static/Button.css" />
+      <URL value="@../static/borderPane.css" />
+   </stylesheets>
+</BorderPane>

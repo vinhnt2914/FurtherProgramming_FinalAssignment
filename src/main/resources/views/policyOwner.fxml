@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalassingment.app.controllers.PolicyOwnerController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="buttonSetContainer" minWidth="300.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin></HBox>
+            <HBox HBox.hgrow="ALWAYS" />
+            <ChoiceBox fx:id="swapTableChoiceBox" prefWidth="150.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin></ChoiceBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <HBox fx:id="tableViewContainer" minHeight="400.0" minWidth="800.0" BorderPane.alignment="CENTER" />
+   </center>
+   <stylesheets>
+      <URL value="@../static/Button.css" />
+      <URL value="@../static/borderPane.css" />
+   </stylesheets>
+</BorderPane>
