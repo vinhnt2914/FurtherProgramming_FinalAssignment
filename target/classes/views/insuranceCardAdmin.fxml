@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceCardAdminController">
+<BorderPane minHeight="600.0" minWidth="1000.0" style="-fx-background-color: white;" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceCardAdminController">
     <top>
-        <BorderPane prefHeight="121.0" prefWidth="842.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
-            <top>
-                <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-                    <children>
-                        <TextField prefHeight="37.0" prefWidth="803.0" promptText="Search for anything">
-                            <HBox.margin>
-                                <Insets right="50.0" />
-                            </HBox.margin>
-                        </TextField>
-                        <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer" wrappingWidth="106.13671875">
-                            <HBox.margin>
-                                <Insets right="10.0" />
-                            </HBox.margin>
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Text>
-                    </children>
-                </HBox>
-            </top>
+        <BorderPane prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
             <right>
                 <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="System &gt;  Customer" textAlignment="CENTER" BorderPane.alignment="CENTER">
                     <font>
@@ -50,27 +31,26 @@
                     </BorderPane.margin>
                 </Text>
             </left>
-            <bottom>
-                <HBox alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="842.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" spacing="30.0" HBox.hgrow="ALWAYS">
-                            <children>
-                                <HBox fx:id="buttonSetContainer" alignment="CENTER" minWidth="300.0" spacing="30.0" />
-                                <HBox fx:id="sortingContainer" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                            </children>
-                            <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </padding>
-                        </HBox>
-                    </children>
-                    <BorderPane.margin>
-                        <Insets top="20.0" />
-                    </BorderPane.margin>
-                </HBox>
-            </bottom>
         </BorderPane>
     </top>
-    <center>
-        <HBox fx:id="tableViewContainer" alignment="CENTER" BorderPane.alignment="CENTER" />
-    </center>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="813.0" spacing="30.0">
+                      <children>
+                          <HBox fx:id="buttonSetContainer" alignment="CENTER" minWidth="300.0" spacing="30.0" />
+                          <HBox fx:id="sortingContainer" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                      </children>
+                      <padding>
+                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                      </padding>
+                  </HBox>
+              <HBox fx:id="tableViewContainer" alignment="CENTER" prefHeight="0.0" prefWidth="1000.0" />
+         </children>
+      </VBox>
+   </center>
+   <stylesheets>
+      <URL value="@../static/Button.css" />
+      <URL value="@../static/borderPane.css" />
+   </stylesheets>
 </BorderPane>

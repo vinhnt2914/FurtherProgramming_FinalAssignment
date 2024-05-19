@@ -1,12 +1,13 @@
 package org.example.app.components.form;
 
 import javafx.event.ActionEvent;
-import org.example.app.components.table.GenericProviderTable;
+import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.model.provider.InsuranceManager;
-import org.example.model.provider.InsuranceSurveyor;
 import org.example.repository.impl.ProviderRepository;
+import org.example.repository.impl.UserRepository;
 import org.example.service.ProviderService;
+import org.example.utility.PasswordUtil;
 
 public class AddManagerForm extends GenericAddForm {
     public AddManagerForm(RefreshableController controller) {
@@ -23,20 +24,36 @@ public class AddManagerForm extends GenericAddForm {
         if (validateInput()) {
             ProviderRepository repository = new ProviderRepository();
             ProviderService service = new ProviderService();
+            UserRepository userRepository = new UserRepository();
 
-            InsuranceManager surveyor = service.makeManager()
-                    .fullName(nameField.getText())
-                    .username(usernameField.getText())
-                    .address(addressField.getText())
-                    .email(emailField.getText())
-                    .phone(phoneField.getText())
-                    .password(passwordField.getText()).build();
+            try {
+                String username = usernameField.getText();
+                String password = passwordField.getText();
+                String hashedPassword = PasswordUtil.encrypt(password);
 
-            repository.add(surveyor);
+                if (userRepository.findUser(username, hashedPassword) != null) {
+                    new ErrorAlert("This username is already taken!");
+                    return;
+                }
 
-            repository.close();
-            close();
-            controller.refresh(); // Refresh the table after adding
+                InsuranceManager manager = service.makeManager()
+                        .fullName(nameField.getText())
+                        .username(username)
+                        .address(addressField.getText())
+                        .email(emailField.getText())
+                        .phone(phoneField.getText())
+                        .password(password)
+                        .build();
+
+                repository.add(manager);
+                repository.close();
+                close();
+                controller.refresh(); // Refresh the table after adding
+            } catch (NumberFormatException e) {
+                new ErrorAlert("Please enter valid input values.");
+            } finally {
+                userRepository.close();
+            }
         }
     }
 }

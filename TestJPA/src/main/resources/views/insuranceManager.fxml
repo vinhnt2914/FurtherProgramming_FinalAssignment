@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,28 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../static/Button.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceManagerController">
+<BorderPane minHeight="600.0" minWidth="1000.0" style="-fx-background-color: white;" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.app.controllers.InsuranceManagerController">
    <top>
-      <BorderPane prefHeight="120.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
-         <top>
-            <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="970.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField prefHeight="37.0" prefWidth="803.0" promptText="Search for anything">
-                     <HBox.margin>
-                        <Insets left="30.0" right="50.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Manager" wrappingWidth="145.13671875">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-         </top>
+      <BorderPane prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #EDEEF3;" BorderPane.alignment="CENTER">
          <left>
             <Text fill="#757292" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance Manager" BorderPane.alignment="CENTER">
                <font>
@@ -64,7 +45,7 @@
                   <HBox alignment="CENTER_LEFT" spacing="40.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox fx:id="buttonSetContainer" />
-                        <Button fx:id="approveButton" minWidth="200.0" mnemonicParsing="false" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="APPROVE">
+                        <Button fx:id="approveButton" minWidth="200.0" mnemonicParsing="false" style="-fx-border-radius: 5; -fx-background-radius: 5px;" text="Approve">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -78,7 +59,7 @@
                               <Glow />
                            </effect>
                         </Button>
-                        <Button fx:id="rejectButton" alignment="CENTER" minWidth="200.0" mnemonicParsing="false" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="REJECT">
+                        <Button fx:id="rejectButton" alignment="CENTER" minWidth="200.0" mnemonicParsing="false" style="-fx-border-radius: 5px; -fx-background-radius: 5px;" text="Reject">
                            <padding>
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
@@ -88,9 +69,6 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                           <effect>
-                              <Glow />
-                           </effect>
                            <font>
                               <Font name="Segoe UI" size="12.0" />
                            </font>
@@ -111,4 +89,8 @@
          </padding>
       </VBox>
    </center>
+   <stylesheets>
+      <URL value="@../static/Button.css" />
+      <URL value="@../static/borderPane.css" />
+   </stylesheets>
 </BorderPane>

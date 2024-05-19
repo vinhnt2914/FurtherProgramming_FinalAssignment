@@ -8,6 +8,7 @@
     -fx-padding: 10;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
+    -fx-min-width: 120;
 }
 
 .button:hover {
@@ -15,6 +16,8 @@
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+    -fx-min-width: 120;
+
 }
 
 /*-fx-background-color: #7971BB;*/
@@ -26,6 +29,8 @@
     -fx-border-color: linear-gradient(to right, #28fa6a, #a0f6a7);
     -fx-border-width: 2;
     -fx-font-size: 14px;
+    -fx-min-width: 120;
+
 }
 
 #approveButton:hover {
@@ -33,6 +38,7 @@
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+    -fx-min-width: 120;
 }
 
 .table-view {

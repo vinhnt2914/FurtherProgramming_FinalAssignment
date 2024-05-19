@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import org.example.app.components.alert.ErrorAlert;
 import org.example.app.controllers.RefreshableController;
 import org.example.global.GlobalVariable;
-import org.example.global.Role;
 import org.example.model.Admin;
 import org.example.model.User;
 import org.example.model.customer.Dependant;
@@ -21,6 +20,7 @@ import org.example.model.customer.PolicyOwner;
 import org.example.repository.impl.CustomerRepository;
 import org.example.repository.impl.UserRepository;
 import org.example.service.CustomerService;
+import org.example.utility.PasswordUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -77,28 +77,38 @@ public class AddDependantForm extends BorderPane {
         if (validateInput()) {
             PolicyHolder selectedPolicyHolder = policyHolderComboBox.getValue();
             if (selectedPolicyHolder != null) {
+                UserRepository repository = new UserRepository();
                 CustomerService customerService = new CustomerService();
 
-                Dependant dependant = customerService.makeDependant()
-                        .fullName(nameField.getText())
-                        .username(usernameField.getText())
-                        .address(addressField.getText())
-                        .email(emailField.getText())
-                        .phone(phoneField.getText())
-                        .password(passwordField.getText()).build();
+                try {
+                    String username = usernameField.getText();
+                    String password = passwordField.getText();
+                    String hashedPassword = PasswordUtil.encrypt(password);
 
-                dependant.setPolicyHolder(selectedPolicyHolder);
+                    if (repository.findUser(username, hashedPassword) != null) {
+                        new ErrorAlert("This username is already taken!");
+                        return;
+                    }
 
-//                // Handle policy owner for PolicyOwner role and Admin role
-//                if (GlobalVariable.getRole() == Role.PolicyOwner) {
-//                    dependant.setPolicyOwner((PolicyOwner) GlobalVariable.getUser());
-//                } else dependant.setPolicyOwner(dependant.getPolicyHolder().getPolicyOwner());
+                    Dependant dependant = customerService.makeDependant()
+                            .fullName(nameField.getText())
+                            .username(username)
+                            .address(addressField.getText())
+                            .email(emailField.getText())
+                            .phone(phoneField.getText())
+                            .password(password)
+                            .build();
 
-                UserRepository repository = new UserRepository();
-                repository.add(dependant);
-                repository.close();
-                close();
-                controller.refresh();  // Call to refresh the table
+                    dependant.setPolicyHolder(selectedPolicyHolder);
+                    repository.add(dependant);
+                    repository.close();
+                    close();
+                    controller.refresh(); // Refresh the table after adding
+                } catch (NumberFormatException e) {
+                    new ErrorAlert("Please enter valid input values.");
+                } finally {
+                    repository.close();
+                }
             } else {
                 showAlert("Please select a policy holder.");
             }
@@ -181,8 +191,9 @@ public class AddDependantForm extends BorderPane {
             case PolicyOwner policyOwner ->
                     policyHolders = repository.getAllPolicyHoldersOfPolicyOwner(policyOwner);
             case Admin admin ->
-                policyHolders = repository.getAllPolicyHolders();
-            default -> new ErrorAlert("Something went wrong. Please try again");
+                    policyHolders = repository.getAllPolicyHolders();
+            default ->
+                    new ErrorAlert("Something went wrong. Please try again");
         }
         ObservableList<PolicyHolder> policyHolderList = FXCollections.observableArrayList(policyHolders);
         policyHolderComboBox.setItems(policyHolderList);

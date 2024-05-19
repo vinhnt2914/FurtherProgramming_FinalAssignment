@@ -3,14 +3,13 @@ package org.example.repository.impl;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.example.model.User;
-import org.example.model.customer.Customer;
 import org.example.repository.EntityRepository;
-import org.example.repository.IUserInterface;
+import org.example.repository.IUserRepository;
 import org.example.utility.PasswordUtil;
 
 import java.util.List;
 
-public class UserRepository extends EntityRepository implements IUserInterface {
+public class UserRepository extends EntityRepository implements IUserRepository {
     public void add(User user) {
         em.getTransaction().begin();
         em.persist(user);
