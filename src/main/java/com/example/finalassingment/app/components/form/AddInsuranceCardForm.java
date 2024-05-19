@@ -23,7 +23,7 @@ import com.example.finalassingment.model.customer.Beneficiary;
 import com.example.finalassingment.model.customer.PolicyOwner;
 import com.example.finalassingment.model.items.InsuranceCard;
 import com.example.finalassingment.repository.impl.InsuranceCardRepository;
-import com.example.finalassingment.service.InsuranceCardService;
+import com.example.finalassingment.director.InsuranceCardDirector;
 
 import java.io.IOException;
 
@@ -66,6 +66,7 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
     private void setUpForm() {
         this.selectCardHolderButton.setOnAction(this::openSelectCardHolder);
         this.submitButton.setOnAction(this::addInsuranceCard);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
     private void openSelectCardHolder(ActionEvent actionEvent) {
@@ -77,7 +78,7 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
 
     private void addInsuranceCard(ActionEvent actionEvent) {
         if (validateInput()) {
-            InsuranceCardService service = new InsuranceCardService();
+            InsuranceCardDirector service = new InsuranceCardDirector();
             InsuranceCardRepository repository = new InsuranceCardRepository();
             InsuranceCard card = service.makeCard()
                     .cardNumber(cardNumberField.getText())
@@ -130,5 +131,9 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
             return;
         }
         this.policyOwnerLabel.setText(policyOwner.getId() + " - " + policyOwner.getFullName());
+    }
+
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
     }
 }

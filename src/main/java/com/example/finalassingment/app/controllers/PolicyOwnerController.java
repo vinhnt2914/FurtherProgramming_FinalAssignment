@@ -1,6 +1,7 @@
 package com.example.finalassingment.app.controllers;
 
 import com.example.finalassingment.app.components.form.*;
+import com.example.finalassingment.repository.impl.UserRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -111,6 +112,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (claim != null) {
             repository.removeByID(claim.getId());
             repository.close();
+            refresh();
         } else new ErrorAlert("Please select a claim");
 
     }
@@ -130,12 +132,13 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
     }
 
     private void deletePolicyHolder() {
-        CustomerRepository repository = new CustomerRepository();
+        UserRepository repository = new UserRepository();
         PolicyHolderTable tableView = (PolicyHolderTable) tableViewContainer.getChildren().get(0);
         PolicyHolder policyHolder = tableView.getSelectionModel().getSelectedItem();
         if (policyHolder != null) {
             repository.removeByID(policyHolder.getId());
             repository.close();
+            refresh();
         } else new ErrorAlert("Please select a policy holder");
     }
 
@@ -166,6 +169,7 @@ public class PolicyOwnerController implements Initializable, RefreshableControll
         if (dependant != null) {
             repository.removeByID(dependant.getId());
             repository.close();
+            refresh();
         } else new ErrorAlert("Please select a dependant");
     }
 

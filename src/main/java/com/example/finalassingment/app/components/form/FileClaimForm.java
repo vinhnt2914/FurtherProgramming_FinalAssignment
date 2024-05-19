@@ -24,8 +24,7 @@ import com.example.finalassingment.model.enums.ClaimStatus;
 import com.example.finalassingment.model.items.Claim;
 import com.example.finalassingment.repository.impl.ClaimRepository;
 import com.example.finalassingment.repository.impl.CustomerRepository;
-import com.example.finalassingment.service.ClaimService;
-import org.hibernate.exception.ConstraintViolationException;
+import com.example.finalassingment.director.ClaimDirector;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -55,17 +54,12 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
     private ComboBox<String> statusComboBox;
     @FXML
     private TextField bankingInfoField;
-    private ClaimService claimService;
+    private ClaimDirector claimDirector;
     private Beneficiary insuredPerson;
-    private CustomerRepository customerRepository;
-    private ClaimRepository claimRepository;
     private RefreshableController controller;
     private Stage stage;
     public FileClaimForm(RefreshableController controller) {
         this.controller = controller;
-        customerRepository = new CustomerRepository();
-        claimRepository = new ClaimRepository();
-        claimService = new ClaimService();
         loadFormFromFXML();
         setUpForm();
     }
@@ -120,7 +114,7 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
             double claimAmount = Double.parseDouble(claimAmountField.getText());
             ClaimStatus status = ClaimStatus.valueOf(statusComboBox.getValue());
             String bankingInfo = bankingInfoField.getText();
-            Claim claim = claimService.makeClaim()
+            Claim claim = claimDirector.makeClaim()
                     .id(id)
                     .insuredPerson(insuredPerson)
                     .claimDate(claimDate)
@@ -130,8 +124,9 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
                     .bankingInfo(bankingInfo)
                     .build();
             try {
-                claimRepository.add(claim);
-                claimRepository.close();
+                ClaimRepository repository = new ClaimRepository();
+                repository.add(claim);
+                repository.close();
                 close();
                 new SuccessAlert("Claim filed successfully");
                 controller.refresh();
@@ -176,7 +171,10 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
             return false;
         }
 
-        return true;
+        if (!validator.validateClaimId(idField)) {
+            new ErrorAlert("Claim ID must follow the format 'f-xxxxxxxxxx'.");
+        }
+        return false;
     }
 
 

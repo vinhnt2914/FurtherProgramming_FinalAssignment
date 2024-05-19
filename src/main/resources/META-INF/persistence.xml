@@ -7,11 +7,16 @@
     <persistence-unit name="myPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.example.finalassingment.model.customer.Customer</class>
+        <class>com.example.finalassingment.model.customer.Beneficiary</class>
         <class>com.example.finalassingment.model.customer.Dependant</class>
         <class>com.example.finalassingment.model.customer.PolicyHolder</class>
         <class>com.example.finalassingment.model.customer.PolicyOwner</class>
+        <class>com.example.finalassingment.model.provider.InsuranceManager</class>
+        <class>com.example.finalassingment.model.provider.InsuranceSurveyor</class>
         <class>com.example.finalassingment.model.items.InsuranceCard</class>
         <class>com.example.finalassingment.model.items.Claim</class>
+        <class>com.example.finalassingment.model.items.Proposal</class>
+        <class>com.example.finalassingment.model.items.Request</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"/>

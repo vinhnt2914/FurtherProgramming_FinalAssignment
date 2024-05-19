@@ -6,9 +6,9 @@ import com.example.finalassingment.model.customer.PolicyOwner;
 import com.example.finalassingment.model.enums.ClaimStatus;
 import com.example.finalassingment.model.items.Claim;
 import com.example.finalassingment.model.items.InsuranceCard;
-import com.example.finalassingment.service.ClaimService;
-import com.example.finalassingment.service.CustomerService;
-import com.example.finalassingment.service.InsuranceCardService;
+import com.example.finalassingment.director.ClaimDirector;
+import com.example.finalassingment.director.CustomerDirector;
+import com.example.finalassingment.director.InsuranceCardDirector;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -19,11 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TotalClaimAmountTest {
     @Test
     void calculateTotalClaimAmount() {
-        CustomerService customerService = new CustomerService();
-        ClaimService claimService = new ClaimService();
-        InsuranceCardService cardService = new InsuranceCardService();
+        CustomerDirector customerDirector = new CustomerDirector();
+        ClaimDirector claimDirector = new ClaimDirector();
+        InsuranceCardDirector cardService = new InsuranceCardDirector();
 
-        PolicyOwner c3 = customerService
+        PolicyOwner c3 = customerDirector
                 .makePolicyOwner()
                 .username("kienrmit1234")
                 .password("Rmit@1234")
@@ -34,7 +34,7 @@ public class TotalClaimAmountTest {
                 .fee(500)
                 .build();
 
-        PolicyHolder c1 = customerService
+        PolicyHolder c1 = customerDirector
                 .makePolicyHolder()
                 .username("vinhrmit1234")
                 .password("Rmit@1234")
@@ -45,7 +45,7 @@ public class TotalClaimAmountTest {
                 .policyOwner(c3)
                 .build();
 
-        Dependant c2 = customerService
+        Dependant c2 = customerDirector
                 .makeDependant()
                 .username("khairmit1234")
                 .password("Rmit@1234")
@@ -64,7 +64,7 @@ public class TotalClaimAmountTest {
                 .policyOwner(c1.getPolicyOwner())
                 .build();
 
-        Claim claim1 = claimService.makeClaim()
+        Claim claim1 = claimDirector.makeClaim()
                 .id("f-000001")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 5, 7))
@@ -74,7 +74,7 @@ public class TotalClaimAmountTest {
                 .bankingInfo("TPBank-NguyenTheVinh-1234567")
                 .build();
 
-        Claim claim2 = claimService.makeClaim()
+        Claim claim2 = claimDirector.makeClaim()
                 .id("f-000002")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 2, 2))
@@ -84,7 +84,7 @@ public class TotalClaimAmountTest {
                 .bankingInfo("TPBank-NguyenTheVinh-1234567")
                 .build();
 
-        Claim claim3 = claimService.makeClaim()
+        Claim claim3 = claimDirector.makeClaim()
                 .id("f-000003")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 11, 14))
@@ -94,7 +94,7 @@ public class TotalClaimAmountTest {
                 .bankingInfo("TPBank-NguyenBaThai-7654321")
                 .build();
 
-        Claim claim4 = claimService.makeClaim()
+        Claim claim4 = claimDirector.makeClaim()
                 .id("f-000004")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 1, 1))
@@ -104,7 +104,7 @@ public class TotalClaimAmountTest {
                 .bankingInfo("TPBank-CaoBaQuat-321654")
                 .build();
 
-        Claim claim5 = claimService.makeClaim()
+        Claim claim5 = claimDirector.makeClaim()
                 .id("f-000005")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 3, 15))

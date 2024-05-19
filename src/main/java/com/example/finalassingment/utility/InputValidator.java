@@ -2,15 +2,10 @@ package com.example.finalassingment.utility;
 
 import javafx.scene.control.TextField;
 
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class InputValidator {
     public InputValidator() {
-    }
-
-    public boolean isNull(Object o) {
-        return o == null;
     }
 
     public boolean isNull(Object... objects) {

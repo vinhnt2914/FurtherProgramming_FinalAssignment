@@ -21,8 +21,10 @@ public class Claim {
     @Enumerated(EnumType.STRING)
     private ClaimStatus status;
     private String bankingInfo;
-    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "claim")
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "claim")
     private Proposal proposal;
+    @OneToOne(cascade = {CascadeType.REMOVE}, mappedBy = "claim")
+    private Request request;
 
     public Claim(ClaimBuilder claimBuilder) {
         this.id = claimBuilder.id;

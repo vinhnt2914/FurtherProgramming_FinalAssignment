@@ -41,7 +41,7 @@ public class ClaimRepository extends EntityRepository implements IClaimRepositor
     public List<Claim> getAll() {
         TypedQuery<Claim> query = em.createQuery("from Claim ", Claim.class);
         EntityGraph<Claim> entityGraph = em.createEntityGraph(Claim.class);
-        entityGraph.addAttributeNodes("insuredPerson", "proposal");
+        entityGraph.addAttributeNodes("insuredPerson", "proposal", "request");
         entityGraph.addSubgraph("insuredPerson").addAttributeNodes("insuranceCard");
         entityGraph.addSubgraph("insuredPerson").addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
         entityGraph.addSubgraph("proposal").addAttributeNodes("insuranceManager", "insuranceSurveyor");

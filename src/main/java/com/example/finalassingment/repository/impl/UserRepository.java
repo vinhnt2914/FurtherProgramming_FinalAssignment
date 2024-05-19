@@ -1,5 +1,7 @@
 package com.example.finalassingment.repository.impl;
 
+import com.example.finalassingment.model.customer.Customer;
+import com.example.finalassingment.model.customer.PolicyOwner;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.model.User;
@@ -36,6 +38,14 @@ public class UserRepository extends EntityRepository implements IUserRepository 
     @Override
     public User findByID(int id) {
         return em.find(User.class, id);
+    }
+
+    @Override
+    public void removeByID(int id) {
+        em.getTransaction().begin();
+        User userToRemove = em.find(User.class, id);
+        em.remove(userToRemove);
+        em.getTransaction().commit();
     }
 
     @Override

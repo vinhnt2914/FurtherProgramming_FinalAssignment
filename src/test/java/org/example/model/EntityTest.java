@@ -10,10 +10,10 @@ import com.example.finalassingment.model.items.Proposal;
 import com.example.finalassingment.model.items.Request;
 import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
-import com.example.finalassingment.service.ClaimService;
-import com.example.finalassingment.service.CustomerService;
-import com.example.finalassingment.service.InsuranceCardService;
-import com.example.finalassingment.service.ProviderService;
+import com.example.finalassingment.director.ClaimDirector;
+import com.example.finalassingment.director.CustomerDirector;
+import com.example.finalassingment.director.InsuranceCardDirector;
+import com.example.finalassingment.director.ProviderDirector;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -24,12 +24,12 @@ class EntityTest {
 
     @Test
     void shouldWork() {
-        InsuranceCardService cardService = new InsuranceCardService();
-        CustomerService customerService = new CustomerService();
-        ClaimService claimService = new ClaimService();
-        ProviderService providerService = new ProviderService();
+        InsuranceCardDirector cardService = new InsuranceCardDirector();
+        CustomerDirector customerDirector = new CustomerDirector();
+        ClaimDirector claimDirector = new ClaimDirector();
+        ProviderDirector providerDirector = new ProviderDirector();
 
-        PolicyOwner c3 = customerService
+        PolicyOwner c3 = customerDirector
                 .makePolicyOwner()
                 .username("kienrmit1234")
                 .password("Rmit@1234")
@@ -40,7 +40,7 @@ class EntityTest {
                 .fee(500)
                 .build();
 
-        PolicyHolder c1 = customerService
+        PolicyHolder c1 = customerDirector
                 .makePolicyHolder()
                 .username("vinhrmit1234")
                 .password("Rmit@1234")
@@ -51,7 +51,7 @@ class EntityTest {
                 .policyOwner(c3)
                 .build();
 
-        Dependant c2 = customerService
+        Dependant c2 = customerDirector
                 .makeDependant()
                 .username("khairmit1234")
                 .password("Rmit@1234")
@@ -70,7 +70,7 @@ class EntityTest {
                 .policyOwner(c1.getPolicyOwner())
                 .build();
 
-        Claim claim1 = claimService.makeClaim()
+        Claim claim1 = claimDirector.makeClaim()
                 .id("f-000001")
                 .insuredPerson(c1)
                 .claimDate(LocalDate.of(2024, 5, 7))
@@ -80,7 +80,7 @@ class EntityTest {
                 .bankingInfo("TPBank-NguyenTheVinh-1234567")
                 .build();
 
-        InsuranceManager m1 = providerService.makeManager()
+        InsuranceManager m1 = providerDirector.makeManager()
                 .username("manager1")
                 .password("Rmit@1234")
                 .email("manager@gmail.com")
@@ -89,7 +89,7 @@ class EntityTest {
                 .fullName("Nguyen Vinh Vinh")
                 .build();
 
-        InsuranceSurveyor s1 = providerService.makeSurveyor()
+        InsuranceSurveyor s1 = providerDirector.makeSurveyor()
                 .username("survey1")
                 .password("Rmit@1234")
                 .email("surveyor@gmail.com")

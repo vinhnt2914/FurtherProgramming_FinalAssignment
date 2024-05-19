@@ -22,11 +22,10 @@ import com.example.finalassingment.model.User;
 import com.example.finalassingment.model.customer.PolicyHolder;
 import com.example.finalassingment.model.customer.PolicyOwner;
 import com.example.finalassingment.repository.impl.UserRepository;
-import com.example.finalassingment.service.CustomerService;
+import com.example.finalassingment.director.CustomerDirector;
 import com.example.finalassingment.utility.PasswordUtil;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public class AddPolicyHolderForm extends BorderPane {
     @FXML
@@ -94,7 +93,7 @@ public class AddPolicyHolderForm extends BorderPane {
     void addPolicyHolder(ActionEvent actionEvent) {
         if (validateInput()) {
             UserRepository repository = new UserRepository();
-            CustomerService customerService = new CustomerService();
+            CustomerDirector customerDirector = new CustomerDirector();
 
             try {
                 String username = usernameField.getText();
@@ -106,7 +105,7 @@ public class AddPolicyHolderForm extends BorderPane {
                     return;
                 }
 
-                PolicyHolder policyHolder = customerService.makePolicyHolder()
+                PolicyHolder policyHolder = customerDirector.makePolicyHolder()
                         .fullName(nameField.getText())
                         .username(username)
                         .address(addressField.getText())

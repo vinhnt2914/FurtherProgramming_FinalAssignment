@@ -51,8 +51,8 @@ public class InsuranceCardAdminController implements Initializable, RefreshableC
         if (selectedCard != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Confirm Deletion");
-            confirmationAlert.setHeaderText("Delete Policy Owner");
-            confirmationAlert.setContentText("Are you sure you want to delete the selected policy owner?");
+            confirmationAlert.setHeaderText("Delete Insurance Card");
+            confirmationAlert.setContentText("Are you sure you want to delete the selected insurance card?");
 
             confirmationAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
@@ -63,7 +63,7 @@ public class InsuranceCardAdminController implements Initializable, RefreshableC
                 }
             });
         } else {
-            new ErrorAlert("Please select a dependant");
+            new ErrorAlert("Please select a insurance card");
         }
     }
 

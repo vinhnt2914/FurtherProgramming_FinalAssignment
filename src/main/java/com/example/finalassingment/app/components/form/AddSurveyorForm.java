@@ -21,11 +21,10 @@ import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
 import com.example.finalassingment.repository.impl.ProviderRepository;
 import com.example.finalassingment.repository.impl.UserRepository;
-import com.example.finalassingment.service.ProviderService;
+import com.example.finalassingment.director.ProviderDirector;
 import com.example.finalassingment.utility.PasswordUtil;
 
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 public class AddSurveyorForm extends BorderPane {
     @FXML
@@ -87,7 +86,7 @@ public class AddSurveyorForm extends BorderPane {
         if (validateInput()) {
             UserRepository userRepository = new UserRepository();
             ProviderRepository providerRepository = new ProviderRepository();
-            ProviderService service = new ProviderService();
+            ProviderDirector service = new ProviderDirector();
 
             try {
                 String username = usernameField.getText();

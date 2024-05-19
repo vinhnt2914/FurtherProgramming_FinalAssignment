@@ -1,14 +1,13 @@
 package com.example.finalassingment.app.components.form;
 
 import com.example.finalassingment.app.components.alert.SuccessAlert;
-import com.example.finalassingment.utility.InputValidator;
 import javafx.event.ActionEvent;
 import com.example.finalassingment.app.components.alert.ErrorAlert;
 import com.example.finalassingment.app.controllers.RefreshableController;
 import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.repository.impl.ProviderRepository;
 import com.example.finalassingment.repository.impl.UserRepository;
-import com.example.finalassingment.service.ProviderService;
+import com.example.finalassingment.director.ProviderDirector;
 import com.example.finalassingment.utility.PasswordUtil;
 
 public class AddManagerForm extends GenericAddForm {
@@ -25,7 +24,7 @@ public class AddManagerForm extends GenericAddForm {
     void add(ActionEvent actionEvent) {
         if (validateInput()) {
             ProviderRepository repository = new ProviderRepository();
-            ProviderService service = new ProviderService();
+            ProviderDirector service = new ProviderDirector();
             UserRepository userRepository = new UserRepository();
 
             try {

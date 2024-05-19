@@ -39,6 +39,9 @@ public class ClaimSortingForm extends VBox {
     private DatePicker examDatePicker;
     @FXML
     private Button sortButton;
+    @FXML
+    private Button cancelButton;
+
     private ClaimTable claimTable;
     private Stage stage;
 
@@ -65,6 +68,7 @@ public class ClaimSortingForm extends VBox {
     private void setUpSortingForm() {
         setUpComboBoxes();
         this.sortButton.setOnAction(this::sort);
+        this.cancelButton.setOnAction(this::handleCancel);
     }
 
     private void setUpComboBoxes() {
@@ -154,7 +158,9 @@ public class ClaimSortingForm extends VBox {
         claimTable.setItems(FXCollections.observableArrayList(sortedClaims));
         close();
     }
-
+    private void handleCancel(ActionEvent actionEvent) {
+        close();
+    }
 
     private void close() {
         stage.close();
