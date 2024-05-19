@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.repository.impl.ClaimRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import com.example.finalassingment.model.items.Proposal;
 import com.example.finalassingment.model.provider.InsuranceManager;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
 import com.example.finalassingment.repository.impl.ProposalRepository;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
 
@@ -59,14 +61,29 @@ public class ProposalForm extends VBox {
 
     private void submitProposal(ActionEvent actionEvent) {
         if (validateInput()) {
-            ProposalRepository repository = new ProposalRepository();
+
+            ClaimRepository claimRepository = new ClaimRepository();
+
+            if (claimRepository.findByID(claim.getId()) == null) {
+                new ErrorAlert("There's already a proposal for this claim!");
+                claimRepository.close();
+                return;
+            }
+
+            ProposalRepository proposalRepository = new ProposalRepository();
             InsuranceSurveyor surveyor = (InsuranceSurveyor) GlobalVariable.getUser();
             InsuranceManager manager = surveyor.getManager();
             String message = messageArea.getText();
             if (message.isEmpty()) message = "Nothing";
             Proposal proposal = new Proposal(surveyor, claim, manager, message);
-            repository.add(proposal);
-            repository.close();
+            try {
+                proposalRepository.add(proposal);
+            } catch (ConstraintViolationException e) {
+                new ErrorAlert("There's already a proposal with this claim!");
+            } finally {
+                proposalRepository.close();
+            }
+
         }
     }
 

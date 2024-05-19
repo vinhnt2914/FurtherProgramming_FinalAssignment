@@ -1,5 +1,7 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.ErrorAlert;
+import jakarta.persistence.RollbackException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,11 +84,16 @@ public class AddInsuranceCardForm extends VBox implements SelectableForm{
                 .policyOwner(beneficiary.getPolicyOwner())
                 .build();
 
-        repository.add(card);
-        repository.close();
-        controller.refresh();
-        new SuccessAlert("Insurance card added successfully");
-        close();
+        try {
+            repository.add(card);
+            repository.close();
+            controller.refresh();
+            new SuccessAlert("Insurance card added successfully");
+            close();
+        } catch (RollbackException e) {
+            new ErrorAlert("There's already an insurance card with this number");
+        }
+
     }
 
     private void close() {

@@ -1,6 +1,7 @@
 package com.example.finalassingment.repository.impl;
 
 import com.example.finalassingment.model.customer.*;
+import jakarta.persistence.EntityGraph;
 import jakarta.persistence.TypedQuery;
 import com.example.finalassingment.repository.EntityRepository;
 import com.example.finalassingment.repository.ICustomerRepository;
@@ -50,14 +51,13 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
     @Override
     public List<Dependant> getAllDependants() {
         TypedQuery<Dependant> query = em.createQuery(
-                "SELECT d FROM Dependant d " +
-                        "JOIN FETCH d.policyHolder ph " +
-                        "JOIN FETCH ph.policyOwner po " +
-                        "JOIN FETCH d.insuranceCard ic " +
-                        "JOIN FETCH ph.insuranceCard phIC " +
-                        "JOIN FETCH ic.policyOwner icPo " +
-                        "JOIN FETCH phIC.policyOwner",
+                "SELECT d FROM Dependant d ",
                 Dependant.class);
+        EntityGraph<Dependant> entityGraph = em.createEntityGraph(Dependant.class);
+        entityGraph.addAttributeNodes("policyHolder", "insuranceCard");
+        entityGraph.addSubgraph("policyHolder").addAttributeNodes("policyOwner", "insuranceCard");
+        entityGraph.addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
         return query.getResultList();
     }
 
@@ -71,44 +71,54 @@ public class CustomerRepository extends EntityRepository implements ICustomerRep
 
     @Override
     public List<Dependant> getAllDependantsOfPolicyOwner(PolicyOwner policyOwner) {
+
         TypedQuery<PolicyHolder> query = em.createQuery(
-                "from PolicyHolder ph " +
-                        "join fetch ph.insuranceCard " +
-                        "join fetch ph.policyOwner " +
-                "where ph.policyOwner = :policyOwner",
-                PolicyHolder.class);
+                "SELECT ph FROM PolicyHolder ph WHERE ph.policyOwner = :policyOwner",
+                PolicyHolder.class
+        );
+        EntityGraph<PolicyHolder> entityGraph = em.createEntityGraph(PolicyHolder.class);
+        entityGraph.addAttributeNodes("insuranceCard", "policyOwner");
+        query.setHint("javax.persistence.fetchgraph", entityGraph);
         query.setParameter("policyOwner", policyOwner);
+
         List<PolicyHolder> policyHolderList = query.getResultList();
         List<Dependant> dependantList = new ArrayList<>();
-        policyHolderList.forEach(policyHolder -> dependantList.addAll(policyHolder.getDependantSet()));
+        for (PolicyHolder policyHolder : policyHolderList) {
+            dependantList.addAll(policyHolder.getDependantSet());
+        }
         return dependantList;
     }
 
     @Override
     public List<PolicyHolder> getAllPolicyHolders() {
         TypedQuery<PolicyHolder> query = em.createQuery(
-                "FROM PolicyHolder ph " +
-                        "join fetch ph.policyOwner " +
-                        "join fetch ph.insuranceCard ic " +
-                        "join fetch ic.policyOwner",
+                "FROM PolicyHolder ph ",
                 PolicyHolder.class);
+        EntityGraph<PolicyHolder> entityGraph = em.createEntityGraph(PolicyHolder.class);
+        entityGraph.addAttributeNodes("policyOwner");
+        entityGraph.addAttributeNodes("insuranceCard");
+        entityGraph.addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+        query.setHint("jakarta.persistence.fetchgraph", entityGraph);
         return query.getResultList();
     }
 
     @Override
     public List<PolicyHolder> getAllPolicyHoldersOfPolicyOwner(PolicyOwner policyOwner) {
+        EntityGraph<PolicyHolder> entityGraph = em.createEntityGraph(PolicyHolder.class);
+        entityGraph.addAttributeNodes("insuranceCard", "policyOwner", "dependantSet");
+        entityGraph.addSubgraph("dependantSet").addAttributeNodes("insuranceCard");
+        entityGraph.addSubgraph("insuranceCard").addAttributeNodes("policyOwner");
+
         TypedQuery<PolicyHolder> query = em.createQuery(
-                "from PolicyHolder h " +
-                        "join fetch h.insuranceCard " +
-                        "join fetch h.policyOwner " +
-                        "join fetch h.dependantSet ds " +
-                        "join fetch ds.insuranceCard ic " +
-                        "join fetch ic.policyOwner " +
-                        "where h.policyOwner = :policyOwner",
-                PolicyHolder.class);
+                "SELECT ph FROM PolicyHolder ph WHERE ph.policyOwner = :policyOwner",
+                PolicyHolder.class
+        );
         query.setParameter("policyOwner", policyOwner);
+        query.setHint("javax.persistence.fetchgraph", entityGraph);
+
         return query.getResultList();
     }
+
 
     @Override
     public List<Beneficiary> getAllBeneficiaryOfPolicyOwner(PolicyOwner policyOwner) {

@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import jakarta.persistence.RollbackException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import com.example.finalassingment.model.items.Claim;
 import com.example.finalassingment.repository.impl.ClaimRepository;
 import com.example.finalassingment.repository.impl.CustomerRepository;
 import com.example.finalassingment.service.ClaimService;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -125,10 +127,14 @@ public class FileClaimForm extends BorderPane implements SelectableForm{
                     .status(status)
                     .bankingInfo(bankingInfo)
                     .build();
-            claimRepository.add(claim);
-            claimRepository.close();
-            controller.refresh();
-            close();
+            try {
+                claimRepository.add(claim);
+                claimRepository.close();
+                controller.refresh();
+                close();
+            } catch (RollbackException e1) {
+                new ErrorAlert("There's already a claim with this id!");
+            }
         }
     }
 

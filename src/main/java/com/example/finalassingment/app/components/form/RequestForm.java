@@ -1,5 +1,6 @@
 package com.example.finalassingment.app.components.form;
 
+import com.example.finalassingment.app.components.alert.ErrorAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import com.example.finalassingment.model.items.Claim;
 import com.example.finalassingment.model.items.Request;
 import com.example.finalassingment.model.provider.InsuranceSurveyor;
 import com.example.finalassingment.repository.impl.RequestRepository;
+import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
 
@@ -59,8 +61,14 @@ public class RequestForm extends VBox {
             if (message.isEmpty()) message = "Nothing";
             InsuranceSurveyor insuranceSurveyor = (InsuranceSurveyor) GlobalVariable.getUser();
             Request request = new Request(insuranceSurveyor, claim.getEntireInsuredPerson(), claim, message);
-            repository.add(request);
-            repository.close();
+
+            try {
+                repository.add(request);
+            } catch (ConstraintViolationException e) {
+                new ErrorAlert("There's already a request with this claim!");
+            } finally {
+                repository.close();
+            }
         }
     }
 

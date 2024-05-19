@@ -1,4 +1,6 @@
 package com.example.finalassingment.app.components.table;
+import com.example.finalassingment.app.components.form.AddInsuranceCardForm;
+import com.example.finalassingment.app.components.form.FileClaimForm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -95,10 +97,18 @@ public class SelectBeneficiaryTable extends GenericCustomerTable<Beneficiary> {
     }
 
     private void setSelectedInsuredPerson(Beneficiary dependant) {
-        if (dependant.getInsuranceCard() != null) {
-            new ErrorAlert("This person already have an insurance card. Please select someone else");
-            return;
+        if (form instanceof AddInsuranceCardForm) {
+            if (dependant.getInsuranceCard() != null) {
+                new ErrorAlert("This person already have an insurance card. Please select someone else");
+                return;
+            }
+        } else if (form instanceof FileClaimForm) {
+            if (dependant.getInsuranceCard() == null) {
+                new ErrorAlert("This person has no insurance card. Please select someone else");
+                return;
+            }
         }
+
         form.setBeneficiary(dependant);
         close();
     }
